@@ -1,24 +1,47 @@
+@font-face {
+    font-family: "IRANYekanXVF";
+    src: url("asset/webfont/IRANYekanXVF.woff");
+}
+
+@font-face {
+    font-family: "IRANYekanXVF";
+    src: url("asset/webfont/IRANYekanXVF.woff2");
+}
+
 * {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+    font-family: "IRANYekanXVF";
+    /* font-size: 16px; */
+    font-feature-settings: "kern" on, "liga" on, "calt" on;
+    -moz-font-feature-settings: "kern" on, "liga" on, "calt" on;
+    -webkit-font-feature-settings: "kern" on, "liga" on, "calt" on;
+    -ms-font-feature-settings: "kern" on, "liga" on, "calt" on;
+    -o-font-feature-settings: "kern" on, "liga" on, "calt" on;
+    font-variation-settings: "dots" 2, "slnt" 0, "DOTR" 0, "KASH" 0, "DOTS" 2;
+    /* font-variation-settings: "wght" 900, "dots" 2, "slnt" 0, "DOTR" 0, "KASH" 0, "DOTS" 2; */
 }
 
 html {
-    direction: rtl ;
-    font-size: 16px;
+    direction: rtl;
     /* background-image: url("asset/JPG/pattern.jpg"); */
-
 }
 
-body {
-    font-size: 16px;
-    font-weight: 400;
-    background-color:rgb(245, 245, 245);
-    ;
-}
+/* body {
+    font: 100px "IRANYekanXVF";
+    font-feature-settings: "kern" on, "liga" on, "calt" on;
+    -moz-font-feature-settings: "kern" on, "liga" on, "calt" on;
+    -webkit-font-feature-settings: "kern" on, "liga" on, "calt" on;
+    -ms-font-feature-settings: "kern" on, "liga" on, "calt" on;
+    -o-font-feature-settings: "kern" on, "liga" on, "calt" on;
+    font-variation-settings: "wght" 900, "dots" 2, "slnt" 0, "DOTR" 0, "KASH" 0, "DOTS" 2;
+    font-weight: 600;
+    background-color: rgb(245, 245, 245);
+} */
 
-a, a:visited {
+a,
+a:visited {
     text-decoration: none;
     color: black;
 }
@@ -68,7 +91,7 @@ a, a:visited {
     /* width: 370px; */
 }
 
-.logo-container{
+.logo-container {
     color: #fff;
     height: 30px;
     width: 110px;
