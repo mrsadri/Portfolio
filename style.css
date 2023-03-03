@@ -71,11 +71,10 @@ li {
     flex-wrap: wrap;
     align-items: center;
     justify-content: flex-start;
-    gap: 1.142rem;
 }
 
 .annual-report {
-    flex: 1 1 7.142rem;
+    flex: 1 1 8rem;
     background-repeat: no-repeat;
     height: 5vw;
     background-image: url("asset/JPG/annual-report.jpeg");
@@ -187,7 +186,6 @@ ul>span {
 }
 
 .main-banner {
-    gap: 0.857rem;
     flex-wrap: nowrap;
     height: 33vw;
     padding: 0.357rem 1rem;
@@ -197,13 +195,12 @@ ul>span {
 .main-banner-left {
     flex: 1 1 33%;
     align-self: stretch;
-    gap: 0.857rem;
     justify-content: space-between;
     flex-direction: column;
 }
 
 .main-banner-left>* {
-    flex: 1 1 7.142rem;
+    flex: 1 1 8rem;
     align-self: stretch;
     background-size: cover;
     border-radius: 0.571rem;
@@ -247,7 +244,6 @@ ul>span {
 .indicators {
     width: 100%;
     justify-content: center;
-    gap: 0.857rem;
     align-self: flex-end;
     padding-bottom: 0.714rem;
     position: absolute;
@@ -257,7 +253,6 @@ ul>span {
 .arrows {
     width: 100%;
     justify-content: space-between;
-    gap: 0.857rem;
     padding-bottom: 0.714rem;
     position: absolute;
 }
@@ -430,27 +425,60 @@ ul>span {
 divi {
     display: block;
     font-size: 1rem;
-        text-align: left;
+    text-align: left;
+}
+
+.four-part-slide {
+    height: 20vw;
+    gap: 0.857rem;
+    padding: 0.857rem;
+}
+
+.four-part-slide-box {
+    flex: 1 1 8rem;
+    align-self: stretch;
+
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.1);
+    border-radius: 16px;
+
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+}
+
+.four-part-slide-box:nth-child(2){
+    background-image: url("asset/JPG/four-item-box-1.jpg");
+}
+.four-part-slide-box:nth-child(4){
+    background-image: url("asset/JPG/four-item-box-2.jpg");
+}
+.four-part-slide-box:nth-child(3){
+    background-image: url("asset/JPG/four-item-box-3.jpg");
+}
+.four-part-slide-box:nth-child(1){
+    background-image: url("asset/JPG/four-item-box-04.jpg");
+}
+
+@media screen and (min-width: 936px) and (max-width: 1100px) {
+    html {
+        font-size: 12px;
     }
-    
-    @media screen and (min-width: 936px) and (max-width: 1100px) {
-        html {
-            font-size: 12px;
-        }
+}
+
+@media screen and (min-width: 770px) and (max-width: 940px) {
+    html {
+        font-size: 10px;
+    }
+}
+
+@media screen and (min-width: 80px) and (max-width: 780px) {
+    html {
+        font-size: 8px;
     }
 
-    @media screen and (min-width: 770px) and (max-width: 940px) {
-        html {
-            font-size: 10px;
-        }
-    }
-
-    @media screen and (min-width: 80px) and (max-width: 780px) {
-        html {
-            font-size: 8px;
-        }
-        /* .nav-bottom-right-section {
+    /* .nav-bottom-right-section {
             visibility: hidden;
         } */
-        
-    }
+
+}
