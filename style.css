@@ -366,12 +366,14 @@ ul>span {
 
 .ads-box-title {
     flex-grow: 1;
-
+    font-size: 1.142rem;
+    line-height: 2rem;
 }
 
 .ads-box-gift-DGclub {
     margin-top: 1.142rem;
     margin-bottom: 0.285rem;
+    font-size: 1rem;
 }
 
 .ads-box-off-price {
