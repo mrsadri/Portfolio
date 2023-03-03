@@ -24,15 +24,15 @@
 
     -webkit-text-size-adjust: 100%;
     font-weight: 400;
-    font-size: 14px;
+    font-size: 1rem;
     color: #515151;
     outline: none !important;
 }
 
 .bgc {
     background-color: turquoise;
-    padding: 4px;
-    margin: 4px;
+    padding: 0.285rem;
+    margin: 0.285rem;
     border: 1px #515151 solid;
 }
 
@@ -40,16 +40,18 @@ html {
     direction: rtl;
     /* background-image: url("asset/JPG/pattern.jpg"); */
     background-color: #F5F5F5;
+    font-size: 14px;
 }
 
 p {
-    font-size: 12px;
-    line-height: 30px;
+    font-size: 0.857rem;
+    line-height: 2.142rem;
 }
 
 
 a,
-a:visited, li {
+a:visited,
+li {
     text-decoration: none;
     list-style-type: none;
     cursor: pointer;
@@ -57,7 +59,7 @@ a:visited, li {
 
 .clear-fix {
     width: 100%;
-    height: 0px;
+    height: 0;
     clear: both;
     display: block;
 }
@@ -69,15 +71,15 @@ a:visited, li {
     flex-wrap: wrap;
     align-items: center;
     justify-content: flex-start;
-    gap: 16px;
+    gap: 1.142rem;
 }
 
 .annual-report {
-    flex: 1 1 100px;
+    flex: 1 1 7.142rem;
     background-repeat: no-repeat;
     height: 5vw;
     background-image: url("asset/JPG/annual-report.jpeg");
-    background-size:cover;
+    background-size: cover;
     background-position: center;
     background-position-x: 48%;
 
@@ -85,43 +87,42 @@ a:visited, li {
 
 .navigation-bar {
     width: 100%;
-    padding: 0 15px;
+    padding: 0 1rem;
     background-color: #ffffff;
-    padding-bottom: 8px;
+    padding-bottom: 0.571rem;
 }
 
 .nav-top-row {
-    padding: 12px 0;
-    height: 70px;
+    padding: 0.857rem 0;
+    height: 5rem;
 }
 
 .nav-bottom-row {
     /* display: block; */
     width: 100%;
-    height: 40px;
+    height: 3rem;
 }
 
 .right-section,
 .nav-bottom-right-section {
-    padding: 0 8px;
+    padding: 0 0.571rem;
     flex-grow: 1;
 }
 
 .left-section,
 .nav-bottom-left-section {
     justify-content: flex-end;
-    padding: 8px;
+    padding: 0.571rem;
     flex-grow: 0;
-    /* width: 370px; */
 }
 
 
 
 .logo-container {
-    height: 30px;
-    width: 110px;
+    height: 2.142rem;
+    width: 10.714rem;
     text-align: right;
-    /* background: url(asset/SVG/logo.svg) no-repeat 50%; */
+    background: url(asset/SVG/logo.svg) no-repeat 50%;
     background-size: contain;
 }
 
@@ -134,9 +135,9 @@ a:visited, li {
     width: 100%;
     height: 100%;
     font-weight: 300;
-    border-radius: 8px;
+    border-radius: 0.571rem;
     border: none;
-    padding: 14px 45px 14px 10px;
+    padding: 1rem 3rem 1rem 0.714rem;
     display: block;
     outline: none;
     background-color: #F0F0F1;
@@ -144,11 +145,11 @@ a:visited, li {
 
 .search-icon {
     position: absolute;
-    right: 14px;
-    top: 10px;
-    font-size: 24px;
-    width: 36px;
-    height: 36px;
+    right: 1rem;
+    top: 0.714rem;
+    font-size: 1.714rem;
+    width: 2.571rem;
+    height: 2.571rem;
     -webkit-box-pack: center;
     -ms-flex-pack: center;
     justify-content: center;
@@ -157,17 +158,17 @@ a:visited, li {
 .left-section>a:nth-child(1) {
     font-size: .857rem;
     line-height: 1.833;
-    padding: 10px 12px;
-    border-radius: 8px;
+    padding: 0.714rem 0.857rem;
+    border-radius: 0.571rem;
     border: 1px solid #F0F0F1;
 }
 
 .head-icon {
     position: relative;
-    top: 2px;
-    margin-left: 8px;
-    font-size: 20px;
-    line-height: 24px;
+    top: 0.142rem;
+    margin-left: 0.571rem;
+    font-size: 1.428rem;
+    line-height: 1.714rem;
     justify-content: center;
 }
 
@@ -175,36 +176,37 @@ a:visited, li {
 ul>span {
     background-color: #F0F0F1;
     width: 1px;
-    height: 24px;
+    height: 1.714rem;
 }
 
 .menu {
-    padding: 8px;
-    line-height: 30px;
-    font-size: 12px;
+    padding: 0.571rem;
+    line-height: 2.142rem;
+    font-size: 0.857rem;
     font-weight: 500;
 }
 
 .main-banner {
-    gap: 12px;
+    gap: 0.857rem;
     flex-wrap: nowrap;
     height: 33vw;
-    padding: 5px 15px;
+    padding: 0.357rem 1rem;
 
 }
+
 .main-banner-left {
     flex: 1 1 33%;
     align-self: stretch;
-    gap: 12px;
+    gap: 0.857rem;
     justify-content: space-between;
     flex-direction: column;
 }
 
 .main-banner-left>* {
-    flex: 1 1 100px;
+    flex: 1 1 7.142rem;
     align-self: stretch;
     background-size: cover;
-    border-radius: 8px;
+    border-radius: 0.571rem;
 }
 
 .main-banner-left>*:nth-child(1) {
@@ -227,14 +229,14 @@ ul>span {
 
     background-image: url("asset/GIF/dynamic-banner.gif");
     background-size: cover;
-    border-radius: 8px;
+    border-radius: 0.571rem;
 }
 
 .bullet-indicator {
     /* z-index: 2; */
-    width: 10px;
-    height: 10px;
-    border-radius: 6px;
+    width: 0.714rem;
+    height: 0.714rem;
+    border-radius: 0.428rem;
     background-color: #dddddd;
 }
 
@@ -245,9 +247,9 @@ ul>span {
 .indicators {
     width: 100%;
     justify-content: center;
-    gap: 12px;
+    gap: 0.857rem;
     align-self: flex-end;
-    padding-bottom: 10px;
+    padding-bottom: 0.714rem;
     position: absolute;
 
 }
@@ -255,27 +257,27 @@ ul>span {
 .arrows {
     width: 100%;
     justify-content: space-between;
-    gap: 12px;
-    padding-bottom: 10px;
+    gap: 0.857rem;
+    padding-bottom: 0.714rem;
     position: absolute;
 }
 
 .arrow-icon {
-    padding: 20px;
-    font-size: 24px;
+    padding: 1.428rem;
+    font-size: 1.714rem;
     color: #dddddd;
 }
 
 /* Suprising Row */
 
 .suprise-row {
-    gap: 8px;
+    gap: 0.571rem;
     width: 100%;
     align-items: stretch;
-    padding: 35px 16px;
+    padding: 2.571rem 1.142rem;
 
     width: 100%;
-    margin-top: 16px;
+    margin-top: 1.142rem;
     background: #ef394e;
 }
 
@@ -285,13 +287,13 @@ ul>span {
     flex-direction: column;
     justify-content: flex-end;
 
-  
+
     background-color: transparent;
     color: #4a5f73;
     text-decoration: none;
 }
 
-.suprise-row-right-image-holder{
+.suprise-row-right-image-holder {
     flex-grow: 1;
     align-self: stretch;
     background-image: url("asset/PNG/recomendation-banner.png");
@@ -303,8 +305,8 @@ ul>span {
 .suprise-row-lef-scrolling-section {
     flex-wrap: nowrap;
     flex: 1 1 70%;
-    gap: 10px;
-    overflow-x:auto;
+    gap: 0.714rem;
+    overflow-x: auto;
 }
 
 .suprise-row-ads-box {
@@ -315,20 +317,20 @@ ul>span {
     align-items: center;
     text-align: center;
 
-    border-radius: 8px;
+    border-radius: 0.571rem;
     background-color: #fff;
-  
-    padding-top: 20px;
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-bottom: 5px;
+
+    padding-top: 1.428rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 0.357rem;
     height: 36vw;
 }
 
 .see-all-buttun {
     position: relative;
-    border-radius: 8px;
-    padding: 9px 16px;
+    border-radius: 0.571rem;
+    padding: 0.714rem 1.142rem;
     line-height: 1.6;
     font-weight: 700;
     border: 1px solid #fff;
@@ -338,9 +340,9 @@ ul>span {
 
 .see-all-buttun>i {
     color: #F0F0F1;
-    margin-right: 12px;
+    margin-right: 0.857rem;
     position: relative;
-    top: 2px;
+    top: 0.142rem;
 }
 
 
@@ -349,7 +351,7 @@ ul>span {
 .suprise-row-ads-box>* {
     align-self: stretch;
     color: #4a5f73;
-    font-size: 12px;
+    font-size: 0.857rem;
     font-weight: 400;
     text-align: right;
 }
@@ -364,60 +366,89 @@ ul>span {
 
 .ads-box-title {
     flex-grow: 1;
-    
+
 }
 
 .ads-box-gift-DGclub {
-    margin-top: 16px;
-    margin-bottom: 4px;
+    margin-top: 1.142rem;
+    margin-bottom: 0.285rem;
 }
 
 .ads-box-off-price {
     justify-content: flex-end;
-    gap:4px;
+    gap: 0.285rem;
 }
 
 .percentage-box {
     background-color: #ef394e;
     color: #F0F0F1;
-    padding: 4px 8px;
+    padding: 0.285rem 0.571rem;
     font-weight: 700;
-    font-size: 15px;
-    border-radius: 15px;
+    font-size: 1rem;
+    border-radius: 1rem;
 }
 
 .crossed-price {
     color: #8c8c8c;
     text-decoration: line-through;
-    font-size: 15px;
+    font-size: 1rem;
     font-weight: 250;
 }
 
 .final-price {
     justify-content: flex-end;
-    gap:4px;
-    padding: 4px 0px;
+    gap: 0.285rem;
+    padding: 0.285rem 0;
 }
 
-.just-tooman{
-    font-size: 14px;
+.just-tooman {
+    font-size: 1rem;
     color: #333333;
 }
 
 .bold-price {
     color: black;
-    font-size: 18px;
+    font-size: 1.285rem;
     font-weight: 700;
 }
 
 .timer {
     justify-content: flex-end;
-    gap:4px;
-    margin-top: 16px;
+    gap: 0.285rem;
+    margin-top: 1.142rem;
 }
 
-.timer>i, .timer {
-    font-size: 14px;
+.timer>i,
+.timer {
+    font-size: 1rem;
     color: #8c8c8c;
     font-weight: 500;
 }
+
+divi {
+    display: block;
+    font-size: 1rem;
+        text-align: left;
+    }
+    
+    @media screen and (min-width: 936px) and (max-width: 1100px) {
+        html {
+            font-size: 12px;
+        }
+    }
+
+    @media screen and (min-width: 770px) and (max-width: 940px) {
+        html {
+            font-size: 10px;
+        }
+    }
+
+    @media screen and (min-width: 80px) and (max-width: 780px) {
+        html {
+            font-size: 8px;
+        }
+        /* .nav-bottom-right-section {
+            visibility: hidden;
+        } */
+        
+    }
