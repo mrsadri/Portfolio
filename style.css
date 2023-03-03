@@ -319,7 +319,7 @@ ul>span {
     padding-left: 1rem;
     padding-right: 1rem;
     padding-bottom: 0.357rem;
-    height: 36vw;
+    height: 32vw;
 }
 
 .see-all-buttun {
@@ -363,6 +363,9 @@ ul>span {
     flex-grow: 0;
     font-size: 1.142rem;
     line-height: 2rem;
+    height: 4rem;
+    display: flex;
+    align-items: center;
 }
 
 .ads-box-gift-DGclub {
