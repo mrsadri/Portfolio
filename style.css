@@ -71,6 +71,7 @@ li {
     flex-wrap: wrap;
     align-items: center;
     justify-content: flex-start;
+    gap: 0.857rem;
 }
 
 .annual-report {
@@ -300,7 +301,6 @@ ul>span {
 .suprise-row-lef-scrolling-section {
     flex-wrap: nowrap;
     flex: 1 1 70%;
-    gap: 0.714rem;
     overflow-x: auto;
 }
 
@@ -352,7 +352,7 @@ ul>span {
 }
 
 .ads-box-image {
-    height: 16vw;
+    flex-grow: 3;
     background-image: url("asset/JPG/item-01.jpg");
     background-size: contain;
     background-repeat: no-repeat;
@@ -360,7 +360,7 @@ ul>span {
 }
 
 .ads-box-title {
-    flex-grow: 1;
+    flex-grow: 0;
     font-size: 1.142rem;
     line-height: 2rem;
 }
@@ -430,7 +430,6 @@ divi {
 
 .four-part-slide {
     height: 20vw;
-    gap: 0.857rem;
     padding: 0.857rem;
 }
 
@@ -439,12 +438,16 @@ divi {
     align-self: stretch;
 
     box-shadow: 0 2px 4px 0 rgba(0,0,0,.1);
-    border-radius: 16px;
+    border-radius: 1rem;
 
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
 
+}
+
+.four-part-slide-box:hover {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,.3);
 }
 
 .four-part-slide-box:nth-child(2){
@@ -474,7 +477,7 @@ divi {
 
 @media screen and (min-width: 80px) and (max-width: 780px) {
     html {
-        font-size: 8px;
+        font-size: 6px;
     }
 
     /* .nav-bottom-right-section {
