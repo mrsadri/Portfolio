@@ -29,6 +29,13 @@
     outline: none !important;
 }
 
+.bgc {
+    background-color: turquoise;
+    padding: 4px;
+    margin: 4px;
+    border: 1px #515151 solid;
+}
+
 html {
     direction: rtl;
     /* background-image: url("asset/JPG/pattern.jpg"); */
@@ -69,14 +76,8 @@ a:visited, li {
     flex: 1 1 100px;
     background-repeat: no-repeat;
     height: 5vw;
-    background-color: yellow;
     background-image: url("asset/JPG/annual-report.jpeg");
     background-size:cover;
-    /* margin: auto; */
-    /* display: inline; */
-    object-position: center;
-    align-self:self-start;
-    padding: 20px;
     background-position: center;
     background-position-x: 48%;
 
@@ -224,7 +225,7 @@ ul>span {
     display: flex;
     align-self: stretch;
 
-    background-image: url("asset/JPG/main-banner-01.jpg");
+    background-image: url("asset/GIF/dynamic-banner.gif");
     background-size: cover;
     border-radius: 8px;
 }
@@ -263,4 +264,160 @@ ul>span {
     padding: 20px;
     font-size: 24px;
     color: #dddddd;
+}
+
+/* Suprising Row */
+
+.suprise-row {
+    gap: 8px;
+    width: 100%;
+    align-items: stretch;
+    padding: 35px 16px;
+
+    width: 100%;
+    margin-top: 16px;
+    background: #ef394e;
+}
+
+.suprise-row-right-image {
+    flex: 1 1 25%;
+    align-self: stretch;
+    flex-direction: column;
+    justify-content: flex-end;
+
+  
+    background-color: transparent;
+    color: #4a5f73;
+    text-decoration: none;
+}
+
+.suprise-row-right-image-holder{
+    flex-grow: 1;
+    align-self: stretch;
+    background-image: url("asset/PNG/recomendation-banner.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.suprise-row-lef-scrolling-section {
+    flex-wrap: nowrap;
+    flex: 1 1 70%;
+    gap: 10px;
+    overflow-x:auto;
+}
+
+.suprise-row-ads-box {
+    display: flex;
+    flex: 1 0 31%;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    border-radius: 8px;
+    background-color: #fff;
+  
+    padding-top: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 5px;
+    height: 36vw;
+}
+
+.see-all-buttun {
+    position: relative;
+    border-radius: 8px;
+    padding: 9px 16px;
+    line-height: 1.6;
+    font-weight: 700;
+    border: 1px solid #fff;
+    color: #fff;
+
+}
+
+.see-all-buttun>i {
+    color: #F0F0F1;
+    margin-right: 12px;
+    position: relative;
+    top: 2px;
+}
+
+
+/* ADD BOX */
+
+.suprise-row-ads-box>* {
+    align-self: stretch;
+    color: #4a5f73;
+    font-size: 12px;
+    font-weight: 400;
+    text-align: right;
+}
+
+.ads-box-image {
+    height: 16vw;
+    background-image: url("asset/JPG/item-01.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.ads-box-title {
+    flex-grow: 1;
+    
+}
+
+.ads-box-gift-DGclub {
+    margin-top: 16px;
+    margin-bottom: 4px;
+}
+
+.ads-box-off-price {
+    justify-content: flex-end;
+    gap:4px;
+}
+
+.percentage-box {
+    background-color: #ef394e;
+    color: #F0F0F1;
+    padding: 4px 8px;
+    font-weight: 700;
+    font-size: 15px;
+    border-radius: 15px;
+}
+
+.crossed-price {
+    color: #8c8c8c;
+    text-decoration: line-through;
+    font-size: 15px;
+    font-weight: 250;
+}
+
+.final-price {
+    justify-content: flex-end;
+    gap:4px;
+    padding: 4px 0px;
+}
+
+.just-tooman{
+    font-size: 14px;
+    color: #333333;
+}
+
+.bold-price {
+    color: black;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.timer {
+    justify-content: flex-end;
+    gap:4px;
+    margin-top: 16px;
+}
+
+.timer>i, .timer {
+    font-size: 14px;
+    color: #8c8c8c;
+    font-weight: 500;
 }
