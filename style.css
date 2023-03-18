@@ -41,6 +41,19 @@ html {
     /* background-image: url("asset/JPG/pattern.jpg"); */
     background-color: #F5F5F5;
     font-size: 14px;
+}/* Reserve the same height at the top of the page as the header min-height */
+html:not([data-scroll='0']) body {
+    padding-top: 3em;
+}
+
+/* Switch to fixed positioning, and stick the header to the top of the page */
+html:not([data-scroll='0']) header {
+    position: fixed;
+    top: 0;
+    z-index: 1;
+
+    /* This box-shadow will help sell the floating effect */
+    box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.5);
 }
 
 p {
@@ -93,9 +106,14 @@ li {
     padding-bottom: 0.571rem;
 }
 
+
 .nav-top-row {
+    z-index: 4;
+    position: sticky;
+    top:0;
     padding: 0.857rem 0;
     height: 5rem;
+    background-color: #fff;
 }
 
 .nav-bottom-row {
@@ -115,7 +133,6 @@ li {
     justify-content: flex-end;
     padding: 0.571rem;
     flex-grow: 0;
-    background-color: #4b1919;
 }
 
 
@@ -469,7 +486,7 @@ divi {
 }
 
 .submenu-nav {
-    /* display: none; */
+    display: none;
     position: absolute;
     z-index: 4;
     width: 40rem;
@@ -484,7 +501,7 @@ divi {
 
 }
 
-.submenu-nav-right>ul>li:hover .submenu-nav {
+.nav-bottom-right-section>li:hover .submenu-nav {
     display: flex;
 }
 .submenu-nav-mainbody {
@@ -497,7 +514,6 @@ divi {
 } */
 
 .submenu-nav-left {
-    background-color: #6058ed;
     background-image: url("asset/GIF/promotion-banner.gif");
     background-size:cover;
 
