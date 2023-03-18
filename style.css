@@ -86,6 +86,7 @@ li {
 }
 
 .navigation-bar {
+    z-index: 3;
     width: 100%;
     padding: 0 1rem;
     background-color: #ffffff;
@@ -100,7 +101,7 @@ li {
 .nav-bottom-row {
     /* display: block; */
     width: 100%;
-    height: 3rem;
+    /* height: 3rem; */
 }
 
 .right-section,
@@ -114,6 +115,7 @@ li {
     justify-content: flex-end;
     padding: 0.571rem;
     flex-grow: 0;
+    background-color: #4b1919;
 }
 
 
@@ -464,6 +466,56 @@ divi {
 }
 .four-part-slide-box:nth-child(1){
     background-image: url("asset/JPG/four-item-box-04.jpg");
+}
+
+.submenu-nav {
+    /* display: none; */
+    position: absolute;
+    z-index: 4;
+    width: 40rem;
+    background-color: #ffffff;
+
+    padding: 1.5rem;
+    flex-flow: column wrap;
+    align-items: stretch;
+    border-radius: 0 0 0.75rem 0.75rem;
+    -webkit-box-shadow: 0px 10px 20px 0px rgba(0,41,52,0.25); 
+    box-shadow: 0px 10px 20px 0px rgba(0,41,52,0.25);
+
+}
+
+.submenu-nav-right>ul>li:hover .submenu-nav {
+    display: flex;
+}
+.submenu-nav-mainbody {
+    align-items: stretch;
+    gap: 2rem;
+}
+
+/* .submenu-nav-footer {
+    
+} */
+
+.submenu-nav-left {
+    background-color: #6058ed;
+    background-image: url("asset/GIF/promotion-banner.gif");
+    background-size:cover;
+
+    flex-grow: 1;
+    border-radius: 1.5rem;;
+    /* width: 30rem;
+    height: 30rem; */
+    
+}
+
+
+.blur-layer {
+    z-index: 2;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #070707b3;
 }
 
 @media screen and (min-width: 936px) and (max-width: 1100px) {
