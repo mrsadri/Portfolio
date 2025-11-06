@@ -662,6 +662,44 @@
     opacity: 0.8;
 }
 
+/* Design Philosophy Section */
+.design-philosophy-text {
+    font-size: 1.25rem;
+    line-height: 1.8;
+    color: var(--text-primary);
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto var(--spacing-md);
+}
+
+.emoji-description {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    text-align: center;
+    margin: var(--spacing-lg) auto var(--spacing-md);
+    font-style: italic;
+}
+
+.emoji-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+    margin: var(--spacing-lg) 0;
+}
+
+.emoji-large {
+    font-size: 3rem;
+    line-height: 1;
+    display: inline-block;
+    transition: transform var(--transition-fast);
+}
+
+.emoji-large:hover {
+    transform: scale(1.2);
+}
+
 /* Philosophy Content */
 .philosophy-content {
     max-width: var(--content-width);
