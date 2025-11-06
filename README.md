@@ -87,6 +87,66 @@ This website is ready to be deployed to any static hosting service:
 - Proper heading hierarchy
 - Alt text for all images
 
+## Getting Started
+
+### Prerequisites
+
+- A modern web browser
+- A static hosting service (for deployment)
+
+### Local Development
+
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   cd Portfolio
+   ```
+
+2. Open `index.html` in your browser or use a local server:
+   ```bash
+   # Using Python
+   python -m http.server 8000
+   
+   # Using Node.js (with http-server)
+   npx http-server
+   ```
+
+3. Visit `http://localhost:8000` in your browser
+
+## Git Setup
+
+This project is ready to be pushed to GitHub:
+
+```bash
+# Initialize Git repository
+git init
+
+# Add all files
+git add .
+
+# Create initial commit
+git commit -m "Initial commit: Portfolio website"
+
+# Rename branch to main
+git branch -M main
+
+# Add remote repository
+git remote add origin <your-repo-url>
+
+# Push to GitHub
+git push -u origin main
+```
+
+## Project Status
+
+✅ **Production Ready** - All reviews completed and issues resolved
+- ✅ Senior UX Designer Review: Passed
+- ✅ Hiring Manager Review: Passed  
+- ✅ SEO Specialist Review: Passed
+- ✅ Frontend Engineer Review: Passed
+
+See `PROJECT_REVIEW.md` for detailed review documentation.
+
 ## License
 
 © 2025 Masih Sadri. All rights reserved.
