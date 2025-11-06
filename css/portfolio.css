@@ -774,56 +774,45 @@
     margin: 0;
 }
 
-/* Education Grid - Card Layout */
+/* Education Grid - Simple Two Column Layout */
 .education-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: var(--spacing-lg);
-    margin-top: var(--spacing-lg);
-    max-width: 1200px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-md);
+    max-width: 1000px;
     margin-left: auto;
     margin-right: auto;
 }
 
-@media (min-width: 1024px) {
+@media (max-width: 768px) {
     .education-grid {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: 1fr;
     }
 }
 
 .education-card {
-    background-color: var(--bg-light);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-lg);
-    padding: var(--spacing-lg);
-    transition: transform var(--transition-normal) var(--transition-smooth),
-                box-shadow var(--transition-normal) var(--transition-smooth),
-                border-color var(--transition-normal) var(--transition-smooth);
+    background-color: transparent;
+    border: none;
+    padding: 0;
     display: flex;
     flex-direction: column;
-    height: 100%;
-}
-
-.education-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-md);
-    border-color: var(--accent-color);
 }
 
 .education-card-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: var(--spacing-md);
+    margin-bottom: var(--spacing-xs);
 }
 
 .education-badge {
     display: inline-block;
-    padding: 0.25rem 0.75rem;
+    padding: 0.25rem 0.5rem;
     background-color: var(--accent-color);
     color: var(--text-light);
     border-radius: var(--radius-sm);
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -836,34 +825,33 @@
 }
 
 .education-card-title {
-    font-size: 1.25rem;
+    font-size: 1.1rem;
     font-weight: 700;
     color: var(--text-primary);
-    margin-bottom: var(--spacing-xs);
+    margin-bottom: 0.25rem;
     line-height: 1.3;
 }
 
 .education-card-institution {
-    font-size: 1rem;
+    font-size: 0.95rem;
     color: var(--text-secondary);
-    margin-bottom: var(--spacing-sm);
+    margin-bottom: var(--spacing-xs);
     font-weight: 500;
 }
 
 .education-card-details {
     list-style: none;
     padding: 0;
-    margin: var(--spacing-sm) 0 0 0;
-    flex: 1;
+    margin: var(--spacing-xs) 0 0 0;
 }
 
 .education-card-details li {
     position: relative;
-    padding-left: 1.25rem;
-    margin-bottom: 0.5rem;
-    font-size: 0.9rem;
+    padding-left: 1rem;
+    margin-bottom: 0.4rem;
+    font-size: 0.875rem;
     color: var(--text-secondary);
-    line-height: 1.6;
+    line-height: 1.5;
 }
 
 .education-card-details li::before {
@@ -872,66 +860,47 @@
     left: 0;
     color: var(--accent-color);
     font-weight: 700;
-    font-size: 1.2rem;
-    line-height: 1;
 }
 
-/* Certificates Grid - Card Layout */
+/* Certificates Grid - Simple Two Column Layout */
 .certificates-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: var(--spacing-lg);
-    margin-top: var(--spacing-lg);
-    max-width: 1200px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-md);
+    max-width: 1000px;
     margin-left: auto;
     margin-right: auto;
 }
 
-@media (min-width: 1024px) {
+@media (max-width: 768px) {
     .certificates-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-@media (min-width: 1400px) {
-    .certificates-grid {
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: 1fr;
     }
 }
 
 .certificate-card {
-    background-color: var(--bg-light);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-lg);
-    padding: var(--spacing-lg);
-    transition: transform var(--transition-normal) var(--transition-smooth),
-                box-shadow var(--transition-normal) var(--transition-smooth),
-                border-color var(--transition-normal) var(--transition-smooth);
+    background-color: transparent;
+    border: none;
+    padding: 0;
     display: flex;
     flex-direction: column;
-    height: 100%;
-}
-
-.certificate-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-md);
-    border-color: var(--accent-color);
 }
 
 .certificate-card-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: var(--spacing-md);
+    margin-bottom: var(--spacing-xs);
 }
 
 .certificate-badge {
     display: inline-block;
-    padding: 0.25rem 0.75rem;
+    padding: 0.25rem 0.5rem;
     background-color: var(--accent-color);
     color: var(--text-light);
     border-radius: var(--radius-sm);
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -953,15 +922,15 @@
 }
 
 .certificate-card-title {
-    font-size: 1.25rem;
+    font-size: 1.1rem;
     font-weight: 700;
     color: var(--text-primary);
-    margin-bottom: var(--spacing-xs);
+    margin-bottom: 0.25rem;
     line-height: 1.3;
 }
 
 .certificate-card-institution {
-    font-size: 1rem;
+    font-size: 0.95rem;
     color: var(--text-secondary);
     margin-bottom: var(--spacing-xs);
     font-weight: 500;
@@ -969,18 +938,17 @@
 
 .certificate-card-hours,
 .certificate-card-score {
-    font-size: 0.9rem;
+    font-size: 0.875rem;
     color: var(--accent-color);
     font-weight: 600;
-    margin: var(--spacing-xs) 0;
+    margin: 0.25rem 0;
 }
 
 .certificate-card-topics {
     font-size: 0.875rem;
     color: var(--text-secondary);
-    line-height: 1.6;
-    margin-top: var(--spacing-sm);
-    font-style: italic;
+    line-height: 1.5;
+    margin-top: var(--spacing-xs);
 }
 
 /* References */
@@ -1541,11 +1509,7 @@
     .education-grid,
     .certificates-grid {
         grid-template-columns: 1fr;
-    }
-
-    .education-card,
-    .certificate-card {
-        padding: var(--spacing-md);
+        gap: var(--spacing-sm);
     }
 
     .emoji-list {
