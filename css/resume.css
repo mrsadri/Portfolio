@@ -1,0 +1,440 @@
+/* ============================================
+   RESUME STYLES
+   Imports base styles and adds resume-specific styles
+   ============================================ */
+
+@import url('base.css');
+
+/* ============================================
+   RESUME-SPECIFIC STYLES
+   ============================================ */
+
+.resume-actions {
+    background-color: var(--bg-alt);
+    padding: var(--spacing-md) 0;
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 60px;
+    z-index: 100;
+}
+
+/* Primary button styles are now in base.css */
+
+.download-icon {
+    font-size: 1.2rem;
+}
+
+/* Resume Container */
+.resume-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: var(--spacing-lg) var(--spacing-md);
+    background-color: var(--bg-light);
+}
+
+.resume-page {
+    background-color: var(--bg-light);
+    padding: var(--spacing-xl);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Resume Header */
+.resume-header {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+    padding-bottom: var(--spacing-md);
+    border-bottom: 2px solid var(--border-color);
+}
+
+.resume-name {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+}
+
+.resume-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.resume-contact {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+}
+
+.resume-contact a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+.resume-contact a:hover {
+    color: #0052cc;
+    text-decoration: underline;
+}
+
+.separator {
+    margin: 0 0.5rem;
+    color: var(--text-secondary);
+}
+
+/* Resume Sections */
+.resume-section {
+    margin-bottom: var(--spacing-lg);
+    page-break-inside: avoid;
+    break-inside: avoid;
+}
+
+.section-heading {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    page-break-after: avoid;
+    break-after: avoid;
+    margin-bottom: var(--spacing-md);
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.summary-text {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+/* Experience Items */
+.experience-item {
+    margin-bottom: var(--spacing-lg);
+    page-break-inside: avoid;
+}
+
+.experience-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.5rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.job-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.job-date {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    white-space: nowrap;
+}
+
+.company-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+}
+
+.job-type {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-style: italic;
+    margin-bottom: var(--spacing-sm);
+}
+
+.achievement-list {
+    list-style: none;
+    padding-left: 0;
+    margin: var(--spacing-sm) 0 0 0;
+}
+
+.achievement-list li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.75rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-primary);
+}
+
+.achievement-list li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--accent-color);
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.achievement-list li strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.achievement-list a {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+.achievement-list a:hover {
+    text-decoration: underline;
+}
+
+/* Skills Grid */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-sm);
+}
+
+.skill-category {
+    background-color: var(--bg-alt);
+    padding: var(--spacing-md);
+    border-radius: 8px;
+    border-left: 4px solid var(--accent-color);
+}
+
+.skill-category-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.skill-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.skill-list li {
+    padding: 0.25rem 0;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+.skill-list li::before {
+    content: "→";
+    margin-right: 0.5rem;
+    color: var(--accent-color);
+}
+
+/* Education */
+.education-item-resume {
+    margin-bottom: var(--spacing-md);
+}
+
+.education-header-resume {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.5rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.education-degree {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.education-date {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    white-space: nowrap;
+}
+
+.education-institution-resume {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.education-details {
+    list-style: none;
+    padding-left: 0;
+    margin: 0.5rem 0 0 0;
+}
+
+.education-details li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+}
+
+.education-details li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--accent-color);
+}
+
+/* Certificates */
+.certificate-item {
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-md);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.certificate-item:last-child {
+    border-bottom: none;
+}
+
+.certificate-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.5rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.certificate-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.certificate-date {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    white-space: nowrap;
+}
+
+.certificate-details {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.25rem;
+}
+
+.certificate-topics {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-style: italic;
+    margin-top: 0.5rem;
+}
+
+/* Resume Footer */
+.resume-footer {
+    margin-top: var(--spacing-xl);
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+/* Print Styles */
+@media print {
+    .resume-actions,
+    .nav,
+    .footer,
+    .skip-link {
+        display: none !important;
+    }
+
+    .resume-container {
+        max-width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+
+    .resume-page {
+        box-shadow: none;
+        padding: 0;
+        border-radius: 0;
+    }
+
+    .resume-section {
+        page-break-inside: avoid;
+        margin-bottom: var(--spacing-md);
+    }
+
+    .experience-item {
+        page-break-inside: avoid;
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    a {
+        color: var(--text-primary);
+        text-decoration: none;
+    }
+
+    a[href^="http"]::after {
+        content: " (" attr(href) ")";
+        font-size: 0.85em;
+        color: var(--text-secondary);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .resume-page {
+        padding: var(--spacing-md);
+    }
+
+    .resume-name {
+        font-size: 2rem;
+    }
+
+    .resume-title {
+        font-size: 1.25rem;
+    }
+
+    .resume-contact {
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+
+    .separator {
+        display: none;
+    }
+
+    .experience-header,
+    .education-header-resume,
+    .certificate-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .job-date,
+    .education-date,
+    .certificate-date {
+        align-self: flex-start;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
