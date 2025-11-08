@@ -36,6 +36,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="js/navigation.js" defer></script>
     <script src="js/animations.js" defer></script>
+    <script src="js/book-slider.js" defer></script>
     
     <!-- Hotjar Tracking Code for Site 2627865 -->
     <script>
@@ -64,6 +65,7 @@
             </button>
             <div class="nav-links" id="main-nav">
                 <a href="my-story.html" class="active" aria-label="Read my story">my story</a>
+                <a href="day-in-life.html" aria-label="Explore my daily routine">day in life</a>
                 <a href="index.html#case-studies" aria-label="View case studies">case studies</a>
                 <a href="contact.html" aria-label="Contact me">contact</a>
                 <a href="resume.html" aria-label="View resume">resume</a>
@@ -126,6 +128,125 @@
                 <span class="emoji-large">💡</span>
                 <span class="emoji-large">🎨</span>
                 <span class="emoji-large">📚</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reading Journey Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header-flex">
+                <div>
+                    <h2 class="section-title">Design Books Guiding My Craft</h2>
+                    <p class="section-subtitle">Inspired by the living bookshelves shared by peers like Kyle Johnston, Sawyer Hollenshead, Jason Zook, and Amy McLay Paterson, I keep a curated record of the ideas that shape my practice.</p>
+                </div>
+                <div class="reading-current">
+                    <span class="reading-current-label">Currently reading</span>
+                    <p class="reading-current-title">AI and UX: Why Artificial Intelligence Needs User Experience</p>
+                </div>
+            </div>
+
+            <div class="book-slider" data-slider="books">
+                <button class="book-slider-control prev" type="button" aria-label="Previous book">
+                    <span aria-hidden="true">←</span>
+                </button>
+                <div class="book-slider-track" role="list">
+                    <article class="book-card" role="listitem">
+                        <figure class="book-cover">
+                            <img src="images/books/design-of-everyday-things.svg" alt="Cover of The Design of Everyday Things by Don Norman">
+                        </figure>
+                        <div class="book-content">
+                            <div class="book-meta">
+                                <span class="book-label">Read in 2018 · Revisited 2024</span>
+                                <h3 class="book-title">The Design of Everyday Things</h3>
+                                <p class="book-author">Don Norman</p>
+                            </div>
+                            <p class="book-summary">Norman’s framework for affordances and feedback helped me build resilience against bias when testing safety-critical flows, especially when we redesigned voice masking for Divar.</p>
+                            <ul class="book-takeaways">
+                                <li>Reinforced my habit of prototyping error states first.</li>
+                                <li>Influenced my heuristics checklist for accessibility reviews.</li>
+                                <li>Taught me to narrate “user goals” in every design critique.</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <article class="book-card" role="listitem">
+                        <figure class="book-cover">
+                            <img src="images/books/sprint.svg" alt="Cover of Sprint by Jake Knapp and the GV Design Team">
+                        </figure>
+                        <div class="book-content">
+                            <div class="book-meta">
+                                <span class="book-label">Read in 2020</span>
+                                <h3 class="book-title">Sprint</h3>
+                                <p class="book-author">Jake Knapp &amp; the GV Design Team</p>
+                            </div>
+                            <p class="book-summary">Borrowing the sprint rhythm helped me coach product squads toward decision clarity. We prototyped and launched a loyalty program at Setare Aval using a 4-day variation of this playbook.</p>
+                            <ul class="book-takeaways">
+                                <li>Adopted lightning talks to align stakeholders fast.</li>
+                                <li>Made “How might we” synthesis a staple in my workshops.</li>
+                                <li>Improved remote facilitation using structured voting rituals.</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <article class="book-card" role="listitem">
+                        <figure class="book-cover">
+                            <img src="images/books/creative-confidence.svg" alt="Cover of Creative Confidence by Tom and David Kelley">
+                        </figure>
+                        <div class="book-content">
+                            <div class="book-meta">
+                                <span class="book-label">Read in 2021</span>
+                                <h3 class="book-title">Creative Confidence</h3>
+                                <p class="book-author">Tom &amp; David Kelley</p>
+                            </div>
+                            <p class="book-summary">This book reframed how I mentor new designers—shifting critiques from solution judgment to capability building and psychological safety.</p>
+                            <ul class="book-takeaways">
+                                <li>Introduced “confidence mapping” in my mentorship sessions.</li>
+                                <li>Drove me to design project-based curricula at Rahnema College.</li>
+                                <li>Encouraged storytelling rituals to celebrate incremental wins.</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <article class="book-card current-reading" role="listitem">
+                        <div class="current-reading-badge" aria-hidden="true">Now Reading</div>
+                        <figure class="book-cover">
+                            <img src="images/masih-ux-designer.png" alt="Masih reading AI and UX book">
+                        </figure>
+                        <div class="book-content">
+                            <div class="book-meta">
+                                <span class="book-label">In progress · Q4 2025</span>
+                                <h3 class="book-title">AI and UX: Why Artificial Intelligence Needs User Experience</h3>
+                                <p class="book-author">Pamela Pavliscak</p>
+                            </div>
+                            <p class="book-summary">I’m exploring how human-centered methods evolve when models make probabilistic decisions—informing the guardrails I craft for AI-augmented solutions.</p>
+                            <ul class="book-takeaways">
+                                <li>Building an ethical checklist for AI experiments.</li>
+                                <li>Pairing qualitative interviews with model metrics.</li>
+                                <li>Documenting prompt design patterns for my team.</li>
+                            </ul>
+                        </div>
+                    </article>
+                </div>
+                <button class="book-slider-control next" type="button" aria-label="Next book">
+                    <span aria-hidden="true">→</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Divar Team Section -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="team-section">
+                <div class="team-text">
+                    <h2 class="section-title">My Divar Product Team</h2>
+                    <p class="team-description">These are the talented colleagues I'm proud to collaborate with at Divar. Together, our 32-person product organization blends design, research, product, and engineering to ship experiences that protect and empower millions of users.</p>
+                </div>
+                <figure class="team-photo-wrapper">
+                    <img src="images/divar-team.jpg" alt="Masih Sadri with the Divar product team" class="team-photo" loading="lazy">
+                    <figcaption class="team-caption">Divar Product Experience Team &mdash; collaborating across research, product design, and engineering.</figcaption>
+                </figure>
             </div>
         </div>
     </section>
