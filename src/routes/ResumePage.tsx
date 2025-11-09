@@ -39,7 +39,7 @@ const ResumePage = () => {
         sx={{
           py: { xs: 6, md: 8 },
           background:
-            "linear-gradient(135deg, rgba(27,67,50,0.08), rgba(148,210,189,0.1))",
+            "linear-gradient(135deg, rgba(31,111,235,0.1), rgba(90,200,250,0.14))",
         }}
       >
         <Container>

@@ -43,7 +43,7 @@ const HomePage = () => {
         sx={{
           py: { xs: 8, md: 12 },
           background:
-            "radial-gradient(circle at 20% 20%, rgba(64, 145, 108, 0.12), transparent 55%), radial-gradient(circle at 80% 10%, rgba(25, 135, 84, 0.12), transparent 50%)",
+            "radial-gradient(circle at 20% 20%, rgba(90, 200, 250, 0.18), transparent 55%), radial-gradient(circle at 80% 10%, rgba(31, 111, 235, 0.14), transparent 52%)",
         }}
       >
         <Container>
@@ -120,7 +120,7 @@ const HomePage = () => {
                     position: "absolute",
                     inset: { xs: 16, md: 24 },
                     background:
-                      "linear-gradient(180deg, rgba(64,145,108,0.2) 0%, rgba(246,247,249,0) 100%)",
+                      "linear-gradient(180deg, rgba(31,111,235,0.24) 0%, rgba(241,246,255,0) 100%)",
                     borderRadius: "50%",
                     filter: "blur(45px)",
                   }}
@@ -132,8 +132,9 @@ const HomePage = () => {
                   sx={{
                     width: { xs: 280, md: 380 },
                     height: { xs: 280, md: 380 },
-                    borderRadius: "32px",
-                    boxShadow: "0 18px 40px rgba(24, 45, 35, 0.18)",
+                    borderRadius: "28px",
+                    boxShadow:
+                      "0 24px 48px rgba(31, 111, 235, 0.18), 0 6px 18px rgba(20, 63, 141, 0.2)",
                   }}
                 />
               </Box>
@@ -147,14 +148,14 @@ const HomePage = () => {
           <Grid container spacing={3}>
             {metrics.map(({ value, title, description }) => (
               <Grid size={{ xs: 12, sm: 6, md: 3 }} key={title}>
-                <Card
-                  variant="outlined"
-                  sx={{
-                    height: "100%",
-                    background:
-                      "linear-gradient(135deg, rgba(25,135,84,0.08) 0%, rgba(246,247,249,1) 100%)",
-                  }}
-                >
+                  <Card
+                    variant="outlined"
+                    sx={{
+                      height: "100%",
+                      background:
+                        "linear-gradient(150deg, rgba(90,200,250,0.18) 0%, rgba(241,246,255,1) 100%)",
+                    }}
+                  >
                   <CardContent>
                     <Typography
                       variant="h4"
@@ -190,13 +191,12 @@ const HomePage = () => {
               <Grid size={{ xs: 12, md: 6 }} key={item.id}>
                 <Card
                   sx={{
-                    borderRadius: 4,
                     height: "100%",
                     display: "flex",
                     flexDirection: "column",
                     background:
                       item.id === "divar"
-                        ? "linear-gradient(135deg, rgba(27,67,50,0.85), rgba(64,145,108,0.92))"
+                        ? "linear-gradient(135deg, rgba(12,53,148,0.92), rgba(31,111,235,0.88))"
                         : undefined,
                     color: item.id === "divar" ? "primary.contrastText" : "inherit",
                   }}
@@ -206,20 +206,20 @@ const HomePage = () => {
                       <Stack direction="row" alignItems="center" spacing={1}>
                         <Chip
                           label={item.tag}
-                          color={item.id === "divar" ? "default" : "success"}
+                          color={item.id === "divar" ? "default" : "primary"}
                           sx={{
-                            color: item.id === "divar" ? "inherit" : "brand.primary",
+                            color: item.id === "divar" ? "inherit" : "brand.secondary",
                             backgroundColor:
-                              item.id === "divar" ? "rgba(255,255,255,0.16)" : "brand.muted",
+                              item.id === "divar" ? "rgba(255,255,255,0.18)" : "brand.muted",
                           }}
                         />
                         <Typography variant="subtitle2">{item.number}</Typography>
                       </Stack>
                       <Typography variant="h4">{item.title}</Typography>
-                      <Typography variant="subtitle1">
+                        <Typography variant="subtitle1" color="text.secondary">
                         {item.platform}
                         {item.platformDetail && (
-                          <Typography component="span" color="text.secondary" ml={1}>
+                            <Typography component="span" color="text.secondary" ml={1}>
                             ({item.platformDetail})
                           </Typography>
                         )}
@@ -236,8 +236,8 @@ const HomePage = () => {
                               backgroundColor:
                                 item.id === "divar"
                                   ? "rgba(255,255,255,0.18)"
-                                  : "rgba(64,145,108,0.12)",
-                              color: item.id === "divar" ? "inherit" : "brand.primary",
+                                  : "rgba(31,111,235,0.12)",
+                              color: item.id === "divar" ? "inherit" : "brand.secondary",
                             }}
                           />
                         ))}
@@ -263,7 +263,7 @@ const HomePage = () => {
                       sx={{
                         ...(item.id === "divar" && {
                           color: "inherit",
-                          borderColor: "rgba(255,255,255,0.4)",
+                          borderColor: "rgba(255,255,255,0.45)",
                         }),
                       }}
                     >
@@ -297,8 +297,8 @@ const HomePage = () => {
                       width: "100%",
                       height: 240,
                       objectFit: "cover",
-                      borderTopLeftRadius: 4,
-                      borderTopRightRadius: 4,
+                      borderTopLeftRadius: (theme) => theme.shape.borderRadius,
+                      borderTopRightRadius: (theme) => theme.shape.borderRadius,
                     }}
                   />
                   <CardContent>
@@ -337,16 +337,15 @@ const HomePage = () => {
       <Box
         sx={{
           py: { xs: 8, md: 10 },
-          background: "linear-gradient(135deg, rgba(27,67,50,0.08), transparent)",
+          background: "linear-gradient(135deg, rgba(31,111,235,0.08), transparent)",
         }}
       >
         <Container>
           <Card
             sx={{
-              borderRadius: 5,
               p: { xs: 4, md: 6 },
               background:
-                "linear-gradient(135deg, rgba(27,67,50,0.9), rgba(64,145,108,0.85))",
+                "linear-gradient(135deg, rgba(12,53,148,0.92), rgba(31,111,235,0.88))",
               color: "primary.contrastText",
             }}
           >

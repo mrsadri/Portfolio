@@ -37,7 +37,7 @@ const SectionCard = ({ section }: { section: CaseStudySection }) => (
                   height: "100%",
                   p: 3,
                   background:
-                    "linear-gradient(135deg, rgba(27,67,50,0.06), rgba(148,210,189,0.1))",
+                    "linear-gradient(135deg, rgba(31,111,235,0.08), rgba(90,200,250,0.12))",
                 }}
               >
                 <Stack spacing={1}>
@@ -86,7 +86,7 @@ const SectionCard = ({ section }: { section: CaseStudySection }) => (
         <Card
           sx={{
             background:
-              "linear-gradient(135deg, rgba(27,67,50,0.9), rgba(64,145,108,0.85))",
+              "linear-gradient(135deg, rgba(12,53,148,0.92), rgba(31,111,235,0.88))",
             color: "primary.contrastText",
             p: { xs: 3, md: 4 },
           }}
@@ -107,8 +107,9 @@ const SectionCard = ({ section }: { section: CaseStudySection }) => (
           alt={section.image.alt}
           sx={{
             width: "100%",
-            borderRadius: 4,
-            boxShadow: "0 18px 40px rgba(24, 45, 35, 0.18)",
+            borderRadius: 16,
+            boxShadow:
+              "0 24px 48px rgba(31, 111, 235, 0.16), 0 8px 22px rgba(12, 53, 148, 0.12)",
           }}
         />
       )}
@@ -123,7 +124,7 @@ const CaseStudyDivarPage = () => {
         sx={{
           py: { xs: 6, md: 8 },
           background:
-            "linear-gradient(135deg, rgba(27,67,50,0.16), rgba(148,210,189,0.12))",
+            "linear-gradient(135deg, rgba(31,111,235,0.12), rgba(90,200,250,0.16))",
         }}
       >
         <Container>
@@ -172,8 +173,9 @@ const CaseStudyDivarPage = () => {
                   alt="Divar secure call listings"
                   sx={{
                     width: "100%",
-                    borderRadius: 4,
-                    boxShadow: "0 18px 40px rgba(24, 45, 35, 0.18)",
+                    borderRadius: 16,
+                    boxShadow:
+                      "0 24px 48px rgba(31, 111, 235, 0.16), 0 8px 22px rgba(12, 53, 148, 0.12)",
                   }}
                 />
               </Grid>
