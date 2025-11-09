@@ -1,6 +1,3 @@
-import divarSecureCallListing from "../../images/divar-secure-call-listing.png";
-import setareAvalInterview from "../../images/setare-aval-interview-session.avif";
-
 export type CaseStudySection = {
   id: string;
   title: string;
@@ -31,7 +28,10 @@ export const divarOverview = {
     { label: "Timeline", value: "May – June 2023" },
     { label: "Impact", value: "~60% reduction in harassment reports" },
   ],
-  heroImage: divarSecureCallListing,
+  heroImage: new URL(
+    "../../../images/divar-secure-call-listing.png",
+    import.meta.url,
+  ).href,
 };
 
 export const divarSections: CaseStudySection[] = [
@@ -149,7 +149,10 @@ export const setareOverview = {
     { label: "Timeline", value: "Feb 2021 – Jan 2022" },
     { label: "Impact", value: "Doubled retained revenue in 6 months" },
   ],
-  heroImage: setareAvalInterview,
+  heroImage: new URL(
+    "../../../images/setare-aval-interview-session.avif",
+    import.meta.url,
+  ).href,
 };
 
 export const setareSections: CaseStudySection[] = [
