@@ -1,0 +1,45 @@
+@import url('base.css');
+
+body.frame-green-page {
+    min-height: 100vh;
+    margin: 0;
+    background-color: #009933;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #041407;
+    font-family: var(--font-primary);
+}
+
+.frame-green-container {
+    text-align: center;
+    padding: 4rem 1.5rem;
+}
+
+.frame-green-eyebrow {
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(4, 20, 7, 0.7);
+    margin-bottom: 1rem;
+}
+
+.frame-green-heading {
+    color: #041407;
+}
+
+.frame-green-link {
+    display: inline-block;
+    margin-top: 2.5rem;
+    padding: 0.85rem 1.75rem;
+    border-radius: var(--radius-md);
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #041407;
+    text-decoration: none;
+    transition: background-color var(--transition-normal) var(--transition-smooth);
+}
+
+.frame-green-link:hover,
+.frame-green-link:focus-visible {
+    background-color: rgba(255, 255, 255, 0.35);
+}
+

@@ -11,8 +11,8 @@
 
 /* Hero Section */
 .hero {
-    padding: var(--spacing-lg) 0 var(--spacing-lg);
-    background: linear-gradient(to bottom, var(--bg-light), var(--bg-alt));
+    padding: var(--spacing-lg) 0;
+    background: linear-gradient(180deg, #ffffff 0%, #f5f5f5 100%);
     min-height: auto;
     display: flex;
     align-items: center;
@@ -31,6 +31,13 @@
 .hero-image-wrapper {
     position: relative;
     order: 1;
+    border-radius: var(--radius-xl);
+    background: linear-gradient(160deg, #f5f5f5 0%, #ffffff 90%);
+    padding: 1.25rem;
+    box-shadow: var(--shadow-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .hero-image {
@@ -38,7 +45,7 @@
     max-width: 350px;
     height: auto;
     aspect-ratio: 4 / 5;
-    border-radius: var(--radius-lg);
+    border-radius: 12px;
     object-fit: cover;
     box-shadow: var(--shadow-lg);
     display: block;
@@ -67,77 +74,71 @@
 }
 
 .greeting {
-    font-size: 1.1rem;
     color: var(--text-secondary);
     margin-bottom: var(--spacing-sm);
-    font-weight: 400;
     opacity: 0;
     animation: fadeInUp 0.8s var(--transition-smooth) forwards;
 }
 
 .hero-name {
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    font-weight: 800;
-    line-height: 1.2;
     margin-bottom: var(--spacing-sm);
     color: var(--text-primary);
-    letter-spacing: -0.02em;
     opacity: 0;
     animation: textReveal 1.2s var(--transition-smooth) 0.2s forwards;
 }
 
 .hero-title {
-    font-size: clamp(1.1rem, 2vw, 1.5rem);
-    font-weight: 500;
     color: var(--text-primary);
     margin-bottom: var(--spacing-xs);
-    line-height: 1.4;
     opacity: 0;
     animation: fadeInUp 0.8s var(--transition-smooth) 0.3s forwards;
 }
 
 .hero-subtitle {
-    font-size: clamp(1rem, 1.8vw, 1.25rem);
     color: var(--text-secondary);
     margin-bottom: var(--spacing-md);
-    line-height: 1.6;
     opacity: 0;
     animation: fadeInUp 0.8s var(--transition-smooth) 0.4s forwards;
 }
 
 .credentials {
-    padding-top: var(--spacing-md);
-    border-top: 1px solid var(--border-color);
-    font-size: 0.95rem;
+    margin-top: var(--spacing-md);
+    padding: 1.5rem;
+    border-radius: var(--radius-xl);
+    border: 1px solid rgba(14, 25, 40, 0.12);
+    background: rgba(255, 255, 255, 0.9);
     color: var(--text-secondary);
-    line-height: 1.7;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
     opacity: 0;
     animation: fadeInUp 0.8s var(--transition-smooth) 0.5s forwards;
 }
 
 .credentials p {
-    margin-bottom: var(--spacing-xs);
+    margin: 0;
 }
 
 .credentials strong {
     color: var(--text-primary);
-    font-weight: 600;
+    font-weight: var(--font-weight-strong);
 }
 
 .hero-actions {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--spacing-sm);
+    gap: 1rem;
     align-items: center;
-    margin-top: var(--spacing-md);
+    margin-top: 1.75rem;
 }
 
 .hero-button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 0.85rem 1.8rem;
-    border-radius: var(--radius-md);
+    padding: 0.9rem 1.9rem;
+    border-radius: 12px;
+    min-width: 170px;
     font-weight: 600;
     text-decoration: none;
     transition: transform var(--transition-normal) var(--transition-smooth),
@@ -152,19 +153,23 @@
 .secondary-button {
     background: rgba(0, 102, 255, 0.12);
     color: var(--accent-color);
-    border: 1px solid rgba(0, 102, 255, 0.2);
+    border: 1px solid rgba(0, 102, 255, 0.3);
 }
 
 .secondary-button:hover {
     background: rgba(0, 102, 255, 0.2);
 }
 
+.hero-availability {
+    margin-top: 1.5rem;
+}
+
 .hero-link-availability {
-    font-size: 0.95rem;
-    font-weight: 600;
     color: var(--accent-color);
     text-decoration: none;
-    margin-left: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
 }
 
 .hero-link-availability:hover {
@@ -177,43 +182,41 @@
 
 .metrics-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: var(--spacing-sm);
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: var(--spacing-md);
 }
 
 .metric-card {
-    background: var(--bg-light);
-    border-radius: var(--radius-lg);
-    border: 1px solid rgba(0, 0, 0, 0.06);
-    padding: var(--spacing-sm);
-    box-shadow: var(--shadow-sm);
+    background: linear-gradient(180deg, #ffffff 0%, #f7f8fa 100%);
+    border-radius: 20px;
+    border: 1px solid rgba(14, 25, 40, 0.08);
+    padding: 1.75rem;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.75rem;
+    transition: box-shadow var(--transition-normal) var(--transition-smooth),
+                transform var(--transition-normal) var(--transition-smooth);
 }
 
 .metric-card:hover {
     box-shadow: var(--shadow-md);
+    transform: translateY(-4px);
 }
 
 .metric-value {
-    font-size: 2rem;
+    font-size: 2.25rem;
     font-weight: 800;
     color: var(--accent-color);
-    letter-spacing: -0.01em;
+    letter-spacing: -0.015em;
 }
 
 .metric-title {
-    font-size: 1.1rem;
-    font-weight: 700;
     color: var(--text-primary);
     margin: 0;
 }
 
 .metric-description {
-    font-size: 0.95rem;
     color: var(--text-secondary);
-    line-height: 1.6;
     margin: 0;
 }
 
@@ -224,7 +227,11 @@
     }
 
     .hero-link-availability {
-        margin-left: 0;
+        justify-content: center;
+    }
+
+    .hero-availability {
+        text-align: center;
     }
 }
 
@@ -246,8 +253,6 @@
     margin-top: var(--spacing-md);
     color: var(--accent-color);
     text-decoration: none;
-    font-weight: 600;
-    font-size: 1.1rem;
     transition: opacity var(--transition-fast), color var(--transition-fast);
     padding: 0.5rem 0;
 }
@@ -343,8 +348,6 @@
 
 .case-study-tag {
     display: inline-block;
-    font-size: 0.85rem;
-    font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     color: var(--accent-color);
@@ -352,12 +355,8 @@
 }
 
 .case-study-title {
-    font-size: clamp(1.5rem, 3vw, 2rem);
-    font-weight: 700;
-    line-height: 1.4;
     margin-bottom: var(--spacing-sm);
     color: var(--text-primary);
-    letter-spacing: -0.01em;
 }
 
 /* Case study cards have white backgrounds, so text should always be dark */
@@ -366,14 +365,12 @@
 }
 
 .case-study-platform {
-    font-size: 1.05rem;
     color: var(--text-secondary);
-    line-height: 1.6;
     margin-top: var(--spacing-xs);
 }
 
 .case-study-platform strong {
-    font-weight: 700;
+    font-weight: var(--font-weight-stronger);
     color: var(--text-primary);
 }
 
@@ -400,11 +397,8 @@
 }
 
 .case-study-stats p {
-    font-size: 1.05rem;
     color: var(--text-primary);
     margin: 0;
-    line-height: 1.6;
-    font-weight: 500;
 }
 
 .case-study-stats p strong {
@@ -474,8 +468,6 @@
     display: inline-block;
     color: var(--accent-color);
     text-decoration: none;
-    font-weight: 600;
-    font-size: 1.1rem;
     transition: opacity var(--transition-fast), color var(--transition-fast);
     padding: 0.5rem 0;
 }
@@ -497,8 +489,6 @@
     color: var(--text-secondary);
     padding: 0.5rem 1.5rem;
     border-radius: var(--radius-md);
-    font-size: 1rem;
-    font-weight: 600;
     cursor: pointer;
     transition: all var(--transition-fast) var(--transition-smooth);
     font-family: inherit;
@@ -580,17 +570,13 @@
 }
 
 .experience-title {
-    font-size: 1.25rem;
-    font-weight: 700;
     color: var(--text-primary);
     margin-bottom: var(--spacing-xs);
     flex-shrink: 0;
 }
 
 .experience-description {
-    font-size: 1rem;
     color: var(--text-secondary);
-    line-height: 1.7;
     margin-bottom: var(--spacing-xs);
     flex: 1;
 }
@@ -601,7 +587,6 @@
     padding-top: var(--spacing-sm);
     color: var(--accent-color);
     text-decoration: none;
-    font-weight: 600;
     transition: opacity var(--transition-fast), color var(--transition-fast);
     flex-shrink: 0;
 }
@@ -626,8 +611,6 @@
 
 .contact-email {
     display: inline-block;
-    font-size: 1.25rem;
-    font-weight: 600;
     color: var(--accent-color);
     text-decoration: none;
     margin-bottom: var(--spacing-md);
@@ -662,7 +645,6 @@
 .social-link {
     color: var(--text-primary);
     text-decoration: none;
-    font-weight: 500;
     padding: 0.5rem 1rem;
     border-radius: var(--radius-sm);
     transition: background-color var(--transition-fast), color var(--transition-fast);
@@ -720,12 +702,8 @@
 }
 
 .hero-story-title {
-    font-size: clamp(2.5rem, 6vw, 4.5rem);
-    font-weight: 800;
-    line-height: 1.2;
     margin-bottom: var(--spacing-sm);
     color: var(--text-primary);
-    letter-spacing: -0.02em;
 }
 
 .animate-text-reveal {
@@ -734,15 +712,11 @@
 }
 
 .hero-story-subtitle {
-    font-size: clamp(1.5rem, 3vw, 2.5rem);
-    font-weight: 600;
     color: var(--text-secondary);
     margin-bottom: var(--spacing-md);
-    line-height: 1.3;
 }
 
 .hero-story-description {
-    font-size: clamp(1rem, 2vw, 1.3rem);
     color: var(--text-secondary);
     line-height: 1.8;
     max-width: 800px;
@@ -790,15 +764,11 @@
 }
 
 .photo-caption {
-    font-size: 0.875rem;
-    font-weight: 400;
     color: var(--text-secondary);
-    line-height: 1.5;
     margin: 0;
 }
 
 .photo-subcaption {
-    font-size: 0.8rem;
     color: var(--text-secondary);
     font-style: italic;
     opacity: 0.8;
@@ -1637,8 +1607,6 @@
 }
 
 .mentorship-title {
-    font-size: 1.5rem;
-    font-weight: 700;
     color: var(--text-primary);
     margin: 0;
     flex: 1;
@@ -1649,21 +1617,7 @@
     color: var(--text-primary);
 }
 
-.mentorship-intro {
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--text-secondary);
-    margin-bottom: var(--spacing-sm);
-}
-
-/* Mentorship cards have white backgrounds, so text should always be dark */
-.mentorship-card .mentorship-intro {
-    color: var(--text-secondary);
-}
-
 .mentorship-description {
-    font-size: 1.05rem;
-    line-height: 1.7;
     color: var(--text-primary);
     margin-bottom: var(--spacing-md);
 }
@@ -1674,9 +1628,7 @@
 }
 
 .mentorship-note {
-    font-size: 0.95rem;
     color: var(--text-secondary);
-    line-height: 1.6;
     margin-bottom: var(--spacing-md);
 }
 
@@ -1740,16 +1692,12 @@
 }
 
 .contact-method-title {
-    font-size: 1.25rem;
-    font-weight: 700;
     color: var(--text-primary);
     margin-bottom: var(--spacing-sm);
 }
 
 .contact-method-description {
-    font-size: 0.95rem;
     color: var(--text-secondary);
-    line-height: 1.6;
     margin-bottom: var(--spacing-md);
 }
 
@@ -1757,7 +1705,6 @@
     display: inline-block;
     color: var(--accent-color);
     text-decoration: none;
-    font-weight: 600;
     transition: color var(--transition-fast);
 }
 
@@ -1790,15 +1737,11 @@
 }
 
 .help-title {
-    font-size: 1.25rem;
-    font-weight: 700;
     color: var(--text-primary);
     margin-bottom: var(--spacing-sm);
 }
 
 .help-description {
-    font-size: 1rem;
-    line-height: 1.7;
     color: var(--text-secondary);
 }
 
@@ -1810,15 +1753,11 @@
 }
 
 .response-title {
-    font-size: 1.5rem;
-    font-weight: 700;
     color: var(--text-primary);
     margin-bottom: var(--spacing-md);
 }
 
 .response-text {
-    font-size: 1rem;
-    line-height: 1.7;
     color: var(--text-secondary);
     margin-bottom: var(--spacing-sm);
 }
