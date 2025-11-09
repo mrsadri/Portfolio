@@ -178,7 +178,11 @@ const HomePage = () => {
         </Container>
       </Box>
 
-      <Box sx={{ py: { xs: 8, md: 10 }, backgroundColor: "background.paper" }}>
+      <Box
+        id="case-studies"
+        component="section"
+        sx={{ py: { xs: 8, md: 10 }, backgroundColor: "background.paper" }}
+      >
         <Container>
           <Stack spacing={3} alignItems="center" textAlign="center" mb={6}>
             <Typography variant="h2">Case studies</Typography>
@@ -196,48 +200,123 @@ const HomePage = () => {
                     flexDirection: "column",
                     background:
                       item.id === "divar"
-                        ? "linear-gradient(135deg, rgba(12,53,148,0.92), rgba(31,111,235,0.88))"
-                        : undefined,
+                        ? "linear-gradient(135deg, rgba(17, 76, 170, 0.78), rgba(60, 151, 255, 0.72))"
+                        : "linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(227, 241, 255, 0.88))",
+                    border:
+                      item.id === "divar"
+                        ? "1px solid rgba(255, 255, 255, 0.28)"
+                        : "1px solid rgba(17, 76, 170, 0.08)",
                     color: item.id === "divar" ? "primary.contrastText" : "inherit",
+                    boxShadow:
+                      item.id === "divar"
+                        ? "0 24px 50px rgba(17, 76, 170, 0.24)"
+                        : "0 12px 32px rgba(15, 82, 186, 0.08)",
                   }}
                 >
-                  <CardContent sx={{ flexGrow: 1 }}>
-                    <Stack spacing={2}>
-                      <Stack direction="row" alignItems="center" spacing={1}>
+                  <CardContent sx={{ flexGrow: 1, pb: 3 }}>
+                    <Stack spacing={2.5}>
+                      <Stack
+                        direction="row"
+                        alignItems="center"
+                        justifyContent="space-between"
+                        spacing={2}
+                      >
+                        <Typography
+                          variant="subtitle2"
+                          sx={{
+                            fontWeight: 600,
+                            textTransform: "uppercase",
+                            letterSpacing: "0.18em",
+                            color: item.id === "divar" ? "brand.accent" : "brand.secondary",
+                          }}
+                        >
+                          Case {item.number}
+                        </Typography>
                         <Chip
                           label={item.tag}
-                          color={item.id === "divar" ? "default" : "primary"}
+                          size="small"
                           sx={{
-                            color: item.id === "divar" ? "inherit" : "brand.secondary",
+                            fontWeight: 600,
+                            letterSpacing: 0.4,
+                            color:
+                              item.id === "divar" ? "rgba(255, 255, 255, 0.9)" : "brand.secondary",
                             backgroundColor:
-                              item.id === "divar" ? "rgba(255,255,255,0.18)" : "brand.muted",
+                              item.id === "divar"
+                                ? "rgba(255, 255, 255, 0.18)"
+                                : "rgba(227, 241, 255, 0.8)",
+                            borderColor:
+                              item.id === "divar" ? "rgba(255, 255, 255, 0.4)" : "transparent",
+                            borderWidth: item.id === "divar" ? 1 : 0,
+                            borderStyle: "solid",
                           }}
                         />
-                        <Typography variant="subtitle2">{item.number}</Typography>
                       </Stack>
-                      <Typography variant="h4">{item.title}</Typography>
-                        <Typography variant="subtitle1" color="text.secondary">
+                      <Typography
+                        variant="h5"
+                        sx={{
+                          fontWeight: 700,
+                          lineHeight: 1.32,
+                          color: item.id === "divar" ? "rgba(255, 255, 255, 0.95)" : "text.primary",
+                        }}
+                      >
+                        {item.title}
+                      </Typography>
+                      <Typography
+                        variant="subtitle2"
+                        sx={{
+                          fontWeight: 500,
+                          color:
+                            item.id === "divar"
+                              ? "rgba(255, 255, 255, 0.85)"
+                              : "text.secondary",
+                        }}
+                      >
                         {item.platform}
                         {item.platformDetail && (
-                            <Typography component="span" color="text.secondary" ml={1}>
+                          <Box
+                            component="span"
+                            sx={{
+                              display: "inline-block",
+                              ml: 0.75,
+                              color:
+                                item.id === "divar"
+                                  ? "rgba(255, 255, 255, 0.72)"
+                                  : "text.secondary",
+                              fontWeight: 400,
+                            }}
+                          >
                             ({item.platformDetail})
-                          </Typography>
+                          </Box>
                         )}
                       </Typography>
                       {item.stat && (
-                        <Typography variant="body1">{item.stat}</Typography>
+                        <Typography
+                          variant="body2"
+                          sx={{
+                            color:
+                              item.id === "divar"
+                                ? "rgba(255, 255, 255, 0.88)"
+                                : "text.secondary",
+                          }}
+                        >
+                          {item.stat}
+                        </Typography>
                       )}
                       <Stack direction="row" spacing={1} flexWrap="wrap">
                         {item.tags.map((tag) => (
                           <Chip
                             key={tag}
                             label={tag}
+                            size="small"
                             sx={{
                               backgroundColor:
                                 item.id === "divar"
-                                  ? "rgba(255,255,255,0.18)"
-                                  : "rgba(31,111,235,0.12)",
-                              color: item.id === "divar" ? "inherit" : "brand.secondary",
+                                  ? "rgba(255, 255, 255, 0.16)"
+                                  : "rgba(31, 111, 235, 0.12)",
+                              color:
+                                item.id === "divar"
+                                  ? "rgba(255, 255, 255, 0.9)"
+                                  : "brand.secondary",
                             }}
                           />
                         ))}
@@ -249,7 +328,7 @@ const HomePage = () => {
                       component={RouterLink}
                       to={item.to}
                       variant={item.id === "divar" ? "contained" : "outlined"}
-                      color={item.id === "divar" ? "secondary" : "primary"}
+                      color="primary"
                       fullWidth
                       endIcon={<ArrowForwardRoundedIcon />}
                     >

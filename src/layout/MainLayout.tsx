@@ -22,16 +22,24 @@ import Footer from "../components/Footer";
 
 const navigationLinks = [
   { label: "my story", to: "/my-story" },
-  { label: "case studies", to: "/case-studies/divar-secure-call" },
+  { label: "case studies", to: "/#case-studies" },
   { label: "contact", to: "/contact" },
   { label: "resume", to: "/resume" },
-];
+] as const;
 
 const MainLayout = () => {
   const theme = useTheme();
   const location = useLocation();
   const isDesktop = useMediaQuery(theme.breakpoints.up("md"));
   const [drawerOpen, setDrawerOpen] = useState(false);
+
+  const isLinkActive = (to: string) => {
+    if (to.includes("#")) {
+      const hash = to.slice(to.indexOf("#"));
+      return location.pathname === "/" && location.hash === hash;
+    }
+    return location.pathname === to;
+  };
 
   useEffect(() => {
     if (typeof window !== "undefined" && "scrollRestoration" in window.history) {
@@ -105,12 +113,10 @@ const MainLayout = () => {
                     component={RouterLink}
                     to={to}
                     color="inherit"
-                    variant={
-                      location.pathname === to ? "contained" : "text"
-                    }
+                    variant={isLinkActive(to) ? "contained" : "text"}
                     sx={{
                       fontWeight: 500,
-                      ...(location.pathname === to && {
+                      ...(isLinkActive(to) && {
                         backgroundColor: "brand.muted",
                         color: "brand.primary",
                         "&:hover": {
@@ -155,7 +161,7 @@ const MainLayout = () => {
                         component={RouterLink}
                         to={to}
                         onClick={handleDrawerToggle}
-                        selected={location.pathname === to}
+                        selected={isLinkActive(to)}
                         sx={{
                           borderRadius: 2,
                         }}

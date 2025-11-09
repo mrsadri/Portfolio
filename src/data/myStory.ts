@@ -1,3 +1,13 @@
+import creativeConfidenceCover from "../../images/books/creative-confidence.svg";
+import designOfEverydayThingsCover from "../../images/books/design-of-everyday-things.svg";
+import sprintCover from "../../images/books/sprint.svg";
+import divarTeamPhoto from "../../images/divar-team.jpg";
+import masihChildPhoto from "../../images/masih-child-photo.png";
+import masihCoffeeArtist from "../../images/masih-coffee-artist.png";
+import masihMountaineer from "../../images/masih-mountaineer.png";
+import masihUxDesigner from "../../images/masih-ux-designer.png";
+import masihWoodCarver from "../../images/masih-wood-carver.png";
+
 type StoryHero = {
   title: string;
   subtitle: string;
@@ -73,28 +83,28 @@ export const storyHero: StoryHero = {
 
 export const gallery = [
   {
-    image: new URL("../../images/masih-child-photo.png", import.meta.url).href,
+    image: masihChildPhoto,
     alt: "Masih as a child in his dad's jacket",
     caption: "Me as a Child in My Dad's Jacket",
   },
   {
-    image: new URL("../../images/masih-mountaineer.png", import.meta.url).href,
+    image: masihMountaineer,
     alt: "Masih as a mountaineer",
     caption: "Me as a Mountaineer",
   },
   {
-    image: new URL("../../images/masih-coffee-artist.png", import.meta.url).href,
+    image: masihCoffeeArtist,
     alt: "Masih's latte art",
     caption: "My art on a Latte",
     subcaption: "Latte Art by me :)",
   },
   {
-    image: new URL("../../images/masih-ux-designer.png", import.meta.url).href,
+    image: masihUxDesigner,
     alt: "Masih as a UX Designer",
     caption: "Me as a UX Designer",
   },
   {
-    image: new URL("../../images/masih-wood-carver.png", import.meta.url).href,
+    image: masihWoodCarver,
     alt: "Masih as a wood carver",
     caption: "Me as a Wood Carver",
   },
@@ -127,10 +137,7 @@ export const readingJourney: ReadingJourney = {
 
 export const books = [
   {
-    cover: new URL(
-      "../../images/books/design-of-everyday-things.svg",
-      import.meta.url,
-    ).href,
+    cover: designOfEverydayThingsCover,
     title: "The Design of Everyday Things",
     author: "Don Norman",
     label: "Read in 2018 · Revisited 2024",
@@ -143,7 +150,7 @@ export const books = [
     ],
   },
   {
-    cover: new URL("../../images/books/sprint.svg", import.meta.url).href,
+    cover: sprintCover,
     title: "Sprint",
     author: "Jake Knapp & the GV Design Team",
     label: "Read in 2020",
@@ -156,10 +163,7 @@ export const books = [
     ],
   },
   {
-    cover: new URL(
-      "../../images/books/creative-confidence.svg",
-      import.meta.url,
-    ).href,
+    cover: creativeConfidenceCover,
     title: "Creative Confidence",
     author: "Tom & David Kelley",
     label: "Read in 2021",
@@ -172,7 +176,7 @@ export const books = [
     ],
   },
   {
-    cover: new URL("../../images/masih-ux-designer.png", import.meta.url).href,
+    cover: masihUxDesigner,
     title: "AI and UX: Why Artificial Intelligence Needs User Experience",
     author: "Pamela Pavliscak",
     label: "In progress · Q4 2025",
@@ -188,7 +192,7 @@ export const books = [
 ] satisfies ReadonlyArray<Book>;
 
 export const team: TeamSnapshot = {
-  image: new URL("../../images/divar-team.jpg", import.meta.url).href,
+  image: divarTeamPhoto,
   alt: "Masih Sadri with the Divar product team",
   caption:
     "Divar Product Experience Team — collaborating across research, product design, and engineering.",
