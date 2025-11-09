@@ -1,3 +1,7 @@
+import heroPortraitImg from "../../images/masih-sadri-profile.webp";
+import morphDesignSystemImg from "../../images/morph-design-system.webp";
+import rahnemaStudentsImg from "../../images/rahnema-students.webp";
+
 type HeroContent = {
   greeting: string;
   name: string;
@@ -88,8 +92,7 @@ export const hero: HeroContent = {
     to: "/contact",
   },
   portrait: {
-    src: new URL("../../images/masih-sadri-profile.webp", import.meta.url)
-      .href,
+    src: heroPortraitImg,
     alt: "Masih Sadri - Product Designer",
   },
 };
@@ -169,7 +172,7 @@ export const experiences = [
     description: "Training 200+ students through 6 courses since 2022",
     tags: ["education", "mentorship", "curriculum design"],
     image: {
-      src: new URL("../../images/rahnema-students.webp", import.meta.url).href,
+      src: rahnemaStudentsImg,
       alt: "Students at Rahnema College",
     },
   },
@@ -179,8 +182,7 @@ export const experiences = [
       "Built from scratch, used over 7400 times in the Figma Community",
     tags: ["open source", "design system", "community impact"],
     image: {
-      src: new URL("../../images/morph-design-system.webp", import.meta.url)
-        .href,
+      src: morphDesignSystemImg,
       alt: "Morph Design System - Figma Community",
     },
     link: {
