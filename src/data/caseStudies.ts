@@ -1,7 +1,9 @@
 // File: src/data/caseStudies.ts
 // Purpose: Provides structured content for the Divar and Setare Aval case study pages including overviews and section details.
-import divarSecureCallListing from "../../images/divar-secure-call-listing.png";
-import setareAvalInterview from "../../images/setare-aval-interview-session.avif";
+import divarSecureCallListingAsset from "../../images/divar-secure-call-listing.png";
+import setareAvalInterviewAsset from "../../images/setare-aval-interview-session.avif";
+
+const resolveAsset = (asset: string) => new URL(asset, import.meta.url).href;
 export type CaseStudySection = {
   id: string;
   title: string;
@@ -32,7 +34,7 @@ export const divarOverview = {
     { label: "Timeline", value: "May – June 2023" },
     { label: "Impact", value: "~60% reduction in harassment reports" },
   ],
-  heroImage: divarSecureCallListing,
+  heroImage: resolveAsset(divarSecureCallListingAsset),
 };
 
 export const divarSections: CaseStudySection[] = [
@@ -150,7 +152,7 @@ export const setareOverview = {
     { label: "Timeline", value: "Feb 2021 – Jan 2022" },
     { label: "Impact", value: "Doubled retained revenue in 6 months" },
   ],
-  heroImage: setareAvalInterview,
+  heroImage: resolveAsset(setareAvalInterviewAsset),
 };
 
 export const setareSections: CaseStudySection[] = [

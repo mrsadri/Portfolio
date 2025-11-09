@@ -1,14 +1,16 @@
 // File: src/data/myStory.ts
 // Purpose: Stores narrative, gallery, reading list, and credential data used across the My Story page.
-import creativeConfidenceCover from "../../images/books/creative-confidence.svg";
-import designOfEverydayThingsCover from "../../images/books/design-of-everyday-things.svg";
-import sprintCover from "../../images/books/sprint.svg";
-import divarTeamPhoto from "../../images/divar-team.jpg";
-import masihChildPhoto from "../../images/masih-child-photo.png";
-import masihCoffeeArtist from "../../images/masih-coffee-artist.png";
-import masihMountaineer from "../../images/masih-mountaineer.png";
-import masihUxDesigner from "../../images/masih-ux-designer.png";
-import masihWoodCarver from "../../images/masih-wood-carver.png";
+import creativeConfidenceCoverAsset from "../../images/books/creative-confidence.svg";
+import designOfEverydayThingsCoverAsset from "../../images/books/design-of-everyday-things.svg";
+import sprintCoverAsset from "../../images/books/sprint.svg";
+import divarTeamPhotoAsset from "../../images/divar-team.jpg";
+import masihChildPhotoAsset from "../../images/masih-child-photo.png";
+import masihCoffeeArtistAsset from "../../images/masih-coffee-artist.png";
+import masihMountaineerAsset from "../../images/masih-mountaineer.png";
+import masihUxDesignerAsset from "../../images/masih-ux-designer.png";
+import masihWoodCarverAsset from "../../images/masih-wood-carver.png";
+
+const resolveAsset = (asset: string) => new URL(asset, import.meta.url).href;
 type StoryHero = {
   title: string;
   subtitle: string;
@@ -84,28 +86,28 @@ export const storyHero: StoryHero = {
 
 export const gallery = [
   {
-    image: masihChildPhoto,
+    image: resolveAsset(masihChildPhotoAsset),
     alt: "Masih as a child in his dad's jacket",
     caption: "Me as a Child in My Dad's Jacket",
   },
   {
-    image: masihMountaineer,
+    image: resolveAsset(masihMountaineerAsset),
     alt: "Masih as a mountaineer",
     caption: "Me as a Mountaineer",
   },
   {
-    image: masihCoffeeArtist,
+    image: resolveAsset(masihCoffeeArtistAsset),
     alt: "Masih's latte art",
     caption: "My art on a Latte",
     subcaption: "Latte Art by me :)",
   },
   {
-    image: masihUxDesigner,
+    image: resolveAsset(masihUxDesignerAsset),
     alt: "Masih as a UX Designer",
     caption: "Me as a UX Designer",
   },
   {
-    image: masihWoodCarver,
+    image: resolveAsset(masihWoodCarverAsset),
     alt: "Masih as a wood carver",
     caption: "Me as a Wood Carver",
   },
@@ -138,7 +140,7 @@ export const readingJourney: ReadingJourney = {
 
 export const books = [
   {
-    cover: designOfEverydayThingsCover,
+    cover: resolveAsset(designOfEverydayThingsCoverAsset),
     title: "The Design of Everyday Things",
     author: "Don Norman",
     label: "Read in 2018 · Revisited 2024",
@@ -151,7 +153,7 @@ export const books = [
     ],
   },
   {
-    cover: sprintCover,
+    cover: resolveAsset(sprintCoverAsset),
     title: "Sprint",
     author: "Jake Knapp & the GV Design Team",
     label: "Read in 2020",
@@ -164,7 +166,7 @@ export const books = [
     ],
   },
   {
-    cover: creativeConfidenceCover,
+    cover: resolveAsset(creativeConfidenceCoverAsset),
     title: "Creative Confidence",
     author: "Tom & David Kelley",
     label: "Read in 2021",
@@ -177,7 +179,7 @@ export const books = [
     ],
   },
   {
-    cover: masihUxDesigner,
+    cover: resolveAsset(masihUxDesignerAsset),
     title: "AI and UX: Why Artificial Intelligence Needs User Experience",
     author: "Pamela Pavliscak",
     label: "In progress · Q4 2025",
@@ -193,7 +195,7 @@ export const books = [
 ] satisfies ReadonlyArray<Book>;
 
 export const team: TeamSnapshot = {
-  image: divarTeamPhoto,
+  image: resolveAsset(divarTeamPhotoAsset),
   alt: "Masih Sadri with the Divar product team",
   caption:
     "Divar Product Experience Team — collaborating across research, product design, and engineering.",
