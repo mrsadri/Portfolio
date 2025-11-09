@@ -31,7 +31,7 @@ const MyStoryPage = () => {
         sx={{
           py: { xs: 8, md: 12 },
           background:
-            "linear-gradient(135deg, rgba(27,67,50,0.08), rgba(148,210,189,0.08))",
+            "linear-gradient(135deg, rgba(31,111,235,0.08), rgba(90,200,250,0.12))",
         }}
       >
         <Container>
@@ -65,8 +65,8 @@ const MyStoryPage = () => {
                       width: "100%",
                       height: 280,
                       objectFit: "cover",
-                      borderTopLeftRadius: 3,
-                      borderTopRightRadius: 3,
+                      borderTopLeftRadius: 16,
+                      borderTopRightRadius: 16,
                     }}
                   />
                   <CardContent>
@@ -135,7 +135,7 @@ const MyStoryPage = () => {
               <Box
                 sx={{
                   backgroundColor: "brand.muted",
-                  borderRadius: 4,
+                  borderRadius: 16,
                   px: 3,
                   py: 2,
                 }}
@@ -162,9 +162,9 @@ const MyStoryPage = () => {
                             width: "100%",
                             height: "100%",
                             objectFit: "cover",
-                            borderTopLeftRadius: 3,
-                            borderBottomLeftRadius: { sm: 3 },
-                            borderTopRightRadius: { xs: 3, sm: 0 },
+                            borderTopLeftRadius: 16,
+                            borderBottomLeftRadius: { sm: 16 },
+                            borderTopRightRadius: { xs: 16, sm: 0 },
                           }}
                         />
                       </Grid>

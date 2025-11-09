@@ -24,27 +24,28 @@ const baseTheme = createTheme({
   palette: {
     mode: "light",
     primary: {
-      main: "#1b4332",
+      main: "#1f6feb",
       contrastText: "#ffffff",
     },
     secondary: {
-      main: "#40916c",
+      main: "#5ac8fa",
+      contrastText: "#0b2c5c",
     },
     background: {
-      default: "#f6f7f9",
+      default: "#f1f6ff",
       paper: "#ffffff",
     },
     text: {
-      primary: "#161c24",
-      secondary: "#4f5b62",
+      primary: "#16223a",
+      secondary: "#42526b",
     },
     brand: {
-      primary: "#1b4332",
-      secondary: "#2d6a4f",
-      accent: "#95d5b2",
-      muted: "#e8f3ef",
+      primary: "#1f6feb",
+      secondary: "#0b5394",
+      accent: "#9bd3ff",
+      muted: "#e3f1ff",
     },
-    divider: "rgba(22, 28, 36, 0.12)",
+    divider: "rgba(12, 51, 106, 0.12)",
   },
   typography: {
     fontFamily: '"Inter", "Helvetica Neue", Arial, sans-serif',
@@ -88,7 +89,7 @@ const baseTheme = createTheme({
           paddingBlock: 10,
         },
         containedPrimary: {
-          backgroundImage: "linear-gradient(135deg, #1b4332, #2d6a4f)",
+          backgroundImage: "linear-gradient(135deg, #1f6feb, #0b5394)",
         },
       },
     },
@@ -97,16 +98,17 @@ const baseTheme = createTheme({
         root: {
           borderRadius: 999,
           fontWeight: 500,
-          backgroundColor: "#e8f3ef",
+          backgroundColor: "#e3f1ff",
+          color: "#0b5394",
         },
       },
     },
     MuiCard: {
       styleOverrides: {
         root: {
-          borderRadius: 28,
+          borderRadius: 16,
           boxShadow:
-            "0 18px 40px rgba(24, 45, 35, 0.08), 0 2px 8px rgba(24, 45, 35, 0.08)",
+            "0 18px 40px rgba(29, 78, 216, 0.08), 0 2px 8px rgba(12, 51, 106, 0.12)",
         },
       },
     },
@@ -118,8 +120,8 @@ const baseTheme = createTheme({
       styleOverrides: {
         root: {
           backdropFilter: "blur(12px)",
-          backgroundColor: "rgba(246, 247, 249, 0.9)",
-          borderBottom: "1px solid rgba(22, 28, 36, 0.06)",
+          backgroundColor: "rgba(241, 246, 255, 0.9)",
+          borderBottom: "1px solid rgba(12, 51, 106, 0.08)",
         },
       },
     },

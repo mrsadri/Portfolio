@@ -16,7 +16,7 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link as RouterLink, Outlet, useLocation } from "react-router-dom";
 import Footer from "../components/Footer";
 
@@ -32,6 +32,28 @@ const MainLayout = () => {
   const location = useLocation();
   const isDesktop = useMediaQuery(theme.breakpoints.up("md"));
   const [drawerOpen, setDrawerOpen] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined" && "scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined") {
+      return;
+    }
+
+    if (location.hash) {
+      const target = document.getElementById(location.hash.slice(1));
+      if (target) {
+        target.scrollIntoView({ block: "start" });
+        return;
+      }
+    }
+
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" as ScrollBehavior });
+  }, [location.pathname, location.hash]);
 
   const handleDrawerToggle = () => {
     setDrawerOpen((prev) => !prev);

@@ -29,7 +29,7 @@ const ContactPage = () => {
         sx={{
           py: { xs: 8, md: 12 },
           background:
-            "linear-gradient(135deg, rgba(27,67,50,0.12), rgba(148,210,189,0.12))",
+            "linear-gradient(135deg, rgba(31,111,235,0.12), rgba(90,200,250,0.16))",
         }}
       >
         <Container>
@@ -108,31 +108,31 @@ const ContactPage = () => {
           <Grid container spacing={3}>
             {mentorshipOffers.map((offer) => (
               <Grid size={{ xs: 12, md: 6 }} key={offer.title}>
-                <Card
-                  sx={{
-                    height: "100%",
-                    background:
-                      offer.featured
-                        ? "linear-gradient(135deg, rgba(27,67,50,0.9), rgba(64,145,108,0.85))"
-                        : undefined,
-                    color: offer.featured ? "primary.contrastText" : undefined,
-                  }}
-                >
+                    <Card
+                      sx={{
+                        height: "100%",
+                        background:
+                          offer.featured
+                            ? "linear-gradient(135deg, rgba(12,53,148,0.92), rgba(31,111,235,0.88))"
+                            : undefined,
+                        color: offer.featured ? "primary.contrastText" : undefined,
+                      }}
+                    >
                   <CardContent>
                     <Stack spacing={2}>
                       <Stack direction="row" alignItems="center" spacing={2}>
                         <Typography variant="h5">{offer.title}</Typography>
-                        <Chip
-                          icon={<ScheduleRoundedIcon />}
-                          label={offer.duration}
-                          color={offer.featured ? "default" : "primary"}
-                          sx={{
-                            ...(offer.featured && {
-                              backgroundColor: "rgba(255,255,255,0.16)",
-                              color: "inherit",
-                            }),
-                          }}
-                        />
+                          <Chip
+                            icon={<ScheduleRoundedIcon />}
+                            label={offer.duration}
+                            color={offer.featured ? "default" : "primary"}
+                            sx={{
+                              ...(offer.featured && {
+                                backgroundColor: "rgba(255,255,255,0.18)",
+                                color: "inherit",
+                              }),
+                            }}
+                          />
                       </Stack>
                       <Typography variant="body1" color={offer.featured ? "inherit" : "text.secondary"}>
                         {offer.description}
@@ -218,7 +218,7 @@ const ContactPage = () => {
             sx={{
               p: { xs: 4, md: 5 },
               background:
-                "linear-gradient(135deg, rgba(27,67,50,0.92), rgba(64,145,108,0.85))",
+                "linear-gradient(135deg, rgba(12,53,148,0.92), rgba(31,111,235,0.88))",
               color: "primary.contrastText",
             }}
           >
