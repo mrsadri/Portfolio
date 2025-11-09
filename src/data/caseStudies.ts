@@ -1,3 +1,5 @@
+// File: src/data/caseStudies.ts
+// Purpose: Provides structured content for the Divar and Setare Aval case study pages including overviews and section details.
 export type CaseStudySection = {
   id: string;
   title: string;

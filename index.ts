@@ -1,3 +1,5 @@
+// File: index.ts
+// Purpose: Provides a Bun-powered development server that builds and serves the client bundle with graceful port fallbacks.
 const isProduction = Bun.env.NODE_ENV === "production";
 
 if (!isProduction) {

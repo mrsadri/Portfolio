@@ -1,3 +1,5 @@
+// File: src/routes/HomePage.tsx
+// Purpose: Renders the landing experience including hero, metrics, case studies, experiences, and contact call-to-action.
 import ArrowForwardRoundedIcon from "@mui/icons-material/ArrowForwardRounded";
 import PlayCircleOutlineRoundedIcon from "@mui/icons-material/PlayCircleOutlineRounded";
 import Grid from "@mui/system/Grid";

@@ -1,3 +1,5 @@
+// File: src/routes/NotFoundPage.tsx
+// Purpose: Supplies the in-app fallback screen for unknown React Router paths.
 import {
   Box,
   Button,

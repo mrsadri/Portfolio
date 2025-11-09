@@ -1,3 +1,5 @@
+// File: src/data/resume.ts
+// Purpose: Defines structured résumé data including experience, skills, education, and certifications for the Resume page.
 type ResumeAction = {
   downloadLabel: string;
   updatedAt: string;

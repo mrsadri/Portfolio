@@ -1,3 +1,5 @@
+// File: src/layout/MainLayout.tsx
+// Purpose: Renders the primary page frame with navigation, responsive drawer, scroll restoration, and footer.
 import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import {

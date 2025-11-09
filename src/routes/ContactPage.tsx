@@ -1,3 +1,5 @@
+// File: src/routes/ContactPage.tsx
+// Purpose: Presents contact options, mentorship offerings, and help topics for reaching out to Masih.
 import AlternateEmailRoundedIcon from "@mui/icons-material/AlternateEmailRounded";
 import Diversity3RoundedIcon from "@mui/icons-material/Diversity3Rounded";
 import ScheduleRoundedIcon from "@mui/icons-material/ScheduleRounded";

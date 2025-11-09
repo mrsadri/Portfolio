@@ -1,3 +1,5 @@
+// File: src/types/assets.d.ts
+// Purpose: Declares module typings for importing static asset formats within TypeScript.
 declare module "*.png" {
   const content: string;
   export default content;

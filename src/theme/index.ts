@@ -1,3 +1,5 @@
+// File: src/theme/index.ts
+// Purpose: Configures the global MUI theme including palette, typography, and component style overrides.
 import { createTheme, responsiveFontSizes } from "@mui/material/styles";
 
 declare module "@mui/material/styles" {

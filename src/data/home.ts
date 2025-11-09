@@ -1,3 +1,5 @@
+// File: src/data/home.ts
+// Purpose: Contains home page hero copy, metrics, case study summaries, and social link data consumed by UI components.
 type HeroContent = {
   greeting: string;
   name: string;

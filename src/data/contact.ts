@@ -1,3 +1,5 @@
+// File: src/data/contact.ts
+// Purpose: Supplies structured content for the Contact page including hero copy, channels, mentorship offers, and response expectations.
 type ContactHero = {
   title: string;
   subtitle: string;

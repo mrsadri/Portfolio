@@ -1,3 +1,5 @@
+// File: src/routes/case-studies/CaseStudySetarePage.tsx
+// Purpose: Presents the Setare Aval engagement case study covering strategy, insights, and outcomes.
 import ArrowBackRoundedIcon from "@mui/icons-material/ArrowBackRounded";
 import FormatQuoteRoundedIcon from "@mui/icons-material/FormatQuoteRounded";
 import Grid from "@mui/system/Grid";

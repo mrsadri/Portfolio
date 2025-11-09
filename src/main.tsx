@@ -1,3 +1,5 @@
+// File: src/main.tsx
+// Purpose: Bootstraps the React application, attaches it to the DOM, and provides the global MUI theme.
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { CssBaseline } from "@mui/material";
