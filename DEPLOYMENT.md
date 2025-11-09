@@ -13,11 +13,11 @@
 2. Run `vercel` in this directory
 3. Follow prompts to deploy
 
-### Option 3: GitHub Pages
+### Option 3: GitHub Pages (docs folder)
 1. Create a new GitHub repository
-2. Push all files to the repository
-3. Enable Pages in repository settings
-4. Select branch and folder (usually `main` and `/`)
+2. Run `bun run build` to generate the `docs/` folder
+3. Commit the entire project (including `docs/`)
+4. Enable Pages in repository settings and choose `main` (or your default branch) with `/docs`
 
 ### Option 4: Traditional Web Hosting
 1. Upload all files via FTP/SFTP to your web server
@@ -38,40 +38,27 @@
 - [ ] Enable HTTPS/SSL
 - [ ] Test page load speed (PageSpeed Insights)
 
-## File Structure for Deployment
+## Output Structure after `bun run build`
 
 ```
-/
+docs/
+├── 404.html
 ├── index.html
-├── my-story.html
-├── contact.html
-├── resume.html
 ├── robots.txt
 ├── sitemap.xml
-├── css/
-│   ├── base.css
-│   ├── portfolio.css
-│   ├── case-study.css
-│   └── resume.css
-├── js/
-│   ├── navigation.js
-│   ├── animations.js
-│   ├── recap-modal.js
-│   └── resume-pdf.js
-├── images/
-│   └── [all image files]
-└── case-studies/
-    ├── divar-secure-call.html
-    └── setare-aval-engagement.html
+├── .nojekyll
+├── dist/
+│   └── [JavaScript bundles emitted by Bun]
+└── images/
+    └── [...portfolio assets]
 ```
 
 ## Important Notes
 
-- All images are optimized (WebP/AVIF format)
-- External CDN is used for html2pdf.js library
-- All paths are relative and will work on any hosting
-- No build step required - pure HTML/CSS/JS
-- Works on any static hosting service
+- All paths are relative, so the build works at `https://mrsadri.github.io/Portfolio/`.
+- `404.html` mirrors `index.html` to provide SPA fallback on GitHub Pages.
+- `.nojekyll` prevents GitHub Pages from stripping files that begin with underscores.
+- If you customise the domain later, remember to update `index.html`, `sitemap.xml`, and `robots.txt` with the new canonical URL.
 
 ## Custom Domain Setup
 
@@ -85,10 +72,9 @@
 
 ## Performance Optimization (Optional)
 
-- Consider minifying CSS/JS files for production
-- Enable gzip/brotli compression on your server
-- Set up CDN for static assets
-- Configure browser caching headers
+- Bun already minifies and code-splits the JavaScript bundles.
+- Enable gzip/brotli compression if your hosting platform allows it.
+- Configure caching headers so static assets can be cached aggressively.
 
 ## Monitoring
 

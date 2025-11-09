@@ -1,151 +1,102 @@
-# Masih Sadri - Portfolio Website
+# Masih Sadri — Portfolio (React + MUI)
 
-A professional portfolio website showcasing product design work, case studies, and experience.
+A Bun-powered React application that showcases Masih Sadri’s product design work, case studies, and experience. The UI is built entirely with [MUI](https://mui.com/) components and a custom design theme, providing a consistent, accessible experience across the site.
 
-## Features
+## Highlights
 
-- **Responsive Design**: Fully responsive across all device sizes
-- **Accessibility**: WCAG AA compliant with proper ARIA labels and keyboard navigation
-- **SEO Optimized**: Complete meta tags, Open Graph, Twitter Cards, and structured data
-- **Performance**: Optimized images (WebP/AVIF), lazy loading, and efficient CSS
-- **Case Studies**: Detailed case studies with interactive elements
-- **Resume**: Interactive resume with PDF download functionality
+- **Modern stack** – React 19, React Router 7, Bun runtime, and the latest MUI packages.
+- **Design system** – Centralised theming (`src/theme`) with responsive typography and brand palette extensions.
+- **Content architecture** – Page content modelled as structured data (`src/data`) and rendered through reusable view components.
+- **Performance-first** – No CSS bundles; everything ships through tree-shaken MUI components and optimized images.
+- **Routing** – Browser history routing with automatic GitHub Pages base-path detection.
+- **Accessibility** – Semantic structure, skip links, focus management, and keyboard-friendly navigation.
 
-## Structure
+## Project Structure
 
 ```
 /
-├── index.html              # Homepage
-├── my-story.html           # About me page
-├── contact.html            # Contact page
-├── resume.html             # Resume page
-├── css/
-│   ├── base.css           # Base styles and variables
-│   ├── portfolio.css      # Homepage and shared styles
-│   ├── case-study.css     # Case study specific styles
-│   └── resume.css         # Resume page styles
-├── js/
-│   ├── navigation.js      # Mobile navigation
-│   ├── animations.js      # Scroll animations
-│   ├── recap-modal.js     # Case study recap modal
-│   └── resume-pdf.js      # PDF generation
-├── images/                # Optimized images
-├── case-studies/          # Case study pages
-├── robots.txt             # Search engine directives
-├── sitemap.xml            # Site structure for search engines
-└── README.md              # This file
+├── index.html            # Bun-served HTML shell
+├── index.ts              # Bun edge server for static assets + SPA fallback
+├── src/
+│   ├── main.tsx          # React root + ThemeProvider
+│   ├── App.tsx           # Router configuration (lazy-loaded routes)
+│   ├── theme/            # Custom MUI theme + palette extensions
+│   ├── layout/           # Layout primitives (shell, navigation, footer)
+│   ├── components/       # Shared UI elements (loading, footer, etc.)
+│   ├── routes/           # Page-level React components
+│   ├── data/             # Structured content for pages/case studies/resume
+│   └── types/            # Asset typing helpers
+├── images/               # Optimized image assets referenced by React
+├── sitemap.xml           # GitHub Pages sitemap
+├── robots.txt
+├── scripts/
+│   └── build.ts          # Bundled build + GitHub Pages export pipeline
+├── package.json
+├── bun.lock
+└── README.md
 ```
 
-## Deployment
-
-This website is ready to be deployed to any static hosting service:
-
-- **Netlify**: Drag and drop the folder or connect via Git
-- **Vercel**: Connect repository or deploy via CLI
-- **GitHub Pages**: Push to repository and enable Pages
-- **AWS S3**: Upload files to S3 bucket with static hosting enabled
-
-### Recommended Hosting
-
-1. Upload all files to your hosting service
-2. Ensure `index.html` is in the root directory
-3. Configure custom domain (optional)
-4. Enable HTTPS (recommended)
-5. Set up redirects if needed (e.g., `www` to non-`www`)
-
-## Browser Support
-
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
-- Mobile browsers (iOS Safari, Chrome Mobile)
-
-## Performance
-
-- Images optimized with WebP/AVIF formats
-- Lazy loading for below-the-fold images
-- Minified CSS and JavaScript (recommended for production)
-- Efficient animations with `prefers-reduced-motion` support
-
-## SEO
-
-- Semantic HTML5 structure
-- Meta descriptions and Open Graph tags
-- JSON-LD structured data
-- XML sitemap
-- robots.txt configured
-- Canonical URLs
-
-## Accessibility
-
-- WCAG AA compliant
-- Keyboard navigation support
-- Screen reader friendly
-- Focus indicators
-- Skip links
-- Proper heading hierarchy
-- Alt text for all images
-
-## Getting Started
+## Development
 
 ### Prerequisites
 
-- A modern web browser
-- A static hosting service (for deployment)
+- [Bun](https://bun.sh/) ≥ 1.1
+- Node.js is **not** required; Bun manages the toolchain.
 
-### Local Development
-
-1. Clone the repository:
-   ```bash
-   git clone <repository-url>
-   cd Portfolio
-   ```
-
-2. Open `index.html` in your browser or use a local server:
-   ```bash
-   # Using Python
-   python -m http.server 8000
-   
-   # Using Node.js (with http-server)
-   npx http-server
-   ```
-
-3. Visit `http://localhost:8000` in your browser
-
-## Git Setup
-
-This project is ready to be pushed to GitHub:
+### Setup
 
 ```bash
-# Initialize Git repository
-git init
-
-# Add all files
-git add .
-
-# Create initial commit
-git commit -m "Initial commit: Portfolio website"
-
-# Rename branch to main
-git branch -M main
-
-# Add remote repository
-git remote add origin <your-repo-url>
-
-# Push to GitHub
-git push -u origin main
+bun install
 ```
 
-## Project Status
+### Commands
 
-✅ **Production Ready** - All reviews completed and issues resolved
-- ✅ Senior UX Designer Review: Passed
-- ✅ Hiring Manager Review: Passed  
-- ✅ SEO Specialist Review: Passed
-- ✅ Frontend Engineer Review: Passed
+```bash
+# Start the Bun dev server and React app
+bun run dev
 
-See `PROJECT_REVIEW.md` for detailed review documentation.
+# Build the production bundle and export to /docs for GitHub Pages
+bun run build
+
+# Lint TypeScript + check types
+bun run lint
+```
+
+The default dev server runs on [`http://localhost:3000`](http://localhost:3000) with automatic recompilation provided by Bun.
+
+## Deployment
+
+The build script now produces two artefacts:
+
+- `dist/` – optimised JavaScript chunks used by the Bun dev server.
+- `docs/` – a self-contained static site ready to publish on GitHub Pages.
+
+### Deploying to GitHub Pages (https://mrsadri.github.io/Portfolio/)
+
+1. Build the project:
+   ```bash
+   bun run build
+   ```
+2. Commit the generated `docs/` folder to the repository.
+3. In GitHub → *Settings* → *Pages*, set the source to `main` (or your default branch) and the `/docs` folder.
+4. Visit `https://mrsadri.github.io/Portfolio/` once the Pages build completes.
+
+### Deploying elsewhere
+
+If you prefer another static host, upload the contents of `docs/` (including the nested `dist/` and `images/` folders). The SPA fallback is handled via the duplicated `index.html`/`404.html` pair.
+
+## Browser Support
+
+- Chrome, Edge, Safari, Firefox (latest stable releases)
+- iOS Safari, Chrome for Android
+
+## Accessibility & SEO
+
+- WCAG AA-informed colour contrast and focus states
+- ARIA labelling for navigation, dialogs, and hero CTAs
+- Skip-link support implemented in `MainLayout`
+- Complete meta tags, Open Graph, and Twitter card data
+- Updated `sitemap.xml` and `robots.txt`
 
 ## License
 
