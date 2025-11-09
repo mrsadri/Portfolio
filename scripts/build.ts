@@ -1,6 +1,6 @@
 // File: scripts/build.ts
 // Purpose: Produces production-ready bundles for GitHub Pages by building assets, copying static files, and generating supporting metadata.
-import { cp, mkdir, rm, writeFile } from "node:fs/promises";
+import { cp, mkdir, readdir, rm, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 
 const builderVersion = "2.1.0";
@@ -87,6 +87,16 @@ await Promise.all([
   cp("robots.txt", join(docsDir, "robots.txt")),
   cp("sitemap.xml", join(docsDir, "sitemap.xml")),
 ]);
+
+const assetExtensions = /\.(png|jpe?g|webp|avif|svg)$/i;
+const distEntries = await readdir(distDir);
+await Promise.all(
+  distEntries
+    .filter((entry) => assetExtensions.test(entry))
+    .map((entry) =>
+      cp(join(distDir, entry), join(docsDir, entry)),
+    ),
+);
 
 await Bun.write(join(docsDir, "404.html"), notFoundHtml);
 await writeFile(join(docsDir, ".nojekyll"), "");
