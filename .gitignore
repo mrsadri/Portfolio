@@ -33,9 +33,6 @@ node_modules/
 bower_components/
 
 # Build files (if any)
-dist/
-!docs/dist/
-!docs/dist/**
 build/
 *.min.js
 *.min.css

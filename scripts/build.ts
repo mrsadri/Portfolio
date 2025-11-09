@@ -1,8 +1,12 @@
 import { cp, mkdir, rm, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 
+const builderVersion = "2.1.0";
 const distDir = "dist";
 const docsDir = "docs";
+const docsDistDir = join(docsDir, "dist");
+
+console.log(`🚧 Running static builder v${builderVersion}...`);
 
 await Promise.all([
   rm(distDir, { recursive: true, force: true }),
@@ -27,8 +31,9 @@ if (!result.success) {
 }
 
 await mkdir(docsDir, { recursive: true });
+
 await Promise.all([
-  cp(distDir, join(docsDir, "dist"), { recursive: true }),
+  cp(distDir, docsDistDir, { recursive: true }),
   cp("images", join(docsDir, "images"), { recursive: true }),
   cp("index.html", join(docsDir, "index.html")),
   cp("robots.txt", join(docsDir, "robots.txt")),
@@ -39,5 +44,5 @@ const indexHtml = await Bun.file("index.html").text();
 await Bun.write(join(docsDir, "404.html"), indexHtml);
 await writeFile(join(docsDir, ".nojekyll"), "");
 
-console.log("✅ Build completed. Static site available in docs/");
+console.log("✅ Build completed. Static site available in docs/ and build artifacts tracked in dist/");
 
