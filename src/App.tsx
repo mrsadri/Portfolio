@@ -1,3 +1,5 @@
+// File: src/App.tsx
+// Purpose: Defines the application's router, lazy-loads route components, and renders the RouterProvider with suspense handling.
 import { lazy, Suspense } from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import LoadingScreen from "./components/LoadingScreen";

@@ -1,3 +1,5 @@
+// File: src/routes/ResumePage.tsx
+// Purpose: Displays resume-focused content including experience, skills, education, and certifications.
 import DownloadRoundedIcon from "@mui/icons-material/DownloadRounded";
 import HistoryEduRoundedIcon from "@mui/icons-material/HistoryEduRounded";
 import MilitaryTechRoundedIcon from "@mui/icons-material/MilitaryTechRounded";

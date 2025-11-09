@@ -1,3 +1,5 @@
+// File: src/components/Footer.tsx
+// Purpose: Renders the global footer with attribution and technology stack details.
 import { Box, Container, Stack, Typography } from "@mui/material";
 import dayjs from "dayjs";
 

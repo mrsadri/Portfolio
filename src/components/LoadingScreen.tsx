@@ -1,3 +1,5 @@
+// File: src/components/LoadingScreen.tsx
+// Purpose: Displays a centered loading indicator while lazy-loaded routes resolve.
 import { Box, CircularProgress, Typography } from "@mui/material";
 
 const LoadingScreen = () => (

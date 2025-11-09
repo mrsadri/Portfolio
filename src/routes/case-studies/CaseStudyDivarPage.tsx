@@ -1,3 +1,5 @@
+// File: src/routes/case-studies/CaseStudyDivarPage.tsx
+// Purpose: Details the Divar secure call case study with structured sections, metrics, and narrative.
 import ArrowBackRoundedIcon from "@mui/icons-material/ArrowBackRounded";
 import FormatQuoteRoundedIcon from "@mui/icons-material/FormatQuoteRounded";
 import Grid from "@mui/system/Grid";

@@ -1,3 +1,5 @@
+// File: src/data/myStory.ts
+// Purpose: Stores narrative, gallery, reading list, and credential data used across the My Story page.
 type StoryHero = {
   title: string;
   subtitle: string;

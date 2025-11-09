@@ -1,3 +1,5 @@
+// File: src/routes/MyStoryPage.tsx
+// Purpose: Builds the “My Story” route showcasing personal narrative, gallery, books, education, and testimonials.
 import EmojiEventsRoundedIcon from "@mui/icons-material/EmojiEventsRounded";
 import SchoolRoundedIcon from "@mui/icons-material/SchoolRounded";
 import VolunteerActivismRoundedIcon from "@mui/icons-material/VolunteerActivismRounded";
