@@ -18,6 +18,7 @@ import {
   Typography,
 } from "@mui/material";
 import { useCallback } from "react";
+import Seo from "../components/Seo";
 import {
   professionalExperience,
   resumeActions,
@@ -35,8 +36,38 @@ const ResumePage = () => {
     }
   }, []);
 
+  const siteUrl =
+    (typeof import.meta !== "undefined" && import.meta.env?.VITE_SITE_URL) ||
+    "https://mrsadri.github.io/Portfolio";
+
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: "Masih Sadri — Resume",
+    description: resumeSummary,
+    url: `${siteUrl}/resume`,
+    about: {
+      "@type": "Person",
+      name: "Masih Sadri",
+      jobTitle: "Senior Product Designer",
+      email: "sdarimasih@gmail.com",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Tehran",
+        addressCountry: "IR",
+      },
+    },
+  } as const;
+
   return (
     <>
+      <Seo
+        title="Masih Sadri — Senior Product Designer Resume"
+        description="Review Masih Sadri’s senior product designer resume covering trust & safety, growth, design systems, and leadership experience."
+        canonicalPath="/resume"
+        openGraph={{ type: "article" }}
+        structuredData={structuredData}
+      />
       <Box
         sx={{
           py: { xs: 6, md: 8 },

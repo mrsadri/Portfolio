@@ -7,15 +7,17 @@ const resolveAsset = (asset: string) => new URL(asset, import.meta.url).href;
 export type CaseStudySection = {
   id: string;
   title: string;
-  description?: string;
-  points?: string[];
-  highlights?: string[];
-  quote?: {
+  eyebrow?: string;
+  summary?: string;
+  body?: readonly string[];
+  bullets?: readonly string[];
+  highlights?: readonly string[];
+  quotes?: readonly {
     author: string;
     role: string;
     text: string;
-  };
-  metrics?: {
+  }[];
+  metrics?: readonly {
     label: string;
     value: string;
     description?: string;
@@ -26,131 +28,205 @@ export type CaseStudySection = {
   };
 };
 
-export const divarOverview = {
+export type CaseStudyOverview = {
+  title: string;
+  subtitle?: string;
+  meta: readonly {
+    label: string;
+    value: string;
+  }[];
+  stats?: readonly {
+    value: string;
+    label: string;
+    description?: string;
+  }[];
+  heroImage: string;
+};
+
+export type CaseStudyEntry = {
+  id: string;
+  title: string;
+  excerpt: string;
+  focus: string;
+  path: string;
+};
+
+export const divarOverview: CaseStudyOverview = {
   title:
     "Solving Harassment at Scale: How I Protected 2.1M Users on Iran's Largest Marketplace",
+  subtitle:
+    "We reduced harassment incidents by 60% inside Divar’s clothing category by building a privacy-first calling experience that now protects 2.1M weekly users.",
   meta: [
-    { label: "Role", value: "Senior UX Designer" },
+    { label: "Role", value: "Senior UX Designer · Trust & Safety" },
     { label: "Timeline", value: "May – June 2023" },
-    { label: "Impact", value: "~60% reduction in harassment reports" },
+    { label: "Team", value: "Design, Trust & Safety, Legal, Engineering, Support" },
+  ],
+  stats: [
+    { value: "▼60%", label: "Harassment reports" },
+    { value: "2.1M", label: "Weekly callers safeguarded" },
+    { value: "▼18%", label: "Safety ticket volume" },
   ],
   heroImage: resolveAsset(divarSecureCallListingAsset),
 };
 
 export const divarSections: CaseStudySection[] = [
   {
-    id: "platform",
-    title: "Divar at a Glance",
-    description:
-      "Divar is Iran's leading classifieds marketplace serving more than 53 million active users. At this scale, trust and safety are existential to the business.",
+    id: "context",
+    title: "Context",
+    summary:
+      "Divar is Iran’s largest classifieds marketplace with 53M+ weekly users. Trust and safety incidents can collapse entire revenue categories if left unchecked.",
     metrics: [
-      {
-        label: "Active Users",
-        value: "53M+",
-        description: "Weekly buyers and sellers across the country",
-      },
-      {
-        label: "Daily Ad Views",
-        value: "200M+",
-        description: "~6 billion views every month",
-      },
-      {
-        label: "Market Position",
-        value: "#1",
-        description: "Largest classifieds platform in Iran",
-      },
+      { label: "Marketplace scale", value: "53M+", description: "Weekly buyers & sellers" },
+      { label: "Voice dependence", value: "2.1M", description: "Calls placed every week" },
+      { label: "Ad consumption", value: "6B+", description: "Monthly ad views" },
     ],
     highlights: [
-      "Clothing categories were experiencing a spike in harassment reports.",
-      "User confidence was dropping fast—teams feared a category-level shutdown.",
+      "Clothing listings—mostly women-led—were hit hardest by abuse.",
+      "Manual moderation couldn’t keep up; liquidity and trust were in free fall.",
     ],
   },
   {
     id: "crisis",
     title: "The Crisis",
-    description:
-      "Victims were mainly women posting clothing listings. Harassers scraped phone numbers, resurfaced them in Telegram groups, and kept calling even after ads were removed.",
-    points: [
-      "User safety risk threatened Divar's brand trust at national scale.",
-      "Existing mitigations simply escalated to manual moderation teams.",
-      "Business risk: an entire revenue category was becoming unsafe to use.",
+    summary:
+      "Customer care centres were flooded with harassment reports. Sellers deleted listings or churned entirely, fearing repeat incidents.",
+    bullets: [
+      "Harassers scraped phone numbers from ads and circulated them in private Telegram groups.",
+      "Even after victims deleted listings, the calls continued because numbers were already exposed.",
+      "Without intervention, Divar risked losing a category that anchored daily engagement.",
+    ],
+    quotes: [
+      {
+        author: "Layla, 32",
+        role: "Professional artist selling bespoke clothing",
+        text: "It was infuriating. I took down my Divar ad hoping to stop the calls, but they kept coming. Someone told me my number was in a Telegram group.",
+      },
     ],
   },
   {
     id: "investigation",
     title: "Finding the Real Problem",
-    description:
-      "I ran investigative interviews to understand both harassment tactics and user workarounds. Two key answers unlocked the strategy.",
-    points: [
-      "Harassers mined recently published ads, then shared numbers in private channels.",
-      "Frustrated users rotated SIM cards or stopped listing entirely—churn disguised as silence.",
-      "Existing masking solutions broke legitimate buyer-seller coordination.",
+    summary:
+      "I interviewed harassed sellers and analysed behavioural data to understand how exposure scaled. The breakthrough came from connecting qualitative stories to quantitative signals.",
+    body: [
+      "Patterns emerged quickly: harassers saved posted numbers, cross-referenced them on WhatsApp and Instagram, and only then began the abuse. Experienced sellers had already stopped sharing numbers and relied on in-app chat—new sellers were the ones left exposed.",
+      "Sara’s mention of a caller referencing her eye color confirmed our hypothesis: social media breadcrumbs made harassment personal and frightening.",
+      "Data analysis backed the qualitative work. Users whose phone numbers were linked to public social profiles reported harassment dramatically more often. Those who stuck to in-app chat rarely did.",
+    ],
+    quotes: [
+      {
+        author: "Sara, 26",
+        role: "Fashion retail worker",
+        text: "One caller knew my eye color. They clearly found my Instagram through the phone number on Divar.",
+      },
+      {
+        author: "Zahra, 28",
+        role: "Freelance graphic designer",
+        text: "I stopped listing my phone number. It felt unprofessional, but it was the only way to avoid harassment.",
+      },
+    ],
+    highlights: [
+      "Public phone numbers were the root cause of exposure, not the number of reports.",
+      "Experienced sellers had already adapted by using in-app chat; new sellers needed protective defaults.",
     ],
   },
   {
     id: "strategy",
-    title: "Strategy",
-    description:
-      "We reframed the mandate from 'reduce reports' to 'reduce exposure.' That meant shipping protective defaults, not reactive tooling.",
-    points: [
-      "Partnered with Trust & Safety, Legal, Data, and Customer Support to evaluate edge cases.",
-      "Defined abuse personas and success metrics that balanced protection with liquidity.",
-      "Set up real-time dashboards for post-launch monitoring with moderation teams.",
+    title: "The Solution Journey",
+    summary:
+      "We reframed success from “reduce reports” to “reduce exposure.” With Trust & Safety, Legal, Support, and Data, we evaluated every path and stress-tested edge cases before committing.",
+    bullets: [
+      "Educating users about harasser tactics would erode trust and discourage listings.",
+      "Full VoIP was cost-prohibitive, fragile across device types, and inaccessible to 47% of legacy Android users.",
+      "Voice relay with intermediary numbers protected sellers without changing purchase behaviour—this became the north star.",
     ],
   },
   {
-    id: "solution",
-    title: "What We Shipped",
-    description:
-      "A multi-layered, privacy-first calling experience that scales to 2.1M weekly users.",
-    points: [
-      "One-time voice relay with ephemeral phone numbers to block data scraping.",
-      "Adaptive controls to limit repeat offenders, coupled with moderation escalation.",
-      "Progressive disclosure that keeps trusted buyers unblocked while guarding vulnerable sellers.",
+    id: "testing",
+    title: "Testing & Learning from Failure",
+    summary:
+      "A 3-day pilot in the clothing category resulted in a 56% call failure rate. Instead of reverting, we treated every failure as a design requirement.",
+    bullets: [
+      "User behaviour: sellers blocked unfamiliar numbers; buyers redialled from call logs; repeat conversations broke mapping windows.",
+      "Technical load: call volume spiked beyond forecasts and number pools were exhausted.",
+      "Business risk: longer calls inflated telecom costs and anonymised numbers attracted opportunistic scammers.",
+    ],
+  },
+  {
+    id: "refinement",
+    title: "The Refined Solution",
+    summary:
+      "We translated every pilot insight into product and platform improvements before scaling nationwide.",
+    bullets: [
+      "Bidirectional mapping let sellers reconnect without exposing real numbers.",
+      "Extended mapping windows from 20 seconds to 15 minutes reduced dropped calls.",
+      "Voice prompts (“This is a secure call from Divar…”) set expectations and deterred scammers.",
+      "A pool of 100 intermediary numbers assigned per buyer-seller pair prevented reuse and blocking.",
+      "Secure call history, chat integration, and ad management logs kept legitimate relationships intact.",
+    ],
+  },
+  {
+    id: "impact",
+    title: "Impact",
+    body: [
+      "After rollout, harassment reports dropped dramatically and sellers felt safe enough to keep listings live. Moderation teams recovered hours each week that were previously spent on reactive tickets.",
     ],
     metrics: [
       {
-        label: "Harassment Reports",
+        label: "Harassment reports",
         value: "▼ 60%",
         description: "Within 8 weeks of launch",
       },
       {
-        label: "Ad Deletions",
+        label: "Ad deletions",
         value: "▼ 25%",
-        description: "Fewer users leaving the platform due to abuse",
+        description: "Fewer sellers leaving the platform",
       },
       {
-        label: "Support Tickets",
+        label: "Support tickets",
         value: "▼ 18%",
-        description: "Freed moderation time for proactive monitoring",
+        description: "More time for proactive monitoring",
       },
     ],
   },
   {
-    id: "team",
-    title: "Team & My Role",
-    description:
-      "As the design lead embedded with Trust & Safety, I stewarded discovery, prototyping, and stakeholder alignment end to end.",
-    points: [
-      "Facilitated co-design workshops with Legal and Customer Support to align on edge cases.",
-      "Co-created risk assessment framework that informed incremental rollout.",
-      "Partnered with engineering to stress-test abuse scenarios before launch.",
+    id: "learnings",
+    title: "Key Learnings",
+    bullets: [
+      "The obvious problem is rarely the real one—exposure, not reports, was the root.",
+      "Users were already designing workarounds; observing them revealed the right defaults.",
+      "Failure is signal. The 56% pilot failure generated a backlog of actionable requirements.",
+      "Pair qualitative insight with real-time monitoring to keep abuse vectors in check.",
     ],
-    quote: {
-      author: "Trust & Safety Lead",
-      role: "Divar",
-      text: "Masih translated a hard mandate into one of our most trusted flows. The team finally had a repeatable playbook for tackling abuse without blocking legitimate users.",
-    },
+  },
+  {
+    id: "reflection",
+    title: "Reflection",
+    body: [
+      "This project reinforced my belief that solving hard problems starts with understanding behaviour. By blending research, data, and rapid iteration, we built a safety layer that still protects millions of people each week. The harassment problem may never disappear entirely, but Divar is significantly safer for the users who need it most.",
+    ],
   },
 ];
 
-export const setareOverview = {
+export const setareOverview: CaseStudyOverview = {
   title:
     "Turning One-Time Visitors into Lifelong Customers at Setare Aval",
   meta: [
     { label: "Role", value: "Product Designer" },
     { label: "Timeline", value: "Feb 2021 – Jan 2022" },
     { label: "Impact", value: "Doubled retained revenue in 6 months" },
+  ],
+  stats: [
+    {
+      value: "2×",
+      label: "Retained revenue",
+      description: "Achieved within the first 6 months of rollout",
+    },
+    {
+      value: "+60K",
+      label: "Daily active users",
+      description: "Referral cohort converted to high-intent DAUs",
+    },
   ],
   heroImage: resolveAsset(setareAvalInterviewAsset),
 };
@@ -159,7 +235,7 @@ export const setareSections: CaseStudySection[] = [
   {
     id: "context",
     title: "Context",
-    description:
+    summary:
       "Setare Aval is the digital arm of Iran's largest telecom. We powered fintech services, USSD experiences, and mobile value-added services nation-wide. Growth had plateaued—our funnel leaked after the first purchase.",
     metrics: [
       {
@@ -177,7 +253,7 @@ export const setareSections: CaseStudySection[] = [
   {
     id: "challenge",
     title: "Challenge",
-    points: [
+    bullets: [
       "Activation flow treated every segment identically, ignoring usage intent.",
       "Referral loops existed but were unrewarding—users churned after first benefit.",
       "Teams shipped in silos; no shared experiment cadence or success metrics.",
@@ -186,9 +262,9 @@ export const setareSections: CaseStudySection[] = [
   {
     id: "insights",
     title: "What We Learned",
-    description:
+    summary:
       "Through interviews, funnel analytics, and service-blueprint mapping, we surfaced the underlying blockers.",
-    points: [
+    bullets: [
       "Users wanted tangible milestones—without them, the product felt transactional.",
       "High-intent cohorts responded to educational nudges more than promotions.",
       "Internal teams lacked visibility into experiment outcomes, slowing iteration.",
@@ -197,7 +273,7 @@ export const setareSections: CaseStudySection[] = [
   {
     id: "solution",
     title: "Experience Re-Architecture",
-    points: [
+    bullets: [
       "Introduced lifecycle messaging tailored to intent (explorers, earners, loyalists).",
       "Shipped a gamified referral journey that celebrated progress and unlocked tiered rewards.",
       "Stood up a cross-functional growth guild with a 2-week experiment cadence.",
@@ -218,18 +294,39 @@ export const setareSections: CaseStudySection[] = [
   {
     id: "role",
     title: "My Role",
-    description:
+    summary:
       "I operated as the end-to-end product designer, bridging product, marketing, customer success, and engineering.",
-    points: [
+    bullets: [
       "Ran weekly co-creation rituals to align stakeholders on experiment priorities.",
       "Established design system foundations adopted by teams beyond growth.",
       "Set up analytics dashboards that paired qualitative notes with funnel KPIs.",
     ],
-    quote: {
-      author: "Head of Growth",
-      role: "Setare Aval",
-      text: "Masih helped us shift from one-off campaigns to a product mindset. The lifecycle model and experiment cadence still guide how we build today.",
-    },
+    quotes: [
+      {
+        author: "Head of Growth",
+        role: "Setare Aval",
+        text: "Masih helped us shift from one-off campaigns to a product mindset. The lifecycle model and experiment cadence still guide how we build today.",
+      },
+    ],
+  },
+];
+
+export const caseStudyEntries: readonly CaseStudyEntry[] = [
+  {
+    id: "divar-secure-call",
+    title: "Divar Secure Call",
+    excerpt:
+      "Reduced harassment by 60% for 2.1M weekly callers through a privacy-first calling layer inside Iran’s largest marketplace.",
+    focus: "Trust & Safety",
+    path: "/case-studies/divar-secure-call",
+  },
+  {
+    id: "setare-aval-engagement",
+    title: "Setare Aval Engagement",
+    excerpt:
+      "Re-architected lifecycle journeys that doubled retained revenue and converted referral cohorts into 60K+ daily active users.",
+    focus: "Retention & Growth",
+    path: "/case-studies/setare-aval-engagement",
   },
 ];
 

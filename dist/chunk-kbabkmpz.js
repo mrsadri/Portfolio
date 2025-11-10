@@ -1,4 +1,0 @@
-import{k as g}from"./chunk-ttkjnsw5.js";import{A as t,E as a,F as r,J as i,T as p,W as n,m as e}from"./chunk-et5acz8w.js";var o=e(n(),1),c=()=>o.jsxDEV(a,{sx:{minHeight:"70vh",display:"flex",alignItems:"center"},children:o.jsxDEV(i,{children:o.jsxDEV(p,{spacing:3,alignItems:"center",textAlign:"center",children:[o.jsxDEV(t,{variant:"h2",children:"Page not found"},void 0,!1,void 0,this),o.jsxDEV(t,{variant:"body1",color:"text.secondary",sx:{maxWidth:480},children:"The page you're looking for has moved or no longer exists. Let's bring you back to the work that matters."},void 0,!1,void 0,this),o.jsxDEV(r,{component:g,to:"/",variant:"contained",size:"large",children:"Return home"},void 0,!1,void 0,this)]},void 0,!0,void 0,this)},void 0,!1,void 0,this)},void 0,!1,void 0,this),u=c;export{u as default};
-
-//# debugId=EAB965BAEDD9CE5964756E2164756E21
-//# sourceMappingURL=chunk-kbabkmpz.js.map

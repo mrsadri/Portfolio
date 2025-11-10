@@ -4,6 +4,7 @@ import { lazy, Suspense } from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import LoadingScreen from "./components/LoadingScreen";
 import MainLayout from "./layout/MainLayout";
+import { HelmetProvider } from "react-helmet-async";
 
 const HomePage = lazy(() => import("./routes/HomePage"));
 const MyStoryPage = lazy(() => import("./routes/MyStoryPage"));
@@ -76,9 +77,11 @@ const router = createBrowserRouter(
 );
 
 const App = () => (
-  <Suspense fallback={<LoadingScreen />}>
-    <RouterProvider router={router} />
-  </Suspense>
+  <HelmetProvider>
+    <Suspense fallback={<LoadingScreen />}>
+      <RouterProvider router={router} />
+    </Suspense>
+  </HelmetProvider>
 );
 
 export default App;

@@ -103,66 +103,25 @@ const HomePage = () => {
         })}
       >
         <Container>
-          <Box
+          <Stack
+            direction={{ xs: "column", md: "row" }}
+            spacing={{ xs: 3, md: 4 }}
             sx={{
-              position: "relative",
-              borderRadius: { xs: 5, md: 6 },
-              border: `1px solid ${theme.tokens.colors.border}`,
-              overflow: "hidden",
-              background: theme.palette.mode === "light"
-                ? "linear-gradient(140deg, rgba(255,255,255,0.88) 0%, rgba(230,237,255,0.65) 100%)"
-                : "linear-gradient(145deg, rgba(18,26,48,0.92) 0%, rgba(30,48,94,0.72) 100%)",
-              boxShadow:
-                theme.palette.mode === "light"
-                  ? "0 42px 120px -60px rgba(17, 36, 83, 0.65)"
-                  : "0 48px 120px -70px rgba(0, 0, 0, 0.8)",
+              px: { xs: 0, md: 3 },
+              py: { xs: 0, md: 2 },
+              alignItems: { xs: "center", md: "stretch" },
             }}
           >
-            <Box
-              sx={{
-                position: "absolute",
-                inset: 0,
-                pointerEvents: "none",
-                "&::before": {
-                  content: '""',
-                  position: "absolute",
-                  inset: "-40% 55% 30% -20%",
-                  background:
-                    theme.palette.mode === "light"
-                      ? "radial-gradient(circle at center, rgba(66, 127, 255, 0.25) 0%, rgba(66, 127, 255, 0) 55%)"
-                      : "radial-gradient(circle at center, rgba(96, 139, 255, 0.35) 0%, rgba(96, 139, 255, 0) 60%)",
-                  filter: "blur(40px)",
-                },
-                "&::after": {
-                  content: '""',
-                  position: "absolute",
-                  inset: "18% -45% -25% 55%",
-                  background:
-                    theme.palette.mode === "light"
-                      ? "radial-gradient(circle at center, rgba(120, 170, 255, 0.22) 0%, rgba(120, 170, 255, 0) 60%)"
-                      : "radial-gradient(circle at center, rgba(53, 104, 214, 0.32) 0%, rgba(53, 104, 214, 0) 65%)",
-                  filter: "blur(36px)",
-                },
-              }}
-            />
-            <Stack
-              direction={{ xs: "column", md: "row" }}
-              spacing={{ xs: 5, md: 6 }}
-              sx={{
-                position: "relative",
-                zIndex: 1,
-                px: { xs: 3.5, sm: 5, md: 6 },
-                py: { xs: 4.5, md: 6.5 },
-                alignItems: "stretch",
-              }}
-            >
               <Stack
-                spacing={3}
+                spacing={2.75}
                 sx={{
-                  flexBasis: { md: "44%" },
+                  flexBasis: { md: "30%" },
+                  maxWidth: { md: "30%" },
+                  flexGrow: { md: 0 },
+                  flexShrink: 0,
                   alignItems: { xs: "center", md: "flex-start" },
                   textAlign: { xs: "center", md: "left" },
-                  pb: { xs: 4, md: 5 },
+                  pb: { xs: 2, md: 0 },
                 }}
               >
                 <Box
@@ -237,6 +196,11 @@ const HomePage = () => {
                         height: 8,
                         borderRadius: "50%",
                         backgroundColor: theme.palette.success.main,
+                        animation: "availabilityPulse 1.8s ease-in-out infinite",
+                        "@keyframes availabilityPulse": {
+                          "0%, 100%": { opacity: 1 },
+                          "50%": { opacity: 0.25 },
+                        },
                       }}
                     />
                     <Typography variant="caption" sx={{ fontWeight: 600, letterSpacing: 0.4 }}>
@@ -246,11 +210,12 @@ const HomePage = () => {
                 </Box>
               </Stack>
               <Stack
-                spacing={{ xs: 3, md: 3.5 }}
+                spacing={{ xs: 2.5, md: 3 }}
                 sx={{
-                  flex: 1,
+                  flexBasis: { md: "70%" },
+                  maxWidth: { md: "70%" },
+                  flexGrow: 1,
                   justifyContent: "center",
-                  maxWidth: { md: 620 },
                 }}
               >
                 <Stack spacing={{ xs: 1.5, md: 2 }}>
@@ -362,7 +327,7 @@ const HomePage = () => {
                 </GhostButton>
               </Stack>
             </Stack>
-          </Box>
+          </Stack>
         </Container>
       </Box>
 
