@@ -6,7 +6,7 @@ import { join } from "node:path";
 const builderVersion = "2.1.0";
 const distDir = "dist";
 const docsDir = "docs";
-const docsAssetsDir = join(docsDir, "assets");
+const docsClientDir = join(docsDir, "client");
 
 const notFoundHtml = `<!doctype html>
 <html lang="en">
@@ -81,7 +81,7 @@ if (!result.success) {
 await mkdir(docsDir, { recursive: true });
 
 await Promise.all([
-  cp(distDir, docsAssetsDir, { recursive: true }),
+  cp(distDir, docsClientDir, { recursive: true }),
   cp("images", join(docsDir, "images"), { recursive: true }),
   cp("index.html", join(docsDir, "index.html")),
   cp("robots.txt", join(docsDir, "robots.txt")),
@@ -91,5 +91,5 @@ await Promise.all([
 await Bun.write(join(docsDir, "404.html"), notFoundHtml);
 await writeFile(join(docsDir, ".nojekyll"), "");
 
-console.log("✅ Build completed. Static site available in docs/ and build artifacts copied to docs/assets/");
+console.log("✅ Build completed. Static site available in docs/ and build artifacts copied to docs/client/");
 
