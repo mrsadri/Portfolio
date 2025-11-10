@@ -90,9 +90,6 @@
     </script>
     <script>
       (function loadBundle() {
-        const script = document.createElement("script");
-        script.type = "module";
-
         let basePath = "";
 
         const canonical = document.querySelector('link[rel="canonical"]')?.getAttribute("href");
@@ -118,22 +115,23 @@
         const primaryDir = usesGitHubPages ? "client" : "dist";
         const fallbackDir = "dist";
 
-        const setSrc = (dir) => {
+        const appendModule = (dir) => {
+          const script = document.createElement("script");
+          script.type = "module";
           script.src = `${basePath}/${dir}/main.js`;
+          if (dir !== fallbackDir && usesGitHubPages) {
+            script.addEventListener(
+              "error",
+              () => {
+                appendModule(fallbackDir);
+              },
+              { once: true },
+            );
+          }
+          document.body.appendChild(script);
         };
 
-        if (usesGitHubPages) {
-          script.addEventListener("error", () => {
-            if (script.dataset.fallbackTried === "true") {
-              return;
-            }
-            script.dataset.fallbackTried = "true";
-            setSrc(fallbackDir);
-          });
-        }
-
-        setSrc(primaryDir);
-        document.body.appendChild(script);
+        appendModule(primaryDir);
       })();
     </script>
   </body>
