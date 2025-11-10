@@ -24,11 +24,10 @@ import {
   mentorshipOffers,
   responseTime,
 } from "../data/contact";
+import getSiteUrl from "../utils/site";
 
 const ContactPage = () => {
-  const siteUrl =
-    (typeof import.meta !== "undefined" && import.meta.env?.VITE_SITE_URL) ||
-    "https://mrsadri.github.io/Portfolio";
+  const siteUrl = getSiteUrl();
 
   const structuredData = {
     "@context": "https://schema.org",

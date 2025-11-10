@@ -28,6 +28,7 @@ import {
   skillCategories,
   volunteerExperience,
 } from "../data/resume";
+import getSiteUrl from "../utils/site";
 
 const ResumePage = () => {
   const handleDownload = useCallback(() => {
@@ -36,9 +37,7 @@ const ResumePage = () => {
     }
   }, []);
 
-  const siteUrl =
-    (typeof import.meta !== "undefined" && import.meta.env?.VITE_SITE_URL) ||
-    "https://mrsadri.github.io/Portfolio";
+  const siteUrl = getSiteUrl();
 
   const structuredData = {
     "@context": "https://schema.org",

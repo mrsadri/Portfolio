@@ -35,6 +35,7 @@ import {
 } from "../data/myStory";
 import Pill from "../components/ui/Pill";
 import GhostButton from "../components/ui/GhostButton";
+import getSiteUrl from "../utils/site";
 
 type SectionHeaderProps = {
   eyebrow?: string;
@@ -240,9 +241,7 @@ const LifeInFramesSlider = () => {
 
 const MyStoryPage = () => {
   const theme = useTheme();
-  const siteUrl =
-    (typeof import.meta !== "undefined" && import.meta.env?.VITE_SITE_URL) ||
-    "https://mrsadri.github.io/Portfolio";
+  const siteUrl = getSiteUrl();
   const heroImage = gallery[0]?.image;
 
   const structuredData = {
