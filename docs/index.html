@@ -114,7 +114,9 @@
           }
         }
 
-        script.src = `${basePath}/client/main.js`;
+        const usesGitHubPages = window.location.hostname.endsWith("github.io");
+        const assetsDir = usesGitHubPages ? "client" : "dist";
+        script.src = `${basePath}/${assetsDir}/main.js`;
         document.body.appendChild(script);
       })();
     </script>
