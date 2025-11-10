@@ -16,11 +16,15 @@ const CaseStudyDivarPage = () => {
     (typeof import.meta !== "undefined" && import.meta.env?.VITE_SITE_URL) ||
     "https://mrsadri.github.io/Portfolio";
 
+  const caseStudyDescription =
+    divarOverview.subtitle ??
+    "Privacy-first calling experience that reduced harassment incidents by 60% for 2.1M Divar users.";
+
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "CaseStudy",
     name: divarOverview.title,
-    description: divarOverview.subtitle,
+    description: caseStudyDescription,
     author: {
       "@type": "Person",
       name: "Masih Sadri",
@@ -84,7 +88,7 @@ const CaseStudyDivarPage = () => {
     <>
       <Seo
         title="Divar Secure Call Case Study — Reducing Harassment by 60%"
-        description={divarOverview.subtitle}
+        description={caseStudyDescription}
         canonicalPath="/case-studies/divar-secure-call"
         openGraph={{
           type: "article",
