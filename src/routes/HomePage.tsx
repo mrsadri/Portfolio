@@ -34,6 +34,7 @@ import GhostButton from "../components/ui/GhostButton";
 import ImpactStatCard from "../components/ui/ImpactStatCard";
 import Pill from "../components/ui/Pill";
 import PrimaryButton from "../components/ui/PrimaryButton";
+import certifiedBadge from "../images/certified-badge.png";
 
 type CaseStudyId = (typeof caseStudies)[number]["id"];
 
@@ -185,6 +186,20 @@ const HomePage = () => {
                     Available for senior roles
                   </Typography>
                 </Stack>
+                <Box
+                  component="img"
+                  src={certifiedBadge}
+                  alt="Certified badge"
+                  sx={{
+                    position: "absolute",
+                    top: { xs: -18, md: -26 },
+                    left: { xs: -18, md: -26 },
+                    width: { xs: 120, md: 160 },
+                    height: { xs: 120, md: 160 },
+                    pointerEvents: "none",
+                    userSelect: "none",
+                  }}
+                />
               </Box>
             </Stack>
             <Stack

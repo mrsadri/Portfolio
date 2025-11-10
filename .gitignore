@@ -37,6 +37,9 @@ build/
 *.min.js
 *.min.css
 
-# Build outputs (tracked intentionally for GitHub Pages)
-!dist/
-!docs/dist/
+# Build outputs
+dist/
+docs/dist/
+
+# Bun cache
+.bun-cache/

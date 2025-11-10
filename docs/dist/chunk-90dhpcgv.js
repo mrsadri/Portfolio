@@ -1,4 +1,0 @@
-import{m as a}from"./chunk-sd51bay4.js";import{C as t,G as r,H as i,L as p,Y as g,aa as n,o as e}from"./chunk-5x19vacm.js";var o=e(n(),1),c=()=>o.jsxDEV(r,{sx:{minHeight:"70vh",display:"flex",alignItems:"center"},children:o.jsxDEV(p,{children:o.jsxDEV(g,{spacing:3,alignItems:"center",textAlign:"center",children:[o.jsxDEV(t,{variant:"h2",children:"Page not found"},void 0,!1,void 0,this),o.jsxDEV(t,{variant:"body1",color:"text.secondary",sx:{maxWidth:480},children:"The page you're looking for has moved or no longer exists. Let's bring you back to the work that matters."},void 0,!1,void 0,this),o.jsxDEV(i,{component:a,to:"/",variant:"contained",size:"large",children:"Return home"},void 0,!1,void 0,this)]},void 0,!0,void 0,this)},void 0,!1,void 0,this)},void 0,!1,void 0,this),u=c;export{u as default};
-
-//# debugId=3209F6EE51A569EC64756E2164756E21
-//# sourceMappingURL=chunk-90dhpcgv.js.map
