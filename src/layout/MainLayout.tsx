@@ -121,9 +121,9 @@ const MainLayout = () => {
           borderColor: mode === "light" ? "brand.muted" : "rgba(122, 162, 255, 0.35)",
         }}
       >
-        <DarkModeOutlinedIcon
+        <LightModeOutlinedIcon
           fontSize="small"
-          color={mode === "dark" ? "primary" : "action"}
+          color={mode === "light" ? "primary" : "action"}
         />
         <Switch
           checked={mode === "dark"}
@@ -141,9 +141,9 @@ const MainLayout = () => {
             },
           }}
         />
-        <LightModeOutlinedIcon
+        <DarkModeOutlinedIcon
           fontSize="small"
-          color={mode === "light" ? "primary" : "action"}
+          color={mode === "dark" ? "primary" : "action"}
         />
       </Stack>
     </Tooltip>
