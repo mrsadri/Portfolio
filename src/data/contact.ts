@@ -80,7 +80,6 @@ export const mentorshipOffers = [
     description:
       "Ready to take your design skills to the next level? Weekly mentorship sessions are a proven way to learn a new skill and accelerate your growth in UX/UI design.",
     href: "mailto:sdarimasih@gmail.com?subject=Design Mentorship Inquiry",
-    featured: true,
   },
 ] satisfies ReadonlyArray<MentorshipOffer>;
 

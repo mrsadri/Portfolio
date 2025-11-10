@@ -16,6 +16,7 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
+import Seo from "../components/Seo";
 import {
   contactHero,
   contactMethods,
@@ -25,8 +26,42 @@ import {
 } from "../data/contact";
 
 const ContactPage = () => {
+  const siteUrl =
+    (typeof import.meta !== "undefined" && import.meta.env?.VITE_SITE_URL) ||
+    "https://mrsadri.github.io/Portfolio";
+
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    name: "Contact Masih Sadri",
+    description: contactHero.description,
+    url: `${siteUrl}/contact`,
+    mainEntity: contactMethods.map((method) => ({
+      "@type": "ContactPoint",
+      contactType: method.title,
+      url: method.href,
+      description: method.description,
+    })),
+    offers: mentorshipOffers.map((offer) => ({
+      "@type": "Offer",
+      name: offer.title,
+      description: offer.description,
+      url: offer.href,
+      duration: offer.duration,
+    })),
+  } as const;
+
   return (
     <>
+      <Seo
+        title="Contact Masih Sadri — Collaborations, mentorship, and speaking"
+        description="Book mentorship sessions, request collaborations, or reach Masih Sadri directly for senior product design work."
+        canonicalPath="/contact"
+        openGraph={{
+          type: "website",
+        }}
+        structuredData={structuredData}
+      />
       <Box
         sx={{
           py: { xs: 8, md: 12 },
@@ -108,16 +143,18 @@ const ContactPage = () => {
             </Typography>
           </Stack>
           <Grid container spacing={3}>
-            {mentorshipOffers.map((offer) => (
+            {mentorshipOffers.map((offer) => {
+              const isFeatured = (offer as { featured?: boolean }).featured ?? false;
+              return (
               <Grid size={{ xs: 12, md: 6 }} key={offer.title}>
                     <Card
                       sx={{
                         height: "100%",
                         background:
-                          offer.featured
+                          isFeatured
                             ? "linear-gradient(135deg, rgba(12,53,148,0.92), rgba(31,111,235,0.88))"
                             : undefined,
-                        color: offer.featured ? "primary.contrastText" : undefined,
+                        color: isFeatured ? "primary.contrastText" : undefined,
                       }}
                     >
                   <CardContent>
@@ -127,20 +164,20 @@ const ContactPage = () => {
                           <Chip
                             icon={<ScheduleRoundedIcon />}
                             label={offer.duration}
-                            color={offer.featured ? "default" : "primary"}
+                            color={isFeatured ? "default" : "primary"}
                             sx={{
-                              ...(offer.featured && {
+                              ...(isFeatured && {
                                 backgroundColor: "rgba(255,255,255,0.18)",
                                 color: "inherit",
                               }),
                             }}
                           />
                       </Stack>
-                      <Typography variant="body1" color={offer.featured ? "inherit" : "text.secondary"}>
+                      <Typography variant="body1" color={isFeatured ? "inherit" : "text.secondary"}>
                         {offer.description}
                       </Typography>
                       {offer.note && (
-                        <Typography variant="body2" color={offer.featured ? "inherit" : "text.secondary"}>
+                        <Typography variant="body2" color={isFeatured ? "inherit" : "text.secondary"}>
                           {offer.note}
                         </Typography>
                       )}
@@ -151,7 +188,7 @@ const ContactPage = () => {
                       component="a"
                       href={offer.href}
                       variant="contained"
-                      color={offer.featured ? "secondary" : "primary"}
+                      color={isFeatured ? "secondary" : "primary"}
                       fullWidth
                     >
                       Schedule via Email
@@ -159,7 +196,8 @@ const ContactPage = () => {
                   </CardActions>
                 </Card>
               </Grid>
-            ))}
+            );
+            })}
           </Grid>
         </Container>
       </Box>
@@ -217,21 +255,35 @@ const ContactPage = () => {
       <Box sx={{ py: { xs: 6, md: 8 } }}>
         <Container>
           <Card
-            sx={{
+            sx={(theme) => ({
               p: { xs: 4, md: 5 },
               background:
                 "linear-gradient(135deg, rgba(12,53,148,0.92), rgba(31,111,235,0.88))",
-              color: "primary.contrastText",
-            }}
+              color: theme.palette.mode === "dark" ? theme.palette.common.white : "primary.contrastText",
+            })}
           >
             <Stack spacing={2} alignItems="flex-start">
               <Stack direction="row" spacing={1} alignItems="center">
-                <Diversity3RoundedIcon />
-                <Typography variant="h5">
+                <Diversity3RoundedIcon
+                  sx={(theme) => ({
+                    color: theme.palette.mode === "dark" ? theme.palette.common.white : "inherit",
+                  })}
+                />
+                <Typography
+                  variant="h5"
+                  sx={(theme) => ({
+                    color: theme.palette.mode === "dark" ? theme.palette.common.white : "inherit",
+                  })}
+                >
                   Prefer async communication?
                 </Typography>
               </Stack>
-              <Typography variant="body1">
+              <Typography
+                variant="body1"
+                sx={(theme) => ({
+                  color: theme.palette.mode === "dark" ? "rgba(255,255,255,0.9)" : "inherit",
+                })}
+              >
                 Send me an email with your context, and I’ll tailor the conversation so our call is focused and impactful.
               </Typography>
               <Button

@@ -91,7 +91,7 @@ export const hero: HeroContent = {
     to: "/resume",
   },
   availability: {
-    label: "Open to senior product designer roles →",
+    label: "Open to senior product designer roles",
     to: "/contact",
   },
   portrait: {
@@ -102,28 +102,28 @@ export const hero: HeroContent = {
 
 export const metrics = [
   {
-    value: "60% ↓",
-    title: "Harassment incidents",
+    value: "60%",
+    title: "Reduction in harassment incidents",
     description:
-      "Designed Divar’s secure call system with Trust & Safety teams, protecting 2.1M weekly users.",
+      "Co-led Divar’s secure call system with Trust & Safety to safeguard 2.1M weekly callers.",
   },
   {
     value: "8.3K+",
-    title: "Design system adoptions",
+    title: "Product teams using Morph",
     description:
-      "Built Morph, an open design system powering teams on Figma and shaping product handoffs.",
+      "Built an open design system that powers Figma handoffs and accelerates high-quality releases.",
   },
   {
     value: "200+",
     title: "Designers mentored",
     description:
-      "Lead project-based programs at Rahnema College, helping emerging designers launch careers.",
+      "Designed project-based programs at Rahnema College to help emerging designers launch careers.",
   },
   {
-    value: "2-week",
-    title: "Experiment cadence",
+    value: "80%",
+    title: "Lift in qualified leads",
     description:
-      "Partner with data & product to ship AI-augmented flows and iterate with measurable outcomes.",
+      "Redesigned Persol’s sign-up funnel end-to-end, removing friction and boosting lead generation in 3 months.",
   },
 ] satisfies ReadonlyArray<MetricSummary>;
 
@@ -189,7 +189,7 @@ export const experiences = [
       alt: "Morph Design System - Figma Community",
     },
     link: {
-      label: "View on Figma Community →",
+      label: "View on Figma Community",
       href: "https://www.figma.com/community/file/1069259333467083182",
     },
   },

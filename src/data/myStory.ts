@@ -1,13 +1,14 @@
 // File: src/data/myStory.ts
 // Purpose: Stores narrative, gallery, reading list, and credential data used across the My Story page.
-import creativeConfidenceCoverAsset from "../../images/books/creative-confidence.svg";
-import designOfEverydayThingsCoverAsset from "../../images/books/design-of-everyday-things.svg";
-import sprintCoverAsset from "../../images/books/sprint.svg";
+import creativeConfidenceCoverAsset from "../../images/books/creative-confidence.jpg";
+import designOfEverydayThingsCoverAsset from "../../images/books/design-of-everyday-things.jpg";
+import sprintCoverAsset from "../../images/books/sprint.jpg";
 import divarTeamPhotoAsset from "../../images/divar-team.jpg";
 import masihChildPhotoAsset from "../../images/masih-child-photo.png";
 import masihCoffeeArtistAsset from "../../images/masih-coffee-artist.png";
 import masihMountaineerAsset from "../../images/masih-mountaineer.png";
 import masihUxDesignerAsset from "../../images/masih-ux-designer.png";
+import aiAndUxCoverAsset from "../../images/books/ai-and-ux.jpg";
 import masihWoodCarverAsset from "../../images/masih-wood-carver.png";
 
 const resolveAsset = (asset: string) => new URL(asset, import.meta.url).href;
@@ -116,17 +117,7 @@ export const gallery = [
 export const philosophyText =
   "I design experiences that not only solve problems but create value for both businesses and users. I enjoy digging deep into challenges, analyzing them thoroughly, and coming up with solutions that truly make a difference.";
 
-export const emojiList: readonly string[] = [
-  "☕️",
-  "🪃",
-  "🧗🏽",
-  "🖌️",
-  "📲",
-  "👨🏽‍🎨",
-  "💡",
-  "🎨",
-  "📚",
-];
+export const emojiList: readonly string[] = ["☕️", "🧗🏽", "💻", "📚"];
 
 export const readingJourney: ReadingJourney = {
   title: "Design Books Guiding My Craft",
@@ -179,7 +170,7 @@ export const books = [
     ],
   },
   {
-    cover: resolveAsset(masihUxDesignerAsset),
+    cover: resolveAsset(aiAndUxCoverAsset),
     title: "AI and UX: Why Artificial Intelligence Needs User Experience",
     author: "Pamela Pavliscak",
     label: "In progress · Q4 2025",
@@ -299,11 +290,11 @@ export const references = [
     linkedin: "https://www.linkedin.com/in/ali-azadeh/",
   },
   {
-    name: "Saba Mirzaie",
-    role: "Product Designer at SnappBox",
-    date: "July 28, 2021 • Reported directly to Masih",
-    text: "Masih is a caring mentor who thoughtfully pairs feedback with actionable guidance. His efforts to build our collaborative rituals helped me step into more strategic conversations with confidence.",
-    linkedin: "https://www.linkedin.com/in/sabamirzaie/",
+    name: "Hossein Mahmoudvand",
+    role: "Design Lead at Setare Aval (MCI)",
+    date: "March 10, 2021 • Hossein managed Masih directly",
+    text: "I have known Masih since 2018, and from the beginning, his potential talent was evident, marking the start of our collaborative journey. For consistent, top-quality design, you only need to give Masih the raw data and any uncertainties. While working together on the product team at Setare Aval Company, his expertise was crucial in problem definition, solution finding, and designing flows. The outcomes of his professional and meticulously crafted designs have always been outstanding. He is a consummate professional, and I highly recommend him.",
+    linkedin: "https://www.linkedin.com/in/hosseinmahmoudvand/",
   },
 ] satisfies ReadonlyArray<ReferenceItem>;
 
