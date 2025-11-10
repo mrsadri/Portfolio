@@ -1,6 +1,6 @@
 // File: scripts/build.ts
 // Purpose: Produces production-ready bundles for GitHub Pages by building assets, copying static files, and generating supporting metadata.
-import { cp, mkdir, rm, writeFile } from "node:fs/promises";
+import { cp, mkdir, readFile, rm, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 
 const builderVersion = "2.1.0";
@@ -62,10 +62,50 @@ await Promise.all([
   rm(docsDir, { recursive: true, force: true }),
 ]);
 
+const packageMetaRaw = await readFile("package.json", "utf8");
+const packageMeta = JSON.parse(packageMetaRaw) as { homepage?: string };
+
+const ensureLeadingSlash = (value: string) => (value.startsWith("/") ? value : `/${value}`);
+const ensureTrailingSlash = (value: string) => (value.endsWith("/") ? value : `${value}/`);
+
+const resolvePublicPath = () => {
+  const envOverride = process.env.ASSET_PUBLIC_PATH ?? process.env.PUBLIC_PATH;
+  if (envOverride && envOverride.trim().length > 0) {
+    const normalized = ensureTrailingSlash(ensureLeadingSlash(envOverride.trim()));
+    console.log(`📦 Using asset public path from environment: ${normalized}`);
+    return normalized;
+  }
+
+  const homepage = packageMeta.homepage?.trim();
+  if (homepage) {
+    try {
+      const homepageUrl = new URL(homepage);
+      const pathname = homepageUrl.pathname.replace(/\/$/, "");
+      if (pathname && pathname !== "/") {
+        const normalized = ensureTrailingSlash(`${pathname}/client`);
+        console.log(`📦 Using asset public path derived from package.json homepage: ${normalized}`);
+        return normalized;
+      }
+    } catch (error) {
+      console.warn(
+        `⚠️ Unable to derive asset path from package.json homepage (${homepage}). Falling back to default.`,
+        error,
+      );
+    }
+  }
+
+  const fallback = "/client/";
+  console.log(`📦 Using default asset public path: ${fallback}`);
+  return fallback;
+};
+
+const publicPath = resolvePublicPath();
+
 const result = await Bun.build({
   entrypoints: ["./src/main.tsx"],
   outdir: distDir,
   target: "browser",
+  publicPath,
   minify: true,
   splitting: true,
   sourcemap: true,

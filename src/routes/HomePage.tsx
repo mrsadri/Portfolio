@@ -35,6 +35,7 @@ import ImpactStatCard from "../components/ui/ImpactStatCard";
 import Pill from "../components/ui/Pill";
 import PrimaryButton from "../components/ui/PrimaryButton";
 import certifiedBadge from "../images/certified-badge.png";
+import getSiteUrl from "../utils/site";
 
 type CaseStudyId = (typeof caseStudies)[number]["id"];
 
@@ -43,9 +44,7 @@ const HomePage = () => {
   const [selectedCaseStudy, setSelectedCaseStudy] =
     useState<CaseStudyId | null>(null);
 
-  const siteUrl =
-    (typeof import.meta !== "undefined" && import.meta.env?.VITE_SITE_URL) ||
-    "https://mrsadri.github.io/Portfolio";
+  const siteUrl = getSiteUrl();
 
   const primaryHeroMetric = metrics[0];
 

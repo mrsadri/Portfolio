@@ -118,11 +118,18 @@
         const primaryDir = usesGitHubPages ? "client" : "dist";
         const fallbackDir = "dist";
 
+        const attempted = new Set();
+
         const appendModule = (dir) => {
+          if (attempted.has(dir)) {
+            return;
+          }
+
+          attempted.add(dir);
           const script = document.createElement("script");
           script.type = "module";
           script.src = `${assetPrefix}${dir}/main.js`;
-          if (dir !== fallbackDir && usesGitHubPages) {
+          if (dir !== fallbackDir) {
             script.addEventListener(
               "error",
               () => {
@@ -131,6 +138,14 @@
               { once: true },
             );
           }
+          script.addEventListener(
+            "error",
+            () => {
+              console.error(`Failed to load bundle from ${script.src}`);
+            },
+            { once: true },
+          );
+
           document.body.appendChild(script);
         };
 

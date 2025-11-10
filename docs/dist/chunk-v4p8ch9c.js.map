@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "sources": ["../src/components/ui/Pill.tsx"],
+  "sourcesContent": [
+    "import { Chip } from \"@mui/material\";\nimport type { ChipProps } from \"@mui/material\";\n\nconst Pill = ({ variant, ...props }: ChipProps) => (\n  <Chip variant={variant ?? \"filled\"} {...props} />\n);\n\nexport default Pill;\n\n\n"
+  ],
+  "mappings": "sFAGM,EAAO,EAAG,aAAY,KAC1B,SAAC,EAAD,CAAM,QAAS,GAAW,YAAc,GAAxC,qBAA+C,EAGlC",
+  "debugId": "28E577A76CD2E43264756E2164756E21",
+  "names": []
+}
