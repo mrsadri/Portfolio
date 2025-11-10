@@ -10,16 +10,18 @@ import {
   Card,
   CardActions,
   CardContent,
-  Chip,
   Container,
+  Divider,
   Dialog,
   DialogContent,
   DialogTitle,
   Stack,
   Typography,
+  useTheme,
 } from "@mui/material";
 import { useMemo, useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
+import Seo from "../components/Seo";
 import {
   caseStudies,
   experiences,
@@ -27,12 +29,48 @@ import {
   metrics,
   socialLinks,
 } from "../data/home";
+import CaseCard from "../components/ui/CaseCard";
+import GhostButton from "../components/ui/GhostButton";
+import ImpactStatCard from "../components/ui/ImpactStatCard";
+import Pill from "../components/ui/Pill";
+import PrimaryButton from "../components/ui/PrimaryButton";
 
 type CaseStudyId = (typeof caseStudies)[number]["id"];
 
 const HomePage = () => {
+  const theme = useTheme();
   const [selectedCaseStudy, setSelectedCaseStudy] =
     useState<CaseStudyId | null>(null);
+
+  const siteUrl =
+    (typeof import.meta !== "undefined" && import.meta.env?.VITE_SITE_URL) ||
+    "https://mrsadri.github.io/Portfolio";
+
+  const primaryHeroMetric = metrics[0];
+
+  const structuredData = [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      name: "Masih Sadri — Senior Product Designer",
+      url: siteUrl,
+      potentialAction: {
+        "@type": "SearchAction",
+        target: `${siteUrl}/?q={search_term_string}`,
+        "query-input": "required name=search_term_string",
+      },
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      name: hero.name,
+      jobTitle: "Senior Product Designer",
+      description: hero.subtitle,
+      url: siteUrl,
+      image: hero.portrait.src,
+      sameAs: socialLinks.map((link) => link.href),
+    },
+  ] as const;
 
   const selectedCaseStudyData = useMemo(
     () => caseStudies.find((item) => item.id === selectedCaseStudy) ?? null,
@@ -41,139 +79,299 @@ const HomePage = () => {
 
   return (
     <>
-      <Box
-        sx={{
-          py: { xs: 8, md: 12 },
-          background:
-            "radial-gradient(circle at 20% 20%, rgba(90, 200, 250, 0.18), transparent 55%), radial-gradient(circle at 80% 10%, rgba(31, 111, 235, 0.14), transparent 52%)",
+      <Seo
+        title="Masih Sadri — Senior Product Designer crafting trustworthy experiences"
+        description="Portfolio of Masih Sadri, an impact-oriented senior product designer protecting millions of users through trust & safety, growth, and design systems."
+        canonicalPath="/"
+        openGraph={{
+          type: "website",
+          image: {
+            url: hero.portrait.src,
+            alt: hero.portrait.alt,
+          },
         }}
+        structuredData={structuredData}
+      />
+      <Box
+        component="section"
+        sx={(theme) => ({
+          py: { xs: 6, md: 9 },
+          background:
+            theme.palette.mode === "light"
+              ? "radial-gradient(circle at 20% 15%, rgba(145, 167, 255, 0.12), transparent 58%), radial-gradient(circle at 80% 20%, rgba(34, 84, 255, 0.1), transparent 52%)"
+              : "radial-gradient(circle at 18% 15%, rgba(73, 109, 193, 0.18), transparent 60%), radial-gradient(circle at 78% 18%, rgba(48, 86, 176, 0.18), transparent 55%)",
+        })}
       >
         <Container>
-          <Grid
-            container
-            spacing={{ xs: 6, md: 10 }}
+          <Box
             sx={{
-              alignItems: "center",
-              justifyContent: "space-between",
+              position: "relative",
+              borderRadius: { xs: 5, md: 6 },
+              border: `1px solid ${theme.tokens.colors.border}`,
+              overflow: "hidden",
+              background: theme.palette.mode === "light"
+                ? "linear-gradient(140deg, rgba(255,255,255,0.88) 0%, rgba(230,237,255,0.65) 100%)"
+                : "linear-gradient(145deg, rgba(18,26,48,0.92) 0%, rgba(30,48,94,0.72) 100%)",
+              boxShadow:
+                theme.palette.mode === "light"
+                  ? "0 42px 120px -60px rgba(17, 36, 83, 0.65)"
+                  : "0 48px 120px -70px rgba(0, 0, 0, 0.8)",
             }}
           >
-            <Grid size={{ xs: 12, md: 6 }}>
-              <Stack spacing={3}>
-                <Typography variant="subtitle1" color="secondary.main">
-                  {hero.greeting}
-                </Typography>
-                <Typography variant="h1" sx={{ fontSize: { xs: 52, md: 64 } }}>
-                  {hero.name}
-                </Typography>
-                <Typography variant="h4" color="text.secondary">
-                  {hero.title}
-                </Typography>
-                <Typography variant="h6" color="text.secondary">
-                  {hero.subtitle}
-                </Typography>
-                <Stack spacing={0.5}>
-                  {hero.credentials.map((line) => (
-                    <Typography key={line} variant="body1" color="text.primary">
-                      {line}
-                    </Typography>
-                  ))}
-                </Stack>
-                <Stack direction={{ xs: "column", sm: "row" }} spacing={2}>
-                  <Button
-                    component={RouterLink}
-                    to={hero.ctaPrimary.to}
-                    variant="contained"
-                    endIcon={<ArrowForwardRoundedIcon />}
-                    size="large"
-                  >
-                    {hero.ctaPrimary.label}
-                  </Button>
-                  <Button
-                    component={RouterLink}
-                    to={hero.ctaSecondary.to}
-                    variant="outlined"
-                    size="large"
-                  >
-                    {hero.ctaSecondary.label}
-                  </Button>
-                </Stack>
-                <Button
-                  component={RouterLink}
-                  to={hero.availability.to}
-                  color="secondary"
-                  endIcon={<ArrowForwardRoundedIcon />}
-                  sx={{ alignSelf: "flex-start" }}
-                >
-                  {hero.availability.label}
-                </Button>
-              </Stack>
-            </Grid>
-            <Grid size={{ xs: 12, md: 5 }}>
-              <Box
+            <Box
+              sx={{
+                position: "absolute",
+                inset: 0,
+                pointerEvents: "none",
+                "&::before": {
+                  content: '""',
+                  position: "absolute",
+                  inset: "-40% 55% 30% -20%",
+                  background:
+                    theme.palette.mode === "light"
+                      ? "radial-gradient(circle at center, rgba(66, 127, 255, 0.25) 0%, rgba(66, 127, 255, 0) 55%)"
+                      : "radial-gradient(circle at center, rgba(96, 139, 255, 0.35) 0%, rgba(96, 139, 255, 0) 60%)",
+                  filter: "blur(40px)",
+                },
+                "&::after": {
+                  content: '""',
+                  position: "absolute",
+                  inset: "18% -45% -25% 55%",
+                  background:
+                    theme.palette.mode === "light"
+                      ? "radial-gradient(circle at center, rgba(120, 170, 255, 0.22) 0%, rgba(120, 170, 255, 0) 60%)"
+                      : "radial-gradient(circle at center, rgba(53, 104, 214, 0.32) 0%, rgba(53, 104, 214, 0) 65%)",
+                  filter: "blur(36px)",
+                },
+              }}
+            />
+            <Stack
+              direction={{ xs: "column", md: "row" }}
+              spacing={{ xs: 5, md: 6 }}
+              sx={{
+                position: "relative",
+                zIndex: 1,
+                px: { xs: 3.5, sm: 5, md: 6 },
+                py: { xs: 4.5, md: 6.5 },
+                alignItems: "stretch",
+              }}
+            >
+              <Stack
+                spacing={3}
                 sx={{
-                  position: "relative",
-                  width: "100%",
-                  display: "flex",
-                  justifyContent: "center",
+                  flexBasis: { md: "44%" },
+                  alignItems: { xs: "center", md: "flex-start" },
+                  textAlign: { xs: "center", md: "left" },
+                  pb: { xs: 4, md: 5 },
                 }}
               >
                 <Box
                   sx={{
-                    position: "absolute",
-                    inset: { xs: 16, md: 24 },
-                    background:
-                      "linear-gradient(180deg, rgba(31,111,235,0.24) 0%, rgba(241,246,255,0) 100%)",
-                    borderRadius: "50%",
-                    filter: "blur(45px)",
+                    position: "relative",
+                    width: "100%",
+                    maxWidth: { xs: 280, sm: 320, md: 360 },
                   }}
-                />
-                <Avatar
-                  src={hero.portrait.src}
-                  alt={hero.portrait.alt}
-                  variant="rounded"
+                >
+                  <Box
+                    sx={{
+                      position: "absolute",
+                      inset: "-10%",
+                      background:
+                        theme.palette.mode === "light"
+                          ? "linear-gradient(180deg, rgba(66, 127, 255, 0.2) 0%, rgba(255,255,255,0) 70%)"
+                          : "linear-gradient(180deg, rgba(83, 134, 255, 0.28) 0%, rgba(18,26,48,0) 75%)",
+                      borderRadius: "46%",
+                      filter: "blur(32px)",
+                    }}
+                  />
+                  <Box
+                    sx={{
+                      position: "relative",
+                      borderRadius: (theme) => theme.tokens.radius.xl,
+                      padding: "12px",
+                      background:
+                        theme.palette.mode === "light"
+                          ? "linear-gradient(160deg, rgba(255,255,255,0.45), rgba(235,241,255,0.75))"
+                          : "linear-gradient(150deg, rgba(20,28,48,0.9), rgba(46,62,110,0.85))",
+                      border: `1px solid ${theme.tokens.colors.border}`,
+                      boxShadow:
+                        theme.palette.mode === "light"
+                          ? "0 24px 60px rgba(17, 36, 83, 0.18)"
+                          : "0 28px 70px rgba(0, 0, 0, 0.55)",
+                    }}
+                  >
+                    <Avatar
+                      src={hero.portrait.src}
+                      alt={hero.portrait.alt}
+                      variant="rounded"
+                      sx={{
+                        width: "100%",
+                        height: "100%",
+                        borderRadius: (theme) => theme.tokens.radius.lg,
+                      }}
+                    />
+                  </Box>
+                  <Stack
+                    direction="row"
+                    spacing={1}
+                    sx={{
+                      position: "absolute",
+                      bottom: -24,
+                      left: "50%",
+                      transform: "translateX(-50%)",
+                      alignItems: "center",
+                      background:
+                        theme.palette.mode === "light"
+                          ? "rgba(17, 36, 83, 0.86)"
+                          : "rgba(5, 12, 24, 0.88)",
+                      color: "common.white",
+                      borderRadius: 999,
+                      px: 2.5,
+                      py: 1,
+                      boxShadow: "0 12px 24px rgba(12, 28, 75, 0.35)",
+                    }}
+                  >
+                    <Box
+                      sx={{
+                        width: 8,
+                        height: 8,
+                        borderRadius: "50%",
+                        backgroundColor: theme.palette.success.main,
+                      }}
+                    />
+                    <Typography variant="caption" sx={{ fontWeight: 600, letterSpacing: 0.4 }}>
+                      Available for senior roles
+                    </Typography>
+                  </Stack>
+                </Box>
+              </Stack>
+              <Stack
+                spacing={{ xs: 3, md: 3.5 }}
+                sx={{
+                  flex: 1,
+                  justifyContent: "center",
+                  maxWidth: { md: 620 },
+                }}
+              >
+                <Stack spacing={{ xs: 1.5, md: 2 }}>
+                  <Stack direction="row" spacing={1.5} alignItems="center">
+                    <Pill
+                      label={hero.greeting}
+                      size="small"
+                      sx={{
+                        backgroundColor:
+                          theme.palette.mode === "light"
+                            ? "rgba(31, 111, 235, 0.12)"
+                            : "rgba(98, 132, 218, 0.22)",
+                        color:
+                          theme.palette.mode === "light"
+                            ? theme.palette.brand.secondary
+                            : "rgba(221, 230, 255, 0.92)",
+                        fontWeight: 600,
+                        letterSpacing: 0.3,
+                      }}
+                    />
+                    {primaryHeroMetric && (
+                      <Typography variant="body2" color="text.secondary">
+                        {primaryHeroMetric.value} · {primaryHeroMetric.title.toLowerCase()}
+                      </Typography>
+                    )}
+                  </Stack>
+                  <Typography
+                    variant="display"
+                    sx={{
+                      lineHeight: 1.05,
+                      letterSpacing: "-0.015em",
+                    }}
+                  >
+                    {hero.name}
+                  </Typography>
+                  <Typography
+                    variant="h2"
+                    sx={{
+                      color: theme.palette.text.secondary,
+                      fontWeight: 500,
+                      letterSpacing: { xs: "0.01em", md: "0.005em" },
+                      maxWidth: { md: "80%" },
+                    }}
+                  >
+                    {hero.title}
+                  </Typography>
+                </Stack>
+                <Typography
+                  variant="subtitle1"
                   sx={{
-                    width: { xs: 280, md: 380 },
-                    height: { xs: 280, md: 380 },
-                    borderRadius: "28px",
-                    boxShadow:
-                      "0 24px 48px rgba(31, 111, 235, 0.18), 0 6px 18px rgba(20, 63, 141, 0.2)",
+                    color: theme.palette.text.secondary,
+                    fontSize: { xs: "1.05rem", md: "1.14rem" },
+                    lineHeight: { xs: 1.65, md: 1.75 },
                   }}
-                />
-              </Box>
-            </Grid>
-          </Grid>
+                >
+                  {hero.subtitle}
+                </Typography>
+                <Stack spacing={1.25}>
+                  {hero.credentials.map((line) => (
+                    <Typography
+                      key={line}
+                      variant="body1"
+                      sx={{ color: theme.palette.text.primary, lineHeight: 1.7 }}
+                    >
+                      {line}
+                    </Typography>
+                  ))}
+                </Stack>
+                <Stack
+                  spacing={{ xs: 1.5, sm: 2 }}
+                  direction={{ xs: "column", sm: "row" }}
+                  sx={{ pt: { xs: 0.5, md: 1 } }}
+                >
+                  <PrimaryButton
+                    component={RouterLink}
+                    to={hero.ctaPrimary.to}
+                    endIcon={<ArrowForwardRoundedIcon />}
+                    size="large"
+                    sx={{ minWidth: { sm: 220 } }}
+                  >
+                    {hero.ctaPrimary.label}
+                  </PrimaryButton>
+                  <GhostButton
+                    component={RouterLink}
+                    to={hero.ctaSecondary.to}
+                    size="large"
+                    sx={{
+                      borderRadius: 999,
+                      px: 3,
+                      borderWidth: 1.5,
+                    }}
+                  >
+                    {hero.ctaSecondary.label}
+                  </GhostButton>
+                </Stack>
+                <GhostButton
+                  component={RouterLink}
+                  to={hero.availability.to}
+                  variant="text"
+                  color="secondary"
+                  endIcon={<ArrowForwardRoundedIcon />}
+                  sx={{
+                    alignSelf: { xs: "flex-start" },
+                    fontWeight: 600,
+                    mt: { xs: 0.5, md: 1 },
+                  }}
+                >
+                  {hero.availability.label}
+                </GhostButton>
+              </Stack>
+            </Stack>
+          </Box>
         </Container>
       </Box>
 
-      <Box sx={{ py: { xs: 8, md: 10 } }}>
+      <Box component="section" sx={{ py: { xs: 6, md: 8 }, pt: { md: 6 } }}>
         <Container>
-          <Grid container spacing={3}>
+          <Grid container spacing={{ xs: 3, md: 3.5 }}>
             {metrics.map(({ value, title, description }) => (
               <Grid size={{ xs: 12, sm: 6, md: 3 }} key={title}>
-                  <Card
-                    variant="outlined"
-                    sx={{
-                      height: "100%",
-                      background:
-                        "linear-gradient(150deg, rgba(90,200,250,0.18) 0%, rgba(241,246,255,1) 100%)",
-                    }}
-                  >
-                  <CardContent>
-                    <Typography
-                      variant="h4"
-                      component="p"
-                      sx={{ fontWeight: 700, mb: 2 }}
-                    >
-                      {value}
-                    </Typography>
-                    <Typography variant="h6" sx={{ mb: 1.5 }}>
-                      {title}
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      {description}
-                    </Typography>
-                  </CardContent>
-                </Card>
+                <ImpactStatCard value={value} label={title} description={description} />
               </Grid>
             ))}
           </Grid>
@@ -195,163 +393,11 @@ const HomePage = () => {
           <Grid container spacing={4}>
             {caseStudies.map((item) => (
               <Grid size={{ xs: 12, md: 6 }} key={item.id}>
-                <Card
-                  sx={{
-                    height: "100%",
-                    display: "flex",
-                    flexDirection: "column",
-                    background:
-                      item.id === "divar"
-                        ? "linear-gradient(135deg, rgba(17, 76, 170, 0.78), rgba(60, 151, 255, 0.72))"
-                        : "linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(227, 241, 255, 0.88))",
-                    border:
-                      item.id === "divar"
-                        ? "1px solid rgba(255, 255, 255, 0.28)"
-                        : "1px solid rgba(17, 76, 170, 0.08)",
-                    color: item.id === "divar" ? "primary.contrastText" : "inherit",
-                    boxShadow:
-                      item.id === "divar"
-                        ? "0 24px 50px rgba(17, 76, 170, 0.24)"
-                        : "0 12px 32px rgba(15, 82, 186, 0.08)",
-                  }}
-                >
-                  <CardContent sx={{ flexGrow: 1, pb: 3 }}>
-                    <Stack spacing={2.5}>
-                      <Stack
-                        direction="row"
-                        alignItems="center"
-                        justifyContent="space-between"
-                        spacing={2}
-                      >
-                        <Typography
-                          variant="subtitle2"
-                          sx={{
-                            fontWeight: 600,
-                            textTransform: "uppercase",
-                            letterSpacing: "0.18em",
-                            color: item.id === "divar" ? "brand.accent" : "brand.secondary",
-                          }}
-                        >
-                          Case {item.number}
-                        </Typography>
-                        <Chip
-                          label={item.tag}
-                          size="small"
-                          sx={{
-                            fontWeight: 600,
-                            letterSpacing: 0.4,
-                            color:
-                              item.id === "divar" ? "rgba(255, 255, 255, 0.9)" : "brand.secondary",
-                            backgroundColor:
-                              item.id === "divar"
-                                ? "rgba(255, 255, 255, 0.18)"
-                                : "rgba(227, 241, 255, 0.8)",
-                            borderColor:
-                              item.id === "divar" ? "rgba(255, 255, 255, 0.4)" : "transparent",
-                            borderWidth: item.id === "divar" ? 1 : 0,
-                            borderStyle: "solid",
-                          }}
-                        />
-                      </Stack>
-                      <Typography
-                        variant="h5"
-                        sx={{
-                          fontWeight: 700,
-                          lineHeight: 1.32,
-                          color: item.id === "divar" ? "rgba(255, 255, 255, 0.95)" : "text.primary",
-                        }}
-                      >
-                        {item.title}
-                      </Typography>
-                      <Typography
-                        variant="subtitle2"
-                        sx={{
-                          fontWeight: 500,
-                          color:
-                            item.id === "divar"
-                              ? "rgba(255, 255, 255, 0.85)"
-                              : "text.secondary",
-                        }}
-                      >
-                        {item.platform}
-                        {item.platformDetail && (
-                          <Box
-                            component="span"
-                            sx={{
-                              display: "inline-block",
-                              ml: 0.75,
-                              color:
-                                item.id === "divar"
-                                  ? "rgba(255, 255, 255, 0.72)"
-                                  : "text.secondary",
-                              fontWeight: 400,
-                            }}
-                          >
-                            ({item.platformDetail})
-                          </Box>
-                        )}
-                      </Typography>
-                      {item.stat && (
-                        <Typography
-                          variant="body2"
-                          sx={{
-                            color:
-                              item.id === "divar"
-                                ? "rgba(255, 255, 255, 0.88)"
-                                : "text.secondary",
-                          }}
-                        >
-                          {item.stat}
-                        </Typography>
-                      )}
-                      <Stack direction="row" spacing={1} flexWrap="wrap">
-                        {item.tags.map((tag) => (
-                          <Chip
-                            key={tag}
-                            label={tag}
-                            size="small"
-                            sx={{
-                              backgroundColor:
-                                item.id === "divar"
-                                  ? "rgba(255, 255, 255, 0.16)"
-                                  : "rgba(31, 111, 235, 0.12)",
-                              color:
-                                item.id === "divar"
-                                  ? "rgba(255, 255, 255, 0.9)"
-                                  : "brand.secondary",
-                            }}
-                          />
-                        ))}
-                      </Stack>
-                    </Stack>
-                  </CardContent>
-                  <CardActions sx={{ px: 3, pb: 3, pt: 0, gap: 1 }}>
-                    <Button
-                      component={RouterLink}
-                      to={item.to}
-                      variant={item.id === "divar" ? "contained" : "outlined"}
-                      color="primary"
-                      fullWidth
-                      endIcon={<ArrowForwardRoundedIcon />}
-                    >
-                      Explore
-                    </Button>
-                    <Button
-                      fullWidth
-                      color="inherit"
-                      endIcon={<PlayCircleOutlineRoundedIcon />}
-                      onClick={() => setSelectedCaseStudy(item.id)}
-                      sx={{
-                        ...(item.id === "divar" && {
-                          color: "inherit",
-                          borderColor: "rgba(255,255,255,0.45)",
-                        }),
-                      }}
-                    >
-                      Recap
-                    </Button>
-                  </CardActions>
-                </Card>
+                <CaseCard
+                  caseStudy={item}
+                  active={item.id === "divar"}
+                  onOpenRecap={() => setSelectedCaseStudy(item.id)}
+                />
               </Grid>
             ))}
           </Grid>
@@ -390,7 +436,21 @@ const HomePage = () => {
                       </Typography>
                       <Stack direction="row" spacing={1} flexWrap="wrap">
                         {experience.tags.map((tag) => (
-                          <Chip key={tag} label={tag} />
+                          <Pill
+                            key={tag}
+                            label={tag}
+                            size="small"
+                            sx={{
+                              backgroundColor:
+                                theme.palette.mode === "light"
+                                  ? "rgba(31, 111, 235, 0.12)"
+                                  : "rgba(98, 132, 218, 0.22)",
+                              color:
+                                theme.palette.mode === "light"
+                                  ? theme.palette.brand.secondary
+                                  : "rgba(221, 230, 255, 0.92)",
+                            }}
+                          />
                         ))}
                       </Stack>
                     </Stack>
@@ -416,35 +476,60 @@ const HomePage = () => {
       </Box>
 
       <Box
-        sx={{
-          py: { xs: 8, md: 10 },
-          background: "linear-gradient(135deg, rgba(31,111,235,0.08), transparent)",
-        }}
+        component="section"
+        sx={(theme) => ({
+          py: { xs: 6, md: 8 },
+          background:
+            theme.palette.mode === "light"
+              ? "linear-gradient(135deg, rgba(34,84,255,0.05), transparent 70%)"
+              : "linear-gradient(135deg, rgba(48,86,176,0.18), rgba(4,7,15,0))",
+        })}
       >
-        <Container>
+        <Container maxWidth="md">
           <Card
-            sx={{
-              p: { xs: 4, md: 6 },
-              background:
-                "linear-gradient(135deg, rgba(12,53,148,0.92), rgba(31,111,235,0.88))",
-              color: "primary.contrastText",
-            }}
+            component="footer"
+            elevation={0}
+            sx={(theme) => ({
+              borderRadius: theme.tokens.radius.surface,
+              border: `1px solid ${theme.tokens.colors.border}`,
+              background: theme.palette.surface.base,
+              boxShadow: "none",
+              display: "flex",
+              flexDirection: "column",
+            })}
           >
-            <Stack spacing={2} alignItems={{ xs: "flex-start", md: "center" }} textAlign={{ xs: "left", md: "center" }}>
-              <Typography variant="h3">Let's Connect</Typography>
-              <Typography variant="h6" sx={{ maxWidth: 600 }}>
-                Feel free to get in touch
-              </Typography>
-              <Button
-                component="a"
-                href="mailto:sdarimasih@gmail.com"
-                variant="contained"
-                color="secondary"
-                size="large"
-              >
+            <CardContent
+              sx={{
+                px: { xs: 5, md: 5 },
+                pt: { xs: 5, md: 5 },
+                pb: { xs: 3.5, md: 3.5 },
+                "&:last-child": { pb: { xs: 3.5, md: 3.5 } },
+              }}
+            >
+              <Stack spacing={0.75}>
+                <Typography variant="h3" component="h2">
+                  Let’s connect
+                </Typography>
+                <Typography variant="subtitle1" color="text.secondary" sx={{ lineHeight: 1.6 }}>
+                  Share your challenge or say hello—happy to explore product design collaborations.
+                </Typography>
+              </Stack>
+              <Divider sx={{ mt: 3 }} />
+            </CardContent>
+            <CardActions
+              sx={{
+                px: { xs: 5, md: 5 },
+                pb: { xs: 5, md: 5 },
+                pt: 0,
+                flexDirection: "column",
+                alignItems: "stretch",
+                gap: 1,
+              }}
+            >
+              <Button component="a" href="mailto:sdarimasih@gmail.com" variant="contained" size="large">
                 sdarimasih@gmail.com
               </Button>
-              <Stack direction="row" spacing={2}>
+              <Stack direction={{ xs: "column", sm: "row" }} spacing={1}>
                 {socialLinks.map(({ label, href }) => (
                   <Button
                     key={label}
@@ -452,14 +537,14 @@ const HomePage = () => {
                     href={href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    variant="text"
-                    color="inherit"
+                    variant="outlined"
+                    fullWidth
                   >
                     {label}
                   </Button>
                 ))}
               </Stack>
-            </Stack>
+            </CardActions>
           </Card>
         </Container>
       </Box>
