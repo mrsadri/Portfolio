@@ -16891,8 +16891,8 @@ var MainLayout_default = MainLayout;
 
 // src/App.tsx
 var jsx_dev_runtime5 = __toESM(require_jsx_dev_runtime(), 1);
-var HomePage = import_react3.lazy(() => import("./chunk-4fq7qvqk.js"));
-var MyStoryPage = import_react3.lazy(() => import("./chunk-xysdh5hk.js"));
+var HomePage = import_react3.lazy(() => import("./chunk-p4phzr4k.js"));
+var MyStoryPage = import_react3.lazy(() => import("./chunk-tfdbx57p.js"));
 var ContactPage = import_react3.lazy(() => import("./chunk-w0qxyg9x.js"));
 var ResumePage = import_react3.lazy(() => import("./chunk-gv98w1dc.js"));
 var CaseStudyDivarPage = import_react3.lazy(() => import("./chunk-1pnjw1hs.js"));
