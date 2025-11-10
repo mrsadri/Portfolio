@@ -39,6 +39,8 @@ build/
 
 # Build outputs
 dist/
+!docs/dist/
+!docs/dist/**
 
 # Bun cache
 .bun-cache/
