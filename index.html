@@ -115,8 +115,24 @@
         }
 
         const usesGitHubPages = window.location.hostname.endsWith("github.io");
-        const assetsDir = usesGitHubPages ? "client" : "dist";
-        script.src = `${basePath}/${assetsDir}/main.js`;
+        const primaryDir = usesGitHubPages ? "client" : "dist";
+        const fallbackDir = "dist";
+
+        const setSrc = (dir) => {
+          script.src = `${basePath}/${dir}/main.js`;
+        };
+
+        if (usesGitHubPages) {
+          script.addEventListener("error", () => {
+            if (script.dataset.fallbackTried === "true") {
+              return;
+            }
+            script.dataset.fallbackTried = "true";
+            setSrc(fallbackDir);
+          });
+        }
+
+        setSrc(primaryDir);
         document.body.appendChild(script);
       })();
     </script>
