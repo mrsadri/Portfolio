@@ -89,6 +89,52 @@
       }
     </script>
     <script>
+      (function restoreSpaPath() {
+        var storageKey = "portfolio-spa-redirect";
+        var redirectPath = null;
+
+        try {
+          redirectPath = sessionStorage.getItem(storageKey);
+          if (redirectPath) {
+            sessionStorage.removeItem(storageKey);
+          }
+        } catch (error) {
+          redirectPath = null;
+        }
+
+        if (!redirectPath) {
+          return;
+        }
+
+        var usesGitHubPages = window.location.hostname.endsWith("github.io");
+        var repoSegment = "";
+
+        if (usesGitHubPages) {
+          var segments = window.location.pathname.split("/").filter(Boolean);
+          if (segments.length > 0) {
+            repoSegment = "/" + segments[0];
+          }
+        }
+
+        if (repoSegment && !redirectPath.startsWith(repoSegment)) {
+          redirectPath = redirectPath.startsWith("/")
+            ? repoSegment + redirectPath
+            : repoSegment + "/" + redirectPath;
+        } else if (!redirectPath.startsWith("/")) {
+          redirectPath = "/" + redirectPath;
+        }
+
+        var current =
+          window.location.pathname + window.location.search + window.location.hash;
+
+        if (current === redirectPath) {
+          return;
+        }
+
+        window.history.replaceState(null, "", redirectPath);
+      })();
+    </script>
+    <script>
       (function loadBundle() {
         let basePath = "";
 

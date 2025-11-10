@@ -29,15 +29,29 @@
     </main>
     <script>
       (function () {
+        var storageKey = "portfolio-spa-redirect";
+        var fullPath = window.location.pathname + window.location.search + window.location.hash;
+        try {
+          sessionStorage.setItem(storageKey, fullPath);
+        } catch (error) {
+          console.warn("Unable to persist redirect path in sessionStorage.", error);
+        }
+
         var pathSegments = window.location.pathname.split("/").filter(Boolean);
-        var repoSegment = pathSegments.length > 0 ? "/" + pathSegments[0] : "";
-        var basePath = repoSegment ? repoSegment + "/" : "/";
-        var target = basePath;
+        var repoSegment = "";
+        if (window.location.hostname.endsWith("github.io") && pathSegments.length > 0) {
+          repoSegment = "/" + pathSegments[0];
+        }
+
+        var target = repoSegment ? repoSegment + "/" : "/";
         var link = document.getElementById("home-link");
-        link.setAttribute("href", target);
+        if (link) {
+          link.setAttribute("href", target);
+        }
+
         setTimeout(function () {
           window.location.replace(target);
-        }, 2500);
+        }, 200);
       })();
     </script>
   </body>
