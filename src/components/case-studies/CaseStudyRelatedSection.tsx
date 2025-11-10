@@ -11,6 +11,7 @@ import {
 } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 import type { CaseStudyEntry } from "../../data/caseStudies";
+import { mergeSx } from "../../utils/sx";
 
 type CaseStudyRelatedSectionProps = {
   eyebrow: string;
@@ -47,7 +48,7 @@ const CaseStudyRelatedSection = ({
   secondaryCta,
   sectionSx,
 }: CaseStudyRelatedSectionProps) => (
-  <Box component="section" sx={[defaultSectionSx, sectionSx]}>
+  <Box component="section" sx={mergeSx(defaultSectionSx, sectionSx)}>
     <Container maxWidth="lg">
       <Stack spacing={{ xs: 4, md: 6 }}>
         <Stack spacing={1.5} sx={{ textAlign: { xs: "center", md: "left" } }}>

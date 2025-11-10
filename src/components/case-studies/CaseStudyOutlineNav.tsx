@@ -1,6 +1,7 @@
 import { Button, Divider, Stack, Typography, type SxProps, type Theme } from "@mui/material";
 import type { MouseEvent as ReactMouseEvent } from "react";
 import type { CaseStudySection } from "../../data/caseStudies";
+import { mergeSx } from "../../utils/sx";
 
 type CaseStudyOutlineNavProps = {
   sections: readonly CaseStudySection[];
@@ -21,8 +22,8 @@ const CaseStudyOutlineNav = ({
     component="nav"
     aria-label="Case study sections"
     spacing={1}
-    sx={(theme) => [
-      {
+    sx={mergeSx(
+      (theme) => ({
         position: { md: "sticky" },
         top: { md: 140 },
         borderRadius: theme.tokens.radius.surface,
@@ -37,9 +38,9 @@ const CaseStudyOutlineNav = ({
             ? "rgba(34,84,255,0.18)"
             : "rgba(98,132,218,0.32)"
         }`,
-      },
+      }),
       containerSx,
-    ]}
+    )}
   >
     <Typography variant="overline" color="text.secondary">
       {outlineLabel}
