@@ -104,21 +104,24 @@
           }
         }
 
-        if (!basePath && window.location.hostname.endsWith("github.io")) {
-          const segments = window.location.pathname.split("/").filter(Boolean);
-          if (segments.length > 0) {
-            basePath = `/${segments[0]}`;
+        const usesGitHubPages = window.location.hostname.endsWith("github.io");
+        const segments = window.location.pathname.split("/").filter(Boolean);
+
+        if (usesGitHubPages && segments.length > 0) {
+          const repoSegment = `/${segments[0]}`;
+          if (!basePath || basePath.toLowerCase() !== repoSegment.toLowerCase()) {
+            basePath = repoSegment;
           }
         }
 
-        const usesGitHubPages = window.location.hostname.endsWith("github.io");
+        const assetPrefix = basePath ? `${basePath}/` : "/";
         const primaryDir = usesGitHubPages ? "client" : "dist";
         const fallbackDir = "dist";
 
         const appendModule = (dir) => {
           const script = document.createElement("script");
           script.type = "module";
-          script.src = `${basePath}/${dir}/main.js`;
+          script.src = `${assetPrefix}${dir}/main.js`;
           if (dir !== fallbackDir && usesGitHubPages) {
             script.addEventListener(
               "error",

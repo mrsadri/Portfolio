@@ -38,11 +38,11 @@ build/
 *.min.css
 
 # Build outputs
-dist/
-!docs/dist/
-!docs/dist/**
-!docs/client/
-!docs/client/**
+# dist/
+# !docs/dist/
+# !docs/dist/**
+# !docs/client/
+# !docs/client/**
 
 # Bun cache
 .bun-cache/
