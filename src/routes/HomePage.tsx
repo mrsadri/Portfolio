@@ -194,9 +194,11 @@ const HomePage = () => {
                 maxWidth: { md: "70%" },
                 flexGrow: 1,
                 justifyContent: "center",
+                alignItems: { xs: "center", md: "flex-start" },
+                textAlign: { xs: "center", md: "left" },
               }}
             >
-              <Stack spacing={{ xs: 1.4, md: 1.8 }}>
+              <Stack spacing={{ xs: 1.4, md: 1.8 }} sx={{ width: "100%" }}>
                 <Stack
                   direction={{ xs: "column", sm: "row" }}
                   spacing={{ xs: 1, sm: 1.5 }}
@@ -218,11 +220,6 @@ const HomePage = () => {
                       letterSpacing: 0.3,
                     }}
                   />
-                  {primaryHeroMetric && (
-                    <Typography variant="body2" color="text.secondary">
-                      {primaryHeroMetric.value} · {primaryHeroMetric.title.toLowerCase()}
-                    </Typography>
-                  )}
                 </Stack>
                 <Typography
                   variant="display"

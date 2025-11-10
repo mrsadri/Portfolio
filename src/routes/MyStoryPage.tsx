@@ -295,9 +295,6 @@ const MyStoryPage = () => {
               textAlign: { xs: "left", md: "center" },
             }}
           >
-            <Typography variant="tag" color="brand.secondary" sx={{ textAlign: "left" }}>
-              My story
-            </Typography>
             <Typography variant="display">{storyHero.title}</Typography>
             <Typography variant="hero" color="text.secondary">
               {storyHero.subtitle}
