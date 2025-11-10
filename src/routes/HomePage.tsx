@@ -105,227 +105,208 @@ const HomePage = () => {
         <Container>
           <Stack
             direction={{ xs: "column", md: "row" }}
-            spacing={{ xs: 3, md: 4 }}
+            spacing={{ xs: 4, md: 3.5 }}
             sx={{
-              px: { xs: 0, md: 3 },
-              py: { xs: 0, md: 2 },
               alignItems: { xs: "center", md: "stretch" },
+              px: { xs: 0, md: 2 },
             }}
           >
-              <Stack
-                spacing={2.75}
+            <Stack
+              spacing={2.5}
+              sx={{
+                flexBasis: { md: "30%" },
+                maxWidth: { md: "30%" },
+                flexShrink: 0,
+                alignItems: { xs: "center", md: "flex-start" },
+                textAlign: { xs: "center", md: "left" },
+                width: "100%",
+              }}
+            >
+              <Box
                 sx={{
-                  flexBasis: { md: "30%" },
-                  maxWidth: { md: "30%" },
-                  flexGrow: { md: 0 },
-                  flexShrink: 0,
-                  alignItems: { xs: "center", md: "flex-start" },
-                  textAlign: { xs: "center", md: "left" },
-                  pb: { xs: 2, md: 0 },
+                  position: "relative",
+                  width: "100%",
+                  maxWidth: { xs: 260, sm: 300, md: 320 },
                 }}
               >
-                <Box
+                <Avatar
+                  src={hero.portrait.src}
+                  alt={hero.portrait.alt}
+                  variant="rounded"
                   sx={{
-                    position: "relative",
                     width: "100%",
-                    maxWidth: { xs: 280, sm: 320, md: 360 },
+                    height: "100%",
+                    borderRadius: (theme) => theme.tokens.radius.lg,
+                    border: `1px solid ${theme.tokens.colors.border}`,
+                    boxShadow:
+                      theme.palette.mode === "light"
+                        ? "0 18px 40px rgba(17, 36, 83, 0.18)"
+                        : "0 20px 50px rgba(0, 0, 0, 0.55)",
+                  }}
+                />
+                <Stack
+                  direction="row"
+                  spacing={1}
+                  sx={{
+                    position: "absolute",
+                    bottom: -24,
+                    left: "50%",
+                    transform: "translateX(-50%)",
+                    alignItems: "center",
+                    background:
+                      theme.palette.mode === "light"
+                        ? "rgba(17, 36, 83, 0.86)"
+                        : "rgba(5, 12, 24, 0.88)",
+                    color: "common.white",
+                    borderRadius: 999,
+                    px: 2.25,
+                    py: 0.75,
+                    boxShadow: "0 12px 24px rgba(12, 28, 75, 0.35)",
+                    whiteSpace: "nowrap",
                   }}
                 >
                   <Box
                     sx={{
-                      position: "absolute",
-                      inset: "-10%",
-                      background:
-                        theme.palette.mode === "light"
-                          ? "linear-gradient(180deg, rgba(66, 127, 255, 0.2) 0%, rgba(255,255,255,0) 70%)"
-                          : "linear-gradient(180deg, rgba(83, 134, 255, 0.28) 0%, rgba(18,26,48,0) 75%)",
-                      borderRadius: "46%",
-                      filter: "blur(32px)",
+                      width: 8,
+                      height: 8,
+                      borderRadius: "50%",
+                      backgroundColor: theme.palette.success.main,
+                      animation: "availabilityPulse 1.6s ease-in-out infinite",
+                      "@keyframes availabilityPulse": {
+                        "0%, 100%": { opacity: 1 },
+                        "50%": { opacity: 0.2 },
+                      },
                     }}
                   />
-                  <Box
-                    sx={{
-                      position: "relative",
-                      borderRadius: (theme) => theme.tokens.radius.xl,
-                      padding: "12px",
-                      background:
-                        theme.palette.mode === "light"
-                          ? "linear-gradient(160deg, rgba(255,255,255,0.45), rgba(235,241,255,0.75))"
-                          : "linear-gradient(150deg, rgba(20,28,48,0.9), rgba(46,62,110,0.85))",
-                      border: `1px solid ${theme.tokens.colors.border}`,
-                      boxShadow:
-                        theme.palette.mode === "light"
-                          ? "0 24px 60px rgba(17, 36, 83, 0.18)"
-                          : "0 28px 70px rgba(0, 0, 0, 0.55)",
-                    }}
+                  <Typography
+                    variant="caption"
+                    sx={{ fontWeight: 600, letterSpacing: 0.4, whiteSpace: "nowrap" }}
                   >
-                    <Avatar
-                      src={hero.portrait.src}
-                      alt={hero.portrait.alt}
-                      variant="rounded"
-                      sx={{
-                        width: "100%",
-                        height: "100%",
-                        borderRadius: (theme) => theme.tokens.radius.lg,
-                      }}
-                    />
-                  </Box>
-                  <Stack
-                    direction="row"
-                    spacing={1}
+                    Available for senior roles
+                  </Typography>
+                </Stack>
+              </Box>
+            </Stack>
+            <Stack
+              spacing={{ xs: 2.25, md: 2.75 }}
+              sx={{
+                flexBasis: { md: "70%" },
+                maxWidth: { md: "70%" },
+                flexGrow: 1,
+                justifyContent: "center",
+              }}
+            >
+              <Stack spacing={{ xs: 1.4, md: 1.8 }}>
+                <Stack
+                  direction={{ xs: "column", sm: "row" }}
+                  spacing={{ xs: 1, sm: 1.5 }}
+                  alignItems={{ xs: "center", sm: "flex-start" }}
+                >
+                  <Pill
+                    label={hero.greeting}
+                    size="small"
                     sx={{
-                      position: "absolute",
-                      bottom: -24,
-                      left: "50%",
-                      transform: "translateX(-50%)",
-                      alignItems: "center",
-                      background:
+                      backgroundColor:
                         theme.palette.mode === "light"
-                          ? "rgba(17, 36, 83, 0.86)"
-                          : "rgba(5, 12, 24, 0.88)",
-                      color: "common.white",
-                      borderRadius: 999,
-                      px: 2.5,
-                      py: 1,
-                      boxShadow: "0 12px 24px rgba(12, 28, 75, 0.35)",
+                          ? "rgba(31, 111, 235, 0.12)"
+                          : "rgba(98, 132, 218, 0.22)",
+                      color:
+                        theme.palette.mode === "light"
+                          ? theme.palette.brand.secondary
+                          : "rgba(221, 230, 255, 0.92)",
+                      fontWeight: 600,
+                      letterSpacing: 0.3,
                     }}
-                  >
-                    <Box
-                      sx={{
-                        width: 8,
-                        height: 8,
-                        borderRadius: "50%",
-                        backgroundColor: theme.palette.success.main,
-                        animation: "availabilityPulse 1.8s ease-in-out infinite",
-                        "@keyframes availabilityPulse": {
-                          "0%, 100%": { opacity: 1 },
-                          "50%": { opacity: 0.25 },
-                        },
-                      }}
-                    />
-                    <Typography variant="caption" sx={{ fontWeight: 600, letterSpacing: 0.4 }}>
-                      Available for senior roles
+                  />
+                  {primaryHeroMetric && (
+                    <Typography variant="body2" color="text.secondary">
+                      {primaryHeroMetric.value} · {primaryHeroMetric.title.toLowerCase()}
                     </Typography>
-                  </Stack>
-                </Box>
-              </Stack>
-              <Stack
-                spacing={{ xs: 2.5, md: 3 }}
-                sx={{
-                  flexBasis: { md: "70%" },
-                  maxWidth: { md: "70%" },
-                  flexGrow: 1,
-                  justifyContent: "center",
-                }}
-              >
-                <Stack spacing={{ xs: 1.5, md: 2 }}>
-                  <Stack direction="row" spacing={1.5} alignItems="center">
-                    <Pill
-                      label={hero.greeting}
-                      size="small"
-                      sx={{
-                        backgroundColor:
-                          theme.palette.mode === "light"
-                            ? "rgba(31, 111, 235, 0.12)"
-                            : "rgba(98, 132, 218, 0.22)",
-                        color:
-                          theme.palette.mode === "light"
-                            ? theme.palette.brand.secondary
-                            : "rgba(221, 230, 255, 0.92)",
-                        fontWeight: 600,
-                        letterSpacing: 0.3,
-                      }}
-                    />
-                    {primaryHeroMetric && (
-                      <Typography variant="body2" color="text.secondary">
-                        {primaryHeroMetric.value} · {primaryHeroMetric.title.toLowerCase()}
-                      </Typography>
-                    )}
-                  </Stack>
-                  <Typography
-                    variant="display"
-                    sx={{
-                      lineHeight: 1.05,
-                      letterSpacing: "-0.015em",
-                    }}
-                  >
-                    {hero.name}
-                  </Typography>
-                  <Typography
-                    variant="h2"
-                    sx={{
-                      color: theme.palette.text.secondary,
-                      fontWeight: 500,
-                      letterSpacing: { xs: "0.01em", md: "0.005em" },
-                      maxWidth: { md: "80%" },
-                    }}
-                  >
-                    {hero.title}
-                  </Typography>
+                  )}
                 </Stack>
                 <Typography
-                  variant="subtitle1"
+                  variant="display"
+                  sx={{
+                    lineHeight: 1.05,
+                    letterSpacing: "-0.015em",
+                  }}
+                >
+                  {hero.name}
+                </Typography>
+                <Typography
+                  variant="h2"
                   sx={{
                     color: theme.palette.text.secondary,
-                    fontSize: { xs: "1.05rem", md: "1.14rem" },
-                    lineHeight: { xs: 1.65, md: 1.75 },
+                    fontWeight: 500,
+                    letterSpacing: { xs: "0.01em", md: "0.005em" },
+                    maxWidth: { md: "78%" },
                   }}
                 >
-                  {hero.subtitle}
+                  {hero.title}
                 </Typography>
-                <Stack spacing={1.25}>
-                  {hero.credentials.map((line) => (
-                    <Typography
-                      key={line}
-                      variant="body1"
-                      sx={{ color: theme.palette.text.primary, lineHeight: 1.7 }}
-                    >
-                      {line}
-                    </Typography>
-                  ))}
-                </Stack>
-                <Stack
-                  spacing={{ xs: 1.5, sm: 2 }}
-                  direction={{ xs: "column", sm: "row" }}
-                  sx={{ pt: { xs: 0.5, md: 1 } }}
+              </Stack>
+              <Typography
+                variant="subtitle1"
+                sx={{
+                  color: theme.palette.text.secondary,
+                  fontSize: { xs: "1.05rem", md: "1.12rem" },
+                  lineHeight: { xs: 1.65, md: 1.7 },
+                }}
+              >
+                {hero.subtitle}
+              </Typography>
+              <Stack spacing={1.1}>
+                {hero.credentials.map((line) => (
+                  <Typography
+                    key={line}
+                    variant="body1"
+                    sx={{ color: theme.palette.text.primary, lineHeight: 1.65 }}
+                  >
+                    {line}
+                  </Typography>
+                ))}
+              </Stack>
+              <Stack
+                spacing={{ xs: 1.4, sm: 1.8 }}
+                direction={{ xs: "column", sm: "row" }}
+                sx={{ pt: { xs: 0.5, md: 0.75 } }}
+              >
+                <PrimaryButton
+                  component={RouterLink}
+                  to={hero.ctaPrimary.to}
+                  endIcon={<ArrowForwardRoundedIcon />}
+                  size="large"
+                  sx={{ minWidth: { sm: 220 } }}
                 >
-                  <PrimaryButton
-                    component={RouterLink}
-                    to={hero.ctaPrimary.to}
-                    endIcon={<ArrowForwardRoundedIcon />}
-                    size="large"
-                    sx={{ minWidth: { sm: 220 } }}
-                  >
-                    {hero.ctaPrimary.label}
-                  </PrimaryButton>
-                  <GhostButton
-                    component={RouterLink}
-                    to={hero.ctaSecondary.to}
-                    size="large"
-                    sx={{
-                      borderRadius: 999,
-                      px: 3,
-                      borderWidth: 1.5,
-                    }}
-                  >
-                    {hero.ctaSecondary.label}
-                  </GhostButton>
-                </Stack>
+                  {hero.ctaPrimary.label}
+                </PrimaryButton>
                 <GhostButton
                   component={RouterLink}
-                  to={hero.availability.to}
-                  variant="text"
-                  color="secondary"
-                  endIcon={<ArrowForwardRoundedIcon />}
+                  to={hero.ctaSecondary.to}
+                  size="large"
                   sx={{
-                    alignSelf: { xs: "flex-start" },
-                    fontWeight: 600,
-                    mt: { xs: 0.5, md: 1 },
+                    borderRadius: 999,
+                    px: 3,
+                    borderWidth: 1.5,
                   }}
                 >
-                  {hero.availability.label}
+                  {hero.ctaSecondary.label}
                 </GhostButton>
               </Stack>
+              <GhostButton
+                component={RouterLink}
+                to={hero.availability.to}
+                variant="text"
+                color="secondary"
+                endIcon={<ArrowForwardRoundedIcon />}
+                sx={{
+                  alignSelf: { xs: "flex-start" },
+                  fontWeight: 600,
+                  mt: { xs: 0.5, md: 0.75 },
+                }}
+              >
+                {hero.availability.label}
+              </GhostButton>
             </Stack>
           </Stack>
         </Container>
