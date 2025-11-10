@@ -11,6 +11,7 @@ import {
   type Theme,
 } from "@mui/material";
 import type { CaseStudyOverview } from "../../data/caseStudies";
+import { mergeSx } from "../../utils/sx";
 
 type CaseStudyOverviewSectionProps = {
   eyebrow: string;
@@ -92,9 +93,9 @@ const CaseStudyOverviewSection = ({
   return (
     <Box component="section" sx={{ py: { xs: 10, md: 14 } }}>
       <Container maxWidth="lg" sx={{ position: "relative" }}>
-        <Box sx={[defaultHeroBackdropSx, heroBackdropSx]} />
+        <Box sx={mergeSx(defaultHeroBackdropSx, heroBackdropSx)} />
 
-        <Box sx={[defaultHeroSurfaceSx, heroSurfaceSx]}>
+        <Box sx={mergeSx(defaultHeroSurfaceSx, heroSurfaceSx)}>
           <Stack spacing={{ xs: 3, md: 4 }}>
             <Stack spacing={{ xs: 1.5, md: 2 }}>
               <Typography variant="eyebrow" color="brand.secondary">
@@ -158,10 +159,7 @@ const CaseStudyOverviewSection = ({
                         }
                         key={stat.label}
                       >
-                        <Card
-                          elevation={0}
-                          sx={[resolvedStatsCardSx, statsCardSx]}
-                        >
+                        <Card elevation={0} sx={mergeSx(resolvedStatsCardSx, statsCardSx)}>
                           <Stack spacing={0.5}>
                             <Typography variant="h4">{stat.value}</Typography>
                             <Typography variant="subtitle2" color="text.secondary">
