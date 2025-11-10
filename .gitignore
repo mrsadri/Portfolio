@@ -41,6 +41,8 @@ build/
 dist/
 !docs/dist/
 !docs/dist/**
+!docs/assets/
+!docs/assets/**
 
 # Bun cache
 .bun-cache/
