@@ -18,3 +18,12 @@
 - **Production Status:** Pending verification
 - **Notes:** Please redeploy and confirm `/contact`, `/my-story`, `/resume`, and both `/case-studies/*` paths load correctly after a hard refresh.
 
+- **Issue ID:** 003
+- **Title:** Production homepage renders blank white screen
+- **Description:** The live homepage loads HTML but all module scripts return 404, leaving users with a blank page.
+- **Causation:** GitHub Pages didn’t serve the primary `main.js` bundle under any of the loader’s candidate paths (`/Portfolio/client/main.js`, `/Portfolio/dist/main.js`, etc.), so none of the SPA assets executed.
+- **Solution Summary:** Copied the compiled bundle (`main.js`, `main.js.map`, `main.css`) into the `docs/` root and expanded the loader fallback list to include `/Portfolio/main.js` and relative `main.js`, guaranteeing at least one accessible script URL.
+- **Local Status:** ✅ Build regenerated with updated asset copies (`bun run build`)
+- **Production Status:** Pending verification
+- **Notes:** After publishing `docs/`, verify that `/Portfolio/main.js` and `/Portfolio/client/chunk-*.js` resolve and the homepage boots normally.
+

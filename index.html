@@ -181,10 +181,13 @@
           repoSegment ? `${repoSegment}/docs/dist/main.js` : null,
           repoSegment ? `${repoSegment}/client/main.js` : null,
           repoSegment ? `${repoSegment}/dist/main.js` : null,
+          repoSegment ? `${repoSegment}/main.js` : null,
           "/docs/client/main.js",
           "/docs/dist/main.js",
           "/dist/main.js",
           "/client/main.js",
+          "/main.js",
+          "main.js",
         ]).filter(Boolean);
 
         const appendModule = (index) => {
