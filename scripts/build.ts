@@ -54,7 +54,16 @@ const notFoundHtml = `<!doctype html>
           repoSegment = "/" + pathSegments[0];
         }
 
-        var target = repoSegment ? repoSegment + "/" : "/";
+        var targetBase = repoSegment ? repoSegment + "/" : "/";
+        var redirectParam = encodeURIComponent(fullPath);
+        var separator =
+          targetBase.indexOf("?") === -1
+            ? "?"
+            : targetBase.endsWith("?") || targetBase.endsWith("&")
+              ? ""
+              : "&";
+        var target = targetBase + separator + "redirect=" + redirectParam;
+
         var link = document.getElementById("home-link");
         if (link) {
           link.setAttribute("href", target);

@@ -2,7 +2,7 @@ import { CssBaseline, ThemeProvider } from "@mui/material";
 import { createTheme, responsiveFontSizes } from "@mui/material/styles";
 import type { Breakpoint, PaletteMode } from "@mui/material";
 import type { CSSProperties, ReactNode } from "react";
-import { createContext, useContext, useEffect, useMemo, useState } from "react";
+import { createContext, useContext, useEffect, useMemo, useRef, useState } from "react";
 
 declare module "@mui/material/styles" {
   interface Palette {
@@ -449,29 +449,54 @@ const ColorModeContext = createContext<ColorModeContextValue>({
   toggleColorMode: () => undefined,
 });
 
+const isBrowser = typeof window !== "undefined";
+
 const getInitialMode = (): PaletteMode => {
-  if (typeof window === "undefined") {
+  if (!isBrowser) {
     return "light";
   }
 
-  const storedMode = window.localStorage.getItem("color-mode");
-  if (storedMode === "light" || storedMode === "dark") {
-    return storedMode;
+  try {
+    const storedMode = window.localStorage.getItem("color-mode");
+    if (storedMode === "light" || storedMode === "dark") {
+      return storedMode;
+    }
+  } catch (error) {
+    if (import.meta.env?.MODE !== "production") {
+      console.warn("[theme] Failed to read persisted color mode", error);
+    }
   }
 
-  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)");
-  return prefersDark.matches ? "dark" : "light";
+  try {
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)");
+    return prefersDark.matches ? "dark" : "light";
+  } catch {
+    return "light";
+  }
 };
 
 export const AppThemeProvider = ({ children }: { children: ReactNode }) => {
   const [mode, setMode] = useState<PaletteMode>(getInitialMode);
+  const persistedModeRef = useRef<PaletteMode | null>(null);
 
   useEffect(() => {
-    if (typeof window === "undefined") {
+    if (!isBrowser) {
       return;
     }
 
-    window.localStorage.setItem("color-mode", mode);
+    if (persistedModeRef.current === mode) {
+      return;
+    }
+
+    persistedModeRef.current = mode;
+
+    try {
+      window.localStorage.setItem("color-mode", mode);
+    } catch (error) {
+      if (import.meta.env?.MODE !== "production") {
+        console.warn("[theme] Failed to persist color mode", error);
+      }
+    }
   }, [mode]);
 
   const value = useMemo<ColorModeContextValue>(

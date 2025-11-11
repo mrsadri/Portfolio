@@ -1,5 +1,4 @@
-import Seo from "../../shared/components/Seo";
-import getSiteUrl from "../../shared/utils/site";
+import { Seo } from "../../shared/seo";
 import CertificatesSection from "./components/CertificatesSection";
 import EducationSection from "./components/EducationSection";
 import HeroSection from "./components/HeroSection";
@@ -20,44 +19,12 @@ import {
   storyHero,
   team,
 } from "./data/content";
+import { myStoryPageMetadata } from "./seo";
 
 const MyStoryPage = () => {
-  const siteUrl = getSiteUrl();
-  const heroImage = gallery[0]?.image;
-
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "ProfilePage",
-    name: "Masih Sadri — My Story",
-    description: storyHero.description,
-    url: `${siteUrl}/my-story`,
-    image: heroImage,
-    primaryTopic: {
-      "@type": "Person",
-      name: "Masih Sadri",
-      jobTitle: "Senior Product Designer",
-      sameAs: [
-        "https://www.linkedin.com/in/msadri/",
-        "https://www.figma.com/@masih",
-        "https://masih.framer.website/",
-      ],
-    },
-  } as const;
-
   return (
     <>
-      <Seo
-        title="My Story — Masih Sadri’s path as a product designer"
-        description="Learn how Masih Sadri blends mentorship, experimentation, and craft to design human experiences—from classroom to product launches."
-        canonicalPath="/my-story"
-        openGraph={{
-          type: "profile",
-          image: heroImage
-            ? { url: heroImage, alt: "Masih Sadri documenting personal journey" }
-            : undefined,
-        }}
-        structuredData={structuredData}
-      />
+      <Seo {...myStoryPageMetadata} />
 
       <HeroSection hero={storyHero} />
       <PhotoGallerySection items={gallery} />

@@ -1,66 +1,27 @@
 import Grid from "@mui/system/Grid";
 import { Box, Container, Stack } from "@mui/material";
-import { useMemo } from "react";
-import Seo from "../../shared/components/Seo";
+import { Seo } from "../../shared/seo";
 import CaseStudySectionCard from "./components/SectionCard";
 import CaseStudyOutlineNav from "./components/CaseStudyOutlineNav";
 import CaseStudyOverviewSection from "./components/CaseStudyOverviewSection";
 import CaseStudyRelatedSection from "./components/CaseStudyRelatedSection";
 import useCaseStudyNavigation from "./hooks/useCaseStudyNavigation";
+import useRelatedCaseStudies from "./hooks/useRelatedCaseStudies";
 import {
   caseStudyEntries,
   setareOverview,
   setareSections,
 } from "./data/content";
-import getSiteUrl from "../../shared/utils/site";
+import { setareCaseStudyMetadata } from "./seo";
 
 const CaseStudySetarePage = () => {
   const { activeSectionId, handleOutlineClick } = useCaseStudyNavigation(setareSections);
-  const siteUrl = getSiteUrl();
 
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "CaseStudy",
-    name: setareOverview.title,
-    description:
-      setareOverview.subtitle ??
-      "Retention and growth strategy that doubled retained revenue at Setare Aval.",
-    author: {
-      "@type": "Person",
-      name: "Masih Sadri",
-      url: siteUrl,
-    },
-    url: `${siteUrl}/case-studies/setare-aval-engagement`,
-    image: setareOverview.heroImage,
-    keyword: ["Retention Strategy", "Lifecycle Marketing", "Growth Design"],
-  } as const;
-
-  const otherCaseStudies = useMemo(
-    () =>
-      caseStudyEntries.filter(
-        (entry) => entry.id !== "setare-aval-engagement",
-      ),
-    [],
-  );
+  const otherCaseStudies = useRelatedCaseStudies(caseStudyEntries, "setare-aval-engagement");
 
   return (
     <>
-      <Seo
-        title="Setare Aval Engagement Case Study — Doubling Retained Revenue"
-        description={
-          setareOverview.subtitle ??
-          "Re-architected lifecycle journeys for Setare Aval to double retained revenue and energise loyal users."
-        }
-        canonicalPath="/case-studies/setare-aval-engagement"
-        openGraph={{
-          type: "article",
-          image: {
-            url: setareOverview.heroImage,
-            alt: "Setare Aval customer engagement session",
-          },
-        }}
-        structuredData={structuredData}
-      />
+      <Seo {...setareCaseStudyMetadata} />
       <CaseStudyOverviewSection
         eyebrow="Case study · Retention & Growth"
         overview={setareOverview}

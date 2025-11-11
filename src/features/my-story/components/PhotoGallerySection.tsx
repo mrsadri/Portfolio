@@ -35,7 +35,7 @@ const PhotoGallerySection = ({ items }: PhotoGallerySectionProps) => (
         >
           {items.map((item) => (
             <Box
-              key={`${item.caption}-${item.image}`}
+              key={`${item.caption}-${item.image.src}`}
               sx={{
                 breakInside: "avoid",
                 mb: { xs: 1.5, md: 2.5 },
@@ -45,9 +45,9 @@ const PhotoGallerySection = ({ items }: PhotoGallerySectionProps) => (
             >
               <Box
                 component="img"
-                src={item.image}
-                alt={item.alt}
-                  loading="lazy"
+                src={item.image.src}
+                alt={item.image.alt}
+                loading="lazy"
                 sx={{
                   width: "100%",
                   display: "block",

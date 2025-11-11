@@ -1,6 +1,7 @@
 import { lazy } from "react";
 import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "../shared/layout/MainLayout";
+import RouteErrorBoundary from "../shared/components/RouteErrorBoundary";
 
 const HomePage = lazy(() => import("../routes/HomePage"));
 const MyStoryPage = lazy(() => import("../routes/MyStoryPage"));
@@ -14,7 +15,38 @@ const CaseStudySetarePage = lazy(
 );
 const NotFoundPage = lazy(() => import("../routes/NotFoundPage"));
 
+const normaliseBasename = (value?: string | null) => {
+  if (!value) {
+    return "/";
+  }
+
+  const trimmed = value.trim();
+  if (!trimmed || trimmed === "/") {
+    return "/";
+  }
+
+  const withLeadingSlash = trimmed.startsWith("/") ? trimmed : `/${trimmed}`;
+  return withLeadingSlash.endsWith("/") ? withLeadingSlash.slice(0, -1) : withLeadingSlash;
+};
+
+const getEnvBasename = () => {
+  if (typeof import.meta === "undefined") {
+    return "/";
+  }
+
+  const env = import.meta.env ?? {};
+  const explicitBasename = typeof env.VITE_ROUTER_BASENAME === "string" ? env.VITE_ROUTER_BASENAME : undefined;
+  const baseUrl = explicitBasename ?? env.BASE_URL;
+
+  return normaliseBasename(baseUrl);
+};
+
 const detectBasename = () => {
+  const envBasename = getEnvBasename();
+  if (envBasename !== "/") {
+    return envBasename;
+  }
+
   if (typeof window === "undefined") {
     return "/";
   }
@@ -24,12 +56,9 @@ const detectBasename = () => {
     return "/";
   }
 
-  const segments = pathname.split("/").filter(Boolean);
-  if (segments.length === 0) {
-    return "/";
-  }
+  const [maybeRepo] = pathname.split("/").filter(Boolean);
 
-  return `/${segments[0]}`;
+  return maybeRepo ? normaliseBasename(maybeRepo) : "/";
 };
 
 export const appRouter = createBrowserRouter(
@@ -37,6 +66,7 @@ export const appRouter = createBrowserRouter(
     {
       path: "/",
       element: <MainLayout />,
+      errorElement: <RouteErrorBoundary />,
       children: [
         {
           index: true,

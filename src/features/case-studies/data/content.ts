@@ -1,8 +1,7 @@
 import divarSecureCallListingAsset from "../../../../images/divar-secure-call-listing.png";
 import setareAvalInterviewAsset from "../../../../images/setare-aval-interview-session.avif";
+import { createImageResource } from "../../../shared/utils/assets";
 import type { CaseStudyEntry, CaseStudyOverview, CaseStudySection } from "../types";
-
-const resolveAsset = (asset: string) => new URL(asset, import.meta.url).href;
 
 export const divarOverview: CaseStudyOverview = {
   title:
@@ -19,7 +18,12 @@ export const divarOverview: CaseStudyOverview = {
     { value: "2.1M", label: "Weekly callers safeguarded" },
     { value: "▼18%", label: "Safety ticket volume" },
   ],
-  heroImage: resolveAsset(divarSecureCallListingAsset),
+  heroImage: createImageResource(
+    import.meta.url,
+    divarSecureCallListingAsset,
+    "Divar secure call listings interface",
+    { width: 1200, height: 630 },
+  ),
 };
 
 export const divarSections: CaseStudySection[] = [
@@ -181,7 +185,12 @@ export const setareOverview: CaseStudyOverview = {
       description: "Referral cohort converted to high-intent DAUs",
     },
   ],
-  heroImage: resolveAsset(setareAvalInterviewAsset),
+  heroImage: createImageResource(
+    import.meta.url,
+    setareAvalInterviewAsset,
+    "Setare Aval customer engagement interview session",
+    { width: 1200, height: 630 },
+  ),
 };
 
 export const setareSections: CaseStudySection[] = [

@@ -92,14 +92,42 @@
       (function restoreSpaPath() {
         var storageKey = "portfolio-spa-redirect";
         var redirectPath = null;
+        var searchParams = new URLSearchParams(window.location.search);
+        var redirectParam = searchParams.get("redirect");
+
+        if (redirectParam) {
+          searchParams.delete("redirect");
+          try {
+            redirectPath = decodeURIComponent(redirectParam);
+          } catch (error) {
+            console.warn("Unable to decode redirect parameter.", error);
+            redirectPath = redirectParam;
+          }
+        }
 
         try {
-          redirectPath = sessionStorage.getItem(storageKey);
+          if (!redirectPath) {
+            redirectPath = sessionStorage.getItem(storageKey);
+          }
           if (redirectPath) {
             sessionStorage.removeItem(storageKey);
           }
         } catch (error) {
-          redirectPath = null;
+          redirectPath = redirectPath || null;
+        }
+
+        var cleanedUrl = window.location.pathname;
+        var cleanedSearch = searchParams.toString();
+        if (cleanedSearch) {
+          cleanedUrl += "?" + cleanedSearch;
+        }
+        cleanedUrl += window.location.hash;
+
+        var currentUrl =
+          window.location.pathname + window.location.search + window.location.hash;
+        if (cleanedUrl !== currentUrl) {
+          window.history.replaceState(null, "", cleanedUrl);
+          currentUrl = cleanedUrl;
         }
 
         if (!redirectPath) {
@@ -124,10 +152,7 @@
           redirectPath = "/" + redirectPath;
         }
 
-        var current =
-          window.location.pathname + window.location.search + window.location.hash;
-
-        if (current === redirectPath) {
+        if (currentUrl === redirectPath) {
           return;
         }
 

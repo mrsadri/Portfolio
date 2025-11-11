@@ -11,9 +11,7 @@ import {
 } from "@mui/material";
 import type { MouseEventHandler } from "react";
 import { Link as RouterLink } from "react-router-dom";
-import GhostButton from "../../../shared/components/ui/GhostButton";
-import Pill from "../../../shared/components/ui/Pill";
-import PrimaryButton from "../../../shared/components/ui/PrimaryButton";
+import { GhostButton, Pill, PrimaryButton } from "../../../shared/ui";
 import type { CaseStudySummary } from "../types";
 
 type CaseStudyCardProps = {

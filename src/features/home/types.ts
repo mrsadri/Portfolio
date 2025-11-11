@@ -1,3 +1,5 @@
+import type { ImageResource, LinkResource } from "../../types/content";
+
 export type HeroContent = {
   greeting: string;
   name: string;
@@ -12,14 +14,8 @@ export type HeroContent = {
     label: string;
     to: string;
   };
-  availability: {
-    label: string;
-    to: string;
-  };
-  portrait: {
-    src: string;
-    alt: string;
-  };
+  availability: LinkResource;
+  portrait: ImageResource;
 };
 
 export type MetricSummary = {
@@ -52,14 +48,8 @@ export type ExperienceSummary = {
   title: string;
   description: string;
   tags: readonly string[];
-  image: {
-    src: string;
-    alt: string;
-  };
-  link?: {
-    label: string;
-    href: string;
-  };
+  image: ImageResource;
+  link?: LinkResource;
 };
 
 export type SocialLink = {

@@ -1,3 +1,5 @@
+import type { ImageResource, LinkResource } from "../../types/content";
+
 export type CaseStudySection = {
   id: string;
   title: string;
@@ -16,10 +18,7 @@ export type CaseStudySection = {
     value: string;
     description?: string;
   }[];
-  image?: {
-    src: string;
-    alt: string;
-  };
+  image?: ImageResource;
 };
 
 export type CaseStudyOverview = {
@@ -34,7 +33,7 @@ export type CaseStudyOverview = {
     label: string;
     description?: string;
   }[];
-  heroImage: string;
+  heroImage: ImageResource;
 };
 
 export type CaseStudyEntry = {
@@ -43,6 +42,7 @@ export type CaseStudyEntry = {
   excerpt: string;
   focus: string;
   path: string;
+  cta?: LinkResource;
 };
 
 

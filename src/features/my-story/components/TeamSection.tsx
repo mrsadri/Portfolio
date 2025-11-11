@@ -33,9 +33,9 @@ const TeamSection = ({ team }: TeamSectionProps) => {
           >
             <Box
               component="img"
-              src={team.image}
-              alt={team.alt}
-            loading="lazy"
+              src={team.image.src}
+              alt={team.image.alt}
+              loading="lazy"
               sx={{
                 width: "100%",
                 height: "100%",

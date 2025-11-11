@@ -1,3 +1,5 @@
+import type { ImageResource, LinkResource } from "../../types/content";
+
 export type StoryHero = {
   title: string;
   subtitle: string;
@@ -5,8 +7,7 @@ export type StoryHero = {
 };
 
 export type GalleryItem = {
-  image: string;
-  alt: string;
+  image: ImageResource;
   caption: string;
   subcaption?: string;
 };
@@ -21,7 +22,7 @@ export type ReadingJourney = {
 };
 
 export type Book = {
-  cover: string;
+  cover: ImageResource;
   title: string;
   author: string;
   label: string;
@@ -31,8 +32,7 @@ export type Book = {
 };
 
 export type TeamSnapshot = {
-  image: string;
-  alt: string;
+  image: ImageResource;
   caption: string;
   title: string;
   description: string;
@@ -62,6 +62,7 @@ export type ReferenceItem = {
   date: string;
   text: string;
   linkedin: string;
+  cta?: LinkResource;
 };
 
 
