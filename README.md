@@ -6,8 +6,8 @@ A Bun-powered React application that showcases Masih Sadri’s product design wo
 
 - **Modern stack** – React 19, React Router 7, Bun runtime, and the latest MUI packages.
 - **Design system** – Centralised theming (`src/theme`) with responsive typography and brand palette extensions.
-- **Content architecture** – Page content modelled as structured data (`src/data`) and rendered through reusable view components.
-- **Performance-first** – No CSS bundles; everything ships through tree-shaken MUI components and optimized images.
+- **Feature architecture** – Each page lives in `src/features/<domain>` with co-located data, types, and UI primitives for clarity and reuse.
+- **Performance-first** – No CSS bundles; everything ships through tree-shaken MUI components, memoised sections, and lazily loaded media.
 - **Routing** – Browser history routing with automatic GitHub Pages base-path detection.
 - **Accessibility** – Semantic structure, skip links, focus management, and keyboard-friendly navigation.
 
@@ -18,13 +18,13 @@ A Bun-powered React application that showcases Masih Sadri’s product design wo
 ├── index.html            # Bun-served HTML shell
 ├── index.ts              # Bun edge server for static assets + SPA fallback
 ├── src/
-│   ├── main.tsx          # React root + ThemeProvider
-│   ├── App.tsx           # Router configuration (lazy-loaded routes)
+│   ├── main.tsx          # React bootstrap → providers + App
+│   ├── app/              # Router + global providers
 │   ├── theme/            # Custom MUI theme + palette extensions
-│   ├── layout/           # Layout primitives (shell, navigation, footer)
-│   ├── components/       # Shared UI elements (loading, footer, etc.)
-│   ├── routes/           # Page-level React components
-│   ├── data/             # Structured content for pages/case studies/resume
+│   ├── shared/           # Cross-feature components, utils, layout
+│   ├── components/       # Legacy shared UI (case-study helpers, etc.)
+│   ├── features/         # Feature modules (home, contact, resume, my-story, case-studies)
+│   ├── routes/           # Thin route re-exports for React Router
 │   └── types/            # Asset typing helpers
 ├── images/               # Optimized image assets referenced by React
 ├── sitemap.xml           # GitHub Pages sitemap
@@ -58,7 +58,7 @@ bun run dev
 # Build the production bundle and export to /docs for GitHub Pages
 bun run build
 
-# Lint TypeScript + check types
+# Type-check (strict TS with unused checks) via the Bun task
 bun run lint
 ```
 

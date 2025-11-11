@@ -1,5 +1,7 @@
 // File: index.ts
 // Purpose: Provides a Bun-powered development server that builds and serves the client bundle with graceful port fallbacks.
+import path from "node:path";
+
 const isProduction = Bun.env.NODE_ENV === "production";
 
 if (!isProduction) {
@@ -10,6 +12,7 @@ if (!isProduction) {
     minify: false,
     splitting: true,
     sourcemap: "inline",
+    // @ts-expect-error Bun's build watch option is available at runtime but missing from the current type definitions.
     watch: {
       onRebuild(error) {
         if (error) {
@@ -30,65 +33,198 @@ if (!isProduction) {
   }
 }
 
-const sanitizePath = (pathname: string) =>
-  pathname === "/" ? "/index.html" : pathname;
+type NormalizedRequestPath = {
+  normalized: string | null;
+  hasTrailingSlash: boolean;
+};
 
-const readFile = async (pathname: string) => {
-  const sanitized = sanitizePath(pathname);
-  const distFile = Bun.file(`./dist${sanitized}`);
+const projectRoot = process.cwd();
+const distRoot = path.join(projectRoot, "dist");
 
-  if (await distFile.exists()) {
-    return distFile;
+const staticRoots = [distRoot, projectRoot];
+
+const indexFileCandidates = [
+  Bun.file(path.join(distRoot, "index.html")),
+  Bun.file(path.join(projectRoot, "index.html")),
+];
+
+const normalizeRequestPath = (pathname: string): NormalizedRequestPath => {
+  const hasTrailingSlash = pathname !== "/" && pathname.endsWith("/");
+  let decoded = pathname;
+
+  try {
+    decoded = decodeURIComponent(pathname);
+  } catch {
+    return { normalized: null, hasTrailingSlash };
   }
 
-  return Bun.file(`.${sanitized}`);
+  const trimmed = decoded.startsWith("/") ? decoded.slice(1) : decoded;
+  let normalized = path.posix.normalize(trimmed);
+
+  if (!normalized || normalized === ".") {
+    normalized = "index.html";
+  }
+
+  if (normalized.startsWith("..")) {
+    return { normalized: null, hasTrailingSlash };
+  }
+
+  return { normalized, hasTrailingSlash };
+};
+
+const findStaticFile = async (normalizedPath: NormalizedRequestPath) => {
+  const { normalized, hasTrailingSlash } = normalizedPath;
+  if (!normalized) {
+    return null;
+  }
+
+  const candidates = new Set<string>([normalized]);
+  const extension = path.posix.extname(normalized);
+
+  if (!extension || hasTrailingSlash) {
+    const directory = extension
+      ? path.posix.dirname(normalized)
+      : normalized;
+    candidates.add(path.posix.join(directory, "index.html"));
+  }
+
+  for (const candidate of candidates) {
+    for (const root of staticRoots) {
+      const absolutePath = path.join(root, candidate);
+      const file = Bun.file(absolutePath);
+      if (await file.exists()) {
+        return file;
+      }
+    }
+  }
+
+  return null;
+};
+
+const shouldServeIndex = (
+  request: Request,
+  normalizedPath: NormalizedRequestPath,
+): boolean => {
+  if (request.method !== "GET" && request.method !== "HEAD") {
+    return false;
+  }
+
+  const acceptHeader = request.headers.get("accept") ?? "";
+
+  if (acceptHeader.includes("text/html")) {
+    return true;
+  }
+
+  const { normalized } = normalizedPath;
+  if (!normalized) {
+    return false;
+  }
+
+  return path.posix.extname(normalized) === "";
+};
+
+const serveIndex = async (): Promise<Response> => {
+  for (const candidate of indexFileCandidates) {
+    if (await candidate.exists()) {
+      return new Response(candidate, {
+        headers: { "Content-Type": "text/html; charset=utf-8" },
+      });
+    }
+  }
+
+  return new Response("index.html not found", { status: 500 });
 };
 
 const createServer = (port: number) =>
   Bun.serve({
     port,
+    reusePort: false,
     async fetch(request) {
       const url = new URL(request.url);
-      const file = await readFile(url.pathname);
+      const normalizedPath = normalizeRequestPath(url.pathname);
+      const staticFile = await findStaticFile(normalizedPath);
 
-      if (await file.exists()) {
-        return new Response(file);
+      if (staticFile) {
+        const response = new Response(staticFile);
+        if (request.method === "HEAD") {
+          return new Response(null, {
+            status: response.status,
+            headers: response.headers,
+          });
+        }
+        return response;
       }
 
-      // Hash-based routing handles most navigation,
-      // but we still fall back to index.html for unknown paths.
-      const indexFile = Bun.file("./index.html");
-      return new Response(indexFile, {
-        headers: { "Content-Type": "text/html; charset=utf-8" },
-      });
+      if (shouldServeIndex(request, normalizedPath)) {
+        const indexResponse = await serveIndex();
+        if (request.method === "HEAD") {
+          return new Response(null, {
+            status: indexResponse.status,
+            headers: indexResponse.headers,
+          });
+        }
+        return indexResponse;
+      }
+
+      return new Response("Not found", { status: 404 });
     },
   });
 
-const serve = (port: number, retries = 5): ReturnType<typeof Bun.serve> => {
-  try {
-    return createServer(port);
-  } catch (error) {
-    if (
-      error instanceof Error &&
-      (error as { code?: string }).code === "EADDRINUSE"
-    ) {
-      if (retries > 0) {
-        const nextPort = port + 1;
-        console.warn(
-          `⚠️  Port ${port} in use. Trying next available port (${nextPort}).`,
-        );
-        return serve(nextPort, retries - 1);
-      }
+type PortError = Error & { code?: string };
 
-      console.warn(`⚠️  All tried ports busy. Falling back to an ephemeral port.`);
-      return createServer(0);
+const isPortInUseError = (error: unknown): error is PortError =>
+  error instanceof Error && (error as PortError).code === "EADDRINUSE";
+
+const resolveInitialPort = () => {
+  const configured = Bun.env.PORT;
+  if (configured) {
+    const parsed = Number.parseInt(configured, 10);
+    if (Number.isFinite(parsed) && parsed > 0) {
+      return parsed;
     }
-
-    throw error;
+    console.warn(
+      `⚠️  Ignoring invalid PORT environment value "${configured}". Falling back to 3000.`,
+    );
   }
+  return 3000;
 };
 
-const initialPort = Number(Bun.env.PORT ?? 3000);
-const server = serve(initialPort);
+const preferredPorts = () => {
+  const basePort = resolveInitialPort();
+  const sequential = Array.from({ length: 6 }, (_, index) => basePort + index);
+  return [...new Set([...sequential, 0])];
+};
 
-console.log(`🚀 Portfolio running at http://localhost:${server.port}`);
+const serve = (): ReturnType<typeof Bun.serve> => {
+  const candidates = preferredPorts();
+  let lastError: Error | undefined;
+
+  for (const candidate of candidates) {
+    try {
+      if (candidate !== candidates[0]) {
+        const label = candidate === 0 ? "an ephemeral port" : `port ${candidate}`;
+        console.warn(`⚠️  Retrying dev server on ${label}...`);
+      }
+      const server = createServer(candidate);
+      const assignedPort = server.port;
+      console.log(`🚀 Portfolio running at http://localhost:${assignedPort}`);
+      return server;
+    } catch (error) {
+      if (isPortInUseError(error)) {
+        lastError = error;
+        continue;
+      }
+
+      throw error;
+    }
+  }
+
+  throw new Error(
+    `Unable to start the dev server. All candidate ports (${candidates.join(
+      ", ",
+    )}) are in use.`,
+    { cause: lastError },
+  );
+};
+
+const server = serve();

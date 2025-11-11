@@ -7,7 +7,7 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import Seo from "../components/Seo";
+import Seo from "../shared/components/Seo";
 import { Link as RouterLink } from "react-router-dom";
 
 const NotFoundPage = () => (
