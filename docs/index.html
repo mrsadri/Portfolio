@@ -159,7 +159,52 @@
         window.history.replaceState(null, "", redirectPath);
       })();
     </script>
-    <script type="module" src="client/main.js"></script>
-    <script nomodule src="dist/main.js"></script>
+    <script>
+      (function loadBundle() {
+        const unique = (values) => {
+          const seen = new Set();
+          return values.filter((value) => {
+            if (seen.has(value)) {
+              return false;
+            }
+            seen.add(value);
+            return true;
+          });
+        };
+
+        const segments = window.location.pathname.split("/").filter(Boolean);
+        const repoSegment =
+          window.location.hostname.endsWith("github.io") && segments.length > 0 ? `/${segments[0]}` : "";
+
+        const candidates = unique([
+          repoSegment ? `${repoSegment}/client/main.js` : null,
+          repoSegment ? `${repoSegment}/dist/main.js` : null,
+          "/dist/main.js",
+          "/client/main.js",
+        ]).filter(Boolean);
+
+        const appendModule = (index) => {
+          const candidate = candidates[index];
+          if (!candidate) {
+            console.error("Unable to load any client bundle. Checked:", candidates);
+            return;
+          }
+
+          const script = document.createElement("script");
+          script.type = "module";
+          script.src = candidate;
+          script.addEventListener(
+            "error",
+            () => {
+              appendModule(index + 1);
+            },
+            { once: true },
+          );
+          document.body.appendChild(script);
+        };
+
+        appendModule(0);
+      })();
+    </script>
   </body>
 </html>
