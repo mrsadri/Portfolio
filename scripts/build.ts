@@ -1,7 +1,7 @@
 // File: scripts/build.ts
 // Purpose: Produces production-ready bundles for GitHub Pages by building assets, copying static files, and generating supporting metadata.
 import { cp, mkdir, readFile, rm, writeFile } from "node:fs/promises";
-import { join } from "node:path";
+import { dirname, join } from "node:path";
 
 const builderVersion = "2.1.0";
 const distDir = "dist";
@@ -161,6 +161,7 @@ await Promise.all([
 
 await Bun.write(join(docsDir, "404.html"), notFoundHtml);
 await writeFile(join(docsDir, ".nojekyll"), "");
+await Bun.write("404.html", notFoundHtml);
 
 const spaFallbackHtml = `<!doctype html>
 <html lang="en">
@@ -234,6 +235,10 @@ await Promise.all(
     const targetDir = join(docsDir, routePath);
     await mkdir(targetDir, { recursive: true });
     await Bun.write(join(targetDir, "index.html"), spaFallbackHtml);
+
+    const flatHtmlPath = join(docsDir, `${routePath}.html`);
+    await mkdir(dirname(flatHtmlPath), { recursive: true });
+    await Bun.write(flatHtmlPath, spaFallbackHtml);
   }),
 );
 
