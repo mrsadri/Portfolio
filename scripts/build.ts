@@ -156,6 +156,81 @@ await Promise.all([
 await Bun.write(join(docsDir, "404.html"), notFoundHtml);
 await writeFile(join(docsDir, ".nojekyll"), "");
 
+const spaFallbackHtml = `<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Masih Sadri Portfolio • Redirecting…</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <meta
+      name="description"
+      content="Redirecting you back to the Masih Sadri portfolio so the requested page can load."
+    />
+    <style>
+      :root { color-scheme: light; font-family: "Inter", "Helvetica Neue", Arial, sans-serif; }
+      body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: #f1f6ff; color: #0b2c5c; padding: 2rem; text-align: center; }
+      main { max-width: 520px; background: #ffffff; padding: 2.5rem; border-radius: 20px; box-shadow: 0 24px 48px rgba(17, 76, 170, 0.12); }
+      h1 { margin-top: 0; font-size: 1.85rem; }
+      p { margin-bottom: 1.5rem; line-height: 1.6; }
+      a { color: #1f6feb; font-weight: 600; text-decoration: none; }
+      a:hover { text-decoration: underline; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Redirecting to the portfolio…</h1>
+      <p>Hang tight! We’re sending you back to the main app experience.</p>
+      <p><a id="fallback-link" href="/">Go to the portfolio homepage</a></p>
+    </main>
+    <script>
+      (function () {
+        var storageKey = "portfolio-spa-redirect";
+        var fullPath = window.location.pathname + window.location.search + window.location.hash;
+        try {
+          sessionStorage.setItem(storageKey, fullPath);
+        } catch (error) {
+          console.warn("Unable to persist redirect path in sessionStorage.", error);
+        }
+
+        var pathSegments = window.location.pathname.split("/").filter(Boolean);
+        var repoSegment = "";
+        if (window.location.hostname.endsWith("github.io") && pathSegments.length > 0) {
+          repoSegment = "/" + pathSegments[0];
+        }
+
+        var targetBase = repoSegment ? repoSegment + "/" : "/";
+        var redirectParam = encodeURIComponent(fullPath);
+        var target = targetBase + "?redirect=" + redirectParam;
+
+        var link = document.getElementById("fallback-link");
+        if (link) {
+          link.setAttribute("href", target);
+        }
+
+        window.location.replace(target);
+      })();
+    </script>
+  </body>
+</html>
+`;
+
+const spaFallbackRoutes = [
+  "contact",
+  "my-story",
+  "resume",
+  "case-studies",
+  "case-studies/divar-secure-call",
+  "case-studies/setare-aval-engagement",
+];
+
+await Promise.all(
+  spaFallbackRoutes.map(async (routePath) => {
+    const targetDir = join(docsDir, routePath);
+    await mkdir(targetDir, { recursive: true });
+    await Bun.write(join(targetDir, "index.html"), spaFallbackHtml);
+  }),
+);
+
 console.log(
   "✅ Build completed. Static site available in docs/ and build artifacts copied to docs/client/ and docs/dist/",
 );

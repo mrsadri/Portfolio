@@ -15,7 +15,7 @@ const ensureArray = <T,>(value: T | readonly T[] | undefined): ReadonlyArray<T> 
   return [value as T];
 };
 
-export const normalisePath = (path?: string) => {
+const normalisePath = (path?: string) => {
   if (!path) {
     return "";
   }

@@ -4,7 +4,7 @@ import { resumeSummary } from "./data/content";
 
 const siteUrl = getSiteUrl();
 
-export const resumeStructuredData: StructuredData = {
+const resumeStructuredData: StructuredData = {
   "@context": "https://schema.org",
   "@type": "WebPage",
   name: "Masih Sadri — Resume",

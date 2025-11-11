@@ -4,7 +4,7 @@ import { contactHero, contactMethods, mentorshipOffers } from "./data/content";
 
 const siteUrl = getSiteUrl();
 
-export const contactStructuredData: StructuredData = {
+const contactStructuredData: StructuredData = {
   "@context": "https://schema.org",
   "@type": "ContactPage",
   name: "Contact Masih Sadri",

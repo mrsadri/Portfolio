@@ -1,7 +1,7 @@
 import { useCallback, useMemo, useState } from "react";
 import type { CaseStudyId, CaseStudySummary } from "../types";
 
-export type CaseStudyRecapController = {
+type CaseStudyRecapController = {
   activeCaseStudy: CaseStudySummary | null;
   openRecap: (id: CaseStudyId) => void;
   closeRecap: () => void;

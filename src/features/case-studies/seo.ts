@@ -4,7 +4,7 @@ import { divarOverview, setareOverview } from "./data/content";
 
 const siteUrl = getSiteUrl();
 
-export const divarStructuredData: StructuredData = {
+const divarStructuredData: StructuredData = {
   "@context": "https://schema.org",
   "@type": "CaseStudy",
   name: divarOverview.title,
@@ -39,7 +39,7 @@ export const divarCaseStudyMetadata: PageMetadata = {
   structuredData: divarStructuredData,
 };
 
-export const setareStructuredData: StructuredData = {
+const setareStructuredData: StructuredData = {
   "@context": "https://schema.org",
   "@type": "CaseStudy",
   name: setareOverview.title,
