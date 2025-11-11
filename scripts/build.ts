@@ -151,6 +151,9 @@ await Promise.all([
   cp("index.html", join(docsDir, "index.html")),
   cp("robots.txt", join(docsDir, "robots.txt")),
   cp("sitemap.xml", join(docsDir, "sitemap.xml")),
+  cp(join(distDir, "main.js"), join(docsDir, "main.js")),
+  cp(join(distDir, "main.js.map"), join(docsDir, "main.js.map")),
+  cp(join(distDir, "main.css"), join(docsDir, "main.css")),
 ]);
 
 await Bun.write(join(docsDir, "404.html"), notFoundHtml);
