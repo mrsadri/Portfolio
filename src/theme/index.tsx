@@ -434,8 +434,7 @@ const getDesignTokens = (mode: PaletteMode) => {
   };
 };
 
-export const createAppTheme = (mode: PaletteMode) =>
-  responsiveFontSizes(createTheme(getDesignTokens(mode)));
+const createAppTheme = (mode: PaletteMode) => responsiveFontSizes(createTheme(getDesignTokens(mode)));
 
 type ColorModeContextValue = {
   mode: PaletteMode;

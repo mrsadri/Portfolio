@@ -5,7 +5,7 @@ import { gallery, storyHero } from "./data/content";
 const siteUrl = getSiteUrl();
 const heroImage = gallery[0]?.image;
 
-export const myStoryStructuredData: StructuredData = {
+const myStoryStructuredData: StructuredData = {
   "@context": "https://schema.org",
   "@type": "ProfilePage",
   name: "Masih Sadri — My Story",

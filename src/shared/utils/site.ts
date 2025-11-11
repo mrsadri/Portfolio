@@ -4,7 +4,7 @@ export const resolveSiteUrl = () =>
   (typeof import.meta !== "undefined" && import.meta.env?.VITE_SITE_URL) ||
   DEFAULT_SITE_URL;
 
-export const getSiteUrl = () => resolveSiteUrl();
+const getSiteUrl = () => resolveSiteUrl();
 
 export default getSiteUrl;
 

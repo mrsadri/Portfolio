@@ -6,7 +6,7 @@ const logAssetWarning = (message: string, error: unknown) => {
   }
 };
 
-export const resolveAssetUrl = (moduleUrl: string, assetPath: string) => {
+const resolveAssetUrl = (moduleUrl: string, assetPath: string) => {
   try {
     return new URL(assetPath, moduleUrl).href;
   } catch (error) {

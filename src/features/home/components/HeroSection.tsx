@@ -1,9 +1,13 @@
 import ArrowForwardRoundedIcon from "@mui/icons-material/ArrowForwardRounded";
 import { Avatar, Box, Container, Stack, Typography, useTheme } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
-import certifiedBadge from "../../../images/certified-badge.png";
 import { GhostButton, Pill, PrimaryButton } from "../../../shared/ui";
 import type { HeroContent } from "../types";
+
+const env = import.meta.env ?? {};
+const baseUrl = typeof env.BASE_URL === "string" ? env.BASE_URL : "/";
+const normalizedBaseUrl = baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`;
+const certifiedBadgeSrc = `${normalizedBaseUrl}images/badges/certified-badge.png`;
 
 type HeroSectionProps = {
   hero: HeroContent;
@@ -105,7 +109,7 @@ const HeroSection = ({ hero }: HeroSectionProps) => {
               </Stack>
               <Box
                 component="img"
-                src={certifiedBadge}
+                src={certifiedBadgeSrc}
                 alt="Certified badge"
                 loading="lazy"
                 sx={{

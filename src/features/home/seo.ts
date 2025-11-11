@@ -4,7 +4,7 @@ import { hero, socialLinks } from "./data/content";
 
 const siteUrl = getSiteUrl();
 
-export const homeStructuredData: StructuredData = [
+const homeStructuredData: StructuredData = [
   {
     "@context": "https://schema.org",
     "@type": "WebSite",
