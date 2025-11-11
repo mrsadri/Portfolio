@@ -177,8 +177,12 @@
           window.location.hostname.endsWith("github.io") && segments.length > 0 ? `/${segments[0]}` : "";
 
         const candidates = unique([
+          repoSegment ? `${repoSegment}/docs/client/main.js` : null,
+          repoSegment ? `${repoSegment}/docs/dist/main.js` : null,
           repoSegment ? `${repoSegment}/client/main.js` : null,
           repoSegment ? `${repoSegment}/dist/main.js` : null,
+          "/docs/client/main.js",
+          "/docs/dist/main.js",
           "/dist/main.js",
           "/client/main.js",
         ]).filter(Boolean);
