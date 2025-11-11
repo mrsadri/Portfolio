@@ -58,8 +58,14 @@ bun run dev
 # Build the production bundle and export to /docs for GitHub Pages
 bun run build
 
-# Type-check (strict TS with unused checks) via the Bun task
+# Lint the codebase with ESLint
 bun run lint
+
+# Run strict TypeScript checks
+bun run typecheck
+
+# Execute unit tests with Vitest
+bun run test
 ```
 
 The default dev server runs on [`http://localhost:3000`](http://localhost:3000) with automatic recompilation provided by Bun.

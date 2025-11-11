@@ -7,7 +7,7 @@ import {
   Typography,
   useTheme,
 } from "@mui/material";
-import Pill from "../../../shared/components/ui/Pill";
+import { Pill } from "../../../shared/ui";
 import SectionHeader from "./SectionHeader";
 import SurfaceCard from "./SurfaceCard";
 import type { Book, ReadingJourney } from "../types";
@@ -41,8 +41,8 @@ const ReadingJourneySection = ({ journey, books }: ReadingJourneySectionProps) =
                 >
                   <Box
                     component="img"
-                    src={book.cover}
-                    alt={`Cover of ${book.title}`}
+                    src={book.cover.src}
+                    alt={book.cover.alt}
                     loading="lazy"
                     sx={{
                       width: 160,

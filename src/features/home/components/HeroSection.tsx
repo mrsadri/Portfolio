@@ -2,9 +2,7 @@ import ArrowForwardRoundedIcon from "@mui/icons-material/ArrowForwardRounded";
 import { Avatar, Box, Container, Stack, Typography, useTheme } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 import certifiedBadge from "../../../images/certified-badge.png";
-import GhostButton from "../../../shared/components/ui/GhostButton";
-import Pill from "../../../shared/components/ui/Pill";
-import PrimaryButton from "../../../shared/components/ui/PrimaryButton";
+import { GhostButton, Pill, PrimaryButton } from "../../../shared/ui";
 import type { HeroContent } from "../types";
 
 type HeroSectionProps = {

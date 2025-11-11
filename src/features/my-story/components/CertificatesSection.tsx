@@ -7,7 +7,7 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import Pill from "../../../shared/components/ui/Pill";
+import { Pill } from "../../../shared/ui";
 import SectionHeader from "./SectionHeader";
 import SurfaceCard from "./SurfaceCard";
 import type { CertificateItem } from "../types";

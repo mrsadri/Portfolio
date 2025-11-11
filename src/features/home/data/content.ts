@@ -1,6 +1,7 @@
 import heroPortraitAsset from "../../../../images/masih-sadri-profile.webp";
 import morphDesignSystemAsset from "../../../../images/morph-design-system.webp";
 import rahnemaStudentsAsset from "../../../../images/rahnema-students.webp";
+import { createImageResource } from "../../../shared/utils/assets";
 import type {
   CaseStudySummary,
   ExperienceSummary,
@@ -8,8 +9,6 @@ import type {
   MetricSummary,
   SocialLink,
 } from "../types";
-
-const resolveAsset = (asset: string) => new URL(asset, import.meta.url).href;
 
 export const hero: HeroContent = {
   greeting: "Hello 👋🏼, I am",
@@ -33,10 +32,10 @@ export const hero: HeroContent = {
     label: "Open to senior product designer roles",
     to: "/contact",
   },
-  portrait: {
-    src: resolveAsset(heroPortraitAsset),
-    alt: "Masih Sadri - Product Designer",
-  },
+  portrait: createImageResource(import.meta.url, heroPortraitAsset, "Masih Sadri - Product Designer", {
+    width: 1200,
+    height: 1200,
+  }),
 };
 
 export const metrics: ReadonlyArray<MetricSummary> = [
@@ -111,19 +110,17 @@ export const experiences: ReadonlyArray<ExperienceSummary> = [
     title: "Design Instructor at Rahnema College",
     description: "Training 200+ students through 6 courses since 2022",
     tags: ["education", "mentorship", "curriculum design"],
-    image: {
-      src: resolveAsset(rahnemaStudentsAsset),
-      alt: "Students at Rahnema College",
-    },
+    image: createImageResource(import.meta.url, rahnemaStudentsAsset, "Students at Rahnema College"),
   },
   {
     title: "Morph Design System",
     description: "Built from scratch, used over 7400 times in the Figma Community",
     tags: ["open source", "design system", "community impact"],
-    image: {
-      src: resolveAsset(morphDesignSystemAsset),
-      alt: "Morph Design System - Figma Community",
-    },
+    image: createImageResource(
+      import.meta.url,
+      morphDesignSystemAsset,
+      "Morph Design System - Figma Community",
+    ),
     link: {
       label: "View on Figma Community",
       href: "https://www.figma.com/community/file/1069259333467083182",

@@ -1,66 +1,31 @@
 import Grid from "@mui/system/Grid";
 import { Box, Container, Stack } from "@mui/material";
-import { useMemo } from "react";
-import Seo from "../../shared/components/Seo";
+import { Seo } from "../../shared/seo";
 import CaseStudySectionCard from "./components/SectionCard";
 import CaseStudyOutlineNav from "./components/CaseStudyOutlineNav";
 import CaseStudyOverviewSection from "./components/CaseStudyOverviewSection";
 import CaseStudyRelatedSection from "./components/CaseStudyRelatedSection";
 import useCaseStudyNavigation from "./hooks/useCaseStudyNavigation";
+import useRelatedCaseStudies from "./hooks/useRelatedCaseStudies";
 import {
   caseStudyEntries,
   divarOverview,
   divarSections,
 } from "./data/content";
-import getSiteUrl from "../../shared/utils/site";
+import { divarCaseStudyMetadata } from "./seo";
 
 const CaseStudyDivarPage = () => {
   const { activeSectionId, handleOutlineClick } = useCaseStudyNavigation(divarSections);
-  const siteUrl = getSiteUrl();
 
-  const caseStudyDescription =
-    divarOverview.subtitle ??
-    "Privacy-first calling experience that reduced harassment incidents by 60% for 2.1M Divar users.";
-
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "CaseStudy",
-    name: divarOverview.title,
-    description: caseStudyDescription,
-    author: {
-      "@type": "Person",
-      name: "Masih Sadri",
-      url: siteUrl,
-    },
-    url: `${siteUrl}/case-studies/divar-secure-call`,
-    image: divarOverview.heroImage,
-    keyword: ["Trust & Safety", "Harassment Reduction", "Marketplace"],
-  } as const;
-
-  const otherCaseStudies = useMemo(
-    () => caseStudyEntries.filter((entry) => entry.id !== "divar-secure-call"),
-    [],
-  );
+  const otherCaseStudies = useRelatedCaseStudies(caseStudyEntries, "divar-secure-call");
 
   return (
     <>
-      <Seo
-        title="Divar Secure Call Case Study — Reducing Harassment by 60%"
-        description={caseStudyDescription}
-        canonicalPath="/case-studies/divar-secure-call"
-        openGraph={{
-          type: "article",
-          image: {
-            url: divarOverview.heroImage,
-            alt: "Divar secure call listings interface",
-          },
-        }}
-        structuredData={structuredData}
-      />
+      <Seo {...divarCaseStudyMetadata} />
       <CaseStudyOverviewSection
         eyebrow="Trust & Safety · Case Study"
         overview={divarOverview}
-        subtitleFallback={caseStudyDescription}
+        subtitleFallback={divarCaseStudyMetadata.description}
         statsTitle="Impact snapshot"
       />
 

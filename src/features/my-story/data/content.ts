@@ -8,6 +8,7 @@ import masihCoffeeArtistAsset from "../../../../images/masih-coffee-artist.png";
 import masihMountaineerAsset from "../../../../images/masih-mountaineer.png";
 import masihUxDesignerAsset from "../../../../images/masih-ux-designer.png";
 import masihWoodCarverAsset from "../../../../images/masih-wood-carver.png";
+import { createImageResource } from "../../../shared/utils/assets";
 import type {
   Book,
   CertificateItem,
@@ -19,8 +20,6 @@ import type {
   TeamSnapshot,
 } from "../types";
 
-const resolveAsset = (asset: string) => new URL(asset, import.meta.url).href;
-
 export const storyHero: StoryHero = {
   title: "I am Masih",
   subtitle: "A Creator of Meaningful Experiences",
@@ -30,29 +29,28 @@ export const storyHero: StoryHero = {
 
 export const gallery: ReadonlyArray<GalleryItem> = [
   {
-    image: resolveAsset(masihChildPhotoAsset),
-    alt: "Masih as a child in his dad's jacket",
+    image: createImageResource(
+      import.meta.url,
+      masihChildPhotoAsset,
+      "Masih as a child in his dad's jacket",
+    ),
     caption: "Me as a Child in My Dad's Jacket",
   },
   {
-    image: resolveAsset(masihMountaineerAsset),
-    alt: "Masih as a mountaineer",
+    image: createImageResource(import.meta.url, masihMountaineerAsset, "Masih as a mountaineer"),
     caption: "Me as a Mountaineer",
   },
   {
-    image: resolveAsset(masihCoffeeArtistAsset),
-    alt: "Masih's latte art",
+    image: createImageResource(import.meta.url, masihCoffeeArtistAsset, "Masih's latte art"),
     caption: "My art on a Latte",
     subcaption: "Latte Art by me :)",
   },
   {
-    image: resolveAsset(masihUxDesignerAsset),
-    alt: "Masih as a UX Designer",
+    image: createImageResource(import.meta.url, masihUxDesignerAsset, "Masih as a UX Designer"),
     caption: "Me as a UX Designer",
   },
   {
-    image: resolveAsset(masihWoodCarverAsset),
-    alt: "Masih as a wood carver",
+    image: createImageResource(import.meta.url, masihWoodCarverAsset, "Masih as a wood carver"),
     caption: "Me as a Wood Carver",
   },
 ];
@@ -74,7 +72,11 @@ export const readingJourney: ReadingJourney = {
 
 export const books: ReadonlyArray<Book> = [
   {
-    cover: resolveAsset(designOfEverydayThingsCoverAsset),
+    cover: createImageResource(
+      import.meta.url,
+      designOfEverydayThingsCoverAsset,
+      "The Design of Everyday Things book cover",
+    ),
     title: "The Design of Everyday Things",
     author: "Don Norman",
     label: "Read in 2018 · Revisited 2024",
@@ -87,7 +89,7 @@ export const books: ReadonlyArray<Book> = [
     ],
   },
   {
-    cover: resolveAsset(sprintCoverAsset),
+    cover: createImageResource(import.meta.url, sprintCoverAsset, "Sprint book cover"),
     title: "Sprint",
     author: "Jake Knapp & the GV Design Team",
     label: "Read in 2020",
@@ -100,7 +102,11 @@ export const books: ReadonlyArray<Book> = [
     ],
   },
   {
-    cover: resolveAsset(creativeConfidenceCoverAsset),
+    cover: createImageResource(
+      import.meta.url,
+      creativeConfidenceCoverAsset,
+      "Creative Confidence book cover",
+    ),
     title: "Creative Confidence",
     author: "Tom & David Kelley",
     label: "Read in 2021",
@@ -113,7 +119,11 @@ export const books: ReadonlyArray<Book> = [
     ],
   },
   {
-    cover: resolveAsset(aiAndUxCoverAsset),
+    cover: createImageResource(
+      import.meta.url,
+      aiAndUxCoverAsset,
+      "AI and UX book cover",
+    ),
     title: "AI and UX: Why Artificial Intelligence Needs User Experience",
     author: "Pamela Pavliscak",
     label: "In progress · Q4 2025",
@@ -129,8 +139,7 @@ export const books: ReadonlyArray<Book> = [
 ];
 
 export const team: TeamSnapshot = {
-  image: resolveAsset(divarTeamPhotoAsset),
-  alt: "Masih Sadri with the Divar product team",
+  image: createImageResource(import.meta.url, divarTeamPhotoAsset, "Masih Sadri with the Divar product team"),
   caption:
     "Divar Product Experience Team — collaborating across research, product design, and engineering.",
   title: "My Divar Product Team",

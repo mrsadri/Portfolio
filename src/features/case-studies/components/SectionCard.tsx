@@ -1,7 +1,7 @@
 import type { CaseStudySection } from "../types";
 import { memo } from "react";
 import { Box, Card, Divider, Grid, Stack, Typography, useTheme } from "@mui/material";
-import Pill from "../../../shared/components/ui/Pill";
+import { Pill } from "../../../shared/ui";
 
 const CaseStudySectionCardComponent = ({ section }: { section: CaseStudySection }) => {
   const theme = useTheme();
