@@ -7,7 +7,7 @@
 - **Solution Summary:** Relocated the badge asset to `images/badges/` and updated the home hero component to build the asset URL from `import.meta.env.BASE_URL`, ensuring the image resolves for both local dev and the GitHub Pages subdirectory.
 - **Local Status:** ✅ Build completed successfully (`bun run build`)
 - **Production Status:** Pending verification
-- **Notes:** Linting blocked in sandbox (`EPERM` accessing `path-key`). Awaiting production confirmation after deploy.
+- **Notes:** Linting blocked in sandbox (`EPERM` accessing `path-key`). Production still missing redeploy with updated badge path; `https://mrsadri.github.io/Portfolio/images/badges/certified-badge.png` returns 404 as of 2025‑11‑11.
 
 - **Issue ID:** 002
 - **Title:** Deep refresh on contact route returns GitHub Pages 404
@@ -16,14 +16,14 @@
 - **Solution Summary:** Added SPA fallback HTML files for key routes during the build step so direct navigation redirects back to the root app with the intended path persisted.
 - **Local Status:** ✅ Build regenerated with new fallbacks (`bun run build`)
 - **Production Status:** Pending verification
-- **Notes:** Please redeploy and confirm `/contact`, `/my-story`, `/resume`, and both `/case-studies/*` paths load correctly after a hard refresh.
+- **Notes:** Awaiting production rollout—`https://mrsadri.github.io/Portfolio/contact` still serving GitHub Pages 404 (checked 2025‑11‑11).
 
 - **Issue ID:** 003
 - **Title:** Production homepage renders blank white screen
 - **Description:** The live homepage loads HTML but all module scripts return 404, leaving users with a blank page.
 - **Causation:** GitHub Pages didn’t serve the primary `main.js` bundle under any of the loader’s candidate paths (`/Portfolio/client/main.js`, `/Portfolio/dist/main.js`, etc.), so none of the SPA assets executed.
-- **Solution Summary:** Copied the compiled bundle (`main.js`, `main.js.map`, `main.css`) into the `docs/` root and expanded the loader fallback list to include `/Portfolio/main.js` and relative `main.js`, guaranteeing at least one accessible script URL.
+- **Solution Summary:** Publish the built assets to a root-level `client/` directory (mirroring the bundler `publicPath`) while keeping copies under `docs/`, and keep the expanded loader fallback so chunks resolve whether GitHub Pages serves from `/client` or `/docs/client`.
 - **Local Status:** ✅ Build regenerated with updated asset copies (`bun run build`)
 - **Production Status:** Pending verification
-- **Notes:** After publishing `docs/`, verify that `/Portfolio/main.js` and `/Portfolio/client/chunk-*.js` resolve and the homepage boots normally.
+- **Notes:** Verification pending—`https://mrsadri.github.io/Portfolio/client/main.js` still 404 (checked 2025‑11‑11).
 
