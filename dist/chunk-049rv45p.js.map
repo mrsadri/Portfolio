@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "sources": ["../src/shared/components/ui/GhostButton.tsx"],
+  "sourcesContent": [
+    "import Button from \"@mui/material/Button\";\nimport type { ButtonProps } from \"@mui/material/Button\";\nimport { forwardRef } from \"react\";\n\nconst GhostButton = forwardRef<any, ButtonProps<any>>(function GhostButton(\n  { variant, ...props },\n  ref,\n) {\n  return <Button ref={ref} variant={variant ?? \"outlined\"} {...props} />;\n});\n\nexport default GhostButton;\n\n\n"
+  ],
+  "mappings": "8EAEA,0BAEM,EAAc,aAAkC,QAAoB,EACtE,aAAY,GACd,EACA,CACA,OAAO,SAAC,EAAD,CAAQ,IAAK,EAAK,QAAS,GAAW,cAAgB,GAAtD,qBAA6D,EACrE,EAEc",
+  "debugId": "4D881807B5B925AB64756E2164756E21",
+  "names": []
+}

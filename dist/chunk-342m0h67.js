@@ -1,9 +1,0 @@
-// src/utils/site.ts
-var DEFAULT_SITE_URL = "https://mrsadri.github.io/Portfolio";
-var getSiteUrl = () => typeof import.meta !== "undefined" && import.meta.env?.VITE_SITE_URL || DEFAULT_SITE_URL;
-var site_default = getSiteUrl;
-
-export { site_default };
-
-//# debugId=1FCCF562950ACD7364756E2164756E21
-//# sourceMappingURL=data:application/json;base64,ewogICJ2ZXJzaW9uIjogMywKICAic291cmNlcyI6IFsiLi4vc3JjL3V0aWxzL3NpdGUudHMiXSwKICAic291cmNlc0NvbnRlbnQiOiBbCiAgICAiY29uc3QgREVGQVVMVF9TSVRFX1VSTCA9IFwiaHR0cHM6Ly9tcnNhZHJpLmdpdGh1Yi5pby9Qb3J0Zm9saW9cIjtcblxuZXhwb3J0IGNvbnN0IGdldFNpdGVVcmwgPSAoKSA9PlxuICAodHlwZW9mIGltcG9ydC5tZXRhICE9PSBcInVuZGVmaW5lZFwiICYmIGltcG9ydC5tZXRhLmVudj8uVklURV9TSVRFX1VSTCkgfHwgREVGQVVMVF9TSVRFX1VSTDtcblxuZXhwb3J0IGRlZmF1bHQgZ2V0U2l0ZVVybDtcblxuIgogIF0sCiAgIm1hcHBpbmdzIjogIjtBQUFBLElBQU0sbUJBQW1CO0FBRWxCLElBQU0sYUFBYSxNQUN2QixPQUFPLGdCQUFnQixlQUFlLFlBQVksS0FBSyxpQkFBa0I7QUFFNUUsSUFBZTsiLAogICJkZWJ1Z0lkIjogIjFGQ0NGNTYyOTUwQUNENzM2NDc1NkUyMTY0NzU2RTIxIiwKICAibmFtZXMiOiBbXQp9

@@ -7,8 +7,8 @@ import "@fontsource/inter/400.css";
 import "@fontsource/inter/500.css";
 import "@fontsource/inter/600.css";
 import "@fontsource/inter/700.css";
-import App from "./App";
-import { AppThemeProvider } from "./theme";
+import App from "./app/App";
+import AppProviders from "./app/providers/AppProviders";
 
 const container = document.getElementById("root");
 
@@ -20,9 +20,9 @@ const root = ReactDOM.createRoot(container);
 
 root.render(
   <React.StrictMode>
-    <AppThemeProvider>
+    <AppProviders>
       <App />
-    </AppThemeProvider>
+    </AppProviders>
   </React.StrictMode>,
 );
 

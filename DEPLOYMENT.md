@@ -2,41 +2,38 @@
 
 ## Quick Deployment Steps
 
-### Option 1: Netlify (Recommended)
-1. Create account at [netlify.com](https://netlify.com)
-2. Drag and drop this entire folder to Netlify dashboard
-3. Your site will be live instantly with a `.netlify.app` URL
-4. Configure custom domain in Netlify settings
+### Option 1: GitHub Pages (current production setup)
+1. Run `bun run build` to generate the static site inside `docs/`.
+2. Commit all files, including the updated `docs/` contents.
+3. In GitHub → *Settings* → *Pages*, select your default branch and the `/docs` folder.
+4. Once the Pages workflow completes, visit `https://mrsadri.github.io/Portfolio/`.
 
-### Option 2: Vercel
-1. Install Vercel CLI: `npm i -g vercel`
-2. Run `vercel` in this directory
-3. Follow prompts to deploy
+### Option 2: Netlify
+1. Create an account at [netlify.com](https://netlify.com).
+2. Drag and drop the `docs/` directory or connect the repo and set the build command to `bun run build`, publish directory `docs`.
+3. Configure a custom domain under *Site settings → Domain management* (optional).
 
-### Option 3: GitHub Pages (docs folder)
-1. Create a new GitHub repository
-2. Run `bun run build` to generate the `docs/` folder
-3. Commit the entire project (including `docs/`)
-4. Enable Pages in repository settings and choose `main` (or your default branch) with `/docs`
+### Option 3: Vercel
+1. Install Vercel CLI: `npm i -g vercel`.
+2. Run `vercel` (or use the dashboard) with build command `bun run build` and output directory `docs`.
+3. Follow the prompts to deploy.
 
 ### Option 4: Traditional Web Hosting
-1. Upload all files via FTP/SFTP to your web server
-2. Ensure `index.html` is in the root directory
-3. Set proper file permissions (644 for files, 755 for directories)
+1. Upload the files inside `docs/` via FTP/SFTP.
+2. Ensure `index.html` resides at the web root and that SPA fallbacks are configured (e.g., map 404s to `index.html`).
 
 ## Post-Deployment Checklist
 
-- [ ] Test all pages load correctly
-- [ ] Verify all images display
-- [ ] Test PDF download on resume page
-- [ ] Check mobile responsiveness
-- [ ] Test all navigation links
-- [ ] Verify contact email links work
+- [ ] Run `bun run lint` (type + unused checks) and ensure it passes
+- [ ] Test all top-level routes (Home, My Story, Case Studies, Resume, Contact)
+- [ ] Verify lazy-loaded assets render when scrolled into view
+- [ ] Test PDF/download CTA on resume page
+- [ ] Check mobile responsiveness and navigation drawer
+- [ ] Verify contact email and external links
 - [ ] Test recap modals on case studies
-- [ ] Submit sitemap to Google Search Console
-- [ ] Configure custom domain (if applicable)
-- [ ] Enable HTTPS/SSL
-- [ ] Test page load speed (PageSpeed Insights)
+- [ ] Submit sitemap to Google Search Console (if domain changes)
+- [ ] Configure custom domain & HTTPS (if applicable)
+- [ ] Measure performance via PageSpeed Insights / Lighthouse
 
 ## Output Structure after `bun run build`
 
@@ -56,6 +53,7 @@ docs/
 ## Important Notes
 
 - All paths are relative, so the build works at `https://mrsadri.github.io/Portfolio/`.
+- When served from GitHub Pages the app automatically falls back to hash-based URLs (`/#/route`) to prevent refresh 404s. Canonical tags still point to clean paths, but if you need extensionless URLs at runtime you’ll need a host that supports SPA rewrites (e.g. Netlify/Vercel).
 - `404.html` mirrors `index.html` to provide SPA fallback on GitHub Pages.
 - `.nojekyll` prevents GitHub Pages from stripping files that begin with underscores.
 - If you customise the domain later, remember to update `index.html`, `sitemap.xml`, and `robots.txt` with the new canonical URL.
