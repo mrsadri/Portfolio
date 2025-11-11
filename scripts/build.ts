@@ -8,6 +8,7 @@ const distDir = "dist";
 const docsDir = "docs";
 const docsClientDir = join(docsDir, "client");
 const docsDistDir = join(docsDir, "dist");
+const publicClientDir = "client";
 
 const notFoundHtml = `<!doctype html>
 <html lang="en">
@@ -83,6 +84,7 @@ console.log(`🚧 Running static builder v${builderVersion}...`);
 await Promise.all([
   rm(distDir, { recursive: true, force: true }),
   rm(docsDir, { recursive: true, force: true }),
+  rm(publicClientDir, { recursive: true, force: true }),
 ]);
 
 const packageMetaRaw = await readFile("package.json", "utf8");
@@ -147,6 +149,7 @@ await mkdir(docsDir, { recursive: true });
 await Promise.all([
   cp(distDir, docsClientDir, { recursive: true }),
   cp(distDir, docsDistDir, { recursive: true }),
+  cp(distDir, publicClientDir, { recursive: true }),
   cp("images", join(docsDir, "images"), { recursive: true }),
   cp("index.html", join(docsDir, "index.html")),
   cp("robots.txt", join(docsDir, "robots.txt")),
