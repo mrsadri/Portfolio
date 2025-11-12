@@ -57,8 +57,8 @@
 
 ### Task 8 — Extend Emoji List
 - **Description:** Add two additional emojis to the personal interests list.
-- **Outcome:** Added `🎨` and `🪵` to the emoji array so the UI reflects a fuller personality snapshot.
-- **Production Acceptance:** Personal interests emoji list on production includes `🎨` and `🪵` without layout regressions.
+- **Outcome:** Added `🎨` and `🪴` to the emoji array so the UI reflects a fuller personality snapshot.
+- **Production Acceptance:** Personal interests emoji list on production includes `🎨` and `�` without layout regressions.
 - Date of Done this task:
 - **Local Verification:** ✅ Browser check on localhost (2025-11-12)
 - **Production Status:** ❌ Emoji list unchanged on production (checked 2025-11-12 after latest GitHub Pages publish attempt)
@@ -107,3 +107,10 @@
 - Date of Done this task:
 - **Local Verification:** ✅ Browser check on localhost (2025-11-12)
 - **Production Status:** ❌ Hero still includes credential stack alongside badge (checked 2025-11-12 after latest GitHub Pages publish attempt)
+
+### Task 15 — Rebuild Footer Contact CTA Card
+- **Description:** Replace the legacy horizontal contact stack with the new card-based CTA featuring the updated headline, supporting copy, and streamlined action set.
+- **Outcome:** Implemented a card layout in `Footer` with centered messaging and large-format buttons for email, LinkedIn, and GitHub while removing the Telegram and mentorship quick actions per the revised content brief.
+- Date of Done this task:
+- **Local Verification:** ⬜️ Not yet verified
+- **Production Status:** ⬜️ Pending deployment
