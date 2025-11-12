@@ -4,6 +4,7 @@ import { useCallback } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import type { HeroContent } from "../types";
 import { GhostButton, Pill, PrimaryButton } from "../../../shared/ui";
+import certifiedBadgeSrc from "../../../../images/badges/certified-badge.png";
 
 type HeroSectionProps = {
   hero: HeroContent;
@@ -59,22 +60,44 @@ const HeroSection = ({ hero }: HeroSectionProps) => {
               width: "100%",
             }}
           >
-            <Avatar
-              src={hero.portrait.src}
-              alt={hero.portrait.alt}
-              variant="rounded"
+            <Box
               sx={{
+                position: "relative",
                 width: "100%",
                 maxWidth: { xs: 260, sm: 300, md: 320 },
-                height: "auto",
-                borderRadius: (theme) => theme.tokens.radius.lg,
-                border: (theme) => `1px solid ${theme.tokens.colors.border}`,
-                boxShadow: (theme) =>
-                  theme.palette.mode === "light"
-                    ? "0 18px 40px rgba(17, 36, 83, 0.18)"
-                    : "0 20px 50px rgba(0, 0, 0, 0.55)",
               }}
-            />
+            >
+              <Avatar
+                src={hero.portrait.src}
+                alt={hero.portrait.alt}
+                variant="rounded"
+                sx={{
+                  width: "100%",
+                  height: "auto",
+                  borderRadius: (theme) => theme.tokens.radius.lg,
+                  border: (theme) => `1px solid ${theme.tokens.colors.border}`,
+                  boxShadow: (theme) =>
+                    theme.palette.mode === "light"
+                      ? "0 18px 40px rgba(17, 36, 83, 0.18)"
+                      : "0 20px 50px rgba(0, 0, 0, 0.55)",
+                }}
+              />
+              <Box
+                component="img"
+                src={certifiedBadgeSrc}
+                alt="Certified badge"
+                loading="lazy"
+                sx={{
+                  position: "absolute",
+                  top: { xs: -18, md: -24 },
+                  left: { xs: -18, md: -24 },
+                  width: { xs: 120, md: 150 },
+                  height: "auto",
+                  pointerEvents: "none",
+                  userSelect: "none",
+                }}
+              />
+            </Box>
           </Stack>
           <Stack
             spacing={{ xs: 2.25, md: 2.75 }}

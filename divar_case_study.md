@@ -223,4 +223,4 @@ The harassment problem isn't fully solved—it may never be—but we made Divar 
 ---
 
 *Designed by Masih Sadri @ Divar*  
-*sadri.masih@gmail.com | [LinkedIn](#)*
+*sadrimasih@gmail.com | [LinkedIn](#)*

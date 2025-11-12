@@ -22,7 +22,7 @@ const ContactMethodsSection = ({ methods }: ContactMethodsSectionProps) => (
         {methods.map((method) => {
           const isMailLink = method.href.startsWith("mailto:");
           return (
-            <Grid size={{ xs: 12, md: 4 }} key={method.title}>
+            <Grid size={{ xs: 12, md: 3 }} key={method.title}>
               <Card sx={{ height: "100%" }}>
                 <CardContent>
                   <Stack spacing={2} alignItems="flex-start">

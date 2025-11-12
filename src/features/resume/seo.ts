@@ -14,7 +14,7 @@ const resumeStructuredData: StructuredData = {
     "@type": "Person",
     name: resumeSummary.title,
     jobTitle: resumeSummary.subtitle,
-    email: "sdarimasih@gmail.com",
+    email: "sadrimasih@gmail.com",
     address: {
       "@type": "PostalAddress",
       addressLocality: "Tehran",
