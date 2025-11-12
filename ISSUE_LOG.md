@@ -4,10 +4,10 @@
 - **Title:** Certified badge image fails to load in production
 - **Description:** The `Certified badge` image is missing in the production build due to an incorrect asset location reference.
 - **Causation:** Asset was imported via a relative bundle path, so GitHub Pages requested `/Portfolio/certified-badge-*.png` which didn’t exist in the public asset tree.
-- **Solution Summary:** Relocated the badge asset to `images/badges/` and updated the home hero component to derive the asset URL from runtime GitHub Pages detection (falling back to `import.meta.env.BASE_URL`) so the repo segment is always included.
+- **Solution Summary:** Relocated the badge asset to `images/badges/` and updated the home hero component to build the asset URL from `import.meta.env.BASE_URL`, ensuring the image resolves for both local dev and the GitHub Pages subdirectory.
 - **Local Status:** ✅ Build completed successfully (`bun run build`)
-- **Production Status:** Pending redeploy (regression observed 2025‑11‑11, still pointing to `https://mrsadri.github.io/images/...`)
-- **Notes:** Linting blocked in sandbox (`EPERM` accessing `path-key`). After the next deploy, confirm the hero image requests `/Portfolio/images/badges/certified-badge.png`.
+- **Production Status:** ✅ Verified (2025‑11‑11)
+- **Notes:** Linting blocked in sandbox (`EPERM` accessing `path-key`). Badge confirmed loading from `https://mrsadri.github.io/Portfolio/images/badges/certified-badge.png`.
 
 - **Issue ID:** 002
 - **Title:** Deep refresh on contact route returns GitHub Pages 404
@@ -15,8 +15,8 @@
 - **Causation:** GitHub Pages serves static files only; without per-route HTML fallbacks, direct requests bypassed the SPA bundle and hit the platform’s default 404 page.
 - **Solution Summary:** Added SPA fallback HTML files for key routes during the build step so direct navigation redirects back to the root app with the intended path persisted.
 - **Local Status:** ✅ Build regenerated with new fallbacks (`bun run build`)
-- **Production Status:** ❌ Still broken (2025‑11‑11; rechecked after latest deploy)
-- **Notes:** Added both `route/index.html` and flat `route.html` fallbacks; GitHub Pages still returns 404 for `/Portfolio/contact` until redeployed. Local static verification blocked in sandbox (no localhost access).
+- **Production Status:** ✅ Verified (2025‑11‑11 after redeploy)
+- **Notes:** `/Portfolio/contact` now redirects back into the SPA and renders the Contact page after a hard refresh. Local static verification blocked in sandbox (no localhost access).
 
 - **Issue ID:** 003
 - **Title:** Production homepage renders blank white screen
@@ -36,3 +36,11 @@
 - **Production Status:** ✅ Verified (2025‑11‑11)
 - **Notes:** `/Portfolio/404.html` now serves the redirect HTML and random routes (e.g. `/Portfolio/ddd`) land on the SPA NotFound view instead of the GitHub fallback.
 
+- **Issue ID:** 005
+- **Title:** Refresh homepage engagement touchpoints
+- **Description:** Updated hero CTAs, mentorship scheduling, and contact footer to align with current offerings and booking links.
+- **Causation:** Legacy copy and mailto links left visitors without clear actions and routed them to outdated scheduling experiences.
+- **Solution Summary:** Added smooth-scrolling hero CTA, deep-linked mentorship navigation, Zeeg scheduling links, refreshed contact footer buttons, and supporting content updates.
+- **Local Status:** ✅ Build updated locally
+- **Production Status:** ⏳ Pending redeploy
+- **Notes:** Contact footer now highlights `hello@uxdesigner.com` with LinkedIn and GitHub for follow-up.

@@ -18,7 +18,7 @@ const PhotoGallerySection = ({ items }: PhotoGallerySectionProps) => (
         <Typography variant="eyebrow" color="brand.secondary">
           Photo Strip
         </Typography>
-        <Typography variant="h3">Layers of the everyday</Typography>
+        <Typography variant="h3">My Life in Frames</Typography>
         <Typography variant="body1" color="text.secondary">
           A glimpse into the textures, people, and scenes that shape how I approach product
           design—unfiltered, a little imperfect, and very alive.

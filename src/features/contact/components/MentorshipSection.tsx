@@ -19,6 +19,7 @@ type MentorshipSectionProps = {
 
 const MentorshipSection = ({ offers }: MentorshipSectionProps) => (
   <Box
+    id="mentorship"
     sx={{
       py: { xs: 6, md: 8 },
       backgroundColor: "background.paper",
@@ -47,13 +48,21 @@ const MentorshipSection = ({ offers }: MentorshipSectionProps) => (
               >
                 <CardContent>
                   <Stack spacing={2}>
-                    <Stack direction="row" alignItems="center" spacing={2}>
-                      <Typography variant="h5">{offer.title}</Typography>
+                    <Stack
+                      direction="row"
+                      alignItems="center"
+                      spacing={2}
+                      sx={{ width: "100%" }}
+                    >
+                      <Typography variant="h5" sx={{ flexGrow: 1 }}>
+                        {offer.title}
+                      </Typography>
                       <Chip
                         icon={<ScheduleRoundedIcon />}
                         label={offer.duration}
                         color={isFeatured ? "default" : "primary"}
                         sx={{
+                          ml: "auto",
                           ...(isFeatured && {
                             backgroundColor: "rgba(255,255,255,0.18)",
                             color: "inherit",
@@ -75,11 +84,13 @@ const MentorshipSection = ({ offers }: MentorshipSectionProps) => (
                   <Button
                     component="a"
                     href={offer.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     variant="contained"
                     color={isFeatured ? "secondary" : "primary"}
                     fullWidth
                   >
-                    Schedule via Email
+                    {offer.ctaLabel ?? "Book now"}
                   </Button>
                 </CardActions>
               </Card>

@@ -19,6 +19,7 @@ export type MentorshipOffer = {
   href: string;
   featured?: boolean;
   note?: string;
+  ctaLabel?: string;
 };
 
 export type HelpTopic = {
