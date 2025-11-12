@@ -58,7 +58,7 @@ export const gallery: ReadonlyArray<GalleryItem> = [
 export const philosophyText =
   "I design experiences that not only solve problems but create value for both businesses and users. I enjoy digging deep into challenges, analyzing them thoroughly, and coming up with solutions that truly make a difference.";
 
-export const emojiList: readonly string[] = ["☕️", "🧗🏽", "💻", "📚", "🎨", "🪵"];
+export const emojiList: readonly string[] = ["☕️", "🧗🏽", "💻", "📚", "🎨", "🪴"];
 
 export const readingJourney: ReadingJourney = {
   title: "Design Books Guiding My Craft",
