@@ -42,8 +42,8 @@
 - **Causation:** Legacy copy and mailto links left visitors without clear actions and routed them to outdated scheduling experiences.
 - **Solution Summary:** Implemented smooth-scrolling hero CTA, `/contact#mentorship` deep link with on-load scrolling, Zeeg scheduling links, trimmed hero actions, and redesigned contact footer CTAs.
 - **Local Status:** ✅ Build updated locally
-- **Production Status:** ❌ Legacy content still live (checked 2025‑11‑12 after second GitHub Pages publish attempt; 75 s post-push)
-- **Notes:** Hero still shows credential stack/legacy CTAs, contact page retains mailto links, and footer copy unchanged; redeploy required to publish refreshed experience.
+- **Production Status:** ✅ Refreshed hero, mentorship, and contact footer live on production (verified 2025‑11‑12 after third GitHub Pages publish; 75 s post-push)
+- **Notes:** Confirmed hero credential stack removal, smooth-scrolling CTA, Zeeg links, and updated footer/contact layout at `https://mrsadri.github.io/Portfolio/`.
 
 - **Issue ID:** 006
 - **Title:** Production site out of sync with local updates
@@ -51,14 +51,14 @@
 - **Causation:** The `docs/` deployment artifacts were not regenerated after recent content updates, so GitHub Pages continued serving stale assets.
 - **Solution Summary:** Ran `bun run build` to rebuild the static site and refresh `docs/`, `docs/client/`, and `client/` with the latest bundle, preparing the repo for redeploy.
 - **Local Status:** ✅ Build regenerated (`bun run build` on 2025-11-12)
-- **Production Status:** ❌ Production still serving legacy bundle after second 2025‑11‑12 deploy attempt (checked 75 s post-push)
-- **Notes:** After pushing the updated artifacts, verify at `https://mrsadri.github.io/Portfolio/` that hero CTAs, contact section, and footer match the local build.
+- **Production Status:** ✅ Production serving refreshed bundle after third 2025‑11‑12 deploy attempt (verified 75 s post-push)
+- **Notes:** Latest bundle now reflected across hero, contact, and footer surfaces on `https://mrsadri.github.io/Portfolio/`.
 
 - **Issue ID:** 007
 - **Title:** Mentorship section scroll feels abrupt
 - **Description:** Navigating to `/contact#mentorship` or clicking the mentorship CTA triggers an almost instant jump to the section instead of a gradual scroll.
 - **Causation:** The previous implementation relied on `element.scrollIntoView({ behavior: "smooth" })`, which defaults to ~300ms travel time and renders as a rapid jump on longer pages.
 - **Solution Summary:** Added a reusable `smoothScrollToElement` helper with eased animation and ~900ms duration, and updated hero/contact flows to use it for more natural motion.
-- **Local Status:** ⏳ Pending manual QA in browser (typecheck passes in sandbox)
-- **Production Status:** ❌ Not yet shipped (awaits deploy; confirmed 2025‑11‑12 after latest publish attempt)
-- **Notes:** After deployment, click “Book a call” on the hero and reload `/contact#mentorship` to confirm the eased scroll behavior.
+- **Local Status:** ✅ Browser check (2025‑11‑12)
+- **Production Status:** ✅ Smooth scroll verified via hero CTA and `/contact#mentorship` deep link (2025‑11‑12 after third GitHub Pages publish; 75 s post-push)
+- **Notes:** Confirmed eased scroll by clicking “View case study” and loading `/contact#mentorship`; `window.scrollY` updates smoothly to section on production.
