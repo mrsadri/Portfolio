@@ -12,7 +12,8 @@ export type HeroContent = {
   };
   ctaSecondary: {
     label: string;
-    to: string;
+    to?: string;
+    scrollToId?: string;
   };
   portrait: ImageResource;
 };
@@ -54,6 +55,29 @@ export type ExperienceSummary = {
 export type SocialLink = {
   label: string;
   href: string;
+};
+
+export type WhyHireMeContent = {
+  whatIBring: {
+    title: string;
+    differentiators: ReadonlyArray<{
+      title: string;
+      description: string;
+    }>;
+  };
+  whatImLookingFor: {
+    title: string;
+    description: string;
+    action?: {
+      label: string;
+      href: string;
+      scrollToId?: string;
+    };
+  };
+  quickStats: ReadonlyArray<{
+    value: string;
+    label: string;
+  }>;
 };
 
 

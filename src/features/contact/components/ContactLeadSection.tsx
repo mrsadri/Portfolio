@@ -23,7 +23,7 @@ const secondaryActions: ContactAction[] = [
     icon: <GitHubIcon />,
   },
   {
-    label: "Book a session",
+    label: "Set an appointment",
     href: "#mentorship",
     icon: <EventAvailableIcon />,
   },

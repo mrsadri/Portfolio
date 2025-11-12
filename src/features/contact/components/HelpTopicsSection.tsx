@@ -7,7 +7,6 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import VolunteerActivismRoundedIcon from "@mui/icons-material/VolunteerActivismRounded";
 import type { HelpTopic } from "../types";
 
 type HelpTopicsSectionProps = {
@@ -18,8 +17,7 @@ const HelpTopicsSection = ({ topics }: HelpTopicsSectionProps) => (
   <Box sx={{ py: { xs: 6, md: 8 } }}>
     <Container>
       <Stack spacing={3} mb={4}>
-        <Stack direction="row" spacing={2} alignItems="center">
-          <VolunteerActivismRoundedIcon color="secondary" />
+        <Stack spacing={2} alignItems="center" textAlign="center">
           <Typography variant="h2">What I Can Help With</Typography>
         </Stack>
         <Grid container spacing={3}>
