@@ -44,3 +44,21 @@
 - **Local Status:** ✅ Build updated locally
 - **Production Status:** ❌ Legacy content still live (checked 2025‑11‑12)
 - **Notes:** Hero still shows credential stack/legacy CTAs, contact page retains mailto links, and footer copy unchanged; redeploy required to publish refreshed experience.
+
+- **Issue ID:** 006
+- **Title:** Production site out of sync with local updates
+- **Description:** Local build reflects refreshed hero CTAs, footer copy, and contact CTAs, but production still serves the legacy bundle.
+- **Causation:** The `docs/` deployment artifacts were not regenerated after recent content updates, so GitHub Pages continued serving stale assets.
+- **Solution Summary:** Ran `bun run build` to rebuild the static site and refresh `docs/`, `docs/client/`, and `client/` with the latest bundle, preparing the repo for redeploy.
+- **Local Status:** ✅ Build regenerated (`bun run build` on 2025-11-12)
+- **Production Status:** ⏳ Awaiting GitHub Pages publish once changes are pushed
+- **Notes:** After pushing the updated artifacts, verify at `https://mrsadri.github.io/Portfolio/` that hero CTAs, contact section, and footer match the local build.
+
+- **Issue ID:** 007
+- **Title:** Mentorship section scroll feels abrupt
+- **Description:** Navigating to `/contact#mentorship` or clicking the mentorship CTA triggers an almost instant jump to the section instead of a gradual scroll.
+- **Causation:** The previous implementation relied on `element.scrollIntoView({ behavior: "smooth" })`, which defaults to ~300ms travel time and renders as a rapid jump on longer pages.
+- **Solution Summary:** Added a reusable `smoothScrollToElement` helper with eased animation and ~900ms duration, and updated hero/contact flows to use it for more natural motion.
+- **Local Status:** ⏳ Pending manual QA in browser (typecheck passes in sandbox)
+- **Production Status:** ❌ Not yet shipped (awaits deploy)
+- **Notes:** After deployment, click “Book a call” on the hero and reload `/contact#mentorship` to confirm the eased scroll behavior.

@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { Seo } from "../../shared/seo";
+import { smoothScrollToElement } from "../../utils/smoothScroll";
 import AsyncPreferenceCard from "./components/AsyncPreferenceCard";
 import ContactMethodsSection from "./components/ContactMethodsSection";
 import HelpTopicsSection from "./components/HelpTopicsSection";
@@ -26,9 +27,13 @@ const ContactPage = () => {
 
     const targetId = location.hash.slice(1);
     const element = document.getElementById(targetId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "start" });
+    if (!element) {
+      return;
     }
+
+    window.requestAnimationFrame(() => {
+      smoothScrollToElement(element, { duration: 900, offset: 16 });
+    });
   }, [location.hash]);
 
   return (

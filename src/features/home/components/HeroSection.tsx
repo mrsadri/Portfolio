@@ -5,6 +5,7 @@ import { Link as RouterLink } from "react-router-dom";
 import type { HeroContent } from "../types";
 import { GhostButton, Pill, PrimaryButton } from "../../../shared/ui";
 import certifiedBadgeSrc from "../../../../images/badges/certified-badge.png";
+import { smoothScrollToElement } from "../../../utils/smoothScroll";
 
 type HeroSectionProps = {
   hero: HeroContent;
@@ -25,7 +26,7 @@ const HeroSection = ({ hero }: HeroSectionProps) => {
     const sanitizedId = targetId.startsWith("#") ? targetId.slice(1) : targetId;
     const element = document.getElementById(sanitizedId);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "start" });
+      smoothScrollToElement(element, { duration: 900, offset: 16 });
     }
   }, [hero.ctaPrimary.scrollToId, hero.ctaPrimary.to]);
 
