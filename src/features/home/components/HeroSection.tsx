@@ -165,23 +165,131 @@ const HeroSection = ({ hero }: HeroSectionProps) => {
                   color: theme.palette.text.secondary,
                   fontWeight: 500,
                   letterSpacing: { xs: "0.01em", md: "0.005em" },
-                  maxWidth: { md: "78%" },
+                  maxWidth: { md: "85%" },
                 }}
               >
                 {hero.title}
               </Typography>
             </Stack>
 
-            <Typography
-              variant="subtitle1"
-              sx={{
-                color: theme.palette.text.secondary,
-                fontSize: { xs: "1.05rem", md: "1.12rem" },
-                lineHeight: { xs: 1.65, md: 1.7 },
-              }}
-            >
-              {hero.subtitle}
-            </Typography>
+            <Stack spacing={2}>
+              <Typography
+                variant="subtitle1"
+                sx={{
+                  color: theme.palette.text.secondary,
+                  fontSize: { xs: "1.05rem", md: "1.12rem" },
+                  lineHeight: { xs: 1.65, md: 1.7 },
+                  fontWeight: 500,
+                }}
+              >
+                {hero.subtitle.split(" | ")[0]}
+              </Typography>
+              {hero.subtitle.includes(" | ") && (
+                <Typography
+                  variant="body1"
+                  sx={{
+                    color: theme.palette.text.secondary,
+                    fontSize: { xs: "0.95rem", md: "1rem" },
+                    lineHeight: { xs: 1.6, md: 1.65 },
+                    opacity: 0.9,
+                  }}
+                >
+                  {hero.subtitle.split(" | ").slice(1).join(" | ")}
+                </Typography>
+              )}
+              {/* Key Value Pills */}
+              <Stack
+                direction="row"
+                spacing={1}
+                flexWrap="wrap"
+                sx={{
+                  pt: 0.5,
+                  gap: 1,
+                  justifyContent: { xs: "center", md: "flex-start" },
+                }}
+              >
+                <Pill
+                  label="40+ Million Users"
+                  size="small"
+                  sx={{
+                    backgroundColor:
+                      theme.palette.mode === "light"
+                        ? "rgba(31, 111, 235, 0.1)"
+                        : "rgba(98, 132, 218, 0.15)",
+                    color:
+                      theme.palette.mode === "light"
+                        ? theme.palette.brand.secondary
+                        : "rgba(221, 230, 255, 0.9)",
+                    fontWeight: 600,
+                    fontSize: { xs: "0.75rem", md: "0.8125rem" },
+                  }}
+                />
+                <Pill
+                  label="B2B & B2C"
+                  size="small"
+                  sx={{
+                    backgroundColor:
+                      theme.palette.mode === "light"
+                        ? "rgba(31, 111, 235, 0.1)"
+                        : "rgba(98, 132, 218, 0.15)",
+                    color:
+                      theme.palette.mode === "light"
+                        ? theme.palette.brand.secondary
+                        : "rgba(221, 230, 255, 0.9)",
+                    fontWeight: 600,
+                    fontSize: { xs: "0.75rem", md: "0.8125rem" },
+                  }}
+                />
+                <Pill
+                  label="Data-Driven"
+                  size="small"
+                  sx={{
+                    backgroundColor:
+                      theme.palette.mode === "light"
+                        ? "rgba(31, 111, 235, 0.1)"
+                        : "rgba(98, 132, 218, 0.15)",
+                    color:
+                      theme.palette.mode === "light"
+                        ? theme.palette.brand.secondary
+                        : "rgba(221, 230, 255, 0.9)",
+                    fontWeight: 600,
+                    fontSize: { xs: "0.75rem", md: "0.8125rem" },
+                  }}
+                />
+                <Pill
+                  label="AI-Familiar"
+                  size="small"
+                  sx={{
+                    backgroundColor:
+                      theme.palette.mode === "light"
+                        ? "rgba(31, 111, 235, 0.1)"
+                        : "rgba(98, 132, 218, 0.15)",
+                    color:
+                      theme.palette.mode === "light"
+                        ? theme.palette.brand.secondary
+                        : "rgba(221, 230, 255, 0.9)",
+                    fontWeight: 600,
+                    fontSize: { xs: "0.75rem", md: "0.8125rem" },
+                  }}
+                />
+                <Pill
+                  label="Technical & Management"
+                  size="small"
+                  sx={{
+                    backgroundColor:
+                      theme.palette.mode === "light"
+                        ? "rgba(31, 111, 235, 0.1)"
+                        : "rgba(98, 132, 218, 0.15)",
+                    color:
+                      theme.palette.mode === "light"
+                        ? theme.palette.brand.secondary
+                        : "rgba(221, 230, 255, 0.9)",
+                    fontWeight: 600,
+                    fontSize: { xs: "0.75rem", md: "0.8125rem" },
+                  }}
+                />
+              </Stack>
+            </Stack>
 
             <Stack
               spacing={{ xs: 1.4, sm: 1.8 }}

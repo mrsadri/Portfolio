@@ -1,7 +1,9 @@
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
 import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
+import TelegramIcon from "@mui/icons-material/Telegram";
 import {
   AppBar,
   Box,
@@ -229,6 +231,44 @@ const MainLayout = () => {
                     );
                   })}
                 </Stack>
+                <Stack direction="row" spacing={0.5} alignItems="center">
+                  <Tooltip title="LinkedIn Profile" arrow>
+                    <IconButton
+                      component="a"
+                      href="https://www.linkedin.com/in/msadri/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      color="inherit"
+                      size="small"
+                      sx={{
+                        color: "text.secondary",
+                        "&:hover": {
+                          color: "primary.main",
+                        },
+                      }}
+                    >
+                      <LinkedInIcon fontSize="small" />
+                    </IconButton>
+                  </Tooltip>
+                  <Tooltip title="Direct Message on Telegram" arrow>
+                    <IconButton
+                      component="a"
+                      href="https://t.me/masihsadri"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      color="inherit"
+                      size="small"
+                      sx={{
+                        color: "text.secondary",
+                        "&:hover": {
+                          color: "primary.main",
+                        },
+                      }}
+                    >
+                      <TelegramIcon fontSize="small" />
+                    </IconButton>
+                  </Tooltip>
+                </Stack>
                 {colorModeSwitch}
               </Stack>
             ) : (
@@ -277,6 +317,38 @@ const MainLayout = () => {
                     ))}
                   </List>
                   <Divider sx={{ my: 2 }} />
+                  <Stack direction="row" spacing={1} justifyContent="center" alignItems="center" sx={{ mb: 2 }}>
+                    <Tooltip title="LinkedIn Profile" arrow>
+                      <IconButton
+                        component="a"
+                        href="https://www.linkedin.com/in/msadri/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        color="primary"
+                        sx={{
+                          border: "1px solid",
+                          borderColor: "divider",
+                        }}
+                      >
+                        <LinkedInIcon />
+                      </IconButton>
+                    </Tooltip>
+                    <Tooltip title="Direct Message on Telegram" arrow>
+                      <IconButton
+                        component="a"
+                        href="https://t.me/masihsadri"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        color="primary"
+                        sx={{
+                          border: "1px solid",
+                          borderColor: "divider",
+                        }}
+                      >
+                        <TelegramIcon />
+                      </IconButton>
+                    </Tooltip>
+                  </Stack>
                   <Box sx={{ display: "flex", justifyContent: "center" }}>{colorModeSwitch}</Box>
                 </Drawer>
               </>
