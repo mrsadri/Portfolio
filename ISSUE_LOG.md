@@ -42,7 +42,7 @@
 - **Causation:** Legacy copy and mailto links left visitors without clear actions and routed them to outdated scheduling experiences.
 - **Solution Summary:** Implemented smooth-scrolling hero CTA, `/contact#mentorship` deep link with on-load scrolling, Zeeg scheduling links, trimmed hero actions, and redesigned contact footer CTAs.
 - **Local Status:** ✅ Build updated locally
-- **Production Status:** ❌ Legacy content still live (checked 2025‑11‑12)
+- **Production Status:** ❌ Legacy content still live (checked 2025‑11‑12 after latest GitHub Pages publish attempt)
 - **Notes:** Hero still shows credential stack/legacy CTAs, contact page retains mailto links, and footer copy unchanged; redeploy required to publish refreshed experience.
 
 - **Issue ID:** 006
@@ -51,7 +51,7 @@
 - **Causation:** The `docs/` deployment artifacts were not regenerated after recent content updates, so GitHub Pages continued serving stale assets.
 - **Solution Summary:** Ran `bun run build` to rebuild the static site and refresh `docs/`, `docs/client/`, and `client/` with the latest bundle, preparing the repo for redeploy.
 - **Local Status:** ✅ Build regenerated (`bun run build` on 2025-11-12)
-- **Production Status:** ⏳ Awaiting GitHub Pages publish once changes are pushed
+- **Production Status:** ❌ Production still serving legacy bundle after 2025‑11‑12 deploy (checked 75 s post-push)
 - **Notes:** After pushing the updated artifacts, verify at `https://mrsadri.github.io/Portfolio/` that hero CTAs, contact section, and footer match the local build.
 
 - **Issue ID:** 007
@@ -60,5 +60,5 @@
 - **Causation:** The previous implementation relied on `element.scrollIntoView({ behavior: "smooth" })`, which defaults to ~300ms travel time and renders as a rapid jump on longer pages.
 - **Solution Summary:** Added a reusable `smoothScrollToElement` helper with eased animation and ~900ms duration, and updated hero/contact flows to use it for more natural motion.
 - **Local Status:** ⏳ Pending manual QA in browser (typecheck passes in sandbox)
-- **Production Status:** ❌ Not yet shipped (awaits deploy)
+- **Production Status:** ❌ Not yet shipped (awaits deploy; confirmed 2025‑11‑12 after latest publish attempt)
 - **Notes:** After deployment, click “Book a call” on the hero and reload `/contact#mentorship` to confirm the eased scroll behavior.
