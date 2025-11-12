@@ -61,4 +61,13 @@
 - **Solution Summary:** Added a reusable `smoothScrollToElement` helper with eased animation and ~900ms duration, and updated hero/contact flows to use it for more natural motion.
 - **Local Status:** ✅ Browser check (2025‑11‑12)
 - **Production Status:** ✅ Smooth scroll verified via hero CTA and `/contact#mentorship` deep link (2025‑11‑12 after third GitHub Pages publish; 75 s post-push)
-- **Notes:** Confirmed eased scroll by clicking “View case study” and loading `/contact#mentorship`; `window.scrollY` updates smoothly to section on production.
+- **Notes:** Confirmed eased scroll by clicking "View case study" and loading `/contact#mentorship`; `window.scrollY` updates smoothly to section on production.
+
+- **Issue ID:** 008
+- **Title:** Nested routes return 404 on production
+- **Description:** Direct navigation to `/contact` and `/my-story` routes returns a 404 page instead of rendering the SPA pages.
+- **Causation:** GitHub Pages fallback HTML files may not be correctly configured or deployed for these routes, causing direct requests to bypass the SPA router.
+- **Solution Summary:** Verify that `docs/contact/index.html` and `docs/my-story/index.html` exist and contain proper SPA redirect logic. Ensure build process generates these fallback files correctly.
+- **Local Status:** ⏳ Pending investigation
+- **Production Status:** ❌ Routes `/contact` and `/my-story` return 404 (checked 2025‑11‑12 after fourth GitHub Pages publish; 75 s post-push)
+- **Notes:** Homepage navigation links work correctly, but direct URL access to nested routes fails. This prevents verification of Tasks 16 and 18 which require accessing these pages.
