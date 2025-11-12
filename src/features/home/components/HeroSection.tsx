@@ -5,28 +5,6 @@ import { Link as RouterLink } from "react-router-dom";
 import type { HeroContent } from "../types";
 import { GhostButton, Pill, PrimaryButton } from "../../../shared/ui";
 
-const env = import.meta.env ?? {};
-const resolveAssetBase = () => {
-  const baseUrl = typeof env.BASE_URL === "string" ? env.BASE_URL : "/";
-  const normalizedEnvBase = baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`;
-
-  if (typeof window === "undefined") {
-    return normalizedEnvBase;
-  }
-
-  const { hostname, pathname } = window.location;
-  if (hostname.endsWith("github.io")) {
-    const [repoSegment] = pathname.split("/").filter(Boolean);
-    if (repoSegment) {
-      return `/${repoSegment}/`;
-    }
-  }
-
-  return normalizedEnvBase;
-};
-
-const certifiedBadgeSrc = `${resolveAssetBase()}images/badges/certified-badge.png`;
-
 type HeroSectionProps = {
   hero: HeroContent;
 };
@@ -81,82 +59,22 @@ const HeroSection = ({ hero }: HeroSectionProps) => {
               width: "100%",
             }}
           >
-            <Box
+            <Avatar
+              src={hero.portrait.src}
+              alt={hero.portrait.alt}
+              variant="rounded"
               sx={{
-                position: "relative",
                 width: "100%",
                 maxWidth: { xs: 260, sm: 300, md: 320 },
+                height: "auto",
+                borderRadius: (theme) => theme.tokens.radius.lg,
+                border: (theme) => `1px solid ${theme.tokens.colors.border}`,
+                boxShadow: (theme) =>
+                  theme.palette.mode === "light"
+                    ? "0 18px 40px rgba(17, 36, 83, 0.18)"
+                    : "0 20px 50px rgba(0, 0, 0, 0.55)",
               }}
-            >
-              <Avatar
-                src={hero.portrait.src}
-                alt={hero.portrait.alt}
-                variant="rounded"
-                sx={{
-                  width: "100%",
-                  height: "100%",
-                  borderRadius: (theme) => theme.tokens.radius.lg,
-                  border: `1px solid ${theme.tokens.colors.border}`,
-                  boxShadow:
-                    theme.palette.mode === "light"
-                      ? "0 18px 40px rgba(17, 36, 83, 0.18)"
-                      : "0 20px 50px rgba(0, 0, 0, 0.55)",
-                }}
-              />
-              <Stack
-                direction="row"
-                spacing={1}
-                sx={{
-                  position: "absolute",
-                  bottom: -24,
-                  left: "50%",
-                  transform: "translateX(-50%)",
-                  alignItems: "center",
-                  background:
-                    theme.palette.mode === "light"
-                      ? "rgba(17, 36, 83, 0.86)"
-                      : "rgba(5, 12, 24, 0.88)",
-                  color: "common.white",
-                  borderRadius: 999,
-                  px: 2.25,
-                  py: 0.75,
-                  boxShadow: "0 12px 24px rgba(12, 28, 75, 0.35)",
-                  whiteSpace: "nowrap",
-                }}
-              >
-                <Box
-                  sx={{
-                    width: 8,
-                    height: 8,
-                    borderRadius: "50%",
-                    backgroundColor: theme.palette.success.main,
-                    animation: "availabilityPulse 1.6s ease-in-out infinite",
-                    "@keyframes availabilityPulse": {
-                      "0%, 100%": { opacity: 1 },
-                      "50%": { opacity: 0.2 },
-                    },
-                  }}
-                />
-                <Typography variant="caption" sx={{ fontWeight: 600, letterSpacing: 0.4 }}>
-                  Available for senior roles
-                </Typography>
-              </Stack>
-              <Box
-                component="img"
-                src={certifiedBadgeSrc}
-                alt="Certified badge"
-                loading="lazy"
-                sx={{
-                  position: "absolute",
-                  top: { xs: -18, md: -26 },
-                  left: { xs: -18, md: -26 },
-                  width: { xs: 120, md: 160 },
-                  height: { xs: 120, md: 160 },
-                  pointerEvents: "none",
-                  userSelect: "none",
-                }}
-              />
-            </Box>
+            />
           </Stack>
           <Stack
             spacing={{ xs: 2.25, md: 2.75 }}
