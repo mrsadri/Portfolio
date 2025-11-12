@@ -50,7 +50,7 @@ const HeaderSection = ({ summary, actions }: HeaderSectionProps) => {
               target="_blank"
               clickable
             />
-            <Chip label="sdarimasih@gmail.com" component="a" href="mailto:sdarimasih@gmail.com" clickable />
+            <Chip label="sadrimasih@gmail.com" component="a" href="mailto:sadrimasih@gmail.com" clickable />
             <Chip label="Tehran, Iran • Willing to relocate" />
           </Stack>
           <Typography variant="body1" color="text.secondary" sx={{ maxWidth: 720 }}>

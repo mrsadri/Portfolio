@@ -18,8 +18,15 @@ export const contactMethods: ReadonlyArray<ContactMethod> = [
     icon: "📧",
     title: "Email",
     description: "For general inquiries, collaboration opportunities, or just to say hello",
-    actionLabel: "sdarimasih@gmail.com",
-    href: "mailto:sdarimasih@gmail.com",
+    actionLabel: "sadrimasih@gmail.com",
+    href: "mailto:sadrimasih@gmail.com",
+  },
+  {
+    icon: "💬",
+    title: "Telegram",
+    description: "Reach out for a quick chat or to share ideas asynchronously",
+    actionLabel: "Message on Telegram →",
+    href: "https://t.me/masihsadri",
   },
   {
     icon: "💼",
@@ -29,11 +36,11 @@ export const contactMethods: ReadonlyArray<ContactMethod> = [
     href: "https://www.linkedin.com/in/msadri/",
   },
   {
-    icon: "🎨",
-    title: "Figma",
-    description: "Check out my design work and the Morph Design System",
-    actionLabel: "View Profile →",
-    href: "https://www.figma.com/@masih",
+    icon: "🐙",
+    title: "GitHub",
+    description: "Explore my code, experiments, and open-source contributions",
+    actionLabel: "Visit GitHub →",
+    href: "https://github.com/mrsadri",
   },
 ];
 

@@ -368,7 +368,7 @@ var ContactSection = ({ socialLinks }) => /* @__PURE__ */ jsx_dev_runtime4.jsxDE
             children: [
               /* @__PURE__ */ jsx_dev_runtime4.jsxDEV(Button_default, {
                 component: "a",
-                href: "mailto:hello@uxdesigner.com",
+                href: "mailto:sadrimasih@gmail.com",
                 variant: "contained",
                 size: "large",
                 startIcon: /* @__PURE__ */ jsx_dev_runtime4.jsxDEV(MailOutlineRounded_default, {}, undefined, false, undefined, this),
@@ -378,7 +378,7 @@ var ContactSection = ({ socialLinks }) => /* @__PURE__ */ jsx_dev_runtime4.jsxDE
                   px: { xs: 2.5, sm: 4 },
                   py: 1.5
                 },
-                children: "hello@uxdesigner.com"
+                children: "sadrimasih@gmail.com"
               }, undefined, false, undefined, this),
               socialLinks.map(({ label, href }) => {
                 const icon = label === "LinkedIn" ? /* @__PURE__ */ jsx_dev_runtime4.jsxDEV(LinkedIn_default, {

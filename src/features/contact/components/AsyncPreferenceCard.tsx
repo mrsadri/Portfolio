@@ -38,7 +38,7 @@ const AsyncPreferenceCard = () => (
           <Stack spacing={{ xs: 1.5, sm: 2 }} sx={{ width: "100%" }}>
             <Button
               component="a"
-              href="mailto:sdarimasih@gmail.com"
+              href="mailto:sadrimasih@gmail.com"
               variant="contained"
               color="secondary"
               startIcon={<EmailRoundedIcon />}

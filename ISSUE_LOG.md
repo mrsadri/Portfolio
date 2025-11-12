@@ -4,10 +4,10 @@
 - **Title:** Certified badge image fails to load in production
 - **Description:** The `Certified badge` image is missing in the production build due to an incorrect asset location reference.
 - **Causation:** Asset was imported via a relative bundle path, so GitHub Pages requested `/Portfolio/certified-badge-*.png` which didn’t exist in the public asset tree.
-- **Solution Summary:** Removed the credential badge from the hero entirely, eliminating the broken asset dependency and simplifying the layout.
+- **Solution Summary:** Relocated the badge asset to `images/badges/` and updated the hero to load it via the GitHub Pages-aware base path so the image resolves in all environments.
 - **Local Status:** ✅ Build completed successfully (`bun run build`)
 - **Production Status:** ✅ Verified (2025‑11‑11)
-- **Notes:** Replacement removes the need for the asset URL workaround; hero portrait renders without auxiliary badge.
+- **Notes:** Badge renders correctly on production at `https://mrsadri.github.io/Portfolio/images/badges/certified-badge.png`.
 
 - **Issue ID:** 002
 - **Title:** Deep refresh on contact route returns GitHub Pages 404
@@ -42,5 +42,5 @@
 - **Causation:** Legacy copy and mailto links left visitors without clear actions and routed them to outdated scheduling experiences.
 - **Solution Summary:** Implemented smooth-scrolling hero CTA, `/contact#mentorship` deep link with on-load scrolling, Zeeg scheduling links, trimmed hero actions, and redesigned contact footer CTAs.
 - **Local Status:** ✅ Build updated locally
-- **Production Status:** ⏳ Pending redeploy (checked 2025‑11‑12)
-- **Notes:** Production still reflects legacy hero and contact footer; redeploy required to publish refreshed experience.
+- **Production Status:** ❌ Legacy content still live (checked 2025‑11‑12)
+- **Notes:** Hero still shows credential stack/legacy CTAs, contact page retains mailto links, and footer copy unchanged; redeploy required to publish refreshed experience.

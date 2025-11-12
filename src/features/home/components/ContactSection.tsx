@@ -80,7 +80,7 @@ const ContactSection = ({ socialLinks }: ContactSectionProps) => (
           >
             <Button
               component="a"
-              href="mailto:hello@uxdesigner.com"
+              href="mailto:sadrimasih@gmail.com"
               variant="contained"
               size="large"
               startIcon={<MailOutlineRoundedIcon />}
@@ -91,7 +91,7 @@ const ContactSection = ({ socialLinks }: ContactSectionProps) => (
                 py: 1.5,
               }}
             >
-              hello@uxdesigner.com
+              sadrimasih@gmail.com
             </Button>
             {socialLinks.map(({ label, href }) => {
               const icon =

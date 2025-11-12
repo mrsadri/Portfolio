@@ -2,7 +2,7 @@
 ## Product Designer • Open to Relocation (Netherlands/UK/EU)
 
 **Portfolio:** [masih.framer.website](https://masih.framer.website) | **LinkedIn:** [linkedin.com/in/msadri](http://linkedin.com/in/msadri)  
-**Email:** sadri.masih@gmail.com | **Phone:** +98 912 565 4675  
+**Email:** sadrimasih@gmail.com | **Phone:** +98 912 565 4675  
 **📍 Location:** Tehran, Iran | **🎯 Seeking:** Netherlands/UK/EU | **Visa:** Available for Work Visa Sponsorship | **Relocation:** Immediate Availability
 
 **English Proficiency:** IELTS Academic 7.0 (May 2022) | **Willing to learn:** Dutch
