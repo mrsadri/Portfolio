@@ -28,8 +28,8 @@ import { useColorMode } from "../../theme";
 
 const navigationLinks = [
   { label: "Home", to: "/" },
-  { label: "MyStory", to: "/my-story" },
-  { label: "CaseStudies", to: "/#case-studies" },
+  { label: "My Story", to: "/my-story" },
+  { label: "Case Studies", to: "/#case-studies" },
   { label: "Contact", to: "/contact" },
   { label: "Resume", to: "/resume" },
 ] as const;

@@ -5,7 +5,7 @@ import { gallery, storyHero } from "./data/content";
 const siteUrl = getSiteUrl();
 const heroImage = gallery[0]?.image;
 
-const myStoryStructuredData: StructuredData = {
+const MyStoryStructuredData: StructuredData = {
   "@context": "https://schema.org",
   "@type": "ProfilePage",
   name: "Masih Sadri — My Story",
@@ -24,8 +24,8 @@ const myStoryStructuredData: StructuredData = {
   },
 } as const;
 
-export const myStoryPageMetadata: PageMetadata = {
-  title: "My Story — Masih Sadri’s path as a product designer",
+export const MyStoryPageMetadata: PageMetadata = {
+  title: "My Story — Masih Sadri's path as a product designer",
   description:
     "Learn how Masih Sadri blends mentorship, experimentation, and craft to design human experiences—from classroom to product launches.",
   canonicalPath: "/my-story",
@@ -40,7 +40,7 @@ export const myStoryPageMetadata: PageMetadata = {
         }
       : undefined,
   },
-  structuredData: myStoryStructuredData,
+  structuredData: MyStoryStructuredData,
 };
 
 

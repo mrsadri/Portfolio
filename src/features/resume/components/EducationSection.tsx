@@ -1,11 +1,7 @@
-import HistoryEduRoundedIcon from "@mui/icons-material/HistoryEduRounded";
-import {
-  Box,
-  Card,
-  Container,
-  Stack,
-  Typography,
-} from "@mui/material";
+import HistoryEduOutlinedIcon from "@mui/icons-material/HistoryEduOutlined";
+import { Stack } from "@mui/material";
+import ResumeCard from "./ResumeCard";
+import ResumeSectionWrapper from "./ResumeSectionWrapper";
 import SectionHeader from "./SectionHeader";
 import type { EducationItem } from "../types";
 
@@ -14,44 +10,20 @@ type EducationSectionProps = {
 };
 
 const EducationSection = ({ items }: EducationSectionProps) => (
-  <Box
-    sx={{
-      py: { xs: 6, md: 8 },
-      backgroundColor: "background.paper",
-    }}
-  >
-    <Container>
-      <Stack spacing={4}>
-        <SectionHeader icon={<HistoryEduRoundedIcon color="secondary" />} title="Education" />
+  <ResumeSectionWrapper backgroundColor="paper">
+        <SectionHeader icon={<HistoryEduOutlinedIcon color="secondary" sx={{ fontSize: "1.75rem" }} />} title="Education" />
         <Stack spacing={3}>
           {items.map((item) => (
-            <Card key={`${item.institution}-${item.program}`} sx={{ p: { xs: 3, md: 4 } }}>
-              <Stack spacing={2}>
-                <Stack
-                  direction={{ xs: "column", md: "row" }}
-                  justifyContent="space-between"
-                  spacing={1}
-                >
-                  <Typography variant="h5">{item.program}</Typography>
-                  <Typography variant="subtitle2" color="text.secondary">
-                    {item.period}
-                  </Typography>
-                </Stack>
-                <Typography variant="subtitle1" color="text.secondary">
-                  {item.institution}
-                </Typography>
-                {item.description && (
-                  <Typography variant="body2" color="text.secondary">
-                    {item.description}
-                  </Typography>
-                )}
-              </Stack>
-            </Card>
+        <ResumeCard
+          key={`${item.institution}-${item.program}`}
+          title={item.program}
+          subtitle={item.institution}
+          period={item.period}
+          description={item.description}
+        />
           ))}
         </Stack>
-      </Stack>
-    </Container>
-  </Box>
+  </ResumeSectionWrapper>
 );
 
 export default EducationSection;

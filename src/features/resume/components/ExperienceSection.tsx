@@ -1,11 +1,8 @@
-import WorkHistoryRoundedIcon from "@mui/icons-material/WorkHistoryRounded";
-import {
-  Box,
-  Card,
-  Container,
-  Stack,
-  Typography,
-} from "@mui/material";
+import WorkHistoryOutlinedIcon from "@mui/icons-material/WorkHistoryOutlined";
+import { Stack } from "@mui/material";
+import ResumeCard from "./ResumeCard";
+import ResumeSectionWrapper from "./ResumeSectionWrapper";
+import SectionHeader from "./SectionHeader";
 import type { TimelineItem } from "../types";
 
 type ExperienceSectionProps = {
@@ -16,57 +13,24 @@ type ExperienceSectionProps = {
 
 const ExperienceSection = ({
   title = "Professional Experience",
-  icon = <WorkHistoryRoundedIcon color="primary" />,
+  icon = <WorkHistoryOutlinedIcon color="primary" sx={{ fontSize: "1.75rem" }} />,
   items,
 }: ExperienceSectionProps) => (
-  <Box sx={{ py: { xs: 6, md: 8 } }}>
-    <Container>
-      <Stack spacing={4}>
-        <Stack direction="row" spacing={2} alignItems="center">
-          {icon}
-          <Typography variant="h3">{title}</Typography>
-        </Stack>
+  <ResumeSectionWrapper>
+    <SectionHeader icon={icon} title={title} />
         <Stack spacing={3}>
           {items.map((item) => (
-            <Card key={`${item.company}-${item.role}`} sx={{ p: { xs: 3, md: 4 } }}>
-              <Stack spacing={2}>
-                <Stack
-                  direction={{ xs: "column", md: "row" }}
-                  justifyContent="space-between"
-                  spacing={1}
-                >
-                  <Typography variant="h5">{item.role}</Typography>
-                  <Typography variant="subtitle2" color="text.secondary">
-                    {item.period}
-                  </Typography>
-                </Stack>
-                <Typography variant="subtitle1" color="text.secondary">
-                  {item.company}
-                </Typography>
-                {item.description && (
-                  <Typography variant="body2" color="text.secondary">
-                    {item.description}
-                  </Typography>
-                )}
-                <Stack component="ul" spacing={1.2} sx={{ pl: 2, mb: 0 }}>
-                  {item.highlights.map((highlight) => (
-                    <Typography
-                      component="li"
-                      key={highlight}
-                      variant="body1"
-                      color="text.secondary"
-                    >
-                      {highlight}
-                    </Typography>
+        <ResumeCard
+          key={`${item.company}-${item.role}`}
+          title={item.role}
+          subtitle={item.company}
+          period={item.period}
+          description={item.description}
+          highlights={item.highlights}
+        />
                   ))}
                 </Stack>
-              </Stack>
-            </Card>
-          ))}
-        </Stack>
-      </Stack>
-    </Container>
-  </Box>
+  </ResumeSectionWrapper>
 );
 
 export default ExperienceSection;

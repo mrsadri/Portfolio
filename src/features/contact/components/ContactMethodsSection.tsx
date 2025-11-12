@@ -17,10 +17,12 @@ const ContactMethodsSection = ({ methods }: ContactMethodsSectionProps) => (
               <Card sx={{ height: "100%" }}>
                 <CardContent>
                   <Stack spacing={2} alignItems="flex-start">
-                    <Typography variant="h3" component="span" sx={{ lineHeight: 1 }}>
-                      {method.icon}
-                    </Typography>
-                    <Typography variant="h5">{method.title}</Typography>
+                    <Stack direction="row" spacing={1.5} alignItems="center">
+                      <Box sx={{ display: "flex", alignItems: "center", color: "primary.main" }}>
+                        <method.icon />
+                      </Box>
+                      <Typography variant="h5">{method.title}</Typography>
+                    </Stack>
                     <Typography variant="body2" color="text.secondary">
                       {method.description}
                     </Typography>

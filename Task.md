@@ -114,3 +114,26 @@
 - Date of Done this task:
 - **Local Verification:** ✅ Browser check on localhost (2025-11-12)
 - **Production Status:** ✅ Footer CTA card live on production (verified 2025-11-12 after third GitHub Pages publish; 75 s post-push)
+### Task 16 — Refactor Resume Page Cards
+- **Description:** Refactor all resume page card components to inherit from a single reusable `ResumeCard` component, eliminating code duplication across ExperienceSection, VolunteerSection, SkillsSection, EducationSection, and CertificatesSection.
+- **Outcome:** Created `ResumeCard` component that handles all card variations (timeline items, skills, certificates) with flexible props for title, subtitle, period/year, description, highlights, and skills. All five sections now use this shared component, reducing code duplication and ensuring consistent styling.
+- **Production Acceptance:** All resume page cards render identically to previous implementation, with all cards (`#main-content > div:nth-child(2) > div > div > div.MuiStack-root.css-v2woy3-MuiStack-root > div:nth-child(1)`, `#main-content > div:nth-child(3) > div > div > div.MuiStack-root.css-v2woy3-MuiStack-root > div`, `#main-content > div:nth-child(4) > div > div > div.MuiGrid-root.MuiGrid-container.MuiGrid-direction-xs-row.MuiGrid-spacing-xs-3.css-1u8xl8z-MuiGrid-root > div:nth-child(3) > div > div`, `#main-content > div:nth-child(5) > div > div > div.MuiStack-root.css-v2woy3-MuiStack-root > div`, `#main-content > div:nth-child(6) > div > div > div.MuiGrid-root.MuiGrid-container.MuiGrid-direction-xs-row.MuiGrid-spacing-xs-3.css-1u8xl8z-MuiGrid-root > div:nth-child(2) > div`) now inherit from `ResumeCard` component.
+- Date of Done this task:
+- **Local Verification:** ⏳ Pending browser check on localhost
+- **Production Status:** ⏳ Pending production deployment verification
+
+### Task 17 — Fix Identifier Naming Issues
+- **Description:** Fix JavaScript/TypeScript identifier naming errors caused by renaming "CaseStudies" to "Case Studies" and "MyStory" to "My Story" throughout the codebase. Identifiers cannot contain spaces in JavaScript/TypeScript.
+- **Outcome:** Fixed all identifier naming issues by converting spaced identifiers to camelCase: `Case Studies` → `caseStudies`, `My StoryPage` → `MyStoryPage`, `My StoryPageMetadata` → `MyStoryPageMetadata`, `useRelatedCase Studies` → `useRelatedCaseStudies`, etc. Updated router, components, hooks, data files, and test files. Display text (UI labels) remains unchanged with spaces.
+- **Production Acceptance:** Code compiles without errors. All identifiers use valid JavaScript/TypeScript naming conventions (camelCase without spaces). Display text like "Case Studies" and "My Story" in UI labels remains unchanged.
+- Date of Done this task:
+- **Local Verification:** ✅ TypeScript compilation passes (2025-01-XX)
+- **Production Status:** ⏳ Pending production deployment verification
+
+### Task 18 — Update Contact Methods Section Icons and Layout
+- **Description:** Replace emoji icons with Material-UI icons in the Contact Methods Section, move icons inline with titles (before title, not above), and remove arrows from button labels.
+- **Outcome:** Updated `ContactMethodsSection` to use Material-UI icons (`EmailRoundedIcon`, `TelegramIcon`, `LinkedInIcon`, `GitHubIcon`) instead of emojis. Icons now display inline with titles in a horizontal Stack layout. Removed arrows (→) from button labels: "Message on Telegram →" → "Message on Telegram", "View Profile →" → "View Profile", "Visit GitHub →" → "Visit GitHub".
+- **Production Acceptance:** Contact method cards show Material-UI icons inline with titles (not above), and button labels have no arrows. Icons use primary color styling.
+- Date of Done this task:
+- **Local Verification:** ✅ TypeScript compilation passes, no linting errors (2025-01-XX)
+- **Production Status:** ⏳ Pending production deployment verification

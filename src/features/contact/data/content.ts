@@ -1,3 +1,7 @@
+import EmailRoundedIcon from "@mui/icons-material/EmailRounded";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import TelegramIcon from "@mui/icons-material/Telegram";
 import type {
   ContactHero,
   ContactMethod,
@@ -15,31 +19,31 @@ export const contactHero: ContactHero = {
 
 export const contactMethods: ReadonlyArray<ContactMethod> = [
   {
-    icon: "📧",
+    icon: EmailRoundedIcon,
     title: "Email",
     description: "For general inquiries, collaboration opportunities, or just to say hello",
     actionLabel: "sadrimasih@gmail.com",
     href: "mailto:sadrimasih@gmail.com",
   },
   {
-    icon: "💬",
+    icon: TelegramIcon,
     title: "Telegram",
     description: "Reach out for a quick chat or to share ideas asynchronously",
-    actionLabel: "Message on Telegram →",
+    actionLabel: "Message on Telegram",
     href: "https://t.me/masihsadri",
   },
   {
-    icon: "💼",
+    icon: LinkedInIcon,
     title: "LinkedIn",
     description: "Connect with me professionally and see my latest updates",
-    actionLabel: "View Profile →",
+    actionLabel: "View Profile",
     href: "https://www.linkedin.com/in/msadri/",
   },
   {
-    icon: "🐙",
+    icon: GitHubIcon,
     title: "GitHub",
     description: "Explore my code, experiments, and open-source contributions",
-    actionLabel: "Visit GitHub →",
+    actionLabel: "Visit GitHub",
     href: "https://github.com/mrsadri",
   },
 ];
