@@ -1,6 +1,8 @@
 import EmailRoundedIcon from "@mui/icons-material/EmailRounded";
+import EventAvailableIcon from "@mui/icons-material/EventAvailable";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import TelegramIcon from "@mui/icons-material/Telegram";
 import type { ReactNode } from "react";
 import LetsTalkSection from "../../../shared/components/LetsTalkSection";
 import type { ContactAction } from "../../../shared/components/LetsTalkSection";
@@ -27,10 +29,12 @@ const ContactSection = ({ socialLinks }: ContactSectionProps) => {
     {
       label: "Direct message",
       href: "https://t.me/masihsadri",
+      icon: <TelegramIcon />,
     },
     {
-      label: "Book a session",
+      label: "Set an appointment",
       href: "/contact#mentorship",
+      icon: <EventAvailableIcon />,
     },
   ];
 

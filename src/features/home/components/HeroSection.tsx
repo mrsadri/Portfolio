@@ -1,7 +1,6 @@
 import ArrowForwardRoundedIcon from "@mui/icons-material/ArrowForwardRounded";
 import { Avatar, Box, Container, Stack, Typography, useTheme } from "@mui/material";
 import { useCallback } from "react";
-import { Link as RouterLink } from "react-router-dom";
 import type { HeroContent } from "../types";
 import { GhostButton, Pill, PrimaryButton } from "../../../shared/ui";
 import certifiedBadgeSrc from "../../../../images/badges/certified-badge.png";
@@ -29,6 +28,23 @@ const HeroSection = ({ hero }: HeroSectionProps) => {
       smoothScrollToElement(element, { duration: 900, offset: 16 });
     }
   }, [hero.ctaPrimary.scrollToId, hero.ctaPrimary.to]);
+
+  const handleSecondaryCtaClick = useCallback(() => {
+    const targetId = hero.ctaSecondary.scrollToId ?? hero.ctaSecondary.to;
+    if (!targetId || typeof document === "undefined") {
+      return;
+    }
+
+    if (targetId.startsWith("/")) {
+      return;
+    }
+
+    const sanitizedId = targetId.startsWith("#") ? targetId.slice(1) : targetId;
+    const element = document.getElementById(sanitizedId);
+    if (element) {
+      smoothScrollToElement(element, { duration: 900, offset: 16 });
+    }
+  }, [hero.ctaSecondary.scrollToId, hero.ctaSecondary.to]);
 
   return (
     <Box
@@ -181,8 +197,7 @@ const HeroSection = ({ hero }: HeroSectionProps) => {
                 {hero.ctaPrimary.label}
               </PrimaryButton>
               <GhostButton
-                component={RouterLink}
-                to={hero.ctaSecondary.to}
+                onClick={handleSecondaryCtaClick}
                 size="large"
                 sx={{
                   borderRadius: 999,

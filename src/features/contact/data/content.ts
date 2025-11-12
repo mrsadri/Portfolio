@@ -11,10 +11,10 @@ import type {
 } from "../types";
 
 export const contactHero: ContactHero = {
-  title: "Let's Connect",
-  subtitle: "I'd love to hear from you",
+  title: "Let's Work Together",
+  subtitle: "Building meaningful connections through design",
   description:
-    "Whether you're looking for a design mentor, want to collaborate on a project, or have an opportunity to discuss, feel free to reach out. I'm always open to meaningful conversations about design, user experience, and building products that matter.",
+    "I'm always open to discussing new projects, creative ideas, mentorship opportunities, or collaborations. Whether you're looking for design guidance, want to explore a product idea, or simply want to connect, I'd love to hear from you.",
 };
 
 export const contactMethods: ReadonlyArray<ContactMethod> = [
@@ -55,7 +55,7 @@ export const mentorshipOffers: ReadonlyArray<MentorshipOffer> = [
     description: "We can discuss our career paths and work experiences together.",
     note: "To confirm your session, please donate $1 to a charity of your choice.",
     href: "https://zeeg.me/masihs/letstalk",
-    ctaLabel: "Book on Zeeg",
+    ctaLabel: "Choose a time",
   },
   {
     title: "Design Mentorship with Masih",
@@ -63,7 +63,7 @@ export const mentorshipOffers: ReadonlyArray<MentorshipOffer> = [
     description:
       "Ready to take your design skills to the next level? Weekly mentorship sessions are a proven way to learn a new skill and accelerate your growth in UX/UI design.",
     href: "https://zeeg.me/masihs/mentorship",
-    ctaLabel: "Book on Zeeg",
+    ctaLabel: "Set an appointment",
   },
 ];
 

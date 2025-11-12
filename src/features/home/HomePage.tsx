@@ -2,15 +2,15 @@ import { Seo } from "../../shared/seo";
 import CaseStudiesSection from "./components/CaseStudiesSection";
 import CaseStudyRecapDialog from "./components/CaseStudyRecapDialog";
 import ContactSection from "./components/ContactSection";
-import ExperiencesSection from "./components/ExperiencesSection";
 import HeroSection from "./components/HeroSection";
 import MetricsSection from "./components/MetricsSection";
+import WhyHireMeSection from "./components/WhyHireMeSection";
 import {
   caseStudies,
-  experiences,
   hero,
   metrics,
   socialLinks,
+  whyHireMe,
 } from "./data/content";
 import useCaseStudyRecap from "./hooks/useCaseStudyRecap";
 import { homePageMetadata } from "./seo";
@@ -23,9 +23,9 @@ const HomePage = () => {
       <Seo {...homePageMetadata} />
 
       <HeroSection hero={hero} />
+      <WhyHireMeSection content={whyHireMe} />
       <MetricsSection metrics={metrics} />
       <CaseStudiesSection caseStudies={caseStudies} onOpenRecap={openRecap} />
-      <ExperiencesSection experiences={experiences} />
       <ContactSection socialLinks={socialLinks} />
 
       <CaseStudyRecapDialog caseStudy={activeCaseStudy} onClose={closeRecap} />

@@ -9,23 +9,29 @@ const PhotoGallerySection = ({ items }: PhotoGallerySectionProps) => (
   <Box
     component="section"
     sx={{
-      pt: { xs: 2, md: 4 },
-      pb: { xs: 8, md: 12 },
+      pt: { xs: 4, md: 4 },
+      pb: { xs: 6, md: 12 },
     }}
   >
     <Container>
-      <Stack spacing={1.5} sx={{ maxWidth: 720 }}>
+      <Stack spacing={{ xs: 1.5, md: 1.5 }} sx={{ maxWidth: 720 }}>
         <Typography variant="eyebrow" color="brand.secondary">
           Photo Strip
         </Typography>
-        <Typography variant="h3">My Life in Frames</Typography>
-        <Typography variant="body1" color="text.secondary">
+        <Typography variant="h3" sx={{ fontSize: { xs: "1.75rem", md: "2.5rem" } }}>
+          My Life in Frames
+        </Typography>
+        <Typography 
+          variant="body1" 
+          color="text.secondary"
+          sx={{ fontSize: { xs: "0.9375rem", md: "1rem" } }}
+        >
           A glimpse into the textures, people, and scenes that shape how I approach product
           design—unfiltered, a little imperfect, and very alive.
         </Typography>
       </Stack>
     </Container>
-    <Container disableGutters maxWidth={false} sx={{ mt: { xs: 4, md: 6 } }}>
+    <Container disableGutters maxWidth={false} sx={{ mt: { xs: 3, md: 6 } }}>
       <Box sx={{ px: { xs: 2, sm: 4, md: 6 } }}>
         <Box
           sx={{

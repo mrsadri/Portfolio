@@ -21,7 +21,7 @@ const ContactMethodsSection = ({ methods }: ContactMethodsSectionProps) => (
                       <Box sx={{ display: "flex", alignItems: "center", color: "primary.main" }}>
                         <method.icon />
                       </Box>
-                      <Typography variant="h5">{method.title}</Typography>
+                    <Typography variant="h5">{method.title}</Typography>
                     </Stack>
                     <Typography variant="body2" color="text.secondary">
                       {method.description}
