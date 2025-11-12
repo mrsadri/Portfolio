@@ -16,21 +16,13 @@ export const hero: HeroContent = {
   title: "an impact-oriented Product Designer",
   subtitle:
     "with 6+ years of experience, enhancing experiences for 40 million active users",
-  credentials: [
-    "Certified in UX Design by the University of Tehran and Sharif University",
-    "Mentored 200+ students as a design instructor over the past 3 years.",
-  ],
   ctaPrimary: {
-    label: "View case studies",
-    to: "/case-studies/divar-secure-call",
+    label: "View case study",
+    scrollToId: "case-studies",
   },
   ctaSecondary: {
-    label: "View resume",
-    to: "/resume",
-  },
-  availability: {
-    label: "Open to senior product designer roles",
-    to: "/contact",
+    label: "Book a call",
+    to: "/contact#mentorship",
   },
   portrait: createImageResource(import.meta.url, heroPortraitAsset, "Masih Sadri - Product Designer", {
     width: 1200,
@@ -134,12 +126,8 @@ export const socialLinks: ReadonlyArray<SocialLink> = [
     href: "https://www.linkedin.com/in/msadri/",
   },
   {
-    label: "Figma",
-    href: "https://www.figma.com/@masih",
-  },
-  {
-    label: "Portfolio",
-    href: "https://masih.framer.website/",
+    label: "GitHub",
+    href: "https://github.com/mrsadri",
   },
 ];
 

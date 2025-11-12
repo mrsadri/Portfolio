@@ -1,3 +1,6 @@
+import MailOutlineRoundedIcon from "@mui/icons-material/MailOutlineRounded";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import {
   Box,
   Button,
@@ -5,7 +8,6 @@ import {
   CardActions,
   CardContent,
   Container,
-  Divider,
   Stack,
   Typography,
 } from "@mui/material";
@@ -47,43 +49,78 @@ const ContactSection = ({ socialLinks }: ContactSectionProps) => (
             "&:last-child": { pb: { xs: 3.5, md: 3.5 } },
           }}
         >
-          <Stack spacing={0.75}>
+          <Stack spacing={2} alignItems="center" textAlign="center">
             <Typography variant="h3" component="h2">
-              Let’s connect
+              Let’s Talk and Work Together
             </Typography>
-            <Typography variant="subtitle1" color="text.secondary" sx={{ lineHeight: 1.6 }}>
-              Share your challenge or say hello—happy to explore product design collaborations.
+            <Typography
+              variant="subtitle1"
+              color="text.secondary"
+              sx={{ lineHeight: 1.7, maxWidth: 560 }}
+            >
+              I’m always open to discussing new projects, creative ideas, or opportunities to be part of
+              your vision.
             </Typography>
           </Stack>
-          <Divider sx={{ mt: 3 }} />
         </CardContent>
         <CardActions
           sx={{
             px: { xs: 5, md: 5 },
             pb: { xs: 5, md: 5 },
             pt: 0,
-            flexDirection: "column",
-            alignItems: "stretch",
-            gap: 1,
+            justifyContent: "center",
           }}
         >
-          <Button component="a" href="mailto:sdarimasih@gmail.com" variant="contained" size="large">
-            sdarimasih@gmail.com
-          </Button>
-          <Stack direction={{ xs: "column", sm: "row" }} spacing={1}>
-            {socialLinks.map(({ label, href }) => (
-              <Button
-                key={label}
-                component="a"
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                variant="outlined"
-                fullWidth
-              >
-                {label}
-              </Button>
-            ))}
+          <Stack
+            direction={{ xs: "column", sm: "row" }}
+            spacing={{ xs: 1.25, sm: 1.5 }}
+            alignItems="center"
+            justifyContent="center"
+            sx={{ width: "100%" }}
+          >
+            <Button
+              component="a"
+              href="mailto:hello@uxdesigner.com"
+              variant="contained"
+              size="large"
+              startIcon={<MailOutlineRoundedIcon />}
+              sx={{
+                borderRadius: 3,
+                minWidth: { xs: "100%", sm: 260 },
+                px: { xs: 2.5, sm: 4 },
+                py: 1.5,
+              }}
+            >
+              hello@uxdesigner.com
+            </Button>
+            {socialLinks.map(({ label, href }) => {
+              const icon =
+                label === "LinkedIn" ? (
+                  <LinkedInIcon fontSize="small" />
+                ) : (
+                  <GitHubIcon fontSize="small" />
+                );
+
+              return (
+                <Button
+                  key={label}
+                  component="a"
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  variant="outlined"
+                  size="large"
+                  startIcon={icon}
+                  sx={{
+                    borderRadius: 3,
+                    minWidth: { xs: "100%", sm: 160 },
+                    px: { xs: 2.5, sm: 3 },
+                  }}
+                >
+                  {label}
+                </Button>
+              );
+            })}
           </Stack>
         </CardActions>
       </Card>

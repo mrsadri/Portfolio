@@ -17,7 +17,7 @@ const Footer = () => {
             © {year} Masih Sadri. Crafted with empathy and care.
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            Built with Bun + React + MUI.
+            Built from scratch by Masih with ❤️
           </Typography>
         </Stack>
       </Container>

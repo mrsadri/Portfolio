@@ -43,14 +43,16 @@ export const mentorshipOffers: ReadonlyArray<MentorshipOffer> = [
     duration: "20 min",
     description: "We can discuss our career paths and work experiences together.",
     note: "To confirm your session, please donate $1 to a charity of your choice.",
-    href: "mailto:sdarimasih@gmail.com?subject=Exclusive Talk Request",
+    href: "https://zeeg.me/masihs/letstalk",
+    ctaLabel: "Book on Zeeg",
   },
   {
     title: "Design Mentorship with Masih",
     duration: "75 min",
     description:
       "Ready to take your design skills to the next level? Weekly mentorship sessions are a proven way to learn a new skill and accelerate your growth in UX/UI design.",
-    href: "mailto:sdarimasih@gmail.com?subject=Design Mentorship Inquiry",
+    href: "https://zeeg.me/masihs/mentorship",
+    ctaLabel: "Book on Zeeg",
   },
 ];
 

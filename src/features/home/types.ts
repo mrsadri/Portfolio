@@ -5,16 +5,15 @@ export type HeroContent = {
   name: string;
   title: string;
   subtitle: string;
-  credentials: readonly string[];
   ctaPrimary: {
     label: string;
-    to: string;
+    to?: string;
+    scrollToId?: string;
   };
   ctaSecondary: {
     label: string;
     to: string;
   };
-  availability: LinkResource;
   portrait: ImageResource;
 };
 

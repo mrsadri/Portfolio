@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { Seo } from "../../shared/seo";
 import AsyncPreferenceCard from "./components/AsyncPreferenceCard";
 import ContactMethodsSection from "./components/ContactMethodsSection";
@@ -15,6 +17,20 @@ import {
 import { contactPageMetadata } from "./seo";
 
 const ContactPage = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (!location.hash) {
+      return;
+    }
+
+    const targetId = location.hash.slice(1);
+    const element = document.getElementById(targetId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [location.hash]);
+
   return (
     <>
       <Seo {...contactPageMetadata} />

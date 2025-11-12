@@ -1,5 +1,6 @@
 import ArrowForwardRoundedIcon from "@mui/icons-material/ArrowForwardRounded";
 import { Avatar, Box, Container, Stack, Typography, useTheme } from "@mui/material";
+import { useCallback } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import type { HeroContent } from "../types";
 import { GhostButton, Pill, PrimaryButton } from "../../../shared/ui";
@@ -32,6 +33,22 @@ type HeroSectionProps = {
 
 const HeroSection = ({ hero }: HeroSectionProps) => {
   const theme = useTheme();
+  const handlePrimaryCtaClick = useCallback(() => {
+    const targetId = hero.ctaPrimary.scrollToId ?? hero.ctaPrimary.to;
+    if (!targetId || typeof document === "undefined") {
+      return;
+    }
+
+    if (targetId.startsWith("/")) {
+      return;
+    }
+
+    const sanitizedId = targetId.startsWith("#") ? targetId.slice(1) : targetId;
+    const element = document.getElementById(sanitizedId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [hero.ctaPrimary.scrollToId, hero.ctaPrimary.to]);
 
   return (
     <Box
@@ -208,29 +225,16 @@ const HeroSection = ({ hero }: HeroSectionProps) => {
               {hero.subtitle}
             </Typography>
 
-            <Stack spacing={1.1}>
-              {hero.credentials.map((line) => (
-                <Typography
-                  key={line}
-                  variant="body1"
-                  sx={{ color: theme.palette.text.primary, lineHeight: 1.65 }}
-                >
-                  {line}
-                </Typography>
-              ))}
-            </Stack>
-
             <Stack
               spacing={{ xs: 1.4, sm: 1.8 }}
               direction={{ xs: "column", sm: "row" }}
               sx={{ pt: { xs: 0.5, md: 0.75 } }}
             >
               <PrimaryButton
-                component={RouterLink}
-                to={hero.ctaPrimary.to}
                 endIcon={<ArrowForwardRoundedIcon />}
                 size="large"
                 sx={{ minWidth: { sm: 220 } }}
+                onClick={handlePrimaryCtaClick}
               >
                 {hero.ctaPrimary.label}
               </PrimaryButton>
@@ -247,20 +251,6 @@ const HeroSection = ({ hero }: HeroSectionProps) => {
                 {hero.ctaSecondary.label}
               </GhostButton>
             </Stack>
-            <GhostButton
-              component={RouterLink}
-              to={hero.availability.to}
-              variant="text"
-              color="secondary"
-              endIcon={<ArrowForwardRoundedIcon />}
-              sx={{
-                alignSelf: { xs: "flex-start" },
-                fontWeight: 600,
-                mt: { xs: 0.5, md: 0.75 },
-              }}
-            >
-              {hero.availability.label}
-            </GhostButton>
           </Stack>
         </Stack>
       </Container>
