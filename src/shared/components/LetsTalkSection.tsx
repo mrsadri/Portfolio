@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { Box, Button, Card, CardActions, CardContent, Container, Stack, Typography } from "@mui/material";
 import type { ButtonProps } from "@mui/material/Button";
+import { Link as RouterLink } from "react-router-dom";
 
 type ContactAction = {
   label: string;
@@ -20,8 +21,12 @@ type LetsTalkSectionProps = {
   secondaryActions?: ReadonlyArray<ContactAction>;
 };
 
+const isExternalLink = (href: string) => {
+  return href.startsWith("http") || href.startsWith("mailto:") || href.startsWith("tel:");
+};
+
 const getExternalLinkProps = (href: string) => {
-  if (href.startsWith("http")) {
+  if (isExternalLink(href)) {
     return {
       target: "_blank",
       rel: "noopener noreferrer",
@@ -73,8 +78,9 @@ const LetsTalkSection = ({
         <CardActions sx={{ pt: { xs: 2.5, md: 4 }, px: 0, flexDirection: "column", gap: { xs: 1.5, md: 2 } }}>
           {/* Primary Action - Full Width */}
           <Button
-            component="a"
-            href={primaryAction.href}
+            component={isExternalLink(primaryAction.href) ? "a" : RouterLink}
+            href={isExternalLink(primaryAction.href) ? primaryAction.href : undefined}
+            to={!isExternalLink(primaryAction.href) ? primaryAction.href : undefined}
             startIcon={primaryAction.icon}
             variant={primaryAction.variant ?? "contained"}
             color={primaryAction.color ?? "primary"}
@@ -98,18 +104,21 @@ const LetsTalkSection = ({
             >
               {secondaryActions.map((action) => {
                 const externalProps = getExternalLinkProps(action.href);
+                const isExternal = isExternalLink(action.href);
                 return (
                   <Button
                     key={action.href}
-                    component="a"
-                    href={action.href}
+                    component={isExternal ? "a" : RouterLink}
+                    href={isExternal ? action.href : undefined}
+                    to={!isExternal ? action.href : undefined}
                     startIcon={action.icon}
                     variant={action.variant ?? "outlined"}
                     color={action.color ?? "primary"}
                     size="large"
-                    fullWidth={{ xs: true, md: false }}
+                    fullWidth={true}
                     sx={{ 
                       minHeight: { xs: "48px", md: "48px" },
+                      width: { xs: "100%", md: "auto" },
                       flex: { md: "1 1 0" },
                       minWidth: { md: 0 },
                     }}
