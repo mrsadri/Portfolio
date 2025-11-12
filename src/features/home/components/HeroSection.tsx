@@ -1,13 +1,30 @@
 import ArrowForwardRoundedIcon from "@mui/icons-material/ArrowForwardRounded";
 import { Avatar, Box, Container, Stack, Typography, useTheme } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
-import { GhostButton, Pill, PrimaryButton } from "../../../shared/ui";
 import type { HeroContent } from "../types";
+import { GhostButton, Pill, PrimaryButton } from "../../../shared/ui";
 
 const env = import.meta.env ?? {};
-const baseUrl = typeof env.BASE_URL === "string" ? env.BASE_URL : "/";
-const normalizedBaseUrl = baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`;
-const certifiedBadgeSrc = `${normalizedBaseUrl}images/badges/certified-badge.png`;
+const resolveAssetBase = () => {
+  const baseUrl = typeof env.BASE_URL === "string" ? env.BASE_URL : "/";
+  const normalizedEnvBase = baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`;
+
+  if (typeof window === "undefined") {
+    return normalizedEnvBase;
+  }
+
+  const { hostname, pathname } = window.location;
+  if (hostname.endsWith("github.io")) {
+    const [repoSegment] = pathname.split("/").filter(Boolean);
+    if (repoSegment) {
+      return `/${repoSegment}/`;
+    }
+  }
+
+  return normalizedEnvBase;
+};
+
+const certifiedBadgeSrc = `${resolveAssetBase()}images/badges/certified-badge.png`;
 
 type HeroSectionProps = {
   hero: HeroContent;
