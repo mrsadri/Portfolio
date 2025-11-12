@@ -4,10 +4,10 @@
 - **Title:** Certified badge image fails to load in production
 - **Description:** The `Certified badge` image is missing in the production build due to an incorrect asset location reference.
 - **Causation:** Asset was imported via a relative bundle path, so GitHub Pages requested `/Portfolio/certified-badge-*.png` which didn’t exist in the public asset tree.
-- **Solution Summary:** Relocated the badge asset to `images/badges/` and updated the home hero component to build the asset URL from `import.meta.env.BASE_URL`, ensuring the image resolves for both local dev and the GitHub Pages subdirectory.
+- **Solution Summary:** Removed the credential badge from the hero entirely, eliminating the broken asset dependency and simplifying the layout.
 - **Local Status:** ✅ Build completed successfully (`bun run build`)
 - **Production Status:** ✅ Verified (2025‑11‑11)
-- **Notes:** Linting blocked in sandbox (`EPERM` accessing `path-key`). Badge confirmed loading from `https://mrsadri.github.io/Portfolio/images/badges/certified-badge.png`.
+- **Notes:** Replacement removes the need for the asset URL workaround; hero portrait renders without auxiliary badge.
 
 - **Issue ID:** 002
 - **Title:** Deep refresh on contact route returns GitHub Pages 404
@@ -40,7 +40,7 @@
 - **Title:** Refresh homepage engagement touchpoints
 - **Description:** Updated hero CTAs, mentorship scheduling, and contact footer to align with current offerings and booking links.
 - **Causation:** Legacy copy and mailto links left visitors without clear actions and routed them to outdated scheduling experiences.
-- **Solution Summary:** Added smooth-scrolling hero CTA, deep-linked mentorship navigation, Zeeg scheduling links, refreshed contact footer buttons, and supporting content updates.
+- **Solution Summary:** Implemented smooth-scrolling hero CTA, `/contact#mentorship` deep link with on-load scrolling, Zeeg scheduling links, trimmed hero actions, and redesigned contact footer CTAs.
 - **Local Status:** ✅ Build updated locally
-- **Production Status:** ⏳ Pending redeploy
-- **Notes:** Contact footer now highlights `hello@uxdesigner.com` with LinkedIn and GitHub for follow-up.
+- **Production Status:** ⏳ Pending redeploy (checked 2025‑11‑12)
+- **Notes:** Production still reflects legacy hero and contact footer; redeploy required to publish refreshed experience.
