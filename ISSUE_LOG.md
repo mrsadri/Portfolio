@@ -1,13 +1,13 @@
-## Issue Log
+ ## Issue Log
 
 - **Issue ID:** 001
 - **Title:** Certified badge image fails to load in production
 - **Description:** The `Certified badge` image is missing in the production build due to an incorrect asset location reference.
 - **Causation:** Asset was imported via a relative bundle path, so GitHub Pages requested `/Portfolio/certified-badge-*.png` which didn’t exist in the public asset tree.
-- **Solution Summary:** Relocated the badge asset to `images/badges/` and updated the home hero component to build the asset URL from `import.meta.env.BASE_URL`, ensuring the image resolves for both local dev and the GitHub Pages subdirectory.
+- **Solution Summary:** Relocated the badge asset to `images/badges/` and updated the home hero component to derive the asset URL from runtime GitHub Pages detection (falling back to `import.meta.env.BASE_URL`) so the repo segment is always included.
 - **Local Status:** ✅ Build completed successfully (`bun run build`)
-- **Production Status:** ✅ Verified (2025‑11‑11)
-- **Notes:** Linting blocked in sandbox (`EPERM` accessing `path-key`). Badge confirmed loading from `https://mrsadri.github.io/Portfolio/images/badges/certified-badge.png`.
+- **Production Status:** Pending redeploy (regression observed 2025‑11‑11, still pointing to `https://mrsadri.github.io/images/...`)
+- **Notes:** Linting blocked in sandbox (`EPERM` accessing `path-key`). After the next deploy, confirm the hero image requests `/Portfolio/images/badges/certified-badge.png`.
 
 - **Issue ID:** 002
 - **Title:** Deep refresh on contact route returns GitHub Pages 404
@@ -15,7 +15,7 @@
 - **Causation:** GitHub Pages serves static files only; without per-route HTML fallbacks, direct requests bypassed the SPA bundle and hit the platform’s default 404 page.
 - **Solution Summary:** Added SPA fallback HTML files for key routes during the build step so direct navigation redirects back to the root app with the intended path persisted.
 - **Local Status:** ✅ Build regenerated with new fallbacks (`bun run build`)
-- **Production Status:** ❌ Still broken (2025‑11‑11)
+- **Production Status:** ❌ Still broken (2025‑11‑11; rechecked after latest deploy)
 - **Notes:** Added both `route/index.html` and flat `route.html` fallbacks; GitHub Pages still returns 404 for `/Portfolio/contact` until redeployed. Local static verification blocked in sandbox (no localhost access).
 
 - **Issue ID:** 003
@@ -33,7 +33,6 @@
 - **Causation:** GitHub Pages couldn’t find our redirecting 404 document because it only existed under `docs/`; requests to `/Portfolio/404.html` failed, leaving the platform to render its default error page.
 - **Solution Summary:** Copy the generated `404.html` to both `docs/` and repository root during the build, ensuring GitHub Pages serves the custom redirector for any missing path.
 - **Local Status:** ✅ Build regenerated (`bun run build`)
-- **Production Status:** Pending verification
-- **Notes:** After deploying, confirm `/Portfolio/404.html` responds with the custom redirect content and that arbitrary URLs (`/ddd`, `/does-not-exist`) land on the React NotFound screen instead of the GitHub placeholder.
+- **Production Status:** ✅ Verified (2025‑11‑11)
+- **Notes:** `/Portfolio/404.html` now serves the redirect HTML and random routes (e.g. `/Portfolio/ddd`) land on the SPA NotFound view instead of the GitHub fallback.
 
-//TODO: checkk this same as above. issue: a random url such as https://mrsadri.github.io/Portfolio/ddd should show 404 page, but now it does not show.
