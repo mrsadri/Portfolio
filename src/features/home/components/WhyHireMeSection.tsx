@@ -20,7 +20,7 @@ const WhyHireMeSection = ({ content }: WhyHireMeSectionProps) => {
   const theme = useTheme();
 
   return (
-    <Box component="section" sx={{ py: { xs: 8, md: 10 } }}>
+    <Box component="section" sx={{ pt: { xs: 4, md: 6 }, pb: { xs: 8, md: 10 } }}>
       <Container>
         <Stack spacing={6}>
           {/* What I Bring Section */}

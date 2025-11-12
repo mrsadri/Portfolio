@@ -48,8 +48,8 @@ Current: "an impact-oriented Product Designer with 6+ years of experience, enhan
 Better: "Senior Product Designer specializing in Trust & Safety and Growth at scale. I've protected 2.1M+ users from harassment, doubled revenue for telecom products, and built design systems used by 8,300+ designers."
 
 Even Better: Lead with your unique value:
-"Senior Product Designer | Trust & Safety & Growth at Scale
-Protecting users, driving revenue, and building systems that scale"
+"an impact-orientd Senior Product Designer | Data-Driven Design at Scale
+Former iOS developer turned designer, building data-driven experiences that drive user retention and business growth for 40+ million users across B2B and B2C products"
 ```
 
 **Why:** Hiring managers scan hero sections in 3-5 seconds. You need to immediately communicate:

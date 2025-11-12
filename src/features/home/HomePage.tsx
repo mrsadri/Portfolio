@@ -9,7 +9,6 @@ import {
   caseStudies,
   hero,
   metrics,
-  socialLinks,
   whyHireMe,
 } from "./data/content";
 import useCaseStudyRecap from "./hooks/useCaseStudyRecap";
@@ -26,7 +25,7 @@ const HomePage = () => {
       <WhyHireMeSection content={whyHireMe} />
       <MetricsSection metrics={metrics} />
       <CaseStudiesSection caseStudies={caseStudies} onOpenRecap={openRecap} />
-      <ContactSection socialLinks={socialLinks} />
+      <ContactSection />
 
       <CaseStudyRecapDialog caseStudy={activeCaseStudy} onClose={closeRecap} />
     </>

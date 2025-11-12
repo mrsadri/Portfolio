@@ -14,15 +14,15 @@ import type {
 export const hero: HeroContent = {
   greeting: "Hello 👋🏼, I am",
   name: "Masih Sadri",
-  title: "Senior Product Designer | Trust & Safety & Growth at Scale",
+  title: "an impact-oriented Senior Product Designer",
   subtitle:
-    "AI-familiar designer with a code background, building data-driven experiences for 40+ million users across B2C and B2B products",
+    "Former iOS developer turned designer, building data-driven experiences that drive user retention and business growth for 40+ million users across B2B and B2C products",
   ctaPrimary: {
     label: "View case study",
     scrollToId: "case-studies",
   },
   ctaSecondary: {
-    label: "Set an appointment",
+    label: "To be in touch",
     scrollToId: "contact",
   },
   portrait: createImageResource(import.meta.url, heroPortraitAsset, "Masih Sadri - Product Designer", {
