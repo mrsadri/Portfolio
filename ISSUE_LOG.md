@@ -42,7 +42,7 @@
 - **Causation:** Legacy copy and mailto links left visitors without clear actions and routed them to outdated scheduling experiences.
 - **Solution Summary:** Implemented smooth-scrolling hero CTA, `/contact#mentorship` deep link with on-load scrolling, Zeeg scheduling links, trimmed hero actions, and redesigned contact footer CTAs.
 - **Local Status:** ✅ Build updated locally
-- **Production Status:** ❌ Legacy content still live (checked 2025‑11‑12 after latest GitHub Pages publish attempt)
+- **Production Status:** ❌ Legacy content still live (checked 2025‑11‑12 after second GitHub Pages publish attempt; 75 s post-push)
 - **Notes:** Hero still shows credential stack/legacy CTAs, contact page retains mailto links, and footer copy unchanged; redeploy required to publish refreshed experience.
 
 - **Issue ID:** 006
@@ -51,7 +51,7 @@
 - **Causation:** The `docs/` deployment artifacts were not regenerated after recent content updates, so GitHub Pages continued serving stale assets.
 - **Solution Summary:** Ran `bun run build` to rebuild the static site and refresh `docs/`, `docs/client/`, and `client/` with the latest bundle, preparing the repo for redeploy.
 - **Local Status:** ✅ Build regenerated (`bun run build` on 2025-11-12)
-- **Production Status:** ❌ Production still serving legacy bundle after 2025‑11‑12 deploy (checked 75 s post-push)
+- **Production Status:** ❌ Production still serving legacy bundle after second 2025‑11‑12 deploy attempt (checked 75 s post-push)
 - **Notes:** After pushing the updated artifacts, verify at `https://mrsadri.github.io/Portfolio/` that hero CTAs, contact section, and footer match the local build.
 
 - **Issue ID:** 007
