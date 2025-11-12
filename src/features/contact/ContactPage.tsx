@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { Seo } from "../../shared/seo";
 import { smoothScrollToElement } from "../../utils/smoothScroll";
-import AsyncPreferenceCard from "./components/AsyncPreferenceCard";
 import ContactMethodsSection from "./components/ContactMethodsSection";
 import HelpTopicsSection from "./components/HelpTopicsSection";
 import HeroSection from "./components/HeroSection";
@@ -16,7 +15,6 @@ import {
   responseTime,
 } from "./data/content";
 import { contactPageMetadata } from "./seo";
-
 const ContactPage = () => {
   const location = useLocation();
 
@@ -41,11 +39,10 @@ const ContactPage = () => {
       <Seo {...contactPageMetadata} />
 
       <HeroSection hero={contactHero} />
-      <ContactMethodsSection methods={contactMethods} />
-      <MentorshipSection offers={mentorshipOffers} />
       <HelpTopicsSection topics={helpTopics} />
+      <MentorshipSection offers={mentorshipOffers} />
+      <ContactMethodsSection methods={contactMethods} />
       <ResponseTimeSection responseTime={responseTime} />
-      <AsyncPreferenceCard />
     </>
   );
 };

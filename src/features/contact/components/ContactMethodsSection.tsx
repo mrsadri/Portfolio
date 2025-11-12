@@ -1,14 +1,5 @@
 import Grid from "@mui/system/Grid";
-import {
-  Box,
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  Container,
-  Stack,
-  Typography,
-} from "@mui/material";
+import { Box, Button, Card, CardActions, CardContent, Container, Stack, Typography } from "@mui/material";
 import type { ContactMethod } from "../types";
 
 type ContactMethodsSectionProps = {
@@ -41,8 +32,8 @@ const ContactMethodsSection = ({ methods }: ContactMethodsSectionProps) => (
                     href={method.href}
                     target={isMailLink ? undefined : "_blank"}
                     rel={isMailLink ? undefined : "noopener noreferrer"}
-                    variant="contained"
-                    color="primary"
+                    variant="outlined"
+                    color="secondary"
                     fullWidth
                   >
                     {method.actionLabel}
