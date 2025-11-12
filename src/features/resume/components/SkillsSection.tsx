@@ -1,13 +1,7 @@
-import MilitaryTechRoundedIcon from "@mui/icons-material/MilitaryTechRounded";
+import MilitaryTechOutlinedIcon from "@mui/icons-material/MilitaryTechOutlined";
 import Grid from "@mui/system/Grid";
-import {
-  Box,
-  Card,
-  CardContent,
-  Container,
-  Stack,
-  Typography,
-} from "@mui/material";
+import ResumeCard from "./ResumeCard";
+import ResumeSectionWrapper from "./ResumeSectionWrapper";
 import SectionHeader from "./SectionHeader";
 import type { SkillCategory } from "../types";
 
@@ -16,33 +10,20 @@ type SkillsSectionProps = {
 };
 
 const SkillsSection = ({ categories }: SkillsSectionProps) => (
-  <Box sx={{ py: { xs: 6, md: 8 } }}>
-    <Container>
-      <Stack spacing={4}>
-        <SectionHeader icon={<MilitaryTechRoundedIcon color="primary" />} title="Skills" />
+  <ResumeSectionWrapper>
+        <SectionHeader icon={<MilitaryTechOutlinedIcon color="primary" sx={{ fontSize: "1.75rem" }} />} title="Skills" />
         <Grid container spacing={3}>
           {categories.map((category) => (
             <Grid size={{ xs: 12, md: 4 }} key={category.title}>
-              <Card sx={{ height: "100%" }}>
-                <CardContent>
-                  <Stack spacing={2}>
-                    <Typography variant="h6">{category.title}</Typography>
-                    <Stack component="ul" spacing={1} sx={{ pl: 2, mb: 0 }}>
-                      {category.skills.map((skill) => (
-                        <Typography component="li" key={skill} variant="body2" color="text.secondary">
-                          {skill}
-                        </Typography>
-                      ))}
-                    </Stack>
-                  </Stack>
-                </CardContent>
-              </Card>
+          <ResumeCard
+            title={category.title}
+            skills={category.skills}
+            useCardContent={true}
+          />
             </Grid>
           ))}
         </Grid>
-      </Stack>
-    </Container>
-  </Box>
+  </ResumeSectionWrapper>
 );
 
 export default SkillsSection;

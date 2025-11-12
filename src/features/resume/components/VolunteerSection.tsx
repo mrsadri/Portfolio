@@ -1,11 +1,7 @@
-import VolunteerActivismRoundedIcon from "@mui/icons-material/VolunteerActivismRounded";
-import {
-  Box,
-  Card,
-  Container,
-  Stack,
-  Typography,
-} from "@mui/material";
+import VolunteerActivismOutlinedIcon from "@mui/icons-material/VolunteerActivismOutlined";
+import { Stack } from "@mui/material";
+import ResumeCard from "./ResumeCard";
+import ResumeSectionWrapper from "./ResumeSectionWrapper";
 import SectionHeader from "./SectionHeader";
 import type { VolunteerExperience } from "../types";
 
@@ -14,45 +10,23 @@ type VolunteerSectionProps = {
 };
 
 const VolunteerSection = ({ items }: VolunteerSectionProps) => (
-  <Box
-    sx={{
-      py: { xs: 6, md: 8 },
-      backgroundColor: "background.paper",
-    }}
-  >
-    <Container>
-      <Stack spacing={4}>
+  <ResumeSectionWrapper backgroundColor="paper">
         <SectionHeader
-          icon={<VolunteerActivismRoundedIcon color="secondary" />}
+          icon={<VolunteerActivismOutlinedIcon color="secondary" sx={{ fontSize: "1.75rem" }} />}
           title="Volunteer Activity"
         />
         <Stack spacing={3}>
           {items.map((item) => (
-            <Card key={`${item.organization}-${item.role}`} sx={{ p: { xs: 3, md: 4 } }}>
-              <Stack spacing={2}>
-                <Stack
-                  direction={{ xs: "column", md: "row" }}
-                  justifyContent="space-between"
-                  spacing={1}
-                >
-                  <Typography variant="h5">{item.role}</Typography>
-                  <Typography variant="subtitle2" color="text.secondary">
-                    {item.period}
-                  </Typography>
-                </Stack>
-                <Typography variant="subtitle1" color="text.secondary">
-                  {item.organization}
-                </Typography>
-                <Typography variant="body1" color="text.secondary">
-                  {item.description}
-                </Typography>
-              </Stack>
-            </Card>
+        <ResumeCard
+          key={`${item.organization}-${item.role}`}
+          title={item.role}
+          subtitle={item.organization}
+          period={item.period}
+          description={item.description}
+        />
           ))}
         </Stack>
-      </Stack>
-    </Container>
-  </Box>
+  </ResumeSectionWrapper>
 );
 
 export default VolunteerSection;

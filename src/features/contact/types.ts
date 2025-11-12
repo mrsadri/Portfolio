@@ -1,3 +1,5 @@
+import type { ComponentType } from "react";
+
 export type ContactHero = {
   title: string;
   subtitle: string;
@@ -5,7 +7,7 @@ export type ContactHero = {
 };
 
 export type ContactMethod = {
-  icon: string;
+  icon: ComponentType;
   title: string;
   description: string;
   actionLabel: string;

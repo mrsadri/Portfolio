@@ -19,12 +19,12 @@ import {
   storyHero,
   team,
 } from "./data/content";
-import { myStoryPageMetadata } from "./seo";
+import { MyStoryPageMetadata } from "./seo";
 
 const MyStoryPage = () => {
   return (
     <>
-      <Seo {...myStoryPageMetadata} />
+      <Seo {...MyStoryPageMetadata} />
 
       <HeroSection hero={storyHero} />
       <PhotoGallerySection items={gallery} />
