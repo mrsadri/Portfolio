@@ -8,6 +8,7 @@ import type {
   HeroContent,
   MetricSummary,
   SocialLink,
+  Testimonial,
   WhyHireMeContent,
 } from "../types";
 
@@ -196,5 +197,104 @@ export const whyHireMe: WhyHireMeContent = {
     },
   ],
 };
+
+// Profile images
+import mahdiAhmadizadehImage from "../../../../images/testimonials/mahdi-ahmadizadeh.jpeg";
+import nahidKImage from "../../../../images/testimonials/nahid-k.jpeg";
+import shadiZareiImage from "../../../../images/testimonials/shadi-zarei.jpeg";
+import sadeqBImage from "../../../../images/testimonials/sadeq-b.jpeg";
+import saeedAbolghasemiImage from "../../../../images/testimonials/saeed-abolghasemi.jpg";
+import hosseinMahmoudvandImage from "../../../../images/testimonials/hossein-mahmoudvand.jpeg";
+import shayanMehranpourImage from "../../../../images/testimonials/shayan-mehranpour.jpeg";
+
+export const testimonials: ReadonlyArray<Testimonial> = [
+  {
+    quote:
+      "Masih Sadri has been an incredible mentor throughout my learning journey. He consistently shared his vast knowledge and useful resources, always encouraging me to practice and grow.",
+    author: {
+      name: "Mahdi Ahmadizadeh",
+      position: "Design System Manager",
+      company: "Snapp! Market",
+      relationship: "Mentee",
+      image: createImageResource(import.meta.url, mahdiAhmadizadehImage, "Mahdi Ahmadizadeh"),
+    },
+  },
+  {
+    quote:
+      "Masih is an incredibly talented person, a very mature and seasoned professional, and a great mentor to have. He has a warm and engaging style, and the quality of his design work and illustrations is exceptional.",
+    author: {
+      name: "Nahid K.",
+      position: "Product Manager",
+      company: "Service Management | ITSM",
+      relationship: "Colleague",
+      image: createImageResource(import.meta.url, nahidKImage, "Nahid K."),
+    },
+  },
+  {
+    quote:
+      "His problem-solving, interaction skills and eye for details are remarkable. I have always been impressed by his severe motivation and deep knowledge in user experience.",
+    author: {
+      name: "Shadi Zarei",
+      position: "Researcher & UX/UI Designer",
+      company: "PhD Candidate",
+      relationship: "Classmate",
+      image: createImageResource(import.meta.url, shadiZareiImage, "Shadi Zarei"),
+    },
+  },
+  {
+    quote:
+      "He has a curious mind and considers personal development. In addition to what is taught in the classroom, he always refers to more resources to solve problems in the best possible way.",
+    author: {
+      name: "Sadeq .B",
+      position: "Senior iOS Engineer",
+      relationship: "Classmate",
+      image: createImageResource(import.meta.url, sadeqBImage, "Sadeq .B"),
+    },
+  },
+  {
+    quote:
+      "Masih is one of my privileged students who is determined to improve his knowledge and skills. His commitment and punctuality in delivering assignments are commendable.",
+    author: {
+      name: "Ali Azade",
+      position: "Software Engineer",
+      company: "UserTesting",
+      relationship: "Former Teacher",
+      // image: createImageResource(import.meta.url, aliAzadeImage, "Ali Azade"),
+    },
+  },
+  {
+    quote:
+      "It was my fortune to start my professional journey with a sympathetic person who has remarkable skills in empathizing with colleagues. He also knows how to prioritize tasks based on individuals' interests and assigns them to the team members.",
+    author: {
+      name: "Saeed Abolghasemi",
+      position: "Principal Product Designer",
+      company: "Systems Thinker",
+      relationship: "Direct Report",
+      image: createImageResource(import.meta.url, saeedAbolghasemiImage, "Saeed Abolghasemi"),
+    },
+  },
+  {
+    quote:
+      "When it comes to consistent, top-quality design, It is enough to handover confusions and raw data to Masih. While working together in the product team at Setare aval company, Masih's specialties were instrumental in problem definition, finding proper solutions, and designing flows.",
+    author: {
+      name: "Hossein Mahmoudvand",
+      position: "Product Design Lead",
+      company: "SnappPay",
+      relationship: "Former Manager",
+      image: createImageResource(import.meta.url, hosseinMahmoudvandImage, "Hossein Mahmoudvand"),
+    },
+  },
+  {
+    quote:
+      "MohammadReza is a very talented and professional UX specialist who made a great addition to our great company. MohammadReza began contributing on day one by porting our existing product.",
+    author: {
+      name: "Shayan Mehranpour",
+      position: "Senior Software Engineer",
+      company: "Flix",
+      relationship: "Team Member",
+      image: createImageResource(import.meta.url, shayanMehranpourImage, "Shayan Mehranpour"),
+    },
+  },
+];
 
 

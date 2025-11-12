@@ -80,4 +80,15 @@ export type WhyHireMeContent = {
   }>;
 };
 
+export type Testimonial = {
+  quote: string;
+  author: {
+    name: string;
+    position: string;
+    company?: string;
+    relationship: string;
+    image?: ImageResource;
+  };
+};
+
 

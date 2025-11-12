@@ -17117,7 +17117,7 @@ var RouteErrorBoundary_default = RouteErrorBoundary;
 
 // src/app/router.tsx
 var jsx_dev_runtime6 = __toESM(require_jsx_dev_runtime(), 1);
-var HomePage = import_react3.lazy(() => import("./chunk-zhvz0gv1.js"));
+var HomePage = import_react3.lazy(() => import("./chunk-5cstdtqj.js"));
 var MyStoryPage = import_react3.lazy(() => import("./chunk-x7zk4f8k.js"));
 var ContactPage = import_react3.lazy(() => import("./chunk-qyt89jy6.js"));
 var ResumePage = import_react3.lazy(() => import("./chunk-zbdtyd72.js"));
