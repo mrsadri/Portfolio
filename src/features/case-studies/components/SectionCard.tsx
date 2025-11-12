@@ -13,7 +13,7 @@ const CaseStudySectionCardComponent = ({ section }: { section: CaseStudySection 
       spacing={{ xs: 2.5, md: 3 }}
       sx={{ maxWidth: 760, mx: "auto", scrollMarginTop: { xs: 96, md: 140 } }}
     >
-      <Stack spacing={1}>
+      <Stack spacing={{ xs: 1.5, md: 1 }}>
         {section.eyebrow && (
           <Typography variant="eyebrow" color="brand.secondary">
             {section.eyebrow}
@@ -21,16 +21,26 @@ const CaseStudySectionCardComponent = ({ section }: { section: CaseStudySection 
         )}
         <Typography variant="h3">{section.title}</Typography>
         {section.summary && (
-          <Typography variant="body1" color="text.secondary" sx={{ lineHeight: 1.65 }}>
+          <Typography 
+            variant="body1" 
+            color="text.secondary" 
+            sx={{ 
+              lineHeight: { xs: 1.7, md: 1.65 },
+              mb: { xs: 1, md: 0 },
+            }}
+          >
             {section.summary}
           </Typography>
         )}
-        {section.body?.map((paragraph) => (
+        {section.body?.map((paragraph, index) => (
           <Typography
             key={paragraph.slice(0, 32)}
             variant="body1"
             color="text.secondary"
-            sx={{ lineHeight: 1.7 }}
+            sx={{ 
+              lineHeight: { xs: 1.7, md: 1.65 },
+              mb: index < section.body!.length - 1 ? { xs: 2, md: 1.5 } : 0,
+            }}
           >
             {paragraph}
           </Typography>
@@ -38,9 +48,15 @@ const CaseStudySectionCardComponent = ({ section }: { section: CaseStudySection 
       </Stack>
 
       {section.bullets && (
-        <Stack component="ul" spacing={1} sx={{ pl: 2, mb: 0 }}>
+        <Stack component="ul" spacing={1.5} sx={{ pl: 2, mb: 0 }}>
           {section.bullets.map((point) => (
-            <Typography component="li" key={point} variant="body1" color="text.secondary">
+            <Typography 
+              component="li" 
+              key={point} 
+              variant="body1" 
+              color="text.secondary"
+              sx={{ lineHeight: { xs: 1.7, md: 1.65 } }}
+            >
               {point}
             </Typography>
           ))}

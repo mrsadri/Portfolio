@@ -292,14 +292,18 @@ const HeroSection = ({ hero }: HeroSectionProps) => {
             </Stack>
 
             <Stack
-              spacing={{ xs: 1.4, sm: 1.8 }}
+              spacing={{ xs: 1.5, sm: 2 }}
               direction={{ xs: "column", sm: "row" }}
               sx={{ pt: { xs: 0.5, md: 0.75 } }}
             >
               <PrimaryButton
                 endIcon={<ArrowForwardRoundedIcon />}
                 size="large"
-                sx={{ minWidth: { sm: 220 } }}
+                sx={{ 
+                  minWidth: { sm: 220 },
+                  minHeight: 44,
+                  py: { xs: 1.25, md: 1.5 },
+                }}
                 onClick={handlePrimaryCtaClick}
               >
                 {hero.ctaPrimary.label}
@@ -311,6 +315,8 @@ const HeroSection = ({ hero }: HeroSectionProps) => {
                   borderRadius: 999,
                   px: 3,
                   borderWidth: 1.5,
+                  minHeight: 44,
+                  py: { xs: 1.25, md: 1.5 },
                 }}
               >
                 {hero.ctaSecondary.label}
