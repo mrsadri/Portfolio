@@ -1,11 +1,9 @@
 import { Seo } from "../../shared/seo";
-import CertificatesSection from "./components/CertificatesSection";
-import EducationSection from "./components/EducationSection";
 import HeroSection from "./components/HeroSection";
+import OutsideDesignSection from "./components/OutsideDesignSection";
 import PhilosophySection from "./components/PhilosophySection";
 import PhotoGallerySection from "./components/PhotoGallerySection";
 import ReadingJourneySection from "./components/ReadingJourneySection";
-import ReferencesSection from "./components/ReferencesSection";
 import TeamSection from "./components/TeamSection";
 import {
   books,
@@ -15,13 +13,19 @@ import {
   gallery,
   philosophyText,
   readingJourney,
-  references,
   storyHero,
   team,
 } from "./data/content";
 import { MyStoryPageMetadata } from "./seo";
 
 const MyStoryPage = () => {
+  // Filtered items: first education item, first and second certificate items
+  const outsideDesignItems = [
+    education[0],
+    certificates[0],
+    certificates[1],
+  ];
+
   return (
     <>
       <Seo {...MyStoryPageMetadata} />
@@ -31,9 +35,7 @@ const MyStoryPage = () => {
       <PhilosophySection philosophyText={philosophyText} emojiList={emojiList} />
       <ReadingJourneySection journey={readingJourney} books={books} />
       <TeamSection team={team} />
-      <EducationSection items={education} />
-      <CertificatesSection certificates={certificates} />
-      <ReferencesSection references={references} />
+      <OutsideDesignSection items={outsideDesignItems} />
     </>
   );
 };

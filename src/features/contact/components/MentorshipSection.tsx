@@ -22,7 +22,7 @@ const MentorshipSection = ({ offers }: MentorshipSectionProps) => (
           Looking for a mentor or someone to chat with?
         </Typography>
       </Stack>
-      <Grid container spacing={3}>
+      <Grid container spacing={{ xs: 4, md: 3 }}>
         {offers.map((offer) => (
           <Grid size={{ xs: 12, md: 6 }} key={offer.title}>
             <MentorshipCard offer={offer} />

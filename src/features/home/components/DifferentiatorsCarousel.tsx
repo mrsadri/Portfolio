@@ -84,8 +84,10 @@ const DifferentiatorsCarousel = ({ items }: DifferentiatorsCarouselProps) => {
             "&:hover": {
               backgroundColor: theme.palette.background.paper,
             },
-            width: { xs: 40, md: 48 },
-            height: { xs: 40, md: 48 },
+            minWidth: 44,
+            minHeight: 44,
+            width: { xs: 44, md: 48 },
+            height: { xs: 44, md: 48 },
           }}
           aria-label="Scroll left"
         >
@@ -111,8 +113,10 @@ const DifferentiatorsCarousel = ({ items }: DifferentiatorsCarouselProps) => {
             "&:hover": {
               backgroundColor: theme.palette.background.paper,
             },
-            width: { xs: 40, md: 48 },
-            height: { xs: 40, md: 48 },
+            minWidth: 44,
+            minHeight: 44,
+            width: { xs: 44, md: 48 },
+            height: { xs: 44, md: 48 },
           }}
           aria-label="Scroll right"
         >
@@ -140,6 +144,23 @@ const DifferentiatorsCarousel = ({ items }: DifferentiatorsCarouselProps) => {
           py: 1,
           // Hide scrollbar but allow scrolling
           WebkitOverflowScrolling: "touch",
+          // Visual indicator for scrollable content
+          position: "relative",
+          "&::after": {
+            content: '""',
+            position: "absolute",
+            right: 0,
+            top: 0,
+            bottom: 0,
+            width: 20,
+            background: (theme) =>
+              theme.palette.mode === "light"
+                ? "linear-gradient(to right, transparent, rgba(255, 255, 255, 0.8))"
+                : "linear-gradient(to right, transparent, rgba(18, 18, 18, 0.8))",
+            pointerEvents: "none",
+            opacity: canScrollRight ? 1 : 0,
+            transition: "opacity 0.2s ease",
+          },
         }}
       >
         {items.map((item, index) => (

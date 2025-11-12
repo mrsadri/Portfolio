@@ -29,8 +29,8 @@ const MentorshipCard = ({ offer }: MentorshipCardProps) => {
         color: (theme) => theme.palette.text.primary,
       }}
     >
-      <CardContent sx={{ flexGrow: 1 }}>
-        <Stack spacing={2}>
+      <CardContent sx={{ flexGrow: 1, px: { xs: 3, md: 3 }, py: { xs: 3, md: 3 } }}>
+        <Stack spacing={2.5}>
           <Stack
             direction="row"
             alignItems="center"
@@ -61,21 +61,27 @@ const MentorshipCard = ({ offer }: MentorshipCardProps) => {
           </Stack>
           <Typography 
             variant="body1" 
-            sx={{ color: (theme) => theme.palette.text.secondary }}
+            sx={{ 
+              color: (theme) => theme.palette.text.secondary,
+              lineHeight: 1.65,
+            }}
           >
             {offer.description}
           </Typography>
           {offer.note && (
             <Typography 
               variant="body1" 
-              sx={{ color: (theme) => theme.palette.text.secondary }}
+              sx={{ 
+                color: (theme) => theme.palette.text.secondary,
+                lineHeight: 1.65,
+              }}
             >
               {offer.note}
             </Typography>
           )}
         </Stack>
       </CardContent>
-      <CardActions sx={{ px: 3, pb: 3, pt: 0 }}>
+      <CardActions sx={{ px: { xs: 3, md: 3 }, pb: { xs: 3, md: 3 }, pt: { xs: 1, md: 0 } }}>
         <Button
           component="a"
           href={offer.href}
@@ -84,6 +90,10 @@ const MentorshipCard = ({ offer }: MentorshipCardProps) => {
           variant="outlined"
           color={isFeatured ? "secondary" : "primary"}
           fullWidth
+          sx={{
+            minHeight: 44,
+            py: 1.25,
+          }}
         >
           {offer.ctaLabel ?? "Choose a time"}
         </Button>

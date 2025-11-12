@@ -87,8 +87,10 @@ const TestimonialsSection = ({ testimonials }: TestimonialsSectionProps) => {
                   backgroundColor: theme.palette.background.paper,
                   transform: "scale(1.05)",
                 },
-                width: { xs: 40, md: 48 },
-                height: { xs: 40, md: 48 },
+                minWidth: 44,
+                minHeight: 44,
+                width: { xs: 44, md: 48 },
+                height: { xs: 44, md: 48 },
                 transition: "transform 0.2s ease",
               }}
               aria-label="Previous testimonial"
@@ -124,7 +126,7 @@ const TestimonialsSection = ({ testimonials }: TestimonialsSectionProps) => {
                   sx={{
                     fontFamily: '"Georgia", "Times New Roman", serif',
                     fontSize: { xs: "1.5rem", md: "1.75rem", lg: "2rem" },
-                    lineHeight: { xs: 1.5, md: 1.6 },
+                    lineHeight: { xs: 1.7, md: 1.75 },
                     fontWeight: 400,
                     color: theme.palette.text.primary,
                     fontStyle: "italic",
@@ -222,8 +224,10 @@ const TestimonialsSection = ({ testimonials }: TestimonialsSectionProps) => {
                   backgroundColor: theme.palette.background.paper,
                   transform: "scale(1.05)",
                 },
-                width: { xs: 40, md: 48 },
-                height: { xs: 40, md: 48 },
+                minWidth: 44,
+                minHeight: 44,
+                width: { xs: 44, md: 48 },
+                height: { xs: 44, md: 48 },
                 transition: "transform 0.2s ease",
               }}
               aria-label="Next testimonial"
@@ -233,14 +237,14 @@ const TestimonialsSection = ({ testimonials }: TestimonialsSectionProps) => {
           </Box>
 
           {/* Carousel Indicators */}
-          <Stack direction="row" spacing={1} justifyContent="center" alignItems="center">
+          <Stack direction="row" spacing={1.5} justifyContent="center" alignItems="center">
             {testimonials.map((_, index) => (
               <Box
                 key={index}
                 onClick={() => setCurrentIndex(index)}
                 sx={{
-                  width: { xs: 8, md: 10 },
-                  height: { xs: 8, md: 10 },
+                  width: { xs: 12, md: 10 },
+                  height: { xs: 12, md: 10 },
                   borderRadius: "50%",
                   backgroundColor:
                     index === currentIndex
@@ -250,6 +254,8 @@ const TestimonialsSection = ({ testimonials }: TestimonialsSectionProps) => {
                         : "rgba(98, 132, 218, 0.3)",
                   cursor: "pointer",
                   transition: "all 0.2s ease",
+                  minWidth: 12,
+                  minHeight: 12,
                   "&:hover": {
                     backgroundColor:
                       index === currentIndex

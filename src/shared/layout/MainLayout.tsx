@@ -277,6 +277,10 @@ const MainLayout = () => {
                   color="inherit"
                   onClick={handleDrawerToggle}
                   aria-label="Toggle navigation menu"
+                  sx={{
+                    minWidth: 44,
+                    minHeight: 44,
+                  }}
                 >
                   {drawerOpen ? <CloseRoundedIcon /> : <MenuRoundedIcon />}
                 </IconButton>
@@ -292,7 +296,14 @@ const MainLayout = () => {
                     <Typography variant="h6" fontWeight={700}>
                       Navigate
                     </Typography>
-                    <IconButton onClick={handleDrawerToggle} aria-label="Close navigation menu">
+                    <IconButton 
+                      onClick={handleDrawerToggle} 
+                      aria-label="Close navigation menu"
+                      sx={{
+                        minWidth: 44,
+                        minHeight: 44,
+                      }}
+                    >
                       <CloseRoundedIcon />
                     </IconButton>
                   </Stack>
@@ -306,6 +317,7 @@ const MainLayout = () => {
                         selected={isLinkActive(to)}
                         sx={{
                           borderRadius: (theme) => theme.tokens.radius.xl,
+                          minHeight: 44,
                           "&.Mui-selected": {
                             backgroundColor: "brand.muted",
                             color: "brand.primary",
@@ -328,6 +340,8 @@ const MainLayout = () => {
                         sx={{
                           border: "1px solid",
                           borderColor: "divider",
+                          minWidth: 44,
+                          minHeight: 44,
                         }}
                       >
                         <LinkedInIcon />
@@ -343,6 +357,8 @@ const MainLayout = () => {
                         sx={{
                           border: "1px solid",
                           borderColor: "divider",
+                          minWidth: 44,
+                          minHeight: 44,
                         }}
                       >
                         <TelegramIcon />

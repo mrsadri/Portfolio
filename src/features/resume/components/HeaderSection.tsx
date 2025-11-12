@@ -88,6 +88,7 @@ const HeaderSection = ({ summary, actions }: HeaderSectionProps) => {
             sx={{
               width: "100%",
               maxWidth: { xs: "100%", sm: "600px" },
+              gap: { xs: 1.5, sm: 1.5 },
             }}
           >
             <Chip
@@ -97,7 +98,14 @@ const HeaderSection = ({ summary, actions }: HeaderSectionProps) => {
               href="https://www.linkedin.com/in/msadri/"
               target="_blank"
               clickable
-              sx={chipStyles}
+              sx={{
+                ...chipStyles,
+                minHeight: 44,
+                "& .MuiChip-label": {
+                  paddingLeft: 1,
+                  paddingRight: 1.5,
+                },
+              }}
             />
             <Chip
               icon={<LanguageRoundedIcon sx={{ fontSize: "1.125rem" }} />}
@@ -106,7 +114,14 @@ const HeaderSection = ({ summary, actions }: HeaderSectionProps) => {
               href="https://masihsadri.com"
               target="_blank"
               clickable
-              sx={chipStyles}
+              sx={{
+                ...chipStyles,
+                minHeight: 44,
+                "& .MuiChip-label": {
+                  paddingLeft: 1,
+                  paddingRight: 1.5,
+                },
+              }}
             />
             <Chip
               icon={<EmailRoundedIcon sx={{ fontSize: "1.125rem" }} />}
@@ -114,14 +129,29 @@ const HeaderSection = ({ summary, actions }: HeaderSectionProps) => {
               component="a"
               href="mailto:sadrimasih@gmail.com"
               clickable
-              sx={chipStyles}
+              sx={{
+                ...chipStyles,
+                minHeight: 44,
+                "& .MuiChip-label": {
+                  paddingLeft: 1,
+                  paddingRight: 1.5,
+                  whiteSpace: "nowrap",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                },
+              }}
             />
             <Chip
               icon={<LocationOnRoundedIcon sx={{ fontSize: "1.125rem" }} />}
               label="Tehran, Iran • Willing to relocate"
               sx={{
                 ...chipStyles,
+                minHeight: 44,
                 "&:hover": undefined,
+                "& .MuiChip-label": {
+                  paddingLeft: 1,
+                  paddingRight: 1.5,
+                },
               }}
             />
           </Stack>
