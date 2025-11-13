@@ -23,7 +23,7 @@ const homeStructuredData: StructuredData = [
     jobTitle: "Senior Product Designer",
     description: hero.subtitle,
     url: siteUrl,
-    image: hero.portrait.src,
+    image: `${siteUrl}/images/masih-sadri-profile.webp`,
     sameAs: socialLinks.map((link) => link.href),
   },
 ] as const;
@@ -38,8 +38,8 @@ export const homePageMetadata: PageMetadata = {
     image: {
       url: `${siteUrl}/images/hero-section-og.png`,
       alt: `${hero.name} — ${hero.title}`,
-      width: 1200,
-      height: 560,
+      width: 2400,
+      height: 1120,
       type: "image/png",
     },
   },
