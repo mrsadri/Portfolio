@@ -36,10 +36,11 @@ export const homePageMetadata: PageMetadata = {
   openGraph: {
     type: "website",
     image: {
-      url: hero.portrait.src,
-      alt: hero.portrait.alt,
+      url: `${siteUrl}/images/hero-section-og.png`,
+      alt: `${hero.name} — ${hero.title}`,
       width: 1200,
-      height: 1200,
+      height: 560,
+      type: "image/png",
     },
   },
   structuredData: homeStructuredData,
