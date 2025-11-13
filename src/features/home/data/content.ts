@@ -286,7 +286,7 @@ export const testimonials: ReadonlyArray<Testimonial> = [
   },
   {
     quote:
-      "MohammadReza is a very talented and professional UX specialist who made a great addition to our great company. MohammadReza began contributing on day one by porting our existing product.",
+      "Masih is a very talented and professional UX specialist who made a great addition to our great company. Masih began contributing on day one by porting our existing product.",
     author: {
       name: "Shayan Mehranpour",
       position: "Senior Software Engineer",

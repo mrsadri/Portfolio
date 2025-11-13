@@ -90,7 +90,7 @@ Masih is very, very hardworking and motivated person. When he talks about the de
 *1st degree connection | March 19, 2021*  
 *Masih was senior to Bahar but didn't manage Bahar directly*
 
-Mohammad Reza is a mentor for me and I learned lots of things from him in the UX field and he provides me information that I could not find in books.
+Masih is a mentor for me and I learned lots of things from him in the UX field and he provides me information that I could not find in books.
 
 ---
 
@@ -123,7 +123,7 @@ Masih is a person trusted to do great things.
 *1st degree connection | March 7, 2021*  
 *Maryam worked with Masih on the same team*
 
-Mohammad Reza is one of the best in what he has been assigned. He is committed and focused but also considers all the aspects of a problem he is facing. Working with him is an ideal opportunity to grow and learn. I recommend him as a talented and knowledgeable person.
+Masih is one of the best in what he has been assigned. He is committed and focused but also considers all the aspects of a problem he is facing. Working with him is an ideal opportunity to grow and learn. I recommend him as a talented and knowledgeable person.
 
 ---
 
@@ -132,7 +132,7 @@ Mohammad Reza is one of the best in what he has been assigned. He is committed a
 *1st degree connection | September 3, 2020*  
 *Shayan worked with Masih on the same team*
 
-MohammadReza is a very talented and professional UX specialist who made a great addition to our great company. MohammadReza began contributing on day one by porting our existing product. MohammadReza has impressed all of us in a short time with his commitment and passion to get our products to the next level. Looking forward to building up the team and having MohammadReza as a key stakeholder for others to learn from
+Masih is a very talented and professional UX specialist who made a great addition to our great company. Masih began contributing on day one by porting our existing product. Masih has impressed all of us in a short time with his commitment and passion to get our products to the next level. Looking forward to building up the team and having Masih as a key stakeholder for others to learn from
 
 ---
 
