@@ -1,8 +1,8 @@
 import EmailRoundedIcon from "@mui/icons-material/EmailRounded";
 import EventAvailableIcon from "@mui/icons-material/EventAvailable";
 import TelegramIcon from "@mui/icons-material/Telegram";
-import LetsTalkSection from "../../../shared/components/LetsTalkSection";
-import type { ContactAction } from "../../../shared/components/LetsTalkSection";
+import LetsTalkSection from "@shared/components/LetsTalkSection";
+import type { ContactAction } from "@shared/components/LetsTalkSection";
 
 const ContactSection = () => {
   const secondaryActions: ContactAction[] = [

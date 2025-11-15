@@ -1,5 +1,5 @@
-import type { PageMetadata, StructuredData } from "../../shared/seo";
-import getSiteUrl from "../../shared/utils/site";
+import type { PageMetadata, StructuredData } from "@shared/seo";
+import getSiteUrl from "@shared/utils/site";
 import { hero, socialLinks } from "./data/content";
 
 const siteUrl = getSiteUrl();

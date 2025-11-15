@@ -1,7 +1,7 @@
 import heroPortraitAsset from "../../../../images/masih-sadri-profile.webp";
 import morphDesignSystemAsset from "../../../../images/morph-design-system.webp";
 import rahnemaStudentsAsset from "../../../../images/rahnema-students.webp";
-import { createImageResource } from "../../../shared/utils/assets";
+import { createImageResource } from "@shared/utils/assets";
 import type {
   CaseStudySummary,
   ExperienceSummary,
@@ -94,6 +94,46 @@ export const caseStudies: ReadonlyArray<CaseStudySummary> = [
         "Mapped a new lifecycle model tied to data-backed experimentation.",
         "Refined activation flows to spotlight value props within first session.",
         "Co-created a learning agenda to measure loyalty program traction.",
+      ],
+    },
+  },
+  {
+    id: "setare-yek",
+    number: "03",
+    tag: "Product Design & Growth",
+    title: "From 4% to 47%: Turning a Failing Feature Into Core Value",
+    platform: "at Setare Aval",
+    platformDetail: "SetareYek App",
+    stat: "10x growth in bill payment adoption",
+    tags: ["real project", "product design", "user research", "growth"],
+    to: "/case-studies/setare-yek-bill-payment",
+    recap: {
+      headline: "How I redesigned SetareYek's bill payment to increase adoption from 4% to 47%",
+      bullets: [
+        "Led multi-method research uncovering trust, transparency, and workflow challenges at Setare Aval.",
+        "Designed six interconnected solutions addressing core user needs and emotional drivers.",
+        "Learned from failure: Version 1 taught us that great UX requires great technical performance.",
+      ],
+    },
+  },
+  {
+    id: "physical-receipt",
+    number: "04",
+    tag: "Retention & Cost Optimization",
+    title: "How Physical Receipts Increased Retention by 6%",
+    platform: "at BimeBazar",
+    platformDetail: "User Retention Strategy",
+    stat: "6% higher retention vs. digital-only users",
+    tags: ["in progress", "retention", "data-driven", "cost optimization", "NDA"],
+    to: "#",
+    isLocked: true,
+    isInProgress: true,
+    recap: {
+      headline: "How we discovered that physical receipts drive 6% higher user retention",
+      bullets: [
+        "Company wanted to reduce costs by motivating users to skip physical receipts.",
+        "Data analysis revealed users who received physical receipts returned 6% more than digital-only users.",
+        "The 6% retention improvement meant lower acquisition costs, changing our strategy to encourage physical receipts.",
       ],
     },
   },

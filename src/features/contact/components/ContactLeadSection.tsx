@@ -3,8 +3,8 @@ import EventAvailableIcon from "@mui/icons-material/EventAvailable";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import TelegramIcon from "@mui/icons-material/Telegram";
-import LetsTalkSection from "../../../shared/components/LetsTalkSection";
-import type { ContactAction } from "../../../shared/components/LetsTalkSection";
+import LetsTalkSection from "@shared/components/LetsTalkSection";
+import type { ContactAction } from "@shared/components/LetsTalkSection";
 
 const secondaryActions: ContactAction[] = [
   {

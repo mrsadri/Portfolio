@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 import DifferentiatorsCarousel from "./DifferentiatorsCarousel";
-import { PrimaryButton } from "../../../shared/ui";
+import { PrimaryButton } from "@shared/ui";
 import type { WhyHireMeContent } from "../types";
 
 type WhyHireMeSectionProps = {

@@ -30,7 +30,7 @@ export type CaseStudyRecap = {
 };
 
 export type CaseStudySummary = {
-  id: "divar" | "setare-aval";
+  id: "divar" | "setare-aval" | "setare-yek" | "physical-receipt";
   number: string;
   tag: string;
   title: string;
@@ -40,6 +40,8 @@ export type CaseStudySummary = {
   tags: readonly string[];
   to: string;
   recap: CaseStudyRecap;
+  isLocked?: boolean;
+  isInProgress?: boolean;
 };
 
 export type CaseStudyId = CaseStudySummary["id"];

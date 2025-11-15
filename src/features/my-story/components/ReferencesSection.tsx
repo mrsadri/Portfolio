@@ -8,8 +8,8 @@ import {
   Typography,
   useTheme,
 } from "@mui/material";
-import { GhostButton } from "../../../shared/ui";
-import SectionHeader from "./SectionHeader";
+import { GhostButton } from "@shared/ui";
+import SectionHeader from "@shared/components/SectionHeader";
 import SurfaceCard from "./SurfaceCard";
 import type { ReferenceItem } from "../types";
 

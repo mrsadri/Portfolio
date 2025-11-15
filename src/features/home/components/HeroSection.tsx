@@ -2,9 +2,9 @@ import ArrowForwardRoundedIcon from "@mui/icons-material/ArrowForwardRounded";
 import { Avatar, Box, Container, Stack, Typography, useTheme } from "@mui/material";
 import { useCallback } from "react";
 import type { HeroContent } from "../types";
-import { GhostButton, Pill, PrimaryButton } from "../../../shared/ui";
+import { GhostButton, Pill, PrimaryButton } from "@shared/ui";
 import certifiedBadgeSrc from "../../../../images/badges/certified-badge.png";
-import { smoothScrollToElement } from "../../../utils/smoothScroll";
+import { smoothScrollToElement } from "@utils/smoothScroll";
 
 type HeroSectionProps = {
   hero: HeroContent;

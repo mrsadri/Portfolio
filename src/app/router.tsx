@@ -1,19 +1,22 @@
 import { lazy } from "react";
 import { createBrowserRouter } from "react-router-dom";
-import MainLayout from "../shared/layout/MainLayout";
-import RouteErrorBoundary from "../shared/components/RouteErrorBoundary";
+import MainLayout from "@shared/layout/MainLayout";
+import RouteErrorBoundary from "@shared/components/RouteErrorBoundary";
 
-const HomePage = lazy(() => import("../routes/HomePage"));
-const MyStoryPage = lazy(() => import("../routes/MyStoryPage"));
-const ContactPage = lazy(() => import("../routes/ContactPage"));
-const ResumePage = lazy(() => import("../routes/ResumePage"));
+const HomePage = lazy(() => import("@features/home/HomePage"));
+const MyStoryPage = lazy(() => import("@features/my-story/MyStoryPage"));
+const ContactPage = lazy(() => import("@features/contact/ContactPage"));
+const ResumePage = lazy(() => import("@features/resume/ResumePage"));
 const CaseStudyDivarPage = lazy(
-  () => import("../routes/case-studies/CaseStudyDivarPage"),
+  () => import("@features/case-studies/CaseStudyDivarPage"),
 );
 const CaseStudySetarePage = lazy(
-  () => import("../routes/case-studies/CaseStudySetarePage"),
+  () => import("@features/case-studies/CaseStudySetarePage"),
 );
-const NotFoundPage = lazy(() => import("../routes/NotFoundPage"));
+const CaseStudySetareYekPage = lazy(
+  () => import("@features/case-studies/CaseStudySetareYekPage"),
+);
+const NotFoundPage = lazy(() => import("@app/NotFoundPage"));
 
 const normaliseBasename = (value?: string | null) => {
   if (!value) {
@@ -91,6 +94,10 @@ export const appRouter = createBrowserRouter(
         {
           path: "case-studies/setare-aval-engagement",
           element: <CaseStudySetarePage />,
+        },
+        {
+          path: "case-studies/setare-yek-bill-payment",
+          element: <CaseStudySetareYekPage />,
         },
         {
           path: "*",

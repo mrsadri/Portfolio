@@ -1,4 +1,4 @@
-import { Seo } from "../../shared/seo";
+import { Seo } from "@shared/seo";
 import CertificatesSection from "./components/CertificatesSection";
 import EducationSection from "./components/EducationSection";
 import ExperienceSection from "./components/ExperienceSection";

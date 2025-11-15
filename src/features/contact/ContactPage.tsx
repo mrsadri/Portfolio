@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { Seo } from "../../shared/seo";
-import { smoothScrollToElement } from "../../utils/smoothScroll";
+import { Seo } from "@shared/seo";
+import { smoothScrollToElement } from "@utils/smoothScroll";
 import ContactMethodsSection from "./components/ContactMethodsSection";
 import HelpTopicsSection from "./components/HelpTopicsSection";
 import HeroSection from "./components/HeroSection";

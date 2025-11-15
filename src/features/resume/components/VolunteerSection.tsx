@@ -1,8 +1,8 @@
 import VolunteerActivismOutlinedIcon from "@mui/icons-material/VolunteerActivismOutlined";
 import { Stack } from "@mui/material";
+import SectionHeader from "@shared/components/SectionHeader";
 import ResumeCard from "./ResumeCard";
 import ResumeSectionWrapper from "./ResumeSectionWrapper";
-import SectionHeader from "./SectionHeader";
 import type { VolunteerExperience } from "../types";
 
 type VolunteerSectionProps = {
@@ -12,6 +12,7 @@ type VolunteerSectionProps = {
 const VolunteerSection = ({ items }: VolunteerSectionProps) => (
   <ResumeSectionWrapper backgroundColor="paper">
         <SectionHeader
+          variant="compact"
           icon={<VolunteerActivismOutlinedIcon color="secondary" sx={{ fontSize: "1.75rem" }} />}
           title="Volunteer Activity"
         />

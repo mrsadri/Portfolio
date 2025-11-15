@@ -1,8 +1,8 @@
 import HistoryEduOutlinedIcon from "@mui/icons-material/HistoryEduOutlined";
 import { Stack } from "@mui/material";
+import SectionHeader from "@shared/components/SectionHeader";
 import ResumeCard from "./ResumeCard";
 import ResumeSectionWrapper from "./ResumeSectionWrapper";
-import SectionHeader from "./SectionHeader";
 import type { EducationItem } from "../types";
 
 type EducationSectionProps = {
@@ -11,7 +11,7 @@ type EducationSectionProps = {
 
 const EducationSection = ({ items }: EducationSectionProps) => (
   <ResumeSectionWrapper backgroundColor="paper">
-        <SectionHeader icon={<HistoryEduOutlinedIcon color="secondary" sx={{ fontSize: "1.75rem" }} />} title="Education" />
+        <SectionHeader variant="compact" icon={<HistoryEduOutlinedIcon color="secondary" sx={{ fontSize: "1.75rem" }} />} title="Education" />
         <Stack spacing={3}>
           {items.map((item) => (
         <ResumeCard

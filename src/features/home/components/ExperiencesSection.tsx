@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 import ArrowForwardRoundedIcon from "@mui/icons-material/ArrowForwardRounded";
 import type { ExperienceSummary } from "../types";
-import { Pill } from "../../../shared/ui";
+import { Pill } from "@shared/ui";
 
 type ExperiencesSectionProps = {
   experiences: ReadonlyArray<ExperienceSummary>;

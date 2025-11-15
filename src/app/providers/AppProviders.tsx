@@ -1,7 +1,7 @@
 import { Suspense, type PropsWithChildren } from "react";
 import { HelmetProvider } from "react-helmet-async";
-import { AppThemeProvider } from "../../theme";
-import LoadingScreen from "../../shared/components/LoadingScreen";
+import { AppThemeProvider } from "@theme";
+import LoadingScreen from "@shared/components/LoadingScreen";
 
 const AppProviders = ({ children }: PropsWithChildren) => (
   <HelmetProvider>

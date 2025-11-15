@@ -24,7 +24,20 @@
     // Some stricter flags (disabled by default)
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noPropertyAccessFromIndexSignature": false
+    "noPropertyAccessFromIndexSignature": false,
+
+    // Path aliases for cleaner imports
+    "baseUrl": ".",
+    "paths": {
+      "@shared/*": ["src/shared/*"],
+      "@features/*": ["src/features/*"],
+      "@app/*": ["src/app/*"],
+      "@types/*": ["src/types/*"],
+      "@utils/*": ["src/utils/*"],
+      "@theme": ["src/theme"],
+      "@theme/*": ["src/theme/*"],
+      "@images/*": ["images/*"]
+    }
   },
   "include": ["src", "tests", "vitest.config.ts", "setupTests.ts"]
 }

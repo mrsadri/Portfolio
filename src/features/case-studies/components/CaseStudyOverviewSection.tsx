@@ -11,7 +11,7 @@ import {
   type Theme,
 } from "@mui/material";
 import type { CaseStudyOverview } from "../types";
-import { mergeSx } from "../../../shared/utils/sx";
+import { mergeSx } from "@shared/utils/sx";
 
 type CaseStudyOverviewSectionProps = {
   eyebrow: string;
@@ -63,6 +63,9 @@ const defaultStatsCardSx: SxProps<Theme> = (theme) => ({
   px: { xs: 2.5, md: 3 },
   py: { xs: 2, md: 2.5 },
   border: "none",
+  height: "100%",
+  display: "flex",
+  flexDirection: "column",
 });
 
 const outlinedStatsCardSx: SxProps<Theme> = (theme) => ({
@@ -72,6 +75,9 @@ const outlinedStatsCardSx: SxProps<Theme> = (theme) => ({
   border: `1px solid ${theme.tokens.colors.border}`,
   backgroundColor:
     theme.palette.mode === "light" ? "rgba(249,251,255,0.92)" : "rgba(14, 22, 38, 0.85)",
+  height: "100%",
+  display: "flex",
+  flexDirection: "column",
 });
 
 const CaseStudyOverviewSection = ({
@@ -91,7 +97,7 @@ const CaseStudyOverviewSection = ({
     statsVariant === "gradient" ? defaultStatsCardSx : outlinedStatsCardSx;
 
   return (
-    <Box component="section" sx={{ py: { xs: 10, md: 14 } }}>
+    <Box component="section" sx={{ py: 3 }}>
       <Container maxWidth="lg" sx={{ position: "relative" }}>
         <Box sx={mergeSx(defaultHeroBackdropSx, heroBackdropSx)} />
 
@@ -158,9 +164,10 @@ const CaseStudyOverviewSection = ({
                               : { xs: 12, sm: 12 }
                         }
                         key={stat.label}
+                        sx={{ display: "flex" }}
                       >
                         <Card elevation={0} sx={mergeSx(resolvedStatsCardSx, statsCardSx)}>
-                          <Stack spacing={0.5}>
+                          <Stack spacing={0.5} sx={{ flex: 1 }}>
                             <Typography variant="h4">{stat.value}</Typography>
                             <Typography variant="subtitle2" color="text.secondary">
                               {stat.label}
