@@ -1,4 +1,5 @@
 import ArrowForwardRoundedIcon from "@mui/icons-material/ArrowForwardRounded";
+import LockRoundedIcon from "@mui/icons-material/LockRounded";
 import PlayCircleOutlineRoundedIcon from "@mui/icons-material/PlayCircleOutlineRounded";
 import {
   Box,
@@ -11,7 +12,7 @@ import {
 } from "@mui/material";
 import type { MouseEventHandler } from "react";
 import { Link as RouterLink } from "react-router-dom";
-import { GhostButton, Pill, PrimaryButton } from "../../../shared/ui";
+import { GhostButton, Pill, PrimaryButton } from "@shared/ui";
 import type { CaseStudySummary } from "../types";
 
 type CaseStudyCardProps = {
@@ -24,6 +25,8 @@ const CaseStudyCard = ({ caseStudy, active = false, onOpenRecap }: CaseStudyCard
   const theme = useTheme();
   const { palette, tokens } = theme;
   const isDark = palette.mode === "dark";
+  const isLocked = caseStudy.isLocked ?? false;
+  const isInProgress = caseStudy.isInProgress ?? false;
 
   const activeBackground = isDark
     ? "linear-gradient(135deg, rgba(20, 45, 110, 0.98), rgba(58, 118, 226, 0.88))"
@@ -33,23 +36,39 @@ const CaseStudyCard = ({ caseStudy, active = false, onOpenRecap }: CaseStudyCard
     ? "linear-gradient(140deg, rgba(20, 28, 52, 0.82), rgba(12, 18, 36, 0.88))"
     : "linear-gradient(135deg, rgba(248, 251, 255, 0.94), rgba(232, 242, 255, 0.88))";
 
+  const lockedBackground = isDark
+    ? "linear-gradient(140deg, rgba(20, 28, 52, 0.65), rgba(12, 18, 36, 0.7))"
+    : "linear-gradient(135deg, rgba(248, 251, 255, 0.75), rgba(232, 242, 255, 0.7))";
+
   const headingColor = active
     ? "rgba(255, 255, 255, 0.96)"
-    : isDark
-      ? "rgba(226, 234, 255, 0.95)"
-      : palette.text.primary;
+    : isLocked
+      ? isDark
+        ? "rgba(180, 190, 220, 0.7)"
+        : "rgba(100, 120, 150, 0.7)"
+      : isDark
+        ? "rgba(226, 234, 255, 0.95)"
+        : palette.text.primary;
 
   const bodyColor = active
     ? "rgba(255, 255, 255, 0.85)"
-    : isDark
-      ? "rgba(210, 220, 255, 0.82)"
-      : palette.text.secondary;
+    : isLocked
+      ? isDark
+        ? "rgba(160, 175, 210, 0.6)"
+        : "rgba(120, 140, 170, 0.6)"
+      : isDark
+        ? "rgba(210, 220, 255, 0.82)"
+        : palette.text.secondary;
 
   const borderColor = active
     ? "rgba(255, 255, 255, 0.42)"
-    : isDark
-      ? "rgba(122, 162, 255, 0.28)"
-      : "rgba(17, 76, 170, 0.12)";
+    : isLocked
+      ? isDark
+        ? "rgba(122, 162, 255, 0.18)"
+        : "rgba(17, 76, 170, 0.08)"
+      : isDark
+        ? "rgba(122, 162, 255, 0.28)"
+        : "rgba(17, 76, 170, 0.12)";
 
   return (
     <Card
@@ -59,49 +78,87 @@ const CaseStudyCard = ({ caseStudy, active = false, onOpenRecap }: CaseStudyCard
         height: "100%",
         display: "flex",
         flexDirection: "column",
-        background: active ? activeBackground : inactiveBackground,
+        background: active ? activeBackground : isLocked ? lockedBackground : inactiveBackground,
         border: `1px solid ${borderColor}`,
         color: active ? palette.common.white : palette.text.primary,
         boxShadow: active ? tokens.shadow.level3 : tokens.shadow.level2,
         transition: tokens.transition.hover,
+        opacity: isLocked ? 0.85 : 1,
+        position: "relative",
         "&:hover": {
-          transform: "translateY(-6px)",
-          boxShadow: tokens.shadow.level3,
+          transform: isLocked ? "none" : "translateY(-6px)",
+          boxShadow: isLocked ? tokens.shadow.level2 : tokens.shadow.level3,
         },
       }}
     >
       <CardContent sx={{ flexGrow: 1, pb: 3 }}>
         <Stack spacing={2.5}>
           <Stack direction="row" alignItems="center" justifyContent="space-between" spacing={2}>
-            <Typography
-              variant="eyebrow"
-              sx={{
-                color: active
-                  ? "rgba(255, 255, 255, 0.78)"
-                  : isDark
-                    ? "rgba(189, 204, 255, 0.82)"
-                    : palette.brand.secondary,
-              }}
-            >
-              Case {caseStudy.number}
-            </Typography>
-            <Pill
-              label={caseStudy.tag}
-              sx={{
-                backgroundColor: active
-                  ? "rgba(255, 255, 255, 0.2)"
-                  : isDark
-                    ? "rgba(98, 132, 218, 0.24)"
-                    : "rgba(227, 241, 255, 0.85)",
-                color: active
-                  ? "rgba(255, 255, 255, 0.92)"
-                  : isDark
-                    ? "rgba(214, 224, 255, 0.92)"
-                    : palette.brand.secondary,
-                border: active ? "1px solid rgba(255, 255, 255, 0.3)" : undefined,
-              }}
-              size="small"
-            />
+            <Stack direction="row" alignItems="center" spacing={1}>
+              <Typography
+                variant="eyebrow"
+                sx={{
+                  color: active
+                    ? "rgba(255, 255, 255, 0.78)"
+                    : isLocked
+                      ? isDark
+                        ? "rgba(150, 165, 200, 0.7)"
+                        : "rgba(120, 140, 170, 0.7)"
+                      : isDark
+                        ? "rgba(189, 204, 255, 0.82)"
+                        : palette.brand.secondary,
+                }}
+              >
+                Case {caseStudy.number}
+              </Typography>
+              {isLocked && (
+                <LockRoundedIcon
+                  sx={{
+                    fontSize: "0.875rem",
+                    color: isDark ? "rgba(150, 165, 200, 0.7)" : "rgba(120, 140, 170, 0.7)",
+                  }}
+                />
+              )}
+            </Stack>
+            <Stack direction="row" spacing={1} alignItems="center">
+              {isInProgress && (
+                <Pill
+                  label="In Progress"
+                  sx={{
+                    backgroundColor: isDark
+                      ? "rgba(255, 193, 7, 0.2)"
+                      : "rgba(255, 193, 7, 0.15)",
+                    color: isDark ? "rgba(255, 224, 130, 0.95)" : "rgba(184, 134, 11, 0.95)",
+                    border: `1px solid ${
+                      isDark ? "rgba(255, 193, 7, 0.3)" : "rgba(255, 193, 7, 0.25)"
+                    }`,
+                    fontSize: "0.7rem",
+                  }}
+                  size="small"
+                />
+              )}
+              <Pill
+                label={caseStudy.tag}
+                sx={{
+                  backgroundColor: active
+                    ? "rgba(255, 255, 255, 0.2)"
+                    : isDark
+                      ? "rgba(98, 132, 218, 0.24)"
+                      : "rgba(227, 241, 255, 0.85)",
+                  color: active
+                    ? "rgba(255, 255, 255, 0.92)"
+                    : isLocked
+                      ? isDark
+                        ? "rgba(180, 195, 220, 0.8)"
+                        : "rgba(120, 140, 170, 0.8)"
+                      : isDark
+                        ? "rgba(214, 224, 255, 0.92)"
+                        : palette.brand.secondary,
+                  border: active ? "1px solid rgba(255, 255, 255, 0.3)" : undefined,
+                }}
+                size="small"
+              />
+            </Stack>
           </Stack>
 
           <Typography variant="h3" component="h3" sx={{ color: headingColor }}>
@@ -139,66 +196,135 @@ const CaseStudyCard = ({ caseStudy, active = false, onOpenRecap }: CaseStudyCard
           )}
 
           <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap>
-            {caseStudy.tags.map((tag) => (
-              <Pill
-                key={tag}
-                label={tag}
-                size="small"
-                sx={{
-                  backgroundColor: active
-                    ? "rgba(255, 255, 255, 0.18)"
-                    : isDark
-                      ? "rgba(98, 132, 218, 0.22)"
-                      : "rgba(31, 111, 235, 0.12)",
-                  color: active
-                    ? "rgba(255, 255, 255, 0.9)"
-                    : isDark
-                      ? "rgba(221, 230, 255, 0.92)"
-                      : palette.brand.secondary,
-                }}
-              />
-            ))}
+            {caseStudy.tags.map((tag) => {
+              const isNDA = tag.toLowerCase() === "nda";
+              return (
+                <Pill
+                  key={tag}
+                  label={tag}
+                  size="small"
+                  sx={{
+                    backgroundColor: isNDA
+                      ? active
+                        ? "rgba(255, 87, 34, 0.25)"
+                        : isDark
+                          ? "rgba(255, 87, 34, 0.2)"
+                          : "rgba(255, 87, 34, 0.12)"
+                      : active
+                        ? "rgba(255, 255, 255, 0.18)"
+                        : isDark
+                          ? "rgba(98, 132, 218, 0.22)"
+                          : "rgba(31, 111, 235, 0.12)",
+                    color: isNDA
+                      ? active
+                        ? "rgba(255, 183, 154, 0.95)"
+                        : isDark
+                          ? "rgba(255, 183, 154, 0.95)"
+                          : "rgba(191, 54, 12, 0.95)"
+                      : active
+                        ? "rgba(255, 255, 255, 0.9)"
+                        : isDark
+                          ? "rgba(221, 230, 255, 0.92)"
+                          : palette.brand.secondary,
+                    border: isNDA
+                      ? `1px solid ${
+                          active
+                            ? "rgba(255, 87, 34, 0.4)"
+                            : isDark
+                              ? "rgba(255, 87, 34, 0.3)"
+                              : "rgba(255, 87, 34, 0.25)"
+                        }`
+                      : undefined,
+                    fontWeight: isNDA ? 600 : undefined,
+                  }}
+                />
+              );
+            })}
           </Stack>
         </Stack>
       </CardContent>
 
       <CardActions sx={{ px: 3, pb: 3, pt: 0, gap: 1 }}>
-        {active ? (
-          <PrimaryButton
-            component={RouterLink}
-            to={caseStudy.to}
-            fullWidth
-            endIcon={<ArrowForwardRoundedIcon />}
-          >
-            Explore
-          </PrimaryButton>
+        {isLocked ? (
+          <>
+            <GhostButton
+              disabled
+              fullWidth
+              endIcon={<LockRoundedIcon />}
+              sx={{
+                opacity: 0.6,
+                cursor: "not-allowed",
+                color: isDark ? "rgba(150, 165, 200, 0.6)" : "rgba(120, 140, 170, 0.6)",
+                borderColor: isDark ? "rgba(122, 162, 255, 0.15)" : "rgba(17, 76, 170, 0.1)",
+              }}
+            >
+              Locked
+            </GhostButton>
+            <GhostButton
+              fullWidth
+              color="primary"
+              onClick={onOpenRecap}
+              endIcon={<PlayCircleOutlineRoundedIcon />}
+              sx={{
+                "&:hover": {
+                  backgroundColor: "rgba(122, 162, 255, 0.14)",
+                },
+              }}
+            >
+              Recap
+            </GhostButton>
+          </>
+        ) : active ? (
+          <>
+            <PrimaryButton
+              component={RouterLink}
+              to={caseStudy.to}
+              fullWidth
+              endIcon={<ArrowForwardRoundedIcon />}
+            >
+              Explore
+            </PrimaryButton>
+            <GhostButton
+              fullWidth
+              color="inherit"
+              onClick={onOpenRecap}
+              endIcon={<PlayCircleOutlineRoundedIcon />}
+              sx={{
+                color: "rgba(255, 255, 255, 0.92)",
+                borderColor: "rgba(255, 255, 255, 0.45)",
+                "&:hover": {
+                  backgroundColor: "rgba(255, 255, 255, 0.16)",
+                },
+              }}
+            >
+              Recap
+            </GhostButton>
+          </>
         ) : (
-          <GhostButton
-            component={RouterLink}
-            to={caseStudy.to}
-            fullWidth
-            endIcon={<ArrowForwardRoundedIcon />}
-          >
-            Explore
-          </GhostButton>
+          <>
+            <GhostButton
+              component={RouterLink}
+              to={caseStudy.to}
+              fullWidth
+              endIcon={<ArrowForwardRoundedIcon />}
+            >
+              Explore
+            </GhostButton>
+            <GhostButton
+              fullWidth
+              color="primary"
+              onClick={onOpenRecap}
+              endIcon={<PlayCircleOutlineRoundedIcon />}
+              sx={{
+                "&:hover": {
+                  backgroundColor: "rgba(122, 162, 255, 0.14)",
+                },
+              }}
+            >
+              Recap
+            </GhostButton>
+          </>
         )}
-        <GhostButton
-          fullWidth
-          color={active ? "inherit" : "primary"}
-          onClick={onOpenRecap}
-          endIcon={<PlayCircleOutlineRoundedIcon />}
-          sx={{
-            color: active ? "rgba(255, 255, 255, 0.92)" : undefined,
-            borderColor: active ? "rgba(255, 255, 255, 0.45)" : undefined,
-            "&:hover": {
-              backgroundColor: active
-                ? "rgba(255, 255, 255, 0.16)"
-                : "rgba(122, 162, 255, 0.14)",
-            },
-          }}
-        >
-          Recap
-        </GhostButton>
       </CardActions>
     </Card>
   );

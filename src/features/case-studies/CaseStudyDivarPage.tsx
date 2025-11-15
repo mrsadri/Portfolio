@@ -1,6 +1,6 @@
 import Grid from "@mui/system/Grid";
 import { Box, Container, Stack } from "@mui/material";
-import { Seo } from "../../shared/seo";
+import { Seo } from "@shared/seo";
 import CaseStudySectionCard from "./components/SectionCard";
 import CaseStudyOutlineNav from "./components/CaseStudyOutlineNav";
 import CaseStudyOverviewSection from "./components/CaseStudyOverviewSection";
@@ -29,7 +29,7 @@ const CaseStudyDivarPage = () => {
         statsTitle="Impact snapshot"
       />
 
-      <Box component="section" sx={{ py: { xs: 8, md: 12 } }}>
+      <Box component="section" sx={{ py: 3 }}>
         <Container maxWidth="lg">
           <Grid container spacing={{ xs: 6, md: 10 }}>
             <Grid size={{ xs: 12, md: 3 }}>

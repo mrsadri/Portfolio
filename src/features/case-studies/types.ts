@@ -3,6 +3,7 @@ import type { ImageResource, LinkResource } from "../../types/content";
 export type CaseStudySection = {
   id: string;
   title: string;
+  shortTitle?: string; // Shorter title for outline navigation
   eyebrow?: string;
   summary?: string;
   body?: readonly string[];

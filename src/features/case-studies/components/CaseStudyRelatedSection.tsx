@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 import type { CaseStudyEntry } from "../types";
-import { mergeSx } from "../../../shared/utils/sx";
+import { mergeSx } from "@shared/utils/sx";
 
 type CaseStudyRelatedSectionProps = {
   eyebrow: string;

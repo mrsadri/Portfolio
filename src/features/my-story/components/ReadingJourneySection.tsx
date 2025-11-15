@@ -7,8 +7,8 @@ import {
   Typography,
   useTheme,
 } from "@mui/material";
-import { Pill } from "../../../shared/ui";
-import SectionHeader from "./SectionHeader";
+import { Pill } from "@shared/ui";
+import SectionHeader from "@shared/components/SectionHeader";
 import SurfaceCard from "./SurfaceCard";
 import type { Book, ReadingJourney } from "../types";
 

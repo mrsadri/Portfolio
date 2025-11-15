@@ -26,7 +26,7 @@ import {
 import { useEffect, useState, type MouseEvent } from "react";
 import { Link as RouterLink, Outlet, useLocation } from "react-router-dom";
 import Footer from "../components/Footer";
-import { useColorMode } from "../../theme";
+import { useColorMode } from "@theme";
 
 const navigationLinks = [
   { label: "Home", to: "/" },

@@ -2,7 +2,7 @@ import { Button, Collapse, Divider, IconButton, Stack, Typography, useMediaQuery
 import ExpandMoreRoundedIcon from "@mui/icons-material/ExpandMoreRounded";
 import { useState, type MouseEvent as ReactMouseEvent } from "react";
 import type { CaseStudySection } from "../types";
-import { mergeSx } from "../../../shared/utils/sx";
+import { mergeSx } from "@shared/utils/sx";
 
 type CaseStudyOutlineNavProps = {
   sections: readonly CaseStudySection[];
@@ -125,7 +125,7 @@ const CaseStudyOutlineNav = ({
               };
             }}
           >
-            {section.title}
+            {section.shortTitle ?? section.title}
           </Button>
         ))}
       </Collapse>

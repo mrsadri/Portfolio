@@ -8,7 +8,7 @@ import masihCoffeeArtistAsset from "../../../../images/masih-coffee-artist.png";
 import masihMountaineerAsset from "../../../../images/masih-mountaineer.png";
 import masihUxDesignerAsset from "../../../../images/masih-ux-designer.png";
 import masihWoodCarverAsset from "../../../../images/masih-wood-carver.png";
-import { createImageResource } from "../../../shared/utils/assets";
+import { createImageResource } from "@shared/utils/assets";
 import type {
   Book,
   CertificateItem,

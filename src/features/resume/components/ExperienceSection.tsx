@@ -1,8 +1,8 @@
 import WorkHistoryOutlinedIcon from "@mui/icons-material/WorkHistoryOutlined";
 import { Stack } from "@mui/material";
+import SectionHeader from "@shared/components/SectionHeader";
 import ResumeCard from "./ResumeCard";
 import ResumeSectionWrapper from "./ResumeSectionWrapper";
-import SectionHeader from "./SectionHeader";
 import type { TimelineItem } from "../types";
 
 type ExperienceSectionProps = {
@@ -17,7 +17,7 @@ const ExperienceSection = ({
   items,
 }: ExperienceSectionProps) => (
   <ResumeSectionWrapper>
-    <SectionHeader icon={icon} title={title} />
+    <SectionHeader variant="compact" icon={icon} title={title} />
         <Stack spacing={3}>
           {items.map((item) => (
         <ResumeCard

@@ -1,6 +1,6 @@
-import type { PageMetadata, StructuredData } from "../../shared/seo";
-import getSiteUrl from "../../shared/utils/site";
-import { divarOverview, setareOverview } from "./data/content";
+import type { PageMetadata, StructuredData } from "@shared/seo";
+import getSiteUrl from "@shared/utils/site";
+import { divarOverview, setareOverview, setareYekOverview } from "./data/content";
 
 const siteUrl = getSiteUrl();
 
@@ -70,6 +70,41 @@ export const setareCaseStudyMetadata: PageMetadata = {
     },
   },
   structuredData: setareStructuredData,
+};
+
+const setareYekStructuredData: StructuredData = {
+  "@context": "https://schema.org",
+  "@type": "CaseStudy",
+  name: setareYekOverview.title,
+  description:
+    setareYekOverview.subtitle ??
+    "Redesigned bill payment experience that increased adoption from 4% to 47% by solving trust, transparency, and recurring workflow challenges.",
+  author: {
+    "@type": "Person",
+    name: "Masih Sadri",
+    url: siteUrl,
+  },
+  url: `${siteUrl}/case-studies/setare-yek-bill-payment`,
+  image: setareYekOverview.heroImage.src,
+  keyword: ["Product Design", "Growth", "Fintech", "User Experience", "Setare Aval", "SetareYek"],
+} as const;
+
+export const setareYekCaseStudyMetadata: PageMetadata = {
+  title: "SetareYek Bill Payment Case Study — From 4% to 47% Adoption at Setare Aval",
+  description:
+    setareYekOverview.subtitle ??
+    "Redesigned SetareYek's bill payment experience at Setare Aval to increase adoption from 4% to 47% by solving trust, transparency, and recurring workflow challenges.",
+  canonicalPath: "/case-studies/setare-yek-bill-payment",
+  openGraph: {
+    type: "article",
+    image: {
+      url: setareYekOverview.heroImage.src,
+      alt: setareYekOverview.heroImage.alt,
+      width: setareYekOverview.heroImage.width ?? 1200,
+      height: setareYekOverview.heroImage.height ?? 630,
+    },
+  },
+  structuredData: setareYekStructuredData,
 };
 
 
