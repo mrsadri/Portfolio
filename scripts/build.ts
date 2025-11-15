@@ -228,6 +228,7 @@ const spaFallbackRoutes = [
   "case-studies",
   "case-studies/divar-secure-call",
   "case-studies/setare-aval-engagement",
+  "case-studies/setare-yek-bill-payment",
 ];
 
 await Promise.all(
