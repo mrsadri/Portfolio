@@ -24,7 +24,7 @@ const MyStoryPage = () => {
     education[0],
     certificates[0],
     certificates[1],
-  ];
+  ].filter((item): item is NonNullable<typeof item> => item !== undefined);
 
   return (
     <>
