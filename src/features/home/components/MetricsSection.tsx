@@ -35,7 +35,7 @@ const MetricsSection = ({ metrics }: MetricsSectionProps) => (
               fontSize: { xs: "0.875rem", md: "0.9375rem" },
             }}
           >
-            These aren't just numbers. They're real improvements in people's experiences and measurable business impact.
+            These aren&apos;t just numbers. They&apos;re real improvements in people&apos;s experiences and measurable business impact.
           </Typography>
         </Box>
       </Stack>
