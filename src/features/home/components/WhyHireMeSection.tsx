@@ -26,12 +26,16 @@ const WhyHireMeSection = ({ content }: WhyHireMeSectionProps) => {
           {/* What I Bring Section */}
           <Stack spacing={3}>
             <Stack spacing={1.5} alignItems="center" textAlign="center">
-              <Typography variant="h2">{content.whatIBring.title}</Typography>
-              <Typography variant="h6" color="text.secondary">
+              <Typography variant="h2" fontWeight={700}>
+                {content.whatIBring.title}
+              </Typography>
+              <Typography variant="h6" color="text.secondary" fontWeight={400}>
                 Key differentiators that set me apart
               </Typography>
             </Stack>
-            <DifferentiatorsCarousel items={content.whatIBring.differentiators} />
+            <Box sx={{ position: "relative" }}>
+              <DifferentiatorsCarousel items={content.whatIBring.differentiators} />
+            </Box>
           </Stack>
 
           {/* Quick Stats Section */}

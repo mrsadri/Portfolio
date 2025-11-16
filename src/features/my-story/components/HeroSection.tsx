@@ -27,7 +27,7 @@ const HeroSection = ({ hero }: HeroSectionProps) => (
         <Typography variant="hero" color="text.secondary">
           {hero.subtitle}
         </Typography>
-        <Typography variant="subtitle1" color="text.secondary" sx={{ lineHeight: 1.7 }}>
+        <Typography variant="subtitle1" color="text.secondary" sx={{ lineHeight: 1.6 }}>
           {hero.description}
         </Typography>
       </Stack>

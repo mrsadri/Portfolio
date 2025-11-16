@@ -20,7 +20,13 @@ const ImpactStatCard = ({ value, title, description }: ImpactStatCardProps) => (
       <Typography variant="h4" component="p">
         {value}
       </Typography>
-      <Typography variant="h6" component="h6">
+      <Typography
+        variant="h6"
+        component="h6"
+        sx={{
+          lineHeight: 1.3,
+        }}
+      >
         {title}
       </Typography>
       <Typography variant="body2" color="text.secondary">

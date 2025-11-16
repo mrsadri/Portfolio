@@ -1,6 +1,6 @@
 // File: scripts/build.ts
 // Purpose: Produces production-ready bundles for GitHub Pages by building assets, copying static files, and generating supporting metadata.
-import { cp, mkdir, readFile, rm, writeFile } from "node:fs/promises";
+import { cp, mkdir, readFile, readdir, rm, writeFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
 
 const builderVersion = "2.1.0";
@@ -146,6 +146,22 @@ if (!result.success) {
 
 await mkdir(docsDir, { recursive: true });
 
+// Copy PDF files from root directory if they exist
+const copyPdfFiles = async () => {
+  try {
+    const files = await readdir(".");
+    const pdfFiles = files.filter((file) => file.toLowerCase().endsWith(".pdf"));
+    await Promise.all(
+      pdfFiles.map((pdfFile) => cp(pdfFile, join(docsDir, pdfFile))),
+    );
+    if (pdfFiles.length > 0) {
+      console.log(`📄 Copied ${pdfFiles.length} PDF file(s) to docs/`);
+    }
+  } catch (error) {
+    // Directory read failed or no PDF files, continue silently
+  }
+};
+
 await Promise.all([
   cp(distDir, docsClientDir, { recursive: true }),
   cp(distDir, docsDistDir, { recursive: true }),
@@ -157,6 +173,7 @@ await Promise.all([
   cp(join(distDir, "main.js"), join(docsDir, "main.js")),
   cp(join(distDir, "main.js.map"), join(docsDir, "main.js.map")),
   cp(join(distDir, "main.css"), join(docsDir, "main.css")),
+  copyPdfFiles(),
 ]);
 
 await Bun.write(join(docsDir, "404.html"), notFoundHtml);

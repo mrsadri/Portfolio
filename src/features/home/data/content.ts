@@ -19,11 +19,11 @@ export const hero: HeroContent = {
   subtitle:
     "Former iOS developer turned designer, building data-driven experiences that drive user retention and business growth for 40+ million users across B2B and B2C products",
   ctaPrimary: {
-    label: "View case study",
+    label: "View Case Study",
     scrollToId: "case-studies",
   },
   ctaSecondary: {
-    label: "To be in touch",
+    label: "Get in touch",
     scrollToId: "contact",
   },
   portrait: createImageResource(import.meta.url, heroPortraitAsset, "Masih Sadri - Product Designer", {
@@ -37,7 +37,7 @@ export const metrics: ReadonlyArray<MetricSummary> = [
     value: "60%",
     title: "Reduction in harassment incidents",
     description:
-      "Co-led Divar’s secure call system with Trust & Safety to safeguard 2.1M weekly callers.",
+      "Co-led Divar's secure call system with Trust & Safety to safeguard 2.1M weekly callers.",
   },
   {
     value: "8.3K+",
@@ -46,16 +46,16 @@ export const metrics: ReadonlyArray<MetricSummary> = [
       "Built an open design system that powers Figma handoffs and accelerates high-quality releases.",
   },
   {
-    value: "200+",
-    title: "Designers mentored",
+    value: "10x",
+    title: "Growth in feature adoption",
     description:
-      "Designed project-based programs at Rahnema College to help emerging designers launch careers.",
+      "Redesigned SetareYek's bill payment feature, increasing adoption from 4% to 47% through user research and iterative design.",
   },
   {
     value: "80%",
     title: "Lift in qualified leads",
     description:
-      "Redesigned Persol’s sign-up funnel end-to-end, removing friction and boosting lead generation in 3 months.",
+      "Redesigned Persol's sign-up funnel end-to-end, removing friction and boosting lead generation in 3 months.",
   },
 ];
 
@@ -70,6 +70,7 @@ export const caseStudies: ReadonlyArray<CaseStudySummary> = [
     stat: "A feature used by 2.1 million users per week",
     tags: ["real project", "trust & safety", "impact at scale"],
     to: "/case-studies/divar-secure-call",
+    readingTimeMinutes: 8,
     recap: {
       headline: "How cross-functional guardrails helped Divar reduce harassment incidents by 60%",
       bullets: [
@@ -88,6 +89,7 @@ export const caseStudies: ReadonlyArray<CaseStudySummary> = [
     platformDetail: "Retention strategy",
     tags: ["real project", "retention strategy", "cross-functional leadership"],
     to: "/case-studies/setare-aval-engagement",
+    readingTimeMinutes: 7,
     recap: {
       headline: "How we re-architected Setare Aval's onboarding to double retained revenue",
       bullets: [
@@ -107,6 +109,7 @@ export const caseStudies: ReadonlyArray<CaseStudySummary> = [
     stat: "10x growth in bill payment adoption",
     tags: ["real project", "product design", "user research", "growth"],
     to: "/case-studies/setare-yek-bill-payment",
+    readingTimeMinutes: 10,
     recap: {
       headline: "How I redesigned SetareYek's bill payment to increase adoption from 4% to 47%",
       bullets: [
@@ -180,7 +183,7 @@ export const whyHireMe: WhyHireMeContent = {
       {
         title: "AI-Familiar & Technical",
         description:
-          "Built this portfolio from scratch with modern tools. Former iOS developer with deep understanding of technical constraints and implementation details.",
+          "Built this portfolio from scratch using modern AI-assisted development tools (Claude, GPT-4). Former iOS developer with deep understanding of technical constraints and implementation details. Experienced in leveraging AI tools for design ideation, code generation, and workflow optimization.",
       },
       {
         title: "Data-Driven Decision Making",
@@ -220,8 +223,8 @@ export const whyHireMe: WhyHireMeContent = {
   },
   quickStats: [
     {
-      value: "40M+",
-      label: "Unique Users",
+      value: "6 Years",
+      label: "Experience",
     },
     {
       value: "200+",

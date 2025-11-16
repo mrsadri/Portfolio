@@ -81,13 +81,29 @@ const CaseStudyCard = ({ caseStudy, active = false, onOpenRecap }: CaseStudyCard
         background: active ? activeBackground : isLocked ? lockedBackground : inactiveBackground,
         border: `1px solid ${borderColor}`,
         color: active ? palette.common.white : palette.text.primary,
-        boxShadow: active ? tokens.shadow.level3 : tokens.shadow.level2,
-        transition: tokens.transition.hover,
-        opacity: isLocked ? 0.85 : 1,
+        boxShadow: active 
+          ? tokens.shadow.level3 
+          : isLocked 
+            ? tokens.shadow.level1 
+            : tokens.shadow.level2,
+        transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+        opacity: isLocked ? 0.75 : 1,
         position: "relative",
+        cursor: isLocked ? "default" : "pointer",
         "&:hover": {
           transform: isLocked ? "none" : "translateY(-6px)",
-          boxShadow: isLocked ? tokens.shadow.level2 : tokens.shadow.level3,
+          boxShadow: isLocked 
+            ? tokens.shadow.level1 
+            : active 
+              ? tokens.shadow.level3 
+              : tokens.shadow.level3,
+          borderColor: isLocked 
+            ? borderColor 
+            : active 
+              ? "rgba(255, 255, 255, 0.5)"
+              : isDark
+                ? "rgba(122, 162, 255, 0.35)"
+                : "rgba(17, 76, 170, 0.18)",
         },
       }}
     >
@@ -195,6 +211,33 @@ const CaseStudyCard = ({ caseStudy, active = false, onOpenRecap }: CaseStudyCard
             </Typography>
           )}
 
+          {caseStudy.readingTimeMinutes && (
+            <Typography
+              variant="body2"
+              sx={{
+                color: bodyColor,
+                fontSize: "0.8125rem",
+                opacity: 0.85,
+                display: "flex",
+                alignItems: "center",
+                gap: 0.5,
+              }}
+            >
+              <Box
+                component="span"
+                sx={{
+                  display: "inline-block",
+                  width: "4px",
+                  height: "4px",
+                  borderRadius: "50%",
+                  backgroundColor: bodyColor,
+                  opacity: 0.6,
+                }}
+              />
+              {caseStudy.readingTimeMinutes} min read
+            </Typography>
+          )}
+
           <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap>
             {caseStudy.tags.map((tag) => {
               const isNDA = tag.toLowerCase() === "nda";
@@ -244,7 +287,7 @@ const CaseStudyCard = ({ caseStudy, active = false, onOpenRecap }: CaseStudyCard
         </Stack>
       </CardContent>
 
-      <CardActions sx={{ px: 3, pb: 3, pt: 0, gap: 1 }}>
+      <CardActions sx={{ px: 3, pb: 3, pt: 0, gap: 1, "& .MuiButton-root:focus-visible": { outline: `2px solid ${isDark ? "rgba(145, 167, 255, 0.5)" : "rgba(34, 84, 255, 0.4)"}`, outlineOffset: 2 } }}>
         {isLocked ? (
           <>
             <GhostButton
@@ -265,13 +308,14 @@ const CaseStudyCard = ({ caseStudy, active = false, onOpenRecap }: CaseStudyCard
               color="primary"
               onClick={onOpenRecap}
               endIcon={<PlayCircleOutlineRoundedIcon />}
+              title="View quick summary of key highlights"
               sx={{
                 "&:hover": {
                   backgroundColor: "rgba(122, 162, 255, 0.14)",
                 },
               }}
             >
-              Recap
+              Quick Summary
             </GhostButton>
           </>
         ) : active ? (
@@ -289,6 +333,7 @@ const CaseStudyCard = ({ caseStudy, active = false, onOpenRecap }: CaseStudyCard
               color="inherit"
               onClick={onOpenRecap}
               endIcon={<PlayCircleOutlineRoundedIcon />}
+              title="View quick summary of key highlights"
               sx={{
                 color: "rgba(255, 255, 255, 0.92)",
                 borderColor: "rgba(255, 255, 255, 0.45)",
@@ -297,7 +342,7 @@ const CaseStudyCard = ({ caseStudy, active = false, onOpenRecap }: CaseStudyCard
                 },
               }}
             >
-              Recap
+              Quick Summary
             </GhostButton>
           </>
         ) : (
@@ -321,7 +366,7 @@ const CaseStudyCard = ({ caseStudy, active = false, onOpenRecap }: CaseStudyCard
                 },
               }}
             >
-              Recap
+              Quick Summary
             </GhostButton>
           </>
         )}

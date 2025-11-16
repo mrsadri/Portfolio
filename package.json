@@ -11,7 +11,8 @@
     "typecheck": "tsc --noEmit",
     "lint": "bunx eslint \"src/**/*.{ts,tsx}\" \"tests/**/*.{ts,tsx}\"",
     "test": "vitest",
-    "generate:hero-image": "bun scripts/generate-hero-image.ts"
+    "generate:hero-image": "bun scripts/generate-hero-image.ts",
+    "generate:resume-pdf": "bun scripts/generate-resume-pdf.ts"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.1.0",

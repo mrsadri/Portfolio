@@ -170,10 +170,20 @@ const createServer = (port: number) =>
     },
   });
 
-type PortError = Error & { code?: string };
+type PortError = Error & { code?: string; errno?: number };
 
-const isPortInUseError = (error: unknown): error is PortError =>
-  error instanceof Error && (error as PortError).code === "EADDRINUSE";
+const isPortInUseError = (error: unknown): error is PortError => {
+  if (!(error instanceof Error)) return false;
+  const portError = error as PortError;
+  return (
+    portError.code === "EADDRINUSE" ||
+    portError.code === "EADDRNOTAVAIL" ||
+    portError.errno === -48 || // EADDRINUSE on macOS
+    portError.errno === -49 || // EADDRNOTAVAIL on macOS
+    error.message.includes("address already in use") ||
+    error.message.includes("EADDRINUSE")
+  );
+};
 
 const resolveInitialPort = () => {
   const configured = Bun.env.PORT;
@@ -191,26 +201,32 @@ const resolveInitialPort = () => {
 
 const preferredPorts = () => {
   const basePort = resolveInitialPort();
-  const sequential = Array.from({ length: 6 }, (_, index) => basePort + index);
+  const sequential = Array.from({ length: 10 }, (_, index) => basePort + index);
   return [...new Set([...sequential, 0])];
 };
 
 const serve = (): ReturnType<typeof Bun.serve> => {
   const candidates = preferredPorts();
   let lastError: Error | undefined;
+  const skippedPorts: number[] = [];
 
   for (const candidate of candidates) {
     try {
-      if (candidate !== candidates[0]) {
-        const label = candidate === 0 ? "an ephemeral port" : `port ${candidate}`;
-        console.warn(`⚠️  Retrying dev server on ${label}...`);
-      }
       const server = createServer(candidate);
       const assignedPort = server.port;
+      
+      if (skippedPorts.length > 0) {
+        const skippedList = skippedPorts.join(", ");
+        console.warn(
+          `⚠️  Port${skippedPorts.length > 1 ? "s" : ""} ${skippedList} ${skippedPorts.length > 1 ? "were" : "was"} in use (likely by other Bun processes).`,
+        );
+      }
+      
       console.log(`🚀 Portfolio running at http://localhost:${assignedPort}`);
       return server;
     } catch (error) {
       if (isPortInUseError(error)) {
+        skippedPorts.push(candidate);
         lastError = error;
         continue;
       }

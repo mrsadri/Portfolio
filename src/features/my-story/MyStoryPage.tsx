@@ -1,4 +1,6 @@
 import { Seo } from "@shared/seo";
+import LetsTalkSection from "@shared/components/LetsTalkSection";
+import CountriesSection from "./components/CountriesSection";
 import HeroSection from "./components/HeroSection";
 import OutsideDesignSection from "./components/OutsideDesignSection";
 import PhilosophySection from "./components/PhilosophySection";
@@ -36,6 +38,13 @@ const MyStoryPage = () => {
       <ReadingJourneySection journey={readingJourney} books={books} />
       <TeamSection team={team} />
       <OutsideDesignSection items={outsideDesignItems} />
+      <CountriesSection />
+      <LetsTalkSection
+        primaryAction={{
+          label: "Get in Touch",
+          href: "/contact",
+        }}
+      />
     </>
   );
 };

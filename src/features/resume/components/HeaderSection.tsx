@@ -27,10 +27,20 @@ const HeaderSection = ({ summary, actions }: HeaderSectionProps) => {
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   const handleDownload = useCallback(() => {
-    if (typeof window !== "undefined") {
+    if (typeof window !== "undefined" && actions.href && actions.href !== "#") {
+      // Create a temporary anchor element to trigger download
+      const link = document.createElement("a");
+      link.href = actions.href;
+      link.download = "Masih-Sadri-Resume.pdf";
+      link.target = "_blank";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } else {
+      // Fallback to print if no href is provided
       window.print();
     }
-  }, []);
+  }, [actions.href]);
 
   const handleShare = useCallback(async () => {
     if (typeof window !== "undefined" && navigator.share) {
@@ -71,24 +81,37 @@ const HeaderSection = ({ summary, actions }: HeaderSectionProps) => {
 
   return (
     <Box
-      sx={{
-        py: { xs: 6, md: 8 },
-        background: "linear-gradient(135deg, rgba(31,111,235,0.1), rgba(90,200,250,0.14))",
-      }}
+      component="header"
+      sx={(theme) => ({
+        py: { xs: 10, md: 14 },
+        backgroundColor:
+          theme.palette.mode === "light" ? "rgba(244, 247, 251, 0.6)" : "rgba(8, 14, 26, 0.85)",
+      })}
     >
       <Container>
-        <Stack spacing={2} alignItems="center" textAlign="center">
-          <Typography variant="overline" color="secondary">
+        <Stack
+          spacing={{ xs: 3, md: 4 }}
+          sx={{
+            maxWidth: 840,
+            mx: "auto",
+            textAlign: { xs: "left", md: "center" },
+            alignItems: { xs: "flex-start", md: "center" },
+          }}
+        >
+          <Typography variant="display">{summary.title}</Typography>
+          <Typography variant="hero" color="text.secondary">
             {summary.subtitle}
           </Typography>
-          <Typography variant="h2">{summary.title}</Typography>
           <Stack
             direction={{ xs: "column", sm: "row" }}
             spacing={1.5}
+            justifyContent={{ xs: "flex-start", md: "center" }}
+            alignItems={{ xs: "flex-start", md: "center" }}
             sx={{
               width: "100%",
               maxWidth: { xs: "100%", sm: "600px" },
               gap: { xs: 1.5, sm: 1.5 },
+              mx: { xs: 0, md: "auto" },
             }}
           >
             <Chip
@@ -155,7 +178,7 @@ const HeaderSection = ({ summary, actions }: HeaderSectionProps) => {
               }}
             />
           </Stack>
-          <Typography variant="body1" color="text.secondary" sx={{ maxWidth: 720 }}>
+          <Typography variant="subtitle1" color="text.secondary" sx={{ lineHeight: 1.7 }}>
             {(() => {
               const text = summary.description;
               const importantPhrases = [
@@ -216,31 +239,40 @@ const HeaderSection = ({ summary, actions }: HeaderSectionProps) => {
               );
             })()}
           </Typography>
-          {isMobile ? (
-            <Button
-              variant="contained"
-              color="primary"
-              size="large"
-              startIcon={<ShareRoundedIcon />}
-              onClick={handleShare}
-              fullWidth
-              sx={{ maxWidth: { xs: "100%", sm: "400px" } }}
-            >
-              Share Resume
-            </Button>
-          ) : (
-            <Button
-              component="a"
-              href={actions.href}
-              variant="contained"
-              color="primary"
-              size="large"
-              startIcon={<DownloadRoundedIcon />}
-              onClick={handleDownload}
-            >
-              {actions.label}
-            </Button>
-          )}
+          <Stack
+            direction={{ xs: "column", sm: "row" }}
+            spacing={2}
+            sx={{
+              width: "100%",
+              justifyContent: { xs: "stretch", md: "center" },
+              alignItems: "center",
+              pt: { xs: 1, md: 2 },
+            }}
+          >
+            {isMobile ? (
+              <Button
+                variant="contained"
+                color="primary"
+                size="large"
+                startIcon={<ShareRoundedIcon />}
+                onClick={handleShare}
+                fullWidth
+                sx={{ maxWidth: { xs: "100%", sm: "400px" } }}
+              >
+                Share Resume
+              </Button>
+            ) : (
+              <Button
+                variant="contained"
+                color="primary"
+                size="large"
+                startIcon={<DownloadRoundedIcon />}
+                onClick={handleDownload}
+              >
+                {actions.label}
+              </Button>
+            )}
+          </Stack>
         </Stack>
       </Container>
     </Box>

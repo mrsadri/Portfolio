@@ -91,7 +91,11 @@ const TestimonialsSection = ({ testimonials }: TestimonialsSectionProps) => {
                 minHeight: 44,
                 width: { xs: 44, md: 48 },
                 height: { xs: 44, md: 48 },
-                transition: "transform 0.2s ease",
+                transition: "transform 0.2s cubic-bezier(0.4, 0, 0.2, 1)",
+                "&:focus-visible": {
+                  outline: `3px solid ${theme.palette.mode === "light" ? "rgba(34, 84, 255, 0.4)" : "rgba(145, 167, 255, 0.5)"}`,
+                  outlineOffset: 2,
+                },
               }}
               aria-label="Previous testimonial"
             >
@@ -115,7 +119,7 @@ const TestimonialsSection = ({ testimonials }: TestimonialsSectionProps) => {
                   theme.palette.mode === "light"
                     ? "0 8px 32px rgba(17, 36, 83, 0.12)"
                     : "0 8px 32px rgba(0, 0, 0, 0.4)",
-                transition: "all 0.3s ease",
+                transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
               }}
             >
               <Stack spacing={{ xs: 3, md: 4 }} alignItems="flex-start">
@@ -228,7 +232,11 @@ const TestimonialsSection = ({ testimonials }: TestimonialsSectionProps) => {
                 minHeight: 44,
                 width: { xs: 44, md: 48 },
                 height: { xs: 44, md: 48 },
-                transition: "transform 0.2s ease",
+                transition: "transform 0.2s cubic-bezier(0.4, 0, 0.2, 1)",
+                "&:focus-visible": {
+                  outline: `3px solid ${theme.palette.mode === "light" ? "rgba(34, 84, 255, 0.4)" : "rgba(145, 167, 255, 0.5)"}`,
+                  outlineOffset: 2,
+                },
               }}
               aria-label="Next testimonial"
             >
@@ -253,7 +261,7 @@ const TestimonialsSection = ({ testimonials }: TestimonialsSectionProps) => {
                         ? "rgba(31, 111, 235, 0.2)"
                         : "rgba(98, 132, 218, 0.3)",
                   cursor: "pointer",
-                  transition: "all 0.2s ease",
+                  transition: "all 0.2s cubic-bezier(0.4, 0, 0.2, 1)",
                   minWidth: 12,
                   minHeight: 12,
                   "&:hover": {

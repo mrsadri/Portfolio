@@ -1,5 +1,7 @@
 import Grid from "@mui/system/Grid";
 import { Box, Container, Stack, Typography, useTheme } from "@mui/material";
+import { useScrollAnimation } from "@shared/utils/useScrollAnimation";
+import { getSectionStyles, SECTION_PADDING } from "@shared/utils/sectionBackgrounds";
 
 type PhilosophySectionProps = {
   philosophyText: string;
@@ -8,14 +10,18 @@ type PhilosophySectionProps = {
 
 const PhilosophySection = ({ philosophyText, emojiList }: PhilosophySectionProps) => {
   const theme = useTheme();
+  const { ref, isVisible } = useScrollAnimation(0.1);
 
   return (
     <Box
+      ref={ref}
       component="section"
       sx={{
-        py: { xs: 8, md: 10 },
-        borderTop: `1px solid ${theme.palette.divider}`,
-        backgroundColor: "transparent",
+        py: SECTION_PADDING.standard,
+        ...getSectionStyles("light", theme),
+        opacity: isVisible ? 1 : 0,
+        transform: isVisible ? "translateY(0)" : "translateY(20px)",
+        transition: "opacity 0.6s ease, transform 0.6s ease",
       }}
     >
       <Container>
@@ -38,12 +44,12 @@ const PhilosophySection = ({ philosophyText, emojiList }: PhilosophySectionProps
                   py: 1,
                 }}
               >
-                <Typography variant="subtitle1" color="text.secondary" sx={{ lineHeight: 1.7 }}>
+                <Typography variant="subtitle1" color="text.secondary" sx={{ lineHeight: 1.6 }}>
                   I am driven by experiences—designing them, learning from them, and living them
                   deeply.
                 </Typography>
               </Box>
-              <Typography variant="body1" color="text.secondary" sx={{ lineHeight: 1.7 }}>
+              <Typography variant="body1" color="text.secondary" sx={{ lineHeight: 1.6 }}>
                 My friends often describe me as someone with layers—curiosity keeps me exploring
                 new crafts, communities, and challenges. It’s how I stay grounded and inspired.
               </Typography>
@@ -83,10 +89,15 @@ const PhilosophySection = ({ philosophyText, emojiList }: PhilosophySectionProps
                     key={emoji}
                     component="span"
                     sx={{
-                      fontSize: { xs: 56, sm: 64 },
+                      fontSize: { xs: 48, sm: 56 },
                       lineHeight: 1,
                       flexBasis: { xs: "auto", md: "30%" },
                       textAlign: "center",
+                      transition: "transform 0.2s ease",
+                      cursor: "default",
+                      "&:hover": {
+                        transform: "scale(1.1)",
+                      },
                     }}
                   >
                     {emoji}

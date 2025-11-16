@@ -8,6 +8,8 @@ import {
   useTheme,
 } from "@mui/material";
 import { Pill } from "@shared/ui";
+import { useScrollAnimation } from "@shared/utils/useScrollAnimation";
+import { getSectionStyles, SECTION_PADDING } from "@shared/utils/sectionBackgrounds";
 import SectionHeader from "@shared/components/SectionHeader";
 import SurfaceCard from "./SurfaceCard";
 import type { Book, ReadingJourney } from "../types";
@@ -19,9 +21,20 @@ type ReadingJourneySectionProps = {
 
 const ReadingJourneySection = ({ journey, books }: ReadingJourneySectionProps) => {
   const theme = useTheme();
+  const { ref, isVisible } = useScrollAnimation(0.1);
 
   return (
-    <Box component="section" sx={{ py: { xs: 8, md: 10 } }}>
+    <Box
+      ref={ref}
+      component="section"
+      sx={{
+        py: SECTION_PADDING.standard,
+        ...getSectionStyles("paper", theme),
+        opacity: isVisible ? 1 : 0,
+        transform: isVisible ? "translateY(0)" : "translateY(20px)",
+        transition: "opacity 0.6s ease, transform 0.6s ease",
+      }}
+    >
       <Container>
         <Stack spacing={5}>
           <SectionHeader
@@ -45,35 +58,57 @@ const ReadingJourneySection = ({ journey, books }: ReadingJourneySectionProps) =
                     alt={book.cover.alt}
                     loading="lazy"
                     sx={{
-                      width: 160,
+                      width: { xs: 120, md: 160 },
+                      height: { xs: "auto", md: "100%" },
+                      aspectRatio: "2/3",
                       objectFit: "cover",
                       borderTopLeftRadius: theme.tokens.radius.surface,
                       borderBottomLeftRadius: theme.tokens.radius.surface,
+                      transition: "transform 0.3s ease",
+                      "&:hover": {
+                        transform: "scale(1.05)",
+                      },
                     }}
                   />
                   <CardContent
                     sx={{
                       display: "flex",
                       flexDirection: "column",
-                      gap: 2,
+                      gap: 2.5,
                       flexGrow: 1,
+                      pt: 2.5,
                     }}
                   >
-                    <Stack spacing={0.75}>
-                      <Typography variant="caption" color="text.secondary">
+                    <Stack spacing={1}>
+                      <Typography variant="caption" color="text.secondary" sx={{ fontWeight: 500 }}>
                         {book.label}
                       </Typography>
-                      <Typography variant="h5">{book.title}</Typography>
-                      <Typography variant="subtitle1" color="text.secondary">
+                      <Typography variant="h5" sx={{ lineHeight: 1.3 }}>
+                        {book.title}
+                      </Typography>
+                      <Typography variant="subtitle1" color="text.secondary" sx={{ lineHeight: 1.5 }}>
                         {book.author}
                       </Typography>
                     </Stack>
-                    <Typography variant="body2" color="text.secondary">
-                      {book.summary}
-                    </Typography>
-                    <Stack component="ul" spacing={0.75} sx={{ pl: 2, mb: 0 }}>
+                    <Box
+                      sx={{
+                        borderTop: (theme) => `1px solid ${theme.palette.divider}`,
+                        pt: 2,
+                      }}
+                    >
+                      <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.6 }}>
+                        {book.summary}
+                      </Typography>
+                    </Box>
+                    <Stack component="ul" spacing={1} sx={{ pl: 2.5, mb: 0 }}>
                       {book.takeaways.map((takeaway) => (
-                        <Typography component="li" key={takeaway} variant="body2" color="text.secondary">
+                        <Typography
+                          component="li"
+                          key={takeaway}
+                          variant="body2"
+                          color="text.secondary"
+                          sx={{ lineHeight: 1.6 }}
+                        >
                           {takeaway}
                         </Typography>
                       ))}

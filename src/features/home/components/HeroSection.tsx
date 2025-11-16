@@ -81,13 +81,17 @@ const HeroSection = ({ hero }: HeroSectionProps) => {
               sx={{
                 position: "relative",
                 width: "100%",
-                maxWidth: { xs: 260, sm: 300, md: 320 },
+                maxWidth: { xs: 220, sm: 280, md: 320 },
               }}
             >
               <Avatar
                 src={hero.portrait.src}
                 alt={hero.portrait.alt}
                 variant="rounded"
+                imgProps={{
+                  loading: "eager",
+                  decoding: "async",
+                }}
                 sx={{
                   width: "100%",
                   height: "auto",
@@ -97,6 +101,9 @@ const HeroSection = ({ hero }: HeroSectionProps) => {
                     theme.palette.mode === "light"
                       ? "0 18px 40px rgba(17, 36, 83, 0.18)"
                       : "0 20px 50px rgba(0, 0, 0, 0.55)",
+                  backgroundColor: theme.palette.mode === "light" 
+                    ? "rgba(34, 84, 255, 0.06)" 
+                    : "rgba(145, 167, 255, 0.08)",
                 }}
               />
               <Box
@@ -155,6 +162,7 @@ const HeroSection = ({ hero }: HeroSectionProps) => {
                 sx={{
                   lineHeight: 1.05,
                   letterSpacing: "-0.015em",
+                  fontWeight: 700,
                 }}
               >
                 {hero.name}
@@ -166,6 +174,7 @@ const HeroSection = ({ hero }: HeroSectionProps) => {
                   fontWeight: 500,
                   letterSpacing: { xs: "0.01em", md: "0.005em" },
                   maxWidth: { md: "85%" },
+                  fontSize: { xs: "1.5rem", sm: "1.75rem", md: "2rem" },
                 }}
               >
                 {hero.title}

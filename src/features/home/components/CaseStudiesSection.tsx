@@ -16,7 +16,7 @@ const CaseStudiesSection = ({ caseStudies, onOpenRecap }: CaseStudiesSectionProp
   >
     <Container>
       <Stack spacing={3} alignItems="center" textAlign="center" mb={6}>
-        <Typography variant="h2">Case studies</Typography>
+        <Typography variant="h2">Case Studies</Typography>
         <Typography variant="h6" color="text.secondary">
           Examples of the impact I have made
         </Typography>

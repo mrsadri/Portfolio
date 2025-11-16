@@ -42,6 +42,7 @@ export type CaseStudySummary = {
   recap: CaseStudyRecap;
   isLocked?: boolean;
   isInProgress?: boolean;
+  readingTimeMinutes?: number;
 };
 
 export type CaseStudyId = CaseStudySummary["id"];
