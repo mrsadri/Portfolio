@@ -68,15 +68,40 @@ Direct access or refresh of `https://mrsadri.github.io/Portfolio/my-story` retur
 ### 🔍 Assumption 6: Base Tag Missing or Incorrect in HTML
 **Status**: CHECKING - Need to verify base tag in generated HTML
 
-## Root Cause Identified
-GitHub Pages is showing its own 404 page instead of serving the generated fallback files. This indicates either:
-1. Files not properly committed/pushed to repository
-2. GitHub Pages cache issue
-3. File path mismatch between generated and expected locations
+## ROOT CAUSE IDENTIFIED ✓
+
+**GitHub Pages is NOT configured to serve from the `/docs` folder!**
+
+### Evidence:
+1. ✅ Files exist in repository (verified at https://github.com/mrsadri/Portfolio/tree/main/docs)
+2. ✅ Files include: `docs/404.html`, `docs/my-story.html`, `docs/my-story/index.html`
+3. ✅ Build was successful and pushed to main branch
+4. ❌ Even `https://mrsadri.github.io/Portfolio/404.html` shows GitHub's 404 (not our custom one)
+5. ❌ This means GitHub Pages is serving from wrong location (likely root `/` or different branch)
+
+### Problem:
+GitHub Pages Source is NOT configured to serve from `/docs` folder on `main` branch.
+
+## SOLUTION
+
+### Manual Configuration (Required)
+The user MUST configure GitHub Pages settings manually:
+
+1. Go to: https://github.com/mrsadri/Portfolio/settings/pages
+2. Under "Build and deployment" → "Source":
+   - Select: **Deploy from a branch**
+   - Branch: **main**
+   - Folder: **/docs**
+3. Click **Save**
+4. Wait 1-2 minutes for deployment
+5. Test: https://mrsadri.github.io/Portfolio/my-story
+
+### Alternative: GitHub Actions Deployment (Automated)
+Create `.github/workflows/pages.yml` to automatically deploy from docs/ folder.
 
 ## Success Criteria
-- Direct URL access works: ⏳
-- Page refresh works: ⏳
+- Direct URL access works: ⏳ (Waiting for GitHub Pages configuration)
+- Page refresh works: ⏳ (Waiting for GitHub Pages configuration)
 - Navigation from homepage works: ✓
-- All routes accessible via direct links: ⏳
+- All routes accessible via direct links: ⏳ (Waiting for GitHub Pages configuration)
 
