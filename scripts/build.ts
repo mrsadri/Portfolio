@@ -3,12 +3,10 @@
 import { cp, mkdir, readFile, readdir, rm, writeFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
 
-const builderVersion = "2.2.0";
+const builderVersion = "3.0.0";
 const distDir = "dist";
 const docsDir = "docs";
 const docsClientDir = join(docsDir, "client");
-// Note: We intentionally do NOT copy to root-level /client to avoid confusion.
-// Only docs/ folder is used for GitHub Pages deployment.
 
 const notFoundHtml = `<!doctype html>
 <html lang="en">
@@ -32,10 +30,10 @@ const notFoundHtml = `<!doctype html>
   </head>
   <body>
     <main>
-      <h1>We couldn’t find that page</h1>
+      <h1>We couldn't find that page</h1>
       <p>
-        The address you visited doesn’t exist or has moved. We’re redirecting you back to the portfolio homepage.
-        If you’re not redirected automatically, use the button below.
+        The address you visited doesn't exist or has moved. We're redirecting you back to the portfolio homepage.
+        If you're not redirected automatically, use the button below.
       </p>
       <p><a id="home-link" href="#">Take me home</a></p>
     </main>
@@ -57,12 +55,7 @@ const notFoundHtml = `<!doctype html>
 
         var targetBase = repoSegment ? repoSegment + "/" : "/";
         var redirectParam = encodeURIComponent(fullPath);
-        var separator =
-          targetBase.indexOf("?") === -1
-            ? "?"
-            : targetBase.endsWith("?") || targetBase.endsWith("&")
-              ? ""
-              : "&";
+        var separator = targetBase.indexOf("?") === -1 ? "?" : (targetBase.endsWith("?") || targetBase.endsWith("&") ? "" : "&");
         var target = targetBase + separator + "redirect=" + redirectParam;
 
         var link = document.getElementById("home-link");
@@ -105,8 +98,6 @@ const ensureTrailingSlash = (value: string) => (value.endsWith("/") ? value : `$
  * - GitHub Pages STRIPS the `/docs` prefix from URLs
  * 
  * Therefore, publicPath should be `/Portfolio/client/`, NOT `/Portfolio/docs/client/`
- * 
- * @returns {string} The public path to use for webpack/bun bundler
  */
 const resolvePublicPath = () => {
   const envOverride = process.env.ASSET_PUBLIC_PATH ?? process.env.PUBLIC_PATH;
@@ -122,8 +113,6 @@ const resolvePublicPath = () => {
       const homepageUrl = new URL(homepage);
       const pathname = homepageUrl.pathname.replace(/\/$/, "");
       if (pathname && pathname !== "/") {
-        // For GitHub Pages: files in docs/client/ are served at /Portfolio/client/
-        // NOT at /Portfolio/docs/client/ (the /docs prefix is stripped)
         const normalized = ensureTrailingSlash(`${pathname}/client`);
         console.log(`📦 Using asset public path derived from package.json homepage: ${normalized}`);
         console.log(`   ℹ️  Files stored in docs/client/ will be accessible at ${normalized}`);
@@ -181,7 +170,6 @@ const copyPdfFiles = async () => {
 };
 
 // Copy build artifacts to docs/ for GitHub Pages deployment
-// Structure: docs/client/ contains all chunks, docs/ root contains main entry points
 console.log("📁 Copying build artifacts to docs/...");
 await Promise.all([
   cp(distDir, docsClientDir, { recursive: true }),
@@ -199,6 +187,7 @@ await Bun.write(join(docsDir, "404.html"), notFoundHtml);
 await writeFile(join(docsDir, ".nojekyll"), "");
 await Bun.write("public/404.html", notFoundHtml);
 
+// SPA fallback HTML - properly handles GitHub Pages base path
 const spaFallbackHtml = `<!doctype html>
 <html lang="en">
   <head>
@@ -222,8 +211,8 @@ const spaFallbackHtml = `<!doctype html>
   <body>
     <main>
       <h1>Redirecting to the portfolio…</h1>
-      <p>Hang tight! We’re sending you back to the main app experience.</p>
-      <p><a id="fallback-link" href="/">Go to the portfolio homepage</a></p>
+      <p>Hang tight! We're sending you back to the main app experience.</p>
+      <p><a id="fallback-link" href="#">Go to the portfolio homepage</a></p>
     </main>
     <script>
       (function () {
@@ -257,6 +246,7 @@ const spaFallbackHtml = `<!doctype html>
 </html>
 `;
 
+// All routes that need SPA fallback files
 const spaFallbackRoutes = [
   "contact",
   "my-story",
@@ -267,6 +257,7 @@ const spaFallbackRoutes = [
   "case-studies/setare-yek-bill-payment",
 ];
 
+console.log("📄 Generating SPA fallback files for routes...");
 await Promise.all(
   spaFallbackRoutes.map(async (routePath) => {
     const targetDir = join(docsDir, routePath);
@@ -288,8 +279,15 @@ console.log("   ├── images/          # Image assets");
 console.log("   ├── index.html       # Main HTML entry");
 console.log("   ├── main.js          # Main JS bundle");
 console.log("   ├── main.css         # Main CSS bundle");
-console.log("   └── ...              # Other static files");
+console.log("   ├── 404.html         # Custom 404 page");
+console.log("   ├── .nojekyll        # Disable Jekyll processing");
+console.log("   └── [routes]/        # SPA fallback files");
 console.log("");
 console.log("🚀 Ready for GitHub Pages deployment from /docs folder");
 console.log(`   Site will be accessible at: ${packageMeta.homepage || "your-github-pages-url"}`);
-
+console.log("");
+console.log("✅ All routes have SPA fallback files:");
+spaFallbackRoutes.forEach((route) => {
+  console.log(`   ✓ ${route}/index.html`);
+  console.log(`   ✓ ${route}.html`);
+});
