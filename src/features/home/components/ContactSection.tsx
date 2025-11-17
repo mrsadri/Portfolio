@@ -13,14 +13,14 @@ const ContactSection = () => {
     },
     {
       label: "Book a session",
-      href: "/contact#mentorship",
+      href: "/contact#section-mentorship",
       icon: <EventAvailableIcon />,
     },
   ];
 
   return (
     <LetsTalkSection
-      id="contact"
+      id="section-contact"
       primaryAction={{
         label: "Direct message",
         href: "https://t.me/masihsadri",

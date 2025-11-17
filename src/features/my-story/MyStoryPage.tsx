@@ -1,5 +1,5 @@
 import { Seo } from "@shared/seo";
-import LetsTalkSection from "@shared/components/LetsTalkSection";
+import ContactSection from "@features/home/components/ContactSection";
 import CountriesSection from "./components/CountriesSection";
 import HeroSection from "./components/HeroSection";
 import OutsideDesignSection from "./components/OutsideDesignSection";
@@ -16,7 +16,7 @@ import {
   philosophyText,
   readingJourney,
   storyHero,
-  team,
+  teamMemories,
 } from "./data/content";
 import { MyStoryPageMetadata } from "./seo";
 
@@ -32,19 +32,19 @@ const MyStoryPage = () => {
     <>
       <Seo {...MyStoryPageMetadata} />
 
+      {/* Act I: The Call to Adventure */}
       <HeroSection hero={storyHero} />
       <PhotoGallerySection items={gallery} />
+
+      {/* Act II: The Journey - Foundation → Growth → Transformation → Current State */}
       <PhilosophySection philosophyText={philosophyText} emojiList={emojiList} />
+      <TeamSection memories={teamMemories} />
       <ReadingJourneySection journey={readingJourney} books={books} />
-      <TeamSection team={team} />
       <OutsideDesignSection items={outsideDesignItems} />
+      
+      {/* Act III: The Return - Future → Call to Action */}
       <CountriesSection />
-      <LetsTalkSection
-        primaryAction={{
-          label: "Get in Touch",
-          href: "/contact",
-        }}
-      />
+      <ContactSection />
     </>
   );
 };

@@ -146,13 +146,13 @@ if (!result.success) {
 
 await mkdir(docsDir, { recursive: true });
 
-// Copy PDF files from root directory if they exist
+// Copy PDF files from public directory if they exist
 const copyPdfFiles = async () => {
   try {
-    const files = await readdir(".");
+    const files = await readdir("public");
     const pdfFiles = files.filter((file) => file.toLowerCase().endsWith(".pdf"));
     await Promise.all(
-      pdfFiles.map((pdfFile) => cp(pdfFile, join(docsDir, pdfFile))),
+      pdfFiles.map((pdfFile) => cp(join("public", pdfFile), join(docsDir, pdfFile))),
     );
     if (pdfFiles.length > 0) {
       console.log(`📄 Copied ${pdfFiles.length} PDF file(s) to docs/`);
@@ -167,9 +167,9 @@ await Promise.all([
   cp(distDir, docsDistDir, { recursive: true }),
   cp(distDir, publicClientDir, { recursive: true }),
   cp("images", join(docsDir, "images"), { recursive: true }),
-  cp("index.html", join(docsDir, "index.html")),
-  cp("robots.txt", join(docsDir, "robots.txt")),
-  cp("sitemap.xml", join(docsDir, "sitemap.xml")),
+  cp("public/index.html", join(docsDir, "index.html")),
+  cp("public/robots.txt", join(docsDir, "robots.txt")),
+  cp("public/sitemap.xml", join(docsDir, "sitemap.xml")),
   cp(join(distDir, "main.js"), join(docsDir, "main.js")),
   cp(join(distDir, "main.js.map"), join(docsDir, "main.js.map")),
   cp(join(distDir, "main.css"), join(docsDir, "main.css")),
@@ -178,7 +178,7 @@ await Promise.all([
 
 await Bun.write(join(docsDir, "404.html"), notFoundHtml);
 await writeFile(join(docsDir, ".nojekyll"), "");
-await Bun.write("404.html", notFoundHtml);
+await Bun.write("public/404.html", notFoundHtml);
 
 const spaFallbackHtml = `<!doctype html>
 <html lang="en">

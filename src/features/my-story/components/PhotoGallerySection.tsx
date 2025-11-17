@@ -146,7 +146,7 @@ const PhotoGallerySection = ({ items }: PhotoGallerySectionProps) => {
                       theme.palette.mode === "light"
                         ? "0 8px 24px rgba(0, 0, 0, 0.12)"
                         : "0 8px 24px rgba(0, 0, 0, 0.4)",
-                    "& .gallery-caption": {
+                    "& [data-gallery-caption]": {
                       opacity: 1,
                       transform: "translateY(0)",
                     },
@@ -166,7 +166,7 @@ const PhotoGallerySection = ({ items }: PhotoGallerySectionProps) => {
                 }}
               />
               <Box
-                className="gallery-caption"
+                data-gallery-caption
                 sx={{
                   position: "absolute",
                   bottom: 0,

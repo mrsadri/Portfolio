@@ -24,14 +24,14 @@ const secondaryActions: ContactAction[] = [
   },
   {
     label: "Set an appointment",
-    href: "#mentorship",
+    href: "#section-mentorship",
     icon: <EventAvailableIcon />,
   },
 ];
 
 const ContactLeadSection = () => (
   <LetsTalkSection
-    id="connect"
+    id="section-connect"
     primaryAction={{
       label: "sadrimasih@gmail.com",
       href: "mailto:sadrimasih@gmail.com",

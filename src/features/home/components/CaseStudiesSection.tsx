@@ -10,7 +10,7 @@ type CaseStudiesSectionProps = {
 
 const CaseStudiesSection = ({ caseStudies, onOpenRecap }: CaseStudiesSectionProps) => (
   <Box
-    id="case-studies"
+    id="section-case-studies"
     component="section"
     sx={{ py: { xs: 8, md: 10 }, backgroundColor: "background.paper" }}
   >

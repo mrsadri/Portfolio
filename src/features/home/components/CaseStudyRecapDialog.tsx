@@ -19,11 +19,11 @@ const CaseStudyRecapDialog = ({ caseStudy, onClose }: CaseStudyRecapDialogProps)
   <Dialog
     open={Boolean(caseStudy)}
     onClose={onClose}
-    aria-labelledby="case-study-recap-title"
+    aria-labelledby="dialog-case-study-recap-title"
   >
     {caseStudy ? (
       <>
-        <DialogTitle id="case-study-recap-title">{caseStudy.recap.headline}</DialogTitle>
+        <DialogTitle id="dialog-case-study-recap-title">{caseStudy.recap.headline}</DialogTitle>
         <DialogContent>
           <Stack component="ul" spacing={1.5} sx={{ pl: 2 }}>
             {caseStudy.recap.bullets.map((bullet) => (

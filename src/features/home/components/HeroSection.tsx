@@ -4,7 +4,7 @@ import { useCallback } from "react";
 import type { HeroContent } from "../types";
 import { GhostButton, Pill, PrimaryButton } from "@shared/ui";
 import certifiedBadgeSrc from "../../../../images/badges/certified-badge.png";
-import { smoothScrollToElement } from "@utils/smoothScroll";
+import { smoothScrollToElement } from "@shared/utils/smoothScroll";
 
 type HeroSectionProps = {
   hero: HeroContent;

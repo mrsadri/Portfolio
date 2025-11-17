@@ -149,7 +149,7 @@ const CountriesSection = () => {
                     theme.palette.mode === "light"
                       ? "0 4px 12px rgba(0, 0, 0, 0.1)"
                       : "0 4px 12px rgba(0, 0, 0, 0.3)",
-                  "& .country-name": {
+                  "& [data-country-name]": {
                     opacity: 1,
                     transform: "translateY(0)",
                   },
@@ -169,7 +169,7 @@ const CountriesSection = () => {
                 }}
               />
               <Typography
-                className="country-name"
+                data-country-name
                 variant="caption"
                 sx={{
                   position: "absolute",

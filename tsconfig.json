@@ -33,11 +33,10 @@
       "@features/*": ["src/features/*"],
       "@app/*": ["src/app/*"],
       "@types/*": ["src/types/*"],
-      "@utils/*": ["src/utils/*"],
       "@theme": ["src/theme"],
       "@theme/*": ["src/theme/*"],
       "@images/*": ["images/*"]
     }
   },
-  "include": ["src", "tests", "vitest.config.ts", "setupTests.ts"]
+  "include": ["src", "tests"]
 }

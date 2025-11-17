@@ -20,11 +20,11 @@ export const hero: HeroContent = {
     "Former iOS developer turned designer, building data-driven experiences that drive user retention and business growth for 40+ million users across B2B and B2C products",
   ctaPrimary: {
     label: "View Case Study",
-    scrollToId: "case-studies",
+    scrollToId: "section-case-studies",
   },
   ctaSecondary: {
     label: "Get in touch",
-    scrollToId: "contact",
+    scrollToId: "section-contact",
   },
   portrait: createImageResource(import.meta.url, heroPortraitAsset, "Masih Sadri - Product Designer", {
     width: 1200,
@@ -224,14 +224,14 @@ export const whyHireMe: WhyHireMeContent = {
   quickStats: [
     {
       value: "6 Years",
-      label: "Experience",
+      label: "Product Experience",
     },
     {
       value: "200+",
       label: "Students Mentored",
     },
     {
-      value: "3 Years",
+      value: "7 Semesters",
       label: "Teaching Experience",
     },
     {

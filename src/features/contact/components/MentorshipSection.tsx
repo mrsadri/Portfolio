@@ -9,7 +9,7 @@ type MentorshipSectionProps = {
 
 const MentorshipSection = ({ offers }: MentorshipSectionProps) => (
   <Box
-    id="mentorship"
+    id="section-mentorship"
     sx={{
       py: { xs: 6, md: 8 },
       backgroundColor: "background.paper",

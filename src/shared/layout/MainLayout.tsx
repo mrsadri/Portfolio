@@ -31,7 +31,7 @@ import { useColorMode } from "@theme";
 const navigationLinks = [
   { label: "Home", to: "/" },
   { label: "My Story", to: "/my-story" },
-  { label: "Case Studies", to: "/#case-studies" },
+  { label: "Case Studies", to: "/#section-case-studies" },
   { label: "Contact", to: "/contact" },
   { label: "Resume", to: "/resume" },
 ] as const;

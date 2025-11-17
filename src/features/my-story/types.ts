@@ -36,7 +36,10 @@ export type TeamSnapshot = {
   caption: string;
   title: string;
   description: string;
+  quote?: string;
 };
+
+export type TeamMemory = TeamSnapshot;
 
 export type EducationItem = {
   badge: string;

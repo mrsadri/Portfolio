@@ -2,7 +2,14 @@ import creativeConfidenceCoverAsset from "../../../../images/books/creative-conf
 import designOfEverydayThingsCoverAsset from "../../../../images/books/design-of-everyday-things.jpg";
 import sprintCoverAsset from "../../../../images/books/sprint.jpg";
 import aiAndUxCoverAsset from "../../../../images/books/ai-and-ux.jpg";
-import divarTeamPhotoAsset from "../../../../images/divar-team.jpg";
+import divarTeamPhotoAsset from "../../../../images/memories/professional/divar-product-team.jpg";
+import rahnemaMakingAsset from "../../../../images/memories/professional/rahnema-teaching-2023.jpeg";
+import dataAnalysisBootcampAsset from "../../../../images/memories/professional/data-analysis-bootcamp.jpeg";
+import dataAnalysisEvaluationAsset from "../../../../images/memories/professional/data-analysis-evaluation.jpg";
+import tiaraUxAgencyAsset from "../../../../images/memories/professional/tiara-ux-agency-team.jpeg";
+import omidvarMuseumAsset from "../../../../images/memories/entertainment/omidvar-museum-visit.jpg";
+import tochalMountainAsset from "../../../../images/memories/entertainment/tochal-mountain-group.jpeg";
+import woodCarvingAsset from "../../../../images/memories/entertainment/wood-carving-workshop.jpg";
 import masihChildPhotoAsset from "../../../../images/masih-child-photo.png";
 import masihCoffeeArtistAsset from "../../../../images/masih-coffee-artist.png";
 import masihMountaineerAsset from "../../../../images/masih-mountaineer.png";
@@ -17,6 +24,7 @@ import type {
   ReadingJourney,
   ReferenceItem,
   StoryHero,
+  TeamMemory,
   TeamSnapshot,
 } from "../types";
 
@@ -145,7 +153,75 @@ export const team: TeamSnapshot = {
   title: "My Divar Product Team",
   description:
     "These are the talented colleagues I'm proud to collaborate with at Divar. Together, our 32-person product organization blends design, research, product, and engineering to ship experiences that protect and empower millions of users.",
+  quote: "Designing with people I trust keeps the work humble, ambitious, and joyful.",
 };
+
+export const teamMemories: ReadonlyArray<TeamMemory> = [
+  {
+    image: createImageResource(import.meta.url, divarTeamPhotoAsset, "Masih Sadri with the Divar product team on rooftop"),
+    caption: "Divar Product Experience Team — collaborating across research, product design, and engineering.",
+    title: "My Divar Product Team",
+    description:
+      "A rooftop gathering with our product design team at Divar—a group of exceptional designers representing some of the finest talent in our country's design community. Together, we formed a 32-person product organization that blended design, research, product, and engineering to create experiences serving millions of users.",
+    quote: "Designing with professionals keeps the work humble, ambitious, and joyful.",
+  },
+  {
+    image: createImageResource(import.meta.url, rahnemaMakingAsset, "Teaching Product Design at Rahnema College with students"),
+    caption: "Celebrating the completion of a product design course at Rahnema College, Winter 2023",
+    title: "Teaching Product Design at Rahnema College",
+    description:
+      "Celebrating the completion of a product design course at Rahnema College in winter 2023. Since then, I've been teaching product design courses seasonally, sharing my experience with the next generation of designers. It's rewarding to see students grow into successful designers who make meaningful contributions to our design community.",
+    quote: "The best way to learn is to teach; the best way to teach is to keep learning.",
+  },
+  {
+    image: createImageResource(import.meta.url, dataAnalysisBootcampAsset, "Completing Data Analysis Bootcamp at Rahnema College"),
+    caption: "Completing the Data Analysis Bootcamp at Rahnema College, Spring 2024",
+    title: "Completing the Data Analysis Bootcamp",
+    description:
+      "The end of a 170-hour Data Analysis Bootcamp at Rahnema College in Spring 2024. The course covered data preprocessing, business metrics, statistical inference, and A/B testing, giving me tools to bridge design intuition with quantitative insights. This experience transformed my approach to product design, teaching me to validate decisions with data and create evidence-based solutions.",
+    quote: "Great design is the perfect marriage of intuition and data.",
+  },
+  {
+    image: createImageResource(import.meta.url, dataAnalysisEvaluationAsset, "Final evaluation day at Data Analysis Bootcamp"),
+    caption: "Final evaluation day: waiting for results at the Data Analysis Bootcamp",
+    title: "Final Evaluation Day: Data Analysis Bootcamp",
+    description:
+      "The final evaluation day after over 10 weeks of intensive work—a moment of anticipation as our code was tested for optimal performance. This moment represents my willingness to step outside my comfort zone as a designer and embrace learning something completely new. The experience taught me resilience and reinforced that great designers aren't afraid to learn new skills, even when facing uncertainty.",
+    quote: "Growth happens when we step outside our comfort zone and embrace uncertainty.",
+  },
+  {
+    image: createImageResource(import.meta.url, tiaraUxAgencyAsset, "Early days as APM at Tiara UX Agency"),
+    caption: "The team at Tiara UX Agency working on the Irancell project, March 2018",
+    title: "Early Days: From Intern to APM at Tiara UX Agency",
+    description:
+      "March 2018, transitioning from project management intern to Associate Product Manager at Tiara UX Agency. We worked on a major project for Irancell, a telecommunications company serving millions of users. The team's incredible energy and dedication sometimes led to late nights at the office—not just for deadlines, but from shared commitment to creating something meaningful. This experience taught me that great products are built by teams who care deeply about their work.",
+    quote: "Great products are built by teams who care deeply about their work.",
+  },
+  {
+    image: createImageResource(import.meta.url, omidvarMuseumAsset, "Exploring the Omidvar Brothers Museum with friends"),
+    caption: "Visiting the Omidvar Brothers Museum at Saadabad Palace, September 2025",
+    title: "Exploring the Omidvar Brothers Museum",
+    description:
+      "Exploring the Omidvar Brothers Museum at Saadabad Palace with friends in September 2025. The story of the Omidvar Brothers, two Iranian explorers who traveled the world documenting cultures and adventures, resonates with my own journey of exploration—both in design and in life. These experiences outside of work fuel my creativity and remind me that great design, like great adventures, comes from genuine curiosity.",
+    quote: "Great design, like great adventures, comes from genuine curiosity.",
+  },
+  {
+    image: createImageResource(import.meta.url, tochalMountainAsset, "Sunday night mountaineering group at Tochal Peak"),
+    caption: "Nighttime gathering at Tochal Peak with the mountaineering community, October 2022",
+    title: "Building Community Through Adventure: Tochal Mountain Group",
+    description:
+      "Sunday night mountaineering trips to Tochal Peak in Tehran—what started as a small group of friends has grown into a thriving community of over 500 members who gather weekly for diverse adventures. This reflects my core belief that great experiences emerge when we bring people together around shared passions. The community-building experience has taught me valuable lessons about organizing people and creating inclusive spaces—skills that directly translate to my work in product design.",
+    quote: "Great experiences emerge when we bring people together around shared passions.",
+  },
+  {
+    image: createImageResource(import.meta.url, woodCarvingAsset, "Learning wood carving from a master craftsman"),
+    caption: "Wood carving workshop: learning precision and patience from a master craftsman",
+    title: "Wood Carving Workshop: Lessons in Precision and Patience",
+    description:
+      "Learning wood carving from a master craftsman, carefully observing his technique to create a wooden bird. Wood carving taught me that great work requires patience, the willingness to learn from masters, and the discipline to refine every detail until it's right. These lessons directly inform my approach to product design: understanding that every interaction, every pixel, and every user flow matters.",
+    quote: "The best designs emerge from precision, patience, and the refusal to give up.",
+  },
+];
 
 export const education: ReadonlyArray<EducationItem> = [
   {
