@@ -1,0 +1,14 @@
+# GitHub Pages Configuration
+# This file ensures the /docs folder and GitHub Pages configuration are reviewed
+
+# GitHub Pages deployment files
+/docs/                    @mrsadri
+/.github/workflows/pages.yml    @mrsadri
+
+# Deployment documentation
+/DEPLOYMENT.md            @mrsadri
+/GITHUB_PAGES_SETUP.md    @mrsadri
+
+# Build scripts that affect deployment
+/scripts/build.ts         @mrsadri
+
