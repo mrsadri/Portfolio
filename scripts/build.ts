@@ -3,12 +3,12 @@
 import { cp, mkdir, readFile, readdir, rm, writeFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
 
-const builderVersion = "2.1.0";
+const builderVersion = "2.2.0";
 const distDir = "dist";
 const docsDir = "docs";
 const docsClientDir = join(docsDir, "client");
-const docsDistDir = join(docsDir, "dist");
-const publicClientDir = "client";
+// Note: We intentionally do NOT copy to root-level /client to avoid confusion.
+// Only docs/ folder is used for GitHub Pages deployment.
 
 const notFoundHtml = `<!doctype html>
 <html lang="en">
@@ -81,10 +81,11 @@ const notFoundHtml = `<!doctype html>
 
 console.log(`🚧 Running static builder v${builderVersion}...`);
 
+// Clean up old build artifacts
+console.log("🧹 Cleaning up old build artifacts...");
 await Promise.all([
   rm(distDir, { recursive: true, force: true }),
   rm(docsDir, { recursive: true, force: true }),
-  rm(publicClientDir, { recursive: true, force: true }),
 ]);
 
 const packageMetaRaw = await readFile("package.json", "utf8");
@@ -93,6 +94,20 @@ const packageMeta = JSON.parse(packageMetaRaw) as { homepage?: string };
 const ensureLeadingSlash = (value: string) => (value.startsWith("/") ? value : `/${value}`);
 const ensureTrailingSlash = (value: string) => (value.endsWith("/") ? value : `${value}/`);
 
+/**
+ * Resolves the public path for bundled assets based on deployment target.
+ * 
+ * IMPORTANT: GitHub Pages Behavior
+ * ================================
+ * When GitHub Pages is configured to serve from the `/docs` folder:
+ * - Files are stored at: `docs/client/main.js` in the repository
+ * - But accessed via: `https://mrsadri.github.io/Portfolio/client/main.js`
+ * - GitHub Pages STRIPS the `/docs` prefix from URLs
+ * 
+ * Therefore, publicPath should be `/Portfolio/client/`, NOT `/Portfolio/docs/client/`
+ * 
+ * @returns {string} The public path to use for webpack/bun bundler
+ */
 const resolvePublicPath = () => {
   const envOverride = process.env.ASSET_PUBLIC_PATH ?? process.env.PUBLIC_PATH;
   if (envOverride && envOverride.trim().length > 0) {
@@ -107,8 +122,11 @@ const resolvePublicPath = () => {
       const homepageUrl = new URL(homepage);
       const pathname = homepageUrl.pathname.replace(/\/$/, "");
       if (pathname && pathname !== "/") {
-        const normalized = ensureTrailingSlash(`${pathname}/docs/client`);
+        // For GitHub Pages: files in docs/client/ are served at /Portfolio/client/
+        // NOT at /Portfolio/docs/client/ (the /docs prefix is stripped)
+        const normalized = ensureTrailingSlash(`${pathname}/client`);
         console.log(`📦 Using asset public path derived from package.json homepage: ${normalized}`);
+        console.log(`   ℹ️  Files stored in docs/client/ will be accessible at ${normalized}`);
         return normalized;
       }
     } catch (error) {
@@ -162,10 +180,11 @@ const copyPdfFiles = async () => {
   }
 };
 
+// Copy build artifacts to docs/ for GitHub Pages deployment
+// Structure: docs/client/ contains all chunks, docs/ root contains main entry points
+console.log("📁 Copying build artifacts to docs/...");
 await Promise.all([
   cp(distDir, docsClientDir, { recursive: true }),
-  cp(distDir, docsDistDir, { recursive: true }),
-  cp(distDir, publicClientDir, { recursive: true }),
   cp("images", join(docsDir, "images"), { recursive: true }),
   cp("public/index.html", join(docsDir, "index.html")),
   cp("public/robots.txt", join(docsDir, "robots.txt")),
@@ -260,7 +279,17 @@ await Promise.all(
   }),
 );
 
-console.log(
-  "✅ Build completed. Static site available in docs/ and build artifacts copied to docs/client/ and docs/dist/",
-);
+console.log("✅ Build completed successfully!");
+console.log("");
+console.log("📦 Deployment Structure:");
+console.log("   docs/");
+console.log("   ├── client/          # All JS chunks and assets");
+console.log("   ├── images/          # Image assets");
+console.log("   ├── index.html       # Main HTML entry");
+console.log("   ├── main.js          # Main JS bundle");
+console.log("   ├── main.css         # Main CSS bundle");
+console.log("   └── ...              # Other static files");
+console.log("");
+console.log("🚀 Ready for GitHub Pages deployment from /docs folder");
+console.log(`   Site will be accessible at: ${packageMeta.homepage || "your-github-pages-url"}`);
 
