@@ -4,9 +4,9 @@ bun.lockb
 .pnp
 .pnp.js
 
-# Build outputs
-dist/
-client/
+# Build outputs (root level only - docs/ is committed for GitHub Pages)
+/dist/
+/client/
 *.tsbuildinfo
 
 # Production build (docs/ is committed for GitHub Pages)
