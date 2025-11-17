@@ -107,7 +107,7 @@ const resolvePublicPath = () => {
       const homepageUrl = new URL(homepage);
       const pathname = homepageUrl.pathname.replace(/\/$/, "");
       if (pathname && pathname !== "/") {
-        const normalized = ensureTrailingSlash(`${pathname}/client`);
+        const normalized = ensureTrailingSlash(`${pathname}/docs/client`);
         console.log(`📦 Using asset public path derived from package.json homepage: ${normalized}`);
         return normalized;
       }
