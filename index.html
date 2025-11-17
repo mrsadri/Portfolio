@@ -190,40 +190,37 @@
       })();
     </script>
     <script>
+      /**
+       * Bundle loader with fallback support for different deployment environments.
+       * 
+       * GitHub Pages Deployment:
+       * - Files stored at: docs/client/main.js
+       * - Accessible at: /Portfolio/client/main.js (docs/ prefix is stripped)
+       * - Primary path: /${repoName}/client/main.js
+       * - Fallback path: /${repoName}/main.js
+       */
       (function loadBundle() {
-        const unique = (values) => {
-          const seen = new Set();
-          return values.filter((value) => {
-            if (seen.has(value)) {
-              return false;
-            }
-            seen.add(value);
-            return true;
-          });
-        };
-
         const segments = window.location.pathname.split("/").filter(Boolean);
         const repoSegment =
           window.location.hostname.endsWith("github.io") && segments.length > 0 ? `/${segments[0]}` : "";
 
-        const candidates = unique([
-          repoSegment ? `${repoSegment}/docs/client/main.js` : null,
-          repoSegment ? `${repoSegment}/docs/dist/main.js` : null,
-          repoSegment ? `${repoSegment}/client/main.js` : null,
-          repoSegment ? `${repoSegment}/dist/main.js` : null,
+        // Build candidate paths in priority order
+        const candidates = [
+          // GitHub Pages: main.js at docs root (stripped to /Portfolio/main.js)
           repoSegment ? `${repoSegment}/main.js` : null,
-          "/docs/client/main.js",
-          "/docs/dist/main.js",
-          "/dist/main.js",
-          "/client/main.js",
+          // GitHub Pages: chunks at docs/client (stripped to /Portfolio/client/main.js)
+          repoSegment ? `${repoSegment}/client/main.js` : null,
+          // Local dev server fallback
           "/main.js",
+          "/client/main.js",
           "main.js",
-        ]).filter(Boolean);
+        ].filter(Boolean);
 
         const appendModule = (index) => {
           const candidate = candidates[index];
           if (!candidate) {
-            console.error("Unable to load any client bundle. Checked:", candidates);
+            console.error("Unable to load any client bundle. Tried paths:", candidates);
+            console.error("GitHub Pages should serve from /docs folder with /docs prefix stripped from URLs");
             return;
           }
 
@@ -233,6 +230,7 @@
           script.addEventListener(
             "error",
             () => {
+              console.warn(`Failed to load bundle from: ${candidate}`);
               appendModule(index + 1);
             },
             { once: true },
