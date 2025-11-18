@@ -32,6 +32,16 @@ jobs:
       - name: Build
         run: bun run build
 
+      - name: Verify build output
+        run: |
+          echo "Verifying build output..."
+          test -f docs/index.html || exit 1
+          test -f docs/main.js || exit 1
+          test -f docs/client/main.js || exit 1
+          test -f docs/.nojekyll || exit 1
+          echo "✓ All critical files exist"
+          echo "✓ Build verification passed"
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
@@ -47,4 +57,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
