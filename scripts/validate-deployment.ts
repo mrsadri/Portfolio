@@ -93,6 +93,31 @@ if (existsSync(mainJsPath)) {
   if (content.includes("/docs/client/")) {
     errors.push("main.js contains incorrect path: /docs/client/ (should be /client/)");
   }
+  
+  // CRITICAL: Verify all referenced chunks actually exist
+  console.log("\n🔍 Verifying chunk file integrity...");
+  const chunkMatches = content.match(/chunk-[a-z0-9]+\.js/g);
+  if (chunkMatches) {
+    const uniqueChunks = [...new Set(chunkMatches)];
+    let missingChunks = 0;
+    let foundChunks = 0;
+    
+    for (const chunk of uniqueChunks) {
+      const chunkPath = join("docs/client", chunk);
+      if (existsSync(chunkPath)) {
+        foundChunks++;
+      } else {
+        errors.push(`Referenced chunk file missing: ${chunkPath}`);
+        missingChunks++;
+      }
+    }
+    
+    if (missingChunks === 0) {
+      console.log(`  ✅ All ${foundChunks} referenced chunks exist in docs/client/`);
+    } else {
+      console.log(`  ❌ ${missingChunks} chunk(s) missing, ${foundChunks} found`);
+    }
+  }
 }
 
 // Check package.json homepage
