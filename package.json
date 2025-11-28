@@ -9,6 +9,7 @@
     "build": "bun scripts/build.ts",
     "preview": "NODE_ENV=production bun index.ts",
     "deploy": "bun run build && git add docs/ && git commit -m 'Deploy' && git push",
+    "typecheck": "tsc --noEmit",
     "lint": "bunx eslint --config config/eslint.config.cjs \"src/**/*.{ts,tsx}\"",
     "test": "vitest --config config/vitest.config.ts"
   },
