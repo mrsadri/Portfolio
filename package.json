@@ -6,16 +6,11 @@
   "homepage": "https://mrsadri.github.io/Portfolio/",
   "scripts": {
     "dev": "bun index.ts",
-    "serve": "NODE_ENV=production bun index.ts",
     "build": "bun scripts/build.ts",
-    "validate-deployment": "bun scripts/validate-deployment.ts",
-    "pre-deploy": "bun run build && bun run validate-deployment",
-    "deploy": "bun run pre-deploy && git add docs/ && echo '✅ Ready to commit and push. Run: git commit -m \"Deploy\" && git push'",
-    "typecheck": "tsc --noEmit",
-    "lint": "bunx eslint --config config/eslint.config.cjs \"src/**/*.{ts,tsx}\" \"tests/**/*.{ts,tsx}\"",
-    "test": "vitest --config config/vitest.config.ts",
-    "generate:hero-image": "bun scripts/generate-hero-image.ts",
-    "generate:resume-pdf": "bun scripts/generate-resume-pdf.ts"
+    "preview": "NODE_ENV=production bun index.ts",
+    "deploy": "bun run build && git add docs/ && git commit -m 'Deploy' && git push",
+    "lint": "bunx eslint --config config/eslint.config.cjs \"src/**/*.{ts,tsx}\"",
+    "test": "vitest --config config/vitest.config.ts"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.1.0",
@@ -45,7 +40,6 @@
     "@fontsource/inter": "^5.2.8",
     "@mui/icons-material": "^7.3.5",
     "@mui/material": "^7.3.5",
-    "@mui/material-pigment-css": "^7.3.5",
     "@mui/system": "^7.3.5",
     "dayjs": "^1.11.19",
     "react": "^19.2.0",
