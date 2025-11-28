@@ -70,26 +70,54 @@ jobs:
     needs: deploy
     runs-on: ubuntu-latest
     steps:
-      - name: Wait for deployment
-        run: sleep 30
-
-      - name: Check site is accessible
+      - name: Wait for deployment propagation
         run: |
-          response=$(curl -s -o /dev/null -w "%{http_code}" https://mrsadri.github.io/Portfolio/)
-          if [ $response -eq 200 ]; then
-            echo "✅ Site is accessible (HTTP $response)"
-          else
-            echo "❌ Site returned HTTP $response"
-            exit 1
-          fi
+          echo "⏳ Waiting for GitHub Pages CDN to propagate (this can take 1-3 minutes)..."
+          sleep 90
 
-      - name: Check JavaScript bundle loads
+      - name: Check site is accessible (with retries)
         run: |
-          response=$(curl -s -o /dev/null -w "%{http_code}" https://mrsadri.github.io/Portfolio/client/main.js)
-          if [ $response -eq 200 ]; then
-            echo "✅ JavaScript bundle loads (HTTP $response)"
-          else
-            echo "❌ JavaScript bundle failed to load (HTTP $response)"
-            exit 1
-          fi
+          max_attempts=5
+          attempt=1
+          while [ $attempt -le $max_attempts ]; do
+            echo "Attempt $attempt/$max_attempts: Checking site accessibility..."
+            response=$(curl -s -o /dev/null -w "%{http_code}" https://mrsadri.github.io/Portfolio/)
+            if [ $response -eq 200 ]; then
+              echo "✅ Site is accessible (HTTP $response)"
+              exit 0
+            else
+              echo "⚠️  Site returned HTTP $response (attempt $attempt/$max_attempts)"
+              if [ $attempt -lt $max_attempts ]; then
+                echo "   Waiting 30 seconds before retry..."
+                sleep 30
+              fi
+              attempt=$((attempt + 1))
+            fi
+          done
+          echo "❌ Site not accessible after $max_attempts attempts"
+          exit 1
+
+      - name: Check JavaScript bundle loads (with retries)
+        run: |
+          max_attempts=5
+          attempt=1
+          while [ $attempt -le $max_attempts ]; do
+            echo "Attempt $attempt/$max_attempts: Checking JavaScript bundle..."
+            response=$(curl -s -o /dev/null -w "%{http_code}" https://mrsadri.github.io/Portfolio/client/main.js)
+            if [ $response -eq 200 ]; then
+              echo "✅ JavaScript bundle loads (HTTP $response)"
+              exit 0
+            else
+              echo "⚠️  JavaScript bundle returned HTTP $response (attempt $attempt/$max_attempts)"
+              if [ $attempt -lt $max_attempts ]; then
+                echo "   Waiting 30 seconds before retry..."
+                sleep 30
+              fi
+              attempt=$((attempt + 1))
+            fi
+          done
+          echo "❌ JavaScript bundle failed to load after $max_attempts attempts"
+          echo "ℹ️  This might be a CDN propagation delay. The file should be available shortly."
+          echo "ℹ️  Check manually: https://mrsadri.github.io/Portfolio/client/main.js"
+          exit 1
 
