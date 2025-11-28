@@ -15,6 +15,7 @@ import {
   useTheme,
 } from "@mui/material";
 import { useCallback } from "react";
+import { resolvePath } from "@shared/utils/path";
 import type { ResumeAction, ResumeSummary } from "../types";
 
 type HeaderSectionProps = {
@@ -28,9 +29,12 @@ const HeaderSection = ({ summary, actions }: HeaderSectionProps) => {
 
   const handleDownload = useCallback(() => {
     if (typeof window !== "undefined" && actions.href && actions.href !== "#") {
+      // Resolve the PDF path with the correct base path for GitHub Pages
+      const resolvedPath = resolvePath(actions.href);
+      
       // Create a temporary anchor element to trigger download
       const link = document.createElement("a");
-      link.href = actions.href;
+      link.href = resolvedPath;
       link.download = "Masih-Sadri-Resume.pdf";
       link.target = "_blank";
       document.body.appendChild(link);
