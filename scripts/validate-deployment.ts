@@ -142,15 +142,23 @@ if (existsSync("docs/.nojekyll")) {
 
 // Check GitHub Actions workflow
 console.log("\n⚙️  Checking GitHub Actions workflow...");
-const workflowPath = ".github/workflows/pages.yml";
-if (existsSync(workflowPath)) {
-  const content = readFileSync(workflowPath, "utf-8");
-  if (content.includes("upload-pages-artifact") && content.includes("./docs")) {
-    console.log("  ✅ GitHub Actions workflow configured correctly");
-  } else {
-    warnings.push("GitHub Actions workflow may not be configured correctly");
+const workflowPaths = [".github/workflows/deploy.yml", ".github/workflows/pages.yml"];
+let workflowFound = false;
+for (const workflowPath of workflowPaths) {
+  if (existsSync(workflowPath)) {
+    const content = readFileSync(workflowPath, "utf-8");
+    if (content.includes("upload-pages-artifact") && content.includes("./docs")) {
+      console.log(`  ✅ GitHub Actions workflow configured correctly (${workflowPath})`);
+      workflowFound = true;
+      break;
+    } else {
+      warnings.push(`GitHub Actions workflow may not be configured correctly (${workflowPath})`);
+      workflowFound = true;
+      break;
+    }
   }
-} else {
+}
+if (!workflowFound) {
   warnings.push("GitHub Actions workflow not found (manual deployment will be required)");
 }
 
