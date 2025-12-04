@@ -17,6 +17,7 @@ export type TimelineItem = {
   description: string;
   highlights: readonly string[];
   location?: string;
+  jobType?: string;
 };
 
 export type SkillCategory = {
@@ -43,6 +44,7 @@ export type VolunteerExperience = {
   role: string;
   period: string;
   description: string;
+  jobType?: string;
 };
 
 

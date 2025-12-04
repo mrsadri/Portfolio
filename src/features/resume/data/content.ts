@@ -22,9 +22,18 @@ export const resumeActions: ResumeAction = {
 
 export const professionalExperience: ReadonlyArray<TimelineItem> = [
   {
+    company: "BimeBazar | B2B/B2C insurance marketplace & digital distribution platform | Nationwide scale",
+    role: "Staff Product Designer",
+    jobType: "· Remote, Full-time",
+    period: "August 2025 – Present | 5 months",
+    description: "",
+    highlights: [],
+  },
+  {
     company: "Persol | B2B/B2C marketplace, early-stage growth",
     role: "Senior Product Designer",
-    period: "October 2024 – August 2025 · Hybrid, Full-time | 11 months",
+    jobType: "· Hybrid, Full-time",
+    period: "October 2024 – August 2025 | 11 months",
     description:
       "Lead designer guiding product vision and delivering high-impact experiments across the funnel.",
     highlights: [
@@ -35,7 +44,8 @@ export const professionalExperience: ReadonlyArray<TimelineItem> = [
   {
     company: "Divar | Top regional classifieds platform | 50M+ users",
     role: "Senior User Experience Designer",
-    period: "April 2022 – September 2024 · Hybrid, Full-time | 2 years 6 months",
+    jobType: "· Hybrid, Full-time",
+    period: "April 2022 – September 2024 | 2 years 6 months",
     description: "Trusted partner across Trust & Safety, Growth, and Core Experience initiatives.",
     highlights: [
       "Designed and launched a Secure Call System with the Trust & Safety team, achieving a 60% reduction in harassment incidents and strengthening user trust.",
@@ -47,7 +57,8 @@ export const professionalExperience: ReadonlyArray<TimelineItem> = [
   {
     company: "IR MCI - Setare Aval | Fintech services + USSD + Mobile service | Nationwide scale",
     role: "Product Designer",
-    period: "June 2019 – March 2022 · On-site, Full-time | 2 years 10 months",
+    jobType: "· On-site, Full-time",
+    period: "June 2019 – March 2022 | 2 years 10 months",
     description:
       "Shaped cross-functional feature development and design systems for nationwide financial products.",
     highlights: [
@@ -62,7 +73,8 @@ export const volunteerExperience: ReadonlyArray<VolunteerExperience> = [
   {
     organization: "Rahnema College | Professional bootcamps + Internship programs",
     role: "Design Mentor",
-    period: "June 2022 – Present · Seasonal",
+    jobType: "· Seasonal",
+    period: "June 2022 – Present | 8 semesters",
     description:
       "Mentored over 200 aspiring designers, introduced gamified learning techniques, and bridged academia with industry practices.",
   },

@@ -6,6 +6,7 @@ type ResumeCardProps = {
   subtitle?: string;
   period?: string;
   year?: string;
+  jobType?: string;
   
   // Body content
   description?: string;
@@ -22,6 +23,7 @@ const ResumeCard = ({
   subtitle,
   period,
   year,
+  jobType,
   description,
   highlights,
   skills,
@@ -61,6 +63,19 @@ const ResumeCard = ({
         sx={{ fontWeight: 600 }}
       >
         {title}
+        {jobType && (
+          <Typography
+            component="span"
+            variant="caption"
+            sx={{
+              color: "text.secondary",
+              fontWeight: 400,
+              ml: 0.5,
+            }}
+          >
+            {jobType}
+          </Typography>
+        )}
       </Typography>
       {(period || year) && (
         <Typography

@@ -8,7 +8,7 @@ const homeStructuredData: StructuredData = [
   {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "Masih Sadri — Senior Product Designer",
+    name: "Masih Sadri — Product Designer",
     url: siteUrl,
     potentialAction: {
       "@type": "SearchAction",
@@ -20,7 +20,7 @@ const homeStructuredData: StructuredData = [
     "@context": "https://schema.org",
     "@type": "Person",
     name: hero.name,
-    jobTitle: "Senior Product Designer",
+    jobTitle: "Product Designer",
     description: hero.subtitle,
     url: siteUrl,
     image: `${siteUrl}/images/masih-sadri-profile.webp`,
@@ -29,9 +29,9 @@ const homeStructuredData: StructuredData = [
 ] as const;
 
 export const homePageMetadata: PageMetadata = {
-  title: "Masih Sadri — Senior Product Designer crafting trustworthy experiences",
+  title: "Masih Sadri — Product Designer crafting trustworthy experiences",
   description:
-    "Portfolio of Masih Sadri, an impact-oriented senior product designer protecting millions of users through trust & safety, growth, and design systems.",
+    "Portfolio of Masih Sadri, an impact-oriented product designer protecting millions of users through trust & safety, growth, and design systems.",
   canonicalPath: "/",
   openGraph: {
     type: "website",

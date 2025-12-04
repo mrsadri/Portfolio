@@ -2,12 +2,13 @@
 // Purpose: Generates a professional PDF resume from resume content data
 import puppeteer from "puppeteer";
 import { join } from "node:path";
+import { mkdir, cp } from "node:fs/promises";
 
 const resumeData = {
   name: "Masih Sadri",
-  title: "Senior Product Designer",
+  title: "Product Designer",
   summary:
-    "Data-driven Product Designer with 6+ years of experience improving experiences for 40M+ users. Impact-oriented with hands-on experience in two semi-unicorn tech companies (Divar, IR-MCI), designing for both B2B and B2C products across embedded, centralized, and single-threaded team structures.",
+    "Data-driven Product Designer with <strong>6+ years</strong> of experience improving experiences for <strong>40M+ users</strong>. Impact-oriented with hands-on experience in <strong>two semi-unicorn tech companies</strong> (Divar, IR-MCI), designing for both <strong>B2B and B2C products</strong> across embedded, centralized, and single-threaded team structures.",
   contact: {
     email: "sadrimasih@gmail.com",
     linkedin: "linkedin.com/in/msadri",
@@ -16,9 +17,18 @@ const resumeData = {
   },
   experience: [
     {
+      company: "BimeBazar | B2B/B2C insurance marketplace & digital distribution platform | Nationwide scale",
+      role: "Staff Product Designer",
+      jobType: "· Remote, Full-time",
+      period: "August 2025 – Present | 5 months",
+      description: "",
+      highlights: [],
+    },
+    {
       company: "Persol | B2B/B2C marketplace, early-stage growth",
       role: "Senior Product Designer",
-      period: "October 2024 – August 2025 · Hybrid, Full-time | 11 months",
+      jobType: "· Hybrid, Full-time",
+      period: "October 2024 – August 2025 | 11 months",
       description:
         "Lead designer guiding product vision and delivering high-impact experiments across the funnel.",
       highlights: [
@@ -29,7 +39,8 @@ const resumeData = {
     {
       company: "Divar | Top regional classifieds platform | 50M+ users",
       role: "Senior User Experience Designer",
-      period: "April 2022 – September 2024 · Hybrid, Full-time | 2 years 6 months",
+      jobType: "· Hybrid, Full-time",
+      period: "April 2022 – September 2024 | 2 years 6 months",
       description:
         "Trusted partner across Trust & Safety, Growth, and Core Experience initiatives.",
       highlights: [
@@ -42,7 +53,8 @@ const resumeData = {
     {
       company: "IR MCI - Setare Aval | Fintech services + USSD + Mobile service | Nationwide scale",
       role: "Product Designer",
-      period: "June 2019 – March 2022 · On-site, Full-time | 2 years 10 months",
+      jobType: "· On-site, Full-time",
+      period: "June 2019 – March 2022 | 2 years 10 months",
       description:
         "Shaped cross-functional feature development and design systems for nationwide financial products.",
       highlights: [
@@ -56,7 +68,8 @@ const resumeData = {
     {
       organization: "Rahnema College | Professional bootcamps + Internship programs",
       role: "Design Mentor",
-      period: "June 2022 – Present · Seasonal",
+      jobType: "· Seasonal",
+      period: "June 2022 – Present | 8 semesters",
       description:
         "Mentored over 200 aspiring designers, introduced gamified learning techniques, and bridged academia with industry practices.",
     },
@@ -153,48 +166,68 @@ const generateResumeHTML = () => {
       line-height: 1.5;
       color: #1a1a1a;
       background: #ffffff;
-      padding: 0.75in;
-      max-width: 8.5in;
-      margin: 0 auto;
+      padding: 0;
+      margin: 0;
+    }
+    
+    @page {
+      size: A4;
+      margin: 0.4in 0.5in;
     }
     
     .header {
       border-bottom: 2px solid #1f6feb;
-      padding-bottom: 16px;
-      margin-bottom: 20px;
+      padding-bottom: 12px;
+      margin-bottom: 16px;
+      page-break-after: avoid;
     }
     
-    .header h1 {
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 8px;
+    }
+    
+    .header-left h1 {
       font-size: 24pt;
       font-weight: 700;
       color: #0b2c5c;
-      margin-bottom: 4px;
+      margin-bottom: 2px;
       letter-spacing: -0.5px;
     }
     
-    .header .title {
+    .header-left .title {
       font-size: 12pt;
       font-weight: 600;
       color: #1f6feb;
-      margin-bottom: 12px;
     }
     
-    .contact-info {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
+    .header-right {
+      text-align: right;
       font-size: 9pt;
       color: #4a5568;
+      line-height: 1.7;
     }
     
-    .contact-info span {
+    .header-right a {
+      color: #1f6feb;
+      text-decoration: none;
+    }
+    
+    .contact-row {
       display: flex;
-      align-items: center;
+      justify-content: flex-end;
       gap: 4px;
+      align-items: center;
+    }
+    
+    .contact-icon {
+      margin-right: 2px;
     }
     
     .section {
-      margin-bottom: 20px;
+      margin-bottom: 14px;
       page-break-inside: avoid;
     }
     
@@ -204,17 +237,22 @@ const generateResumeHTML = () => {
       color: #0b2c5c;
       text-transform: uppercase;
       letter-spacing: 0.5px;
-      margin-bottom: 10px;
-      padding-bottom: 4px;
+      margin-bottom: 8px;
+      padding-bottom: 3px;
       border-bottom: 1px solid #e2e8f0;
     }
     
     .summary {
-      font-size: 10pt;
-      line-height: 1.6;
+      font-size: 9.5pt;
+      line-height: 1.5;
+      color: #4a5568;
+      font-style: italic;
+      margin-bottom: 0;
+    }
+    
+    .summary strong {
+      font-weight: 600;
       color: #2d3748;
-      margin-bottom: 20px;
-      page-break-inside: avoid;
       orphans: 3;
       widows: 3;
       word-wrap: break-word;
@@ -222,27 +260,42 @@ const generateResumeHTML = () => {
     }
     
     .summary-section {
-      page-break-inside: avoid;
+      margin-bottom: 14px;
+      page-break-before: avoid;
+      page-break-after: avoid;
+    }
+    
+    .first-page-section {
+      page-break-before: avoid;
     }
     
     .experience-item, .volunteer-item {
-      margin-bottom: 16px;
+      margin-bottom: 12px;
       page-break-inside: avoid;
     }
     
     .experience-header, .volunteer-header {
+      margin-bottom: 4px;
+    }
+    
+    .experience-header-row, .volunteer-header-row {
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 6px;
-      flex-wrap: wrap;
-      gap: 8px;
+      align-items: baseline;
+      margin-bottom: 2px;
     }
     
     .experience-role, .volunteer-role {
       font-weight: 600;
       font-size: 10.5pt;
       color: #0b2c5c;
+    }
+    
+    .experience-job-type, .volunteer-job-type {
+      font-size: 8.5pt;
+      color: #718096;
+      font-weight: 400;
+      margin-left: 4px;
     }
     
     .experience-company, .volunteer-org {
@@ -255,53 +308,70 @@ const generateResumeHTML = () => {
       font-size: 9pt;
       color: #718096;
       white-space: nowrap;
+      text-align: right;
     }
     
     .experience-description, .volunteer-description {
       font-size: 9.5pt;
       color: #4a5568;
       font-style: italic;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
     }
     
     .highlights {
-      margin-top: 6px;
+      margin-top: 4px;
       padding-left: 16px;
+      margin-bottom: 0;
     }
     
     .highlights li {
       font-size: 9.5pt;
       color: #2d3748;
-      margin-bottom: 4px;
-      line-height: 1.5;
+      margin-bottom: 3px;
+      line-height: 1.45;
     }
     
     .skills-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      margin-top: 8px;
+      gap: 10px;
+      margin-top: 6px;
     }
     
     .skill-category {
       page-break-inside: avoid;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 10px 12px;
     }
     
     .skill-category-title {
       font-weight: 600;
       font-size: 9.5pt;
       color: #0b2c5c;
-      margin-bottom: 4px;
+      margin-bottom: 6px;
+      padding-bottom: 4px;
+      border-bottom: 1px solid #e2e8f0;
     }
     
     .skill-items {
-      font-size: 9pt;
+      font-size: 8.5pt;
       color: #4a5568;
-      line-height: 1.6;
+      line-height: 1.5;
+    }
+    
+    .skill-items ul {
+      margin: 0;
+      padding-left: 14px;
+    }
+    
+    .skill-items li {
+      margin-bottom: 2px;
     }
     
     .education-item, .cert-item {
-      margin-bottom: 12px;
+      margin-bottom: 8px;
       page-break-inside: avoid;
     }
     
@@ -309,9 +379,9 @@ const generateResumeHTML = () => {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      margin-bottom: 4px;
+      margin-bottom: 2px;
       flex-wrap: wrap;
-      gap: 8px;
+      gap: 6px;
     }
     
     .education-program, .cert-name {
@@ -350,13 +420,17 @@ const generateResumeHTML = () => {
 </head>
 <body>
   <div class="header">
-    <h1>${resumeData.name}</h1>
-    <div class="title">${resumeData.title}</div>
-    <div class="contact-info">
-      <span>📧 ${resumeData.contact.email}</span>
-      <span>💼 ${resumeData.contact.linkedin}</span>
-      <span>🌐 ${resumeData.contact.portfolio}</span>
-      <span>📍 ${resumeData.contact.location}</span>
+    <div class="header-top">
+      <div class="header-left">
+        <h1>${resumeData.name}</h1>
+        <div class="title">${resumeData.title}</div>
+      </div>
+      <div class="header-right">
+        <div class="contact-row"><span class="contact-icon">📧</span> ${resumeData.contact.email}</div>
+        <div class="contact-row"><span class="contact-icon">💼</span> <a href="https://${resumeData.contact.linkedin}">${resumeData.contact.linkedin}</a></div>
+        <div class="contact-row"><span class="contact-icon">🌐</span> <a href="${resumeData.contact.portfolio}">${resumeData.contact.portfolio}</a></div>
+        <div class="contact-row"><span class="contact-icon">📍</span> ${resumeData.contact.location}</div>
+      </div>
     </div>
   </div>
   
@@ -365,23 +439,23 @@ const generateResumeHTML = () => {
     <div class="summary">${resumeData.summary}</div>
   </div>
   
-  <div class="section">
+  <div class="section first-page-section">
     <div class="section-title">Professional Experience</div>
     ${resumeData.experience
       .map(
         (exp) => `
     <div class="experience-item">
       <div class="experience-header">
-        <div>
-          <div class="experience-role">${exp.role}</div>
-          <div class="experience-company">${exp.company}</div>
+        <div class="experience-header-row">
+          <div class="experience-role">${exp.role}${exp.jobType ? `<span class="experience-job-type">${exp.jobType}</span>` : ""}</div>
+          <div class="experience-period">${exp.period}</div>
         </div>
-        <div class="experience-period">${exp.period}</div>
+        <div class="experience-company">${exp.company}</div>
       </div>
-      <div class="experience-description">${exp.description}</div>
-      <ul class="highlights">
+      ${exp.description ? `<div class="experience-description">${exp.description}</div>` : ""}
+      ${exp.highlights.length > 0 ? `<ul class="highlights">
         ${exp.highlights.map((h) => `<li>${h}</li>`).join("")}
-      </ul>
+      </ul>` : ""}
     </div>
     `,
       )
@@ -395,11 +469,11 @@ const generateResumeHTML = () => {
         (vol) => `
     <div class="volunteer-item">
       <div class="volunteer-header">
-        <div>
-          <div class="volunteer-role">${vol.role}</div>
-          <div class="volunteer-org">${vol.organization}</div>
+        <div class="volunteer-header-row">
+          <div class="volunteer-role">${vol.role}${vol.jobType ? `<span class="volunteer-job-type">${vol.jobType}</span>` : ""}</div>
+          <div class="volunteer-period">${vol.period}</div>
         </div>
-        <div class="volunteer-period">${vol.period}</div>
+        <div class="volunteer-org">${vol.organization}</div>
       </div>
       <div class="volunteer-description">${vol.description}</div>
     </div>
@@ -416,7 +490,7 @@ const generateResumeHTML = () => {
           (skill) => `
       <div class="skill-category">
         <div class="skill-category-title">${skill.category}</div>
-        <div class="skill-items">${skill.items.join(" • ")}</div>
+        <div class="skill-items"><ul>${skill.items.map(item => `<li>${item}</li>`).join("")}</ul></div>
       </div>
       `,
         )
@@ -481,22 +555,32 @@ const generatePDF = async () => {
 
     await page.setContent(html, { waitUntil: "load", timeout: 10000 });
 
-    const pdfPath = join(process.cwd(), "Masih-Sadri-Resume.pdf");
+    const pdfPath = join(process.cwd(), "public", "Masih-Sadri-Resume.pdf");
+    const docsPdfPath = join(process.cwd(), "docs", "Masih-Sadri-Resume.pdf");
 
-    await page.pdf({
-      path: pdfPath,
+    // Ensure directories exist
+    await mkdir(join(process.cwd(), "public"), { recursive: true });
+    await mkdir(join(process.cwd(), "docs"), { recursive: true });
+
+    // Generate PDF buffer
+    const pdfBuffer = await page.pdf({
       format: "A4",
       margin: {
-        top: "0.5in",
+        top: "0.65in",
         right: "0.5in",
-        bottom: "0.5in",
+        bottom: "0.4in",
         left: "0.5in",
       },
       printBackground: true,
-      preferCSSPageSize: true,
     });
 
+    // Write to public directory
+    await Bun.write(pdfPath, pdfBuffer);
     console.log(`✅ PDF generated successfully: ${pdfPath}`);
+
+    // Copy to docs directory
+    await Bun.write(docsPdfPath, pdfBuffer);
+    console.log(`✅ PDF copied to: ${docsPdfPath}`);
   } catch (error) {
     console.error("❌ Error generating PDF:", error);
     process.exit(1);

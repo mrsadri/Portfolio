@@ -25,6 +25,7 @@ const ExperienceSection = ({
           title={item.role}
           subtitle={item.company}
           period={item.period}
+          jobType={item.jobType}
           description={item.description}
           highlights={item.highlights}
         />
