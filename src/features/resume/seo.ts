@@ -24,9 +24,9 @@ const resumeStructuredData: StructuredData = {
 } as const;
 
 export const resumePageMetadata: PageMetadata = {
-  title: "Masih Sadri — Senior Product Designer Resume",
+  title: "Masih Sadri — Product Designer Resume",
   description:
-    "Review Masih Sadri’s senior product designer resume covering trust & safety, growth, design systems, and leadership experience.",
+    "Review Masih Sadri's product designer resume covering trust & safety, growth, design systems, and leadership experience.",
   canonicalPath: "/resume",
   openGraph: {
     type: "article",

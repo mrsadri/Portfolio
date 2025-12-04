@@ -15,7 +15,7 @@ const MyStoryStructuredData: StructuredData = {
   primaryTopic: {
     "@type": "Person",
     name: "Masih Sadri",
-    jobTitle: "Senior Product Designer",
+    jobTitle: "Product Designer",
     sameAs: [
       "https://www.linkedin.com/in/msadri/",
       "https://www.figma.com/@masih",

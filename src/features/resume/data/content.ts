@@ -10,7 +10,7 @@ import type {
 
 export const resumeSummary: ResumeSummary = {
   title: "Masih Sadri",
-  subtitle: "Senior Product Designer",
+  subtitle: "Product Designer",
   description:
     "Data-driven Product Designer with 6+ years of experience improving experiences for 40M+ users. Impact-oriented with hands-on experience in two semi-unicorn tech companies (Divar, IR-MCI), designing for both B2B and B2C products across embedded, centralized, and single-threaded team structures.",
 };

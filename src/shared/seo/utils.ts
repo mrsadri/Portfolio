@@ -1,7 +1,7 @@
 import type { OpenGraphImage, PageMetadata, RobotsDirectives, StructuredData } from "./types";
 import { resolveSiteUrl } from "../utils/site";
 
-const SITE_NAME = "Masih Sadri — Senior Product Designer";
+const SITE_NAME = "Masih Sadri — Product Designer";
 
 const ensureArray = <T,>(value: T | readonly T[] | undefined): ReadonlyArray<T> => {
   if (value == null) {
