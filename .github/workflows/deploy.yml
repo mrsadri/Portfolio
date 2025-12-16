@@ -38,6 +38,17 @@ jobs:
       - name: Build project
         run: bun run build
 
+      - name: Debug - List docs contents
+        run: |
+          echo "=== docs/ root ==="
+          ls -la ./docs/
+          echo ""
+          echo "=== docs/client/ ==="
+          ls -la ./docs/client/ || echo "client/ directory not found!"
+          echo ""
+          echo "=== Checking main.js ==="
+          ls -la ./docs/main.js ./docs/client/main.js 2>&1 || true
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
