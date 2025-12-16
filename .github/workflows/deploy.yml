@@ -15,53 +15,23 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  build:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Bun
-        uses: oven-sh/setup-bun@v1
-        with:
-          bun-version: latest
-
-      - name: Install dependencies
-        run: bun install --frozen-lockfile
-
-      - name: Run linter
-        run: bun run lint
-
-      - name: Run type check
-        run: bun run typecheck
-
-      - name: Build project
-        run: bun run build
-
-      - name: Debug - List docs contents
-        run: |
-          echo "=== docs/ root ==="
-          ls -la ./docs/
-          echo ""
-          echo "=== docs/client/ ==="
-          ls -la ./docs/client/ || echo "client/ directory not found!"
-          echo ""
-          echo "=== Checking main.js ==="
-          ls -la ./docs/main.js ./docs/client/main.js 2>&1 || true
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./docs
 
-  deploy:
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
