@@ -12,9 +12,13 @@ permissions:
   id-token: write
 
 # Cancel any in-progress deployments to prevent conflicts
+# This ensures only ONE deployment runs at a time
 concurrency:
   group: "pages"
   cancel-in-progress: true
+
+# Only run if GitHub Pages is configured to use GitHub Actions
+# Skip if Jekyll build is enabled (which would cause conflicts)
 
 jobs:
   deploy:
@@ -43,6 +47,10 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./docs
+          # Note: Artifact name is automatically "github-pages" by GitHub
+          # If you see "Multiple artifacts" error, GitHub Pages is configured
+          # to use BOTH "Deploy from a branch" AND "GitHub Actions"
+          # Solution: Go to Settings > Pages and set Source to "GitHub Actions" ONLY
 
       - name: Deploy to GitHub Pages
         id: deployment
