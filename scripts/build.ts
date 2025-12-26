@@ -202,12 +202,22 @@ if (homepage) {
 }
 
 // Update favicon links to include base path
-const updatedIndexHtml = indexHtmlContent.replace(
+let updatedIndexHtml = indexHtmlContent.replace(
   /href="images\/(favicon|apple-touch-icon)[^"]*"/g,
   (match) => {
     return match.replace('href="images/', `href="${basePath}/images/`);
   },
 );
+
+// Inject CSS link tag if it doesn't exist
+const cssPath = `${basePath}/main.css`;
+if (!updatedIndexHtml.includes('main.css')) {
+  // Insert CSS link before closing </head> tag
+  updatedIndexHtml = updatedIndexHtml.replace(
+    /<\/head>/i,
+    `    <link rel="stylesheet" href="${cssPath}" />\n  </head>`,
+  );
+}
 
 await writeFile(indexHtmlPath, updatedIndexHtml);
 
