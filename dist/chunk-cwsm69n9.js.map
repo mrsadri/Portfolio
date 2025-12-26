@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "sources": ["../src/shared/utils/assets.ts"],
+  "sourcesContent": [
+    "import type { ImageResource } from \"../../types/content\";\n\nconst logAssetWarning = (message: string, error: unknown) => {\n  if (import.meta.env?.MODE !== \"production\") {\n    console.warn(`[assets] ${message}`, error);\n  }\n};\n\nconst resolveAssetUrl = (moduleUrl: string, assetPath: string) => {\n  try {\n    return new URL(assetPath, moduleUrl).href;\n  } catch (error) {\n    logAssetWarning(`Unable to resolve asset at path \"${assetPath}\"`, error);\n    return assetPath;\n  }\n};\n\nexport const createImageResource = (\n  moduleUrl: string,\n  assetPath: string,\n  alt: string,\n  dimensions?: Pick<ImageResource, \"width\" | \"height\">,\n): ImageResource => {\n  if (!alt) {\n    logAssetWarning(`Missing alt text for asset \"${assetPath}\".`, null);\n  }\n\n  const src = resolveAssetUrl(moduleUrl, assetPath);\n\n  return {\n    src,\n    alt: alt || \"Decorative image\",\n    ...dimensions,\n  };\n};\n\n\n"
+  ],
+  "mappings": "AAEA,IAAM,EAAkB,CAAC,EAAiB,IAAmB,CAC3D,GAAI,YAAY,KAAK,OAAS,aAC5B,QAAQ,KAAK,YAAY,IAAW,CAAK,GAIvC,EAAkB,CAAC,EAAmB,IAAsB,CAChE,GAAI,CACF,OAAO,IAAI,IAAI,EAAW,CAAS,EAAE,KACrC,MAAO,EAAO,CAEd,OADA,EAAgB,oCAAoC,KAAc,CAAK,EAChE,IAIE,EAAsB,CACjC,EACA,EACA,EACA,IACkB,CAClB,GAAI,CAAC,EACH,EAAgB,+BAA+B,MAAe,IAAI,EAKpE,MAAO,CACL,IAHU,EAAgB,EAAW,CAAS,EAI9C,IAAK,GAAO,sBACT,CACL",
+  "debugId": "BEFF015B38DEE1C664756E2164756E21",
+  "names": []
+}
