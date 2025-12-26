@@ -1,4 +1,4 @@
-import type { ImageResource, LinkResource } from "../../types/content";
+import type { ImageResource } from "../../types/content";
 
 export type StoryHero = {
   title: string;
@@ -57,15 +57,6 @@ export type CertificateItem = {
   hours?: string;
   topics?: string;
   score?: string;
-};
-
-export type ReferenceItem = {
-  name: string;
-  role: string;
-  date: string;
-  text: string;
-  linkedin: string;
-  cta?: LinkResource;
 };
 
 

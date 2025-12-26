@@ -1,10 +1,7 @@
 import heroPortraitAsset from "../../../../images/masih-sadri-profile.webp";
-import morphDesignSystemAsset from "../../../../images/morph-design-system.webp";
-import rahnemaStudentsAsset from "../../../../images/rahnema-students.webp";
 import { createImageResource } from "@shared/utils/assets";
 import type {
   CaseStudySummary,
-  ExperienceSummary,
   HeroContent,
   MetricSummary,
   SocialLink,
@@ -138,29 +135,6 @@ export const caseStudies: ReadonlyArray<CaseStudySummary> = [
         "Data analysis revealed users who received physical receipts returned 6% more than digital-only users.",
         "The 6% retention improvement meant lower acquisition costs, changing our strategy to encourage physical receipts.",
       ],
-    },
-  },
-];
-
-export const experiences: ReadonlyArray<ExperienceSummary> = [
-  {
-    title: "Design Instructor at Rahnema College",
-    description: "Training 200+ students through 6 courses since 2022",
-    tags: ["education", "mentorship", "curriculum design"],
-    image: createImageResource(import.meta.url, rahnemaStudentsAsset, "Students at Rahnema College"),
-  },
-  {
-    title: "Morph Design System",
-    description: "Built from scratch, used over 7400 times in the Figma Community",
-    tags: ["open source", "design system", "community impact"],
-    image: createImageResource(
-      import.meta.url,
-      morphDesignSystemAsset,
-      "Morph Design System - Figma Community",
-    ),
-    link: {
-      label: "View on Figma Community",
-      href: "https://www.figma.com/community/file/1069259333467083182",
     },
   },
 ];
@@ -302,7 +276,6 @@ export const testimonials: ReadonlyArray<Testimonial> = [
       position: "Software Engineer",
       company: "UserTesting",
       relationship: "Former Teacher",
-      // image: createImageResource(import.meta.url, aliAzadeImage, "Ali Azade"),
     },
   },
   {

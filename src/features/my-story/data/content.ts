@@ -22,7 +22,6 @@ import type {
   EducationItem,
   GalleryItem,
   ReadingJourney,
-  ReferenceItem,
   StoryHero,
   TeamMemory,
   TeamSnapshot,
@@ -150,7 +149,7 @@ export const team: TeamSnapshot = {
   image: createImageResource(import.meta.url, divarTeamPhotoAsset, "Masih Sadri with the Divar product team"),
   caption:
     "Divar Product Experience Team — collaborating across research, product design, and engineering.",
-  title: "My Divar Product Team",
+  title: "My Colleagues at Divar",
   description:
     "These are the talented colleagues I'm proud to collaborate with at Divar. Together, our 32-person product organization blends design, research, product, and engineering to ship experiences that protect and empower millions of users.",
   quote: "Designing with people I trust keeps the work humble, ambitious, and joyful.",
@@ -160,7 +159,7 @@ export const teamMemories: ReadonlyArray<TeamMemory> = [
   {
     image: createImageResource(import.meta.url, divarTeamPhotoAsset, "Masih Sadri with the Divar product team on rooftop"),
     caption: "Divar Product Experience Team — collaborating across research, product design, and engineering.",
-    title: "My Divar Product Team",
+    title: "My Colleagues at Divar",
     description:
       "A rooftop gathering with our product design team at Divar—a group of exceptional designers representing some of the finest talent in our country's design community. Together, we formed a 32-person product organization that blended design, research, product, and engineering to create experiences serving millions of users.",
     quote: "Designing with professionals keeps the work humble, ambitious, and joyful.",
@@ -298,30 +297,6 @@ export const certificates: ReadonlyArray<CertificateItem> = [
     title: "Catia Certificate – Professional 3D Modeling",
     institution: "Iran Catia Community",
     score: "Grade: 100 out of 100",
-  },
-];
-
-export const references: ReadonlyArray<ReferenceItem> = [
-  {
-    name: "Saeed Abolghasemi",
-    role: "Product Design Lead at SnappFood",
-    date: "July 30, 2021 • Reported directly to Masih",
-    text: "I had the privilege of working closely with Masih for a year. Starting my professional journey with him was truly fortunate; he's not only empathetic towards colleagues but also adept at prioritizing tasks based on individual strengths and assigning them accordingly. Masih places significant emphasis on personal growth, offering practical resources tailored to team members' competencies. Working alongside him was both enjoyable and enriching.",
-    linkedin: "https://www.linkedin.com/in/saeed-abolghasemi/",
-  },
-  {
-    name: "Ali Azadeh",
-    role: "Software Engineer at UserTesting",
-    date: "July 31, 2021 • Masih's teacher",
-    text: "Masih is one of my privileged students who is determined to improve his knowledge and skills. His commitment and punctuality in delivering assignments are commendable. In my opinion, his interest in learning has been one of the key reasons for his success.",
-    linkedin: "https://www.linkedin.com/in/ali-azadeh/",
-  },
-  {
-    name: "Hossein Mahmoudvand",
-    role: "Design Lead at Setare Aval (MCI)",
-    date: "March 10, 2021 • Hossein managed Masih directly",
-    text: "I have known Masih since 2018, and from the beginning, his potential talent was evident, marking the start of our collaborative journey. For consistent, top-quality design, you only need to give Masih the raw data and any uncertainties. While working together on the product team at Setare Aval Company, his expertise was crucial in problem definition, solution finding, and designing flows. The outcomes of his professional and meticulously crafted designs have always been outstanding. He is a consummate professional, and I highly recommend him.",
-    linkedin: "https://www.linkedin.com/in/hosseinmahmoudvand/",
   },
 ];
 

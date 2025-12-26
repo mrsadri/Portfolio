@@ -42,7 +42,7 @@
 ## 📋 Team Memories Section - Final Content
 
 ### Professional Stories (5)
-1. **My Divar Product Team** - Rooftop gathering with design team
+1. **My Colleagues at Divar** - Rooftop gathering with design team
 2. **Teaching Product Design at Rahnema College** - Winter 2023 with students
 3. **Completing the Data Analysis Bootcamp** - 170-hour journey
 4. **Final Evaluation Day: Data Analysis Bootcamp** - Stepping outside comfort zone
@@ -87,7 +87,7 @@ git commit -m "feat: Update Team Memories with 8 curated stories and rename imag
 - Rebuild production artifacts with updated content
 
 Professional stories (5):
-- My Divar Product Team
+- My Colleagues at Divar
 - Teaching at Rahnema College
 - Data Analysis Bootcamp journey (2 moments)
 - Early days at Tiara UX Agency

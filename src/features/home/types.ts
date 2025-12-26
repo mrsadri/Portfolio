@@ -1,4 +1,4 @@
-import type { ImageResource, LinkResource } from "../../types/content";
+import type { ImageResource } from "../../types/content";
 
 export type HeroContent = {
   greeting: string;
@@ -46,14 +46,6 @@ export type CaseStudySummary = {
 };
 
 export type CaseStudyId = CaseStudySummary["id"];
-
-export type ExperienceSummary = {
-  title: string;
-  description: string;
-  tags: readonly string[];
-  image: ImageResource;
-  link?: LinkResource;
-};
 
 export type SocialLink = {
   label: string;

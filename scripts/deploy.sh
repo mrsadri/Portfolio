@@ -64,7 +64,7 @@ git commit -m "feat: Update Team Memories with 8 curated stories and rename imag
 - Rebuild production artifacts with updated content
 
 Professional stories (5):
-- My Divar Product Team
+- My Colleagues at Divar
 - Teaching at Rahnema College
 - Data Analysis Bootcamp journey (2 moments)
 - Early days at Tiara UX Agency

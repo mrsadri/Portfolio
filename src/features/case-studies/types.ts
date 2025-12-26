@@ -19,7 +19,8 @@ export type CaseStudySection = {
     value: string;
     description?: string;
   }[];
-  image?: ImageResource;
+  image?: ImageResource; // Single image (for backward compatibility)
+  images?: readonly ImageResource[]; // Multiple images for complex sections
 };
 
 export type CaseStudyOverview = {

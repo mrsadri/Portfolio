@@ -1,23 +1,28 @@
 import divarSecureCallListingAsset from "../../../../images/divar-secure-call-listing.png";
+import divarIntroductionAsset from "../../../../images/divar-introduction.png";
+import divarThinkingProcessAsset from "../../../../images/divar-thinking-process.png";
+import divarGraph1Asset from "../../../../images/divar-graph-1.png";
+import divarGraph2Asset from "../../../../images/divar-graph-2.png";
+import divarGraph3Asset from "../../../../images/divar-graph-3.png";
+import divarCodeSample1Asset from "../../../../images/divar-code-sample-1.png";
+import divarCodeSample2Asset from "../../../../images/divar-code-sample-2.png";
+import divarInterviewLeftAsset from "../../../../images/divar-interview-left.png";
+import divarInterviewRightAsset from "../../../../images/divar-interview-right.png";
 import setareAvalInterviewAsset from "../../../../images/setare-aval-interview-session.avif";
 import setareAvalUserFlowAsset from "../../../../images/setare-aval-user-flow.webp";
 import { createImageResource } from "@shared/utils/assets";
 import type { CaseStudyEntry, CaseStudyOverview, CaseStudySection } from "../types";
 
 export const divarOverview: CaseStudyOverview = {
-  title:
-    "Solving Harassment at Scale: How I Protected 2.1M Users on Iran's Largest Marketplace",
-  subtitle:
-    "We reduced harassment incidents by 60% inside Divar’s clothing category by building a privacy-first calling experience that now protects 2.1M weekly users.",
+  title: "Solving Harassment at Scale",
+  subtitle: "How I Protected 2.1M Users on Iran's Largest Marketplace",
   meta: [
-    { label: "Role", value: "Senior UX Designer · Trust & Safety" },
+    { label: "My Role", value: "Senior UX Designer" },
     { label: "Timeline", value: "May – June 2023" },
-    { label: "Team", value: "Design, Trust & Safety, Legal, Engineering, Support" },
   ],
   stats: [
-    { value: "▼60%", label: "Harassment reports" },
-    { value: "2.1M", label: "Weekly callers safeguarded" },
-    { value: "▼18%", label: "Safety ticket volume" },
+    { value: "▼60%", label: "Harassment reports", description: "Within 8 weeks of launch" },
+    { value: "2.1M", label: "Weekly callers safeguarded", description: "Protected by secure call system" },
   ],
   heroImage: createImageResource(
     import.meta.url,
@@ -29,29 +34,33 @@ export const divarOverview: CaseStudyOverview = {
 
 export const divarSections: CaseStudySection[] = [
   {
-    id: "context",
-    title: "Context",
-    summary:
-      "Divar is Iran’s largest classifieds marketplace with 53M+ weekly users. Trust and safety incidents can collapse entire revenue categories if left unchecked.",
+    id: "platform",
+    title: "The Platform",
+    shortTitle: "Context",
+    summary: "What is Divar Classified Ads?",
+    image: createImageResource(
+      import.meta.url,
+      divarIntroductionAsset,
+      "Divar platform introduction showing classified ads interface",
+      { width: 1626, height: 885 },
+    ),
     metrics: [
-      { label: "Marketplace scale", value: "53M+", description: "Weekly buyers & sellers" },
-      { label: "Voice dependence", value: "2.1M", description: "Calls placed every week" },
-      { label: "Ad consumption", value: "6B+", description: "Monthly ad views" },
+      { label: "Weekly buyers & sellers", value: "53M+", description: "" },
+      { label: "Annual Ads Published", value: "180M+", description: "" },
+      { label: "Annual Ad Viewed", value: "72B+", description: "" },
     ],
-    highlights: [
-      "Clothing listings—mostly women-led—were hit hardest by abuse.",
-      "Manual moderation couldn’t keep up; liquidity and trust were in free fall.",
+    body: [
+      "Divar is Iran's largest and most popular online classified ads platform, launched in 2012, where individuals and businesses can easily buy, sell, or offer services directly to each other. It covers a wide range of categories such as real estate, vehicles, jobs, services, electronics, and personal items, with a strong focus on local, city-based listings. Divar is widely used for its simple interface, fast posting process, and high visibility, making it a go-to marketplace for everyday transactions across Iran.",
     ],
   },
   {
-    id: "crisis",
-    title: "The Crisis",
+    id: "issue",
+    title: "The Issue",
     summary:
       "Customer care centres were flooded with harassment reports. Sellers deleted listings or churned entirely, fearing repeat incidents.",
     bullets: [
-      "Harassers scraped phone numbers from ads and circulated them in private Telegram groups.",
       "Even after victims deleted listings, the calls continued because numbers were already exposed.",
-      "Without intervention, Divar risked losing a category that anchored daily engagement.",
+      "Divar risked losing a category that anchored daily engagement.",
     ],
     quotes: [
       {
@@ -62,99 +71,181 @@ export const divarSections: CaseStudySection[] = [
     ],
   },
   {
-    id: "investigation",
-    title: "Finding the Real Problem",
+    id: "interview-results",
+    title: "The result of interview:",
+    shortTitle: "Interview Results",
     summary:
-      "I interviewed harassed sellers and analysed behavioural data to understand how exposure scaled. The breakthrough came from connecting qualitative stories to quantitative signals.",
+      "I interviewed harassed sellers and analysed behavioural data to understand: How did this happen? How did people solve this problem or prevent it from happening?",
+    images: [
+      createImageResource(
+        import.meta.url,
+        divarInterviewLeftAsset,
+        "Interview session - left side showing discussion with stakeholders",
+        { width: 1041, height: 846 },
+      ),
+      createImageResource(
+        import.meta.url,
+        divarInterviewRightAsset,
+        "Interview session - right side showing insights and notes",
+        { width: 568, height: 846 },
+      ),
+    ],
+  },
+  {
+    id: "finding-problem",
+    title: "Digging to find the Real Problem",
+    summary: "The breakthrough came from connecting qualitative stories to quantitative signals.",
+    image: createImageResource(
+      import.meta.url,
+      divarThinkingProcessAsset,
+      "Research insights flow diagram showing user quote to assumption to data validation process",
+      { width: 2280, height: 461 },
+    ),
+    highlights: [
+      "Assumption:",
+      "Users are being harassed through their phone numbers on social media platforms.",
+      "Validation:",
+      "To test this assumption, I sampled 1,000 fashion sellers who had posted advertisements in this category over the past two months, then I identified users who had experienced harassment and compared their WhatsApp profile characteristics across two groups:",
+      "Random Sample: Representative baseline of all fashion sellers",
+      "Harassment Victims: Sellers who reported being harassed",
+      "Classified in three profile types: A. Phone number with WhatsApp account + profile image B. Phone number with WhatsApp account, without profile image C. Phone number with no WhatsApp account",
+      "Assumption:",
+      "Sellers in this category are increasingly hiding their phone numbers in advertisements and relying on in-app messaging instead to avoid harassment.",
+      "Validation:",
+      "I conducted two comparative analyses to test this behaviour:",
+      "Analysis 1: Cross-Category Comparison",
+      "I compared the percentage of ads with hidden phone numbers in the fashion/apparel category against other product categories on the platform.",
+      "Query:",
+      "Note: Tables and col names are changed due to company privacy",
+      "Analysis 2: Experience-Based Behaviour",
+      "We examined posting patterns over the past two months, comparing: First-time sellers: Percentage showing phone numbers in their initial ads Experienced sellers: Percentage showing phone numbers in subsequent ads (2nd, 3rd listings)",
+      "Query:",
+      "Note: Tables and col names are changed due to company privacy",
+    ],
+    images: [
+      createImageResource(
+        import.meta.url,
+        divarGraph1Asset,
+        "WhatsApp profile comparison chart showing Random Sample vs Victims of harassment",
+        { width: 2280, height: 768 },
+      ),
+      createImageResource(
+        import.meta.url,
+        divarGraph2Asset,
+        "Cross-category comparison chart showing proportion of hidden phone numbers per category",
+        { width: 2280, height: 768 },
+      ),
+      createImageResource(
+        import.meta.url,
+        divarCodeSample1Asset,
+        "SQL query for cross-category comparison analysis",
+        { width: 1224, height: 738 },
+      ),
+      createImageResource(
+        import.meta.url,
+        divarGraph3Asset,
+        "Experience-based behavior chart showing percentage of ads with hidden phone numbers by posting sequence",
+        { width: 2280, height: 768 },
+      ),
+      createImageResource(
+        import.meta.url,
+        divarCodeSample2Asset,
+        "SQL query with CTE for experience-based behavior analysis",
+        { width: 1224, height: 1767 },
+      ),
+    ],
     body: [
-      "Patterns emerged quickly: harassers saved posted numbers, cross-referenced them on WhatsApp and Instagram, and only then began the abuse. Experienced sellers had already stopped sharing numbers and relied on in-app chat—new sellers were the ones left exposed.",
-      "Sara’s mention of a caller referencing her eye color confirmed our hypothesis: social media breadcrumbs made harassment personal and frightening.",
-      "Data analysis backed the qualitative work. Users whose phone numbers were linked to public social profiles reported harassment dramatically more often. Those who stuck to in-app chat rarely did.",
+      "Key Findings:",
+      "Harassment victims are significantly more likely to have recognisable profile on social media.",
+      "Note: we cannot recommend that sellers hide their profile pictures, since those build trust with legitimate customers.",
+      "Data shows fashion sellers have been forced to adopt systematic self-protection strategies in response to persistent harassment.",
+      "Key Findings:",
+      "Most experienced fashion sellers hide their phone numbers, higher than other categories Sellers learn defensive behaviour immediately, there's a sharp decrease between their 1st and 2nd ad in clothing category",
+      "In addition to quotes from interview and validating them by data, now we now the story of this issue.",
+      "And we know what people do to prevent it: They use in-app message, instead of sharing their numbers.",
     ],
     quotes: [
       {
         author: "Sara, 26",
         role: "Fashion retail worker",
-        text: "One caller knew my eye color. They clearly found my Instagram through the phone number on Divar.",
+        text: "One caller even knew my eye colour. They clearly found my WhatsApp through the phone number on Divar.",
       },
       {
         author: "Zahra, 28",
         role: "Freelance graphic designer",
-        text: "I stopped listing my phone number. It felt unprofessional, but it was the only way to avoid harassment.",
+        text: "I stopped publishing my phone number on my ads. It felt unprofessional, but it was the only way to avoid harassment.",
       },
     ],
+  },
+  {
+    id: "solution-journey",
+    title: "Pick the right solution",
+    shortTitle: "The Solution Journey",
+    summary: "What solutions did we have?",
+    bullets: [
+      "1. User Education on Harasser Tactics\nInforming users about how harassers typically identify them.\nRejected because:\nCould damage Divar's reputation by highlighting vulnerabilities\nMight discourage users from posting ads\nSophisticated harassers would adapt",
+      "2. In-App VoIP Calls\nUsing Voice over Internet Protocol to allow calls within the Divar app, masking user phone numbers.\n\nRejected because:\n\nExpensive to scale infrastructure\nInconsistent internet quality across Iran\n47% of users on older Android versions couldn't use it\nWould increase app size significantly",
+      "3. Intermediary Numbers for Secure Calls\nWhen a buyer clicks \"view contact number,\" display a Divar intermediary number instead of the seller's real number. Calls are forwarded behind the scenes.",
+    ],
+  },
+  {
+    id: "implementation-journey",
+    title: "The Implementation Journey",
+    summary:
+      "The First Attempt We ran a 3-hour pilot in the clothing category. nothing was changed. just instead of showing the post publisher number we show Divar proxy number and and divert calls from that ad viewer to post publisher.",
+    // TODO: Add storyboard image for first attempt
+    body: [
+      "The results were... problematic.",
+      "56% Calls Failed to Connect",
+    ],
     highlights: [
-      "Public phone numbers were the root cause of exposure, not the number of reports.",
-      "Experienced sellers had already adapted by using in-app chat; new sellers needed protective defaults.",
+      "Root Cause Analysis",
+      "I developed assumptions for the 56% failure rate: Unknown incoming calls: Users blocking unfamiliar numbers Caller confusion: Users redialing from call logs instead of the app Competitor scraping: Ads reposted elsewhere without our system integration Device inconsistency: Users calling from different phones than they registered with Callee confusion: Users calling back unmapped numbers",
+      "2nd stakeholders interview",
+      "to get insight for second iteration",
+      "Bidirectional Mapping Sellers could now call buyers back, creating two-way communication.",
+      "Extended Mapping Time Increased from 20 seconds to 15 minutes for flexibility in communication.",
+      "Voice Message Introduction Added explanation at call start: \"This is a secure call from Divar...\" to guide users and deter scammers.",
+      "System Architecture Improvement Number Pool Solution Created 100 intermediary numbers Each buyer-seller pair got a unique number Maintained mapping for repeat contacts Prevented permanent blocking issues",
+      "User interface, phase 1",
+      "User interface, phase 2",
     ],
-  },
-  {
-    id: "strategy",
-    title: "The Solution Journey",
-    summary:
-      "We reframed success from “reduce reports” to “reduce exposure.” With Trust & Safety, Legal, Support, and Data, we evaluated every path and stress-tested edge cases before committing.",
     bullets: [
-      "Educating users about harasser tactics would erode trust and discourage listings.",
-      "Full VoIP was cost-prohibitive, fragile across device types, and inaccessible to 47% of legacy Android users.",
-      "Voice relay with intermediary numbers protected sellers without changing purchase behaviour—this became the north star.",
+      "User Side Issues Sellers couldn't see buyer numbers for follow-up contact Users blocked the intermediary number thinking it was spam All callers showed the same number, causing massive confusion",
+      "Technical Side Issues Call volume peaks were much higher than expected System bottlenecks during high traffic",
+      "Business Side Issues Calls lasted longer than predicted, inflating costs The anonymity attracted potential scammers",
     ],
-  },
-  {
-    id: "testing",
-    title: "Testing & Learning from Failure",
-    summary:
-      "A 3-day pilot in the clothing category resulted in a 56% call failure rate. Instead of reverting, we treated every failure as a design requirement.",
-    bullets: [
-      "User behaviour: sellers blocked unfamiliar numbers; buyers redialled from call logs; repeat conversations broke mapping windows.",
-      "Technical load: call volume spiked beyond forecasts and number pools were exhausted.",
-      "Business risk: longer calls inflated telecom costs and anonymised numbers attracted opportunistic scammers.",
-    ],
-  },
-  {
-    id: "refinement",
-    title: "The Refined Solution",
-    summary:
-      "We translated every pilot insight into product and platform improvements before scaling nationwide.",
-    bullets: [
-      "Bidirectional mapping let sellers reconnect without exposing real numbers.",
-      "Extended mapping windows from 20 seconds to 15 minutes reduced dropped calls.",
-      "Voice prompts (“This is a secure call from Divar…”) set expectations and deterred scammers.",
-      "A pool of 100 intermediary numbers assigned per buyer-seller pair prevented reuse and blocking.",
-      "Secure call history, chat integration, and ad management logs kept legitimate relationships intact.",
-    ],
+    // TODO: Add UI phase 1 and phase 2 images
   },
   {
     id: "impact",
-    title: "Impact",
-    body: [
-      "After rollout, harassment reports dropped dramatically and sellers felt safe enough to keep listings live. Moderation teams recovered hours each week that were previously spent on reactive tickets.",
-    ],
+    title: "The Impact",
+    summary:
+      "After rollout, harassment reports dropped dramatically and sellers felt safe enough to keep listings live.",
     metrics: [
-      {
-        label: "Harassment reports",
-        value: "▼ 60%",
-        description: "Within 8 weeks of launch",
-      },
-      {
-        label: "Ad deletions",
-        value: "▼ 25%",
-        description: "Fewer sellers leaving the platform",
-      },
-      {
-        label: "Support tickets",
-        value: "▼ 18%",
-        description: "More time for proactive monitoring",
-      },
+      { label: "Harassment reports", value: "▼ 60%", description: "Within 8 weeks of launch" },
+      { label: "Weekly callers safeguarded", value: "2.1M", description: "Protected by secure call system" },
+    ],
+    body: [
+      "Quantitative Results",
+      "~60% reduction in harassment reports",
+      "~2.1 million active users per week continuously protected by the secure call system",
+      "Significant increase in secure call adoption in clothing category",
+      "Ongoing safety infrastructure serving millions weekly",
+      "Qualitative Results",
+      "Users felt safer posting clothing ads",
+      "Increased trust in platform protection",
+      "Maintained communication efficiency without compromising privacy",
     ],
   },
   {
     id: "learnings",
     title: "Key Learnings",
     bullets: [
-      "The obvious problem is rarely the real one—exposure, not reports, was the root.",
-      "Users were already designing workarounds; observing them revealed the right defaults.",
-      "Failure is signal. The 56% pilot failure generated a backlog of actionable requirements.",
-      "Pair qualitative insight with real-time monitoring to keep abuse vectors in check.",
+      "1. The obvious problem isn't always the real problem Initial instinct was to hide numbers. The real issue was the connection between phone numbers and social media profiles.",
+      "2. Users are already solving problems—listen to them The solution came from observing how experienced users adapted (avoiding phone numbers, using in-app chat).",
+      "3. Failure is a feature, not a bug The 56% failure rate in our pilot gave us the insights we needed to build a robust solution.",
+      "4. Iterate ruthlessly From immediate fixes (voice messages) to structural improvements (number pools), each iteration solved specific user pain points.",
     ],
   },
   {
