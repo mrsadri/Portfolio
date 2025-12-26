@@ -278,6 +278,12 @@
           if (!candidate) {
             console.error("Unable to load any client bundle. Tried paths:", candidates);
             console.error("GitHub Pages should serve from /docs folder with /docs prefix stripped from URLs");
+            
+            // Show error message to user
+            const fallback = document.getElementById('loading-fallback');
+            if (fallback) {
+              fallback.innerHTML = '<div style="text-align: center; color: white; padding: 2rem;"><h1 style="margin: 0 0 1rem; font-size: 1.5rem;">Failed to Load Portfolio</h1><p style="margin: 0 0 1rem; line-height: 1.6;">Unable to load the application. Please check your connection and try again.</p><p style="margin: 0; font-size: 0.9rem; opacity: 0.8;">Tried paths: ' + candidates.join(', ') + '</p></div>';
+            }
             return;
           }
 
@@ -296,6 +302,15 @@
         };
 
         appendModule(0);
+        
+        // Timeout fallback: if React hasn't mounted after 10 seconds, show error
+        setTimeout(function() {
+          var fallback = document.getElementById('loading-fallback');
+          var root = document.getElementById('root');
+          if (fallback && root && root.children.length === 0) {
+            fallback.innerHTML = '<div style="text-align: center; color: white; padding: 2rem;"><h1 style="margin: 0 0 1rem; font-size: 1.5rem;">Loading Taking Too Long</h1><p style="margin: 0 0 1rem; line-height: 1.6;">The portfolio is taking longer than expected to load. Please try refreshing the page.</p><button onclick="window.location.reload()" style="margin-top: 1rem; padding: 0.75rem 1.5rem; font-size: 1rem; background: white; color: #667eea; border: none; border-radius: 8px; cursor: pointer; font-weight: 600;">Refresh Page</button></div>';
+          }
+        }, 10000);
       })();
     </script>
   </body>
