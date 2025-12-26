@@ -71,9 +71,9 @@ export const divarSections: CaseStudySection[] = [
     ],
   },
   {
-    id: "interview-results",
-    title: "The result of interview:",
-    shortTitle: "Interview Results",
+    id: "problem",
+    title: "Digging to find the Real Problem",
+    shortTitle: "The Right Problem",
     summary:
       "I interviewed harassed sellers and analysed behavioural data to understand: How did this happen? How did people solve this problem or prevent it from happening?",
     images: [
@@ -92,8 +92,9 @@ export const divarSections: CaseStudySection[] = [
     ],
   },
   {
-    id: "finding-problem",
-    title: "Digging to find the Real Problem",
+    id: "investigation",
+    title: "The Process of investigation",
+    shortTitle: "The Investigation Process",
     summary: "The breakthrough came from connecting qualitative stories to quantitative signals.",
     image: createImageResource(
       import.meta.url,
@@ -102,25 +103,40 @@ export const divarSections: CaseStudySection[] = [
       { width: 2280, height: 461 },
     ),
     highlights: [
+      // Investigation 1
+      "User Quote:",
       "Assumption:",
       "Users are being harassed through their phone numbers on social media platforms.",
       "Validation:",
       "To test this assumption, I sampled 1,000 fashion sellers who had posted advertisements in this category over the past two months, then I identified users who had experienced harassment and compared their WhatsApp profile characteristics across two groups:",
       "Random Sample: Representative baseline of all fashion sellers",
       "Harassment Victims: Sellers who reported being harassed",
-      "Classified in three profile types: A. Phone number with WhatsApp account + profile image B. Phone number with WhatsApp account, without profile image C. Phone number with no WhatsApp account",
+      "Classified in three profile types:",
+      "A. Phone number with WhatsApp account + profile image",
+      "B. Phone number with WhatsApp account, without profile image",
+      "C. Phone number with no WhatsApp account",
+      "Key Findings:",
+      // Investigation 2 - Part 1 (before Graph 2)
+      "User Quote:",
       "Assumption:",
       "Sellers in this category are increasingly hiding their phone numbers in advertisements and relying on in-app messaging instead to avoid harassment.",
       "Validation:",
       "I conducted two comparative analyses to test this behaviour:",
       "Analysis 1: Cross-Category Comparison",
       "I compared the percentage of ads with hidden phone numbers in the fashion/apparel category against other product categories on the platform.",
+      // Graph 2 inserted here (images[1])
       "Query:",
+      // Code Sample 1 inserted here (images[2])
       "Note: Tables and col names are changed due to company privacy",
       "Analysis 2: Experience-Based Behaviour",
-      "We examined posting patterns over the past two months, comparing: First-time sellers: Percentage showing phone numbers in their initial ads Experienced sellers: Percentage showing phone numbers in subsequent ads (2nd, 3rd listings)",
+      "We examined posting patterns over the past two months, comparing:",
+      "First-time sellers: Percentage showing phone numbers in their initial ads",
+      "Experienced sellers: Percentage showing phone numbers in subsequent ads (2nd, 3rd listings)",
+      // Graph 3 inserted here (images[3])
       "Query:",
+      // Code Sample 2 inserted here (images[4])
       "Note: Tables and col names are changed due to company privacy",
+      "Key Findings:",
     ],
     images: [
       createImageResource(
@@ -155,14 +171,13 @@ export const divarSections: CaseStudySection[] = [
       ),
     ],
     body: [
-      "Key Findings:",
       "Harassment victims are significantly more likely to have recognisable profile on social media.",
       "Note: we cannot recommend that sellers hide their profile pictures, since those build trust with legitimate customers.",
       "Data shows fashion sellers have been forced to adopt systematic self-protection strategies in response to persistent harassment.",
-      "Key Findings:",
-      "Most experienced fashion sellers hide their phone numbers, higher than other categories Sellers learn defensive behaviour immediately, there's a sharp decrease between their 1st and 2nd ad in clothing category",
-      "In addition to quotes from interview and validating them by data, now we now the story of this issue.",
+      "Most experienced fashion sellers hide their phone numbers, higher than other categories",
+      "Sellers learn defensive behaviour immediately, there's a sharp decrease between their 1st and 2nd ad in clothing category",
       "And we know what people do to prevent it: They use in-app message, instead of sharing their numbers.",
+      "In addition to quotes from interview and validating them by data, now we now the story of this issue.",
     ],
     quotes: [
       {
@@ -178,9 +193,9 @@ export const divarSections: CaseStudySection[] = [
     ],
   },
   {
-    id: "solution-journey",
+    id: "solution",
     title: "Pick the right solution",
-    shortTitle: "The Solution Journey",
+    shortTitle: "To Find the Right Solution",
     summary: "What solutions did we have?",
     bullets: [
       "1. User Education on Harasser Tactics\nInforming users about how harassers typically identify them.\nRejected because:\nCould damage Divar's reputation by highlighting vulnerabilities\nMight discourage users from posting ads\nSophisticated harassers would adapt",
@@ -189,8 +204,9 @@ export const divarSections: CaseStudySection[] = [
     ],
   },
   {
-    id: "implementation-journey",
+    id: "implementation",
     title: "The Implementation Journey",
+    shortTitle: "The Rapid Implementation",
     summary:
       "The First Attempt We ran a 3-hour pilot in the clothing category. nothing was changed. just instead of showing the post publisher number we show Divar proxy number and and divert calls from that ad viewer to post publisher.",
     // TODO: Add storyboard image for first attempt
@@ -218,8 +234,37 @@ export const divarSections: CaseStudySection[] = [
     // TODO: Add UI phase 1 and phase 2 images
   },
   {
+    id: "measurement",
+    title: "The measurement",
+    shortTitle: "The measurement",
+    summary: "Measurement and analysis of the implementation results.",
+    // TODO: Add measurement content
+  },
+  {
+    id: "iteration2",
+    title: "The Second Iteration",
+    shortTitle: "The Second Iteration",
+    summary: "Second iteration improvements based on initial results.",
+    // TODO: Add second iteration content
+  },
+  {
+    id: "refined",
+    title: "The Refined Solution",
+    shortTitle: "The Refined Solution",
+    summary: "Refined solutions based on stakeholder feedback and analysis.",
+    // TODO: Add refined solution content
+  },
+  {
+    id: "iteration3",
+    title: "The 3rd Iteration & The UI",
+    shortTitle: "The 3rd Iteration & The UI",
+    summary: "Third iteration including UI improvements.",
+    // TODO: Add third iteration and UI content
+  },
+  {
     id: "impact",
     title: "The Impact",
+    shortTitle: "The Overall Impact",
     summary:
       "After rollout, harassment reports dropped dramatically and sellers felt safe enough to keep listings live.",
     metrics: [
@@ -241,11 +286,18 @@ export const divarSections: CaseStudySection[] = [
   {
     id: "learnings",
     title: "Key Learnings",
-    bullets: [
-      "1. The obvious problem isn't always the real problem Initial instinct was to hide numbers. The real issue was the connection between phone numbers and social media profiles.",
-      "2. Users are already solving problems—listen to them The solution came from observing how experienced users adapted (avoiding phone numbers, using in-app chat).",
-      "3. Failure is a feature, not a bug The 56% failure rate in our pilot gave us the insights we needed to build a robust solution.",
-      "4. Iterate ruthlessly From immediate fixes (voice messages) to structural improvements (number pools), each iteration solved specific user pain points.",
+    body: [
+      "1. The obvious problem isn't always the real problem",
+      "Initial instinct was to hide numbers. The real issue was the connection between phone numbers and social media profiles.",
+      "",
+      "2. Users are already solving problems, listen to them",
+      "The solution came from observing how experienced users adapted (avoiding phone numbers, using in-app chat).",
+      "",
+      "3. Failure is a feature, not a bug",
+      "The 56% failure rate in our pilot gave us the insights we needed to build a robust solution.",
+      "",
+      "4. Iterate ruthlessly",
+      "From immediate fixes (voice messages) to structural improvements (number pools), each iteration solved specific user pain points.",
     ],
   },
   {
@@ -253,6 +305,13 @@ export const divarSections: CaseStudySection[] = [
     title: "Reflection",
     body: [
       "This project reinforced my belief that solving hard problems starts with understanding behaviour. By blending research, data, and rapid iteration, we built a safety layer that still protects millions of people each week. The harassment problem may never disappear entirely, but Divar is significantly safer for the users who need it most.",
+    ],
+  },
+  {
+    id: "acknowledgment",
+    title: "Acknowledgments",
+    body: [
+      "Thanks to Omid Morousi, the product manager and the dev team.",
     ],
   },
 ];

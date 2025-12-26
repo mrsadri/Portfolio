@@ -6,8 +6,8 @@ import Grid from "@mui/system/Grid";
 const CaseStudySectionCardComponent = ({ section }: { section: CaseStudySection }) => {
   const theme = useTheme();
 
-  // Special rendering for finding-problem section to match Figma order
-  if (section.id === "finding-problem") {
+  // Special rendering for investigation section to match HTML order
+  if (section.id === "investigation") {
     return (
       <Stack
         component="section"
@@ -118,7 +118,7 @@ const CaseStudySectionCardComponent = ({ section }: { section: CaseStudySection 
         {/* First Assumption & Validation */}
         {section.highlights && (
           <Stack spacing={1} sx={{ mt: 2 }}>
-            {section.highlights.slice(0, 7).map((highlight, index) => {
+            {section.highlights.slice(0, 12).map((highlight, index) => {
               const isLabel = highlight.endsWith(":");
               const isAnalysisTitle = highlight.startsWith("Analysis");
               return (
@@ -130,7 +130,7 @@ const CaseStudySectionCardComponent = ({ section }: { section: CaseStudySection 
                     fontSize: "1rem",
                     lineHeight: "28px",
                     fontWeight: (isLabel || isAnalysisTitle) ? 700 : 400, // Bold for labels and analysis titles
-                    mb: isLabel && index < 6 ? 0.5 : 0,
+                    mb: isLabel && index < 11 ? 0.5 : 0,
                   }}
                 >
                   {highlight}
@@ -233,13 +233,13 @@ const CaseStudySectionCardComponent = ({ section }: { section: CaseStudySection 
           </>
         )}
 
-        {/* Second Assumption & Validation */}
+        {/* Second Assumption & Validation - Part 1 (before Graph 2) */}
         {section.highlights && (
           <Stack spacing={1} sx={{ mt: 2 }}>
-            {section.highlights.slice(7).map((highlight, index) => {
+            {section.highlights.slice(12, 19).map((highlight, index) => {
               const isLabel = highlight.endsWith(":");
               const isAnalysisTitle = highlight.startsWith("Analysis");
-              const actualIndex = index + 7;
+              const actualIndex = index + 12;
               return (
                 <Typography
                   key={actualIndex}
@@ -249,7 +249,7 @@ const CaseStudySectionCardComponent = ({ section }: { section: CaseStudySection 
                     fontSize: "1rem",
                     lineHeight: "28px",
                     fontWeight: (isLabel || isAnalysisTitle) ? 700 : 400, // Bold for labels and analysis titles
-                    mb: isLabel && actualIndex < section.highlights!.length - 1 ? 0.5 : 0,
+                    mb: isLabel && actualIndex < 18 ? 0.5 : 0,
                   }}
                 >
                   {highlight}
@@ -277,8 +277,8 @@ const CaseStudySectionCardComponent = ({ section }: { section: CaseStudySection 
           />
         )}
 
-        {/* Code Sample 1 */}
-        {section.images && section.images[2] && (
+        {/* Query label and Code Sample 1 */}
+        {section.highlights && section.highlights[19] === "Query:" && (
           <>
             <Typography
               variant="body1"
@@ -287,46 +287,81 @@ const CaseStudySectionCardComponent = ({ section }: { section: CaseStudySection 
                 fontSize: "1rem",
                 lineHeight: "28px",
                 fontWeight: 700, // Bold for labels
+                mt: 2,
               }}
             >
               Query:
             </Typography>
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "center",
-                my: 2,
-              }}
-            >
+            {section.images && section.images[2] && (
               <Box
-                component="img"
-                src={section.images[2].src}
-                alt={section.images[2].alt}
-                loading="lazy"
                 sx={{
-                  width: "100%",
-                  maxWidth: "408px",
-                  borderRadius: "12px",
-                  boxShadow:
-                    theme.palette.mode === "light"
-                      ? "0 18px 28px rgba(34,84,255,0.18)"
-                      : "0 24px 40px rgba(0,0,0,0.45)",
+                  display: "flex",
+                  justifyContent: "center",
+                  my: 2,
                 }}
-              />
-            </Box>
-            <Typography
-              variant="body2"
-              color="text.secondary"
-              sx={{
-                fontSize: "0.75rem",
-                lineHeight: "14.5px",
-                fontWeight: 400,
-                textAlign: "center",
-              }}
-            >
-              Note: Tables and col names are changed due to company privacy
-            </Typography>
+              >
+                <Box
+                  component="img"
+                  src={section.images[2].src}
+                  alt={section.images[2].alt}
+                  loading="lazy"
+                  sx={{
+                    width: "100%",
+                    maxWidth: "408px",
+                    borderRadius: "12px",
+                    boxShadow:
+                      theme.palette.mode === "light"
+                        ? "0 18px 28px rgba(34,84,255,0.18)"
+                        : "0 24px 40px rgba(0,0,0,0.45)",
+                  }}
+                />
+              </Box>
+            )}
+            {section.highlights[20] && (
+              <Typography
+                variant="body2"
+                color="text.secondary"
+                sx={{
+                  fontSize: "0.75rem",
+                  lineHeight: "14.5px",
+                  fontWeight: 400,
+                  textAlign: "center",
+                }}
+              >
+                {section.highlights[20]}
+              </Typography>
+            )}
           </>
+        )}
+
+        {/* Second Assumption & Validation - Part 2 (Analysis 2 and after) */}
+        {section.highlights && (
+          <Stack spacing={1} sx={{ mt: 2 }}>
+            {section.highlights.slice(21, 26).map((highlight, index) => {
+              const isLabel = highlight.endsWith(":");
+              const isAnalysisTitle = highlight.startsWith("Analysis");
+              const actualIndex = index + 21;
+              // Skip "Query:" and "Note:" as they're handled separately with images
+              if (highlight === "Query:" || highlight.startsWith("Note:")) {
+                return null;
+              }
+              return (
+                <Typography
+                  key={actualIndex}
+                  variant="body1"
+                  color="text.secondary"
+                  sx={{
+                    fontSize: "1rem",
+                    lineHeight: "28px",
+                    fontWeight: (isLabel || isAnalysisTitle) ? 700 : 400, // Bold for labels and analysis titles
+                    mb: isLabel && actualIndex < 25 ? 0.5 : 0,
+                  }}
+                >
+                  {highlight}
+                </Typography>
+              );
+            })}
+          </Stack>
         )}
 
         {/* Graph 3 */}
@@ -347,8 +382,8 @@ const CaseStudySectionCardComponent = ({ section }: { section: CaseStudySection 
           />
         )}
 
-        {/* Code Sample 2 */}
-        {section.images && section.images[4] && (
+        {/* Query label and Code Sample 2 */}
+        {section.highlights && section.highlights[25] === "Query:" && (
           <>
             <Typography
               variant="body1"
@@ -357,46 +392,67 @@ const CaseStudySectionCardComponent = ({ section }: { section: CaseStudySection 
                 fontSize: "1rem",
                 lineHeight: "28px",
                 fontWeight: 700, // Bold for labels
+                mt: 2,
               }}
             >
               Query:
             </Typography>
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "center",
-                my: 2,
-              }}
-            >
+            {section.images && section.images[4] && (
               <Box
-                component="img"
-                src={section.images[4].src}
-                alt={section.images[4].alt}
-                loading="lazy"
                 sx={{
-                  width: "100%",
-                  maxWidth: "408px",
-                  borderRadius: "12px",
-                  boxShadow:
-                    theme.palette.mode === "light"
-                      ? "0 18px 28px rgba(34,84,255,0.18)"
-                      : "0 24px 40px rgba(0,0,0,0.45)",
+                  display: "flex",
+                  justifyContent: "center",
+                  my: 2,
                 }}
-              />
-            </Box>
-            <Typography
-              variant="body2"
-              color="text.secondary"
-              sx={{
-                fontSize: "0.75rem",
-                lineHeight: "14.5px",
-                fontWeight: 400,
-                textAlign: "center",
-              }}
-            >
-              Note: Tables and col names are changed due to company privacy
-            </Typography>
+              >
+                <Box
+                  component="img"
+                  src={section.images[4].src}
+                  alt={section.images[4].alt}
+                  loading="lazy"
+                  sx={{
+                    width: "100%",
+                    maxWidth: "408px",
+                    borderRadius: "12px",
+                    boxShadow:
+                      theme.palette.mode === "light"
+                        ? "0 18px 28px rgba(34,84,255,0.18)"
+                        : "0 24px 40px rgba(0,0,0,0.45)",
+                  }}
+                />
+              </Box>
+            )}
+            {section.highlights[26] && (
+              <Typography
+                variant="body2"
+                color="text.secondary"
+                sx={{
+                  fontSize: "0.75rem",
+                  lineHeight: "14.5px",
+                  fontWeight: 400,
+                  textAlign: "center",
+                }}
+              >
+                {section.highlights[26]}
+              </Typography>
+            )}
           </>
+        )}
+
+        {/* Key Findings label */}
+        {section.highlights && section.highlights[27] === "Key Findings:" && (
+          <Typography
+            variant="body1"
+            color="text.secondary"
+            sx={{
+              fontSize: "1rem",
+              lineHeight: "28px",
+              fontWeight: 700,
+              mt: 2,
+            }}
+          >
+            Key Findings:
+          </Typography>
         )}
 
         {/* Final Findings */}
