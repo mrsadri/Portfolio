@@ -47,25 +47,21 @@ const getEnvBasename = () => {
 const detectBasename = () => {
   const envBasename = getEnvBasename();
   if (envBasename !== "/") {
-    console.log("[Router] Using explicit basename from env:", envBasename);
     return envBasename;
   }
 
   if (typeof window === "undefined") {
-    console.log("[Router] No window object, using basename: /");
     return "/";
   }
 
   const { hostname, pathname } = window.location;
   if (!hostname.endsWith("github.io")) {
-    console.log("[Router] Not GitHub Pages, using basename: /");
     return "/";
   }
 
   const [maybeRepo] = pathname.split("/").filter(Boolean);
-  const detectedBasename = maybeRepo ? normaliseBasename(maybeRepo) : "/";
-  console.log("[Router] Detected GitHub Pages basename:", detectedBasename, "from pathname:", pathname);
-  return detectedBasename;
+
+  return maybeRepo ? normaliseBasename(maybeRepo) : "/";
 };
 
 export const appRouter = createBrowserRouter(
