@@ -174,7 +174,6 @@ console.log("📁 Copying build artifacts to docs/...");
 await Promise.all([
   cp(distDir, docsClientDir, { recursive: true }),
   cp("images", join(docsDir, "images"), { recursive: true }),
-  cp("public/index.html", join(docsDir, "index.html")),
   cp("public/robots.txt", join(docsDir, "robots.txt")),
   cp("public/sitemap.xml", join(docsDir, "sitemap.xml")),
   cp(join(distDir, "main.js"), join(docsDir, "main.js")),
@@ -182,6 +181,35 @@ await Promise.all([
   cp(join(distDir, "main.css"), join(docsDir, "main.css")),
   copyPdfFiles(),
 ]);
+
+// Process index.html to inject base path into favicon links
+const indexHtmlPath = join(docsDir, "index.html");
+const indexHtmlContent = await readFile("public/index.html", "utf8");
+
+// Extract base path from homepage (e.g., "/Portfolio" from "https://mrsadri.github.io/Portfolio/")
+const homepage = packageMeta.homepage?.trim();
+let basePath = "";
+if (homepage) {
+  try {
+    const homepageUrl = new URL(homepage);
+    const pathname = homepageUrl.pathname.replace(/\/$/, "");
+    if (pathname && pathname !== "/") {
+      basePath = pathname;
+    }
+  } catch (error) {
+    // Ignore errors, use empty base path
+  }
+}
+
+// Update favicon links to include base path
+const updatedIndexHtml = indexHtmlContent.replace(
+  /href="images\/(favicon|apple-touch-icon)[^"]*"/g,
+  (match) => {
+    return match.replace('href="images/', `href="${basePath}/images/`);
+  },
+);
+
+await writeFile(indexHtmlPath, updatedIndexHtml);
 
 await Bun.write(join(docsDir, "404.html"), notFoundHtml);
 await writeFile(join(docsDir, ".nojekyll"), "");
