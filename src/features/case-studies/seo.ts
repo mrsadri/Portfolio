@@ -1,6 +1,8 @@
 import type { PageMetadata, StructuredData } from "@shared/seo";
 import getSiteUrl from "@shared/utils/site";
-import { divarOverview, setareOverview, setareYekOverview } from "./data/content";
+import { divarOverview } from "./data/divarContent";
+import { setareOverview } from "./data/setareAvalContent";
+import { setareYekOverview } from "./data/setareYekContent";
 
 const siteUrl = getSiteUrl();
 

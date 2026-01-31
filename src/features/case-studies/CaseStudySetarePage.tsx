@@ -7,11 +7,8 @@ import CaseStudyOverviewSection from "./components/CaseStudyOverviewSection";
 import CaseStudyRelatedSection from "./components/CaseStudyRelatedSection";
 import useCaseStudyNavigation from "./hooks/useCaseStudyNavigation";
 import useRelatedCaseStudies from "./hooks/useRelatedCaseStudies";
-import {
-  caseStudyEntries,
-  setareOverview,
-  setareSections,
-} from "./data/content";
+import { caseStudyEntries } from "./data/content";
+import { setareOverview, setareSections } from "./data/setareAvalContent";
 import { setareCaseStudyMetadata } from "./seo";
 
 const CaseStudySetarePage = () => {

@@ -26,6 +26,7 @@ export type CaseStudySection = {
 export type CaseStudyOverview = {
   title: string;
   subtitle?: string;
+  description?: string;
   meta: readonly {
     label: string;
     value: string;

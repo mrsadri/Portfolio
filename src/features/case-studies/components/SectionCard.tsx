@@ -37,6 +37,7 @@ const CaseStudySectionCardComponent = ({ section }: { section: CaseStudySection 
               fontSize: "1rem",
               lineHeight: "28px",
               fontWeight: 400,
+              whiteSpace: "pre-line",
             }}
           >
             {section.summary}
@@ -513,6 +514,7 @@ const CaseStudySectionCardComponent = ({ section }: { section: CaseStudySection 
                 fontSize: "1rem",
                 lineHeight: "28px",
                 fontWeight: 400,
+                whiteSpace: "pre-line",
               }}
             >
               {section.summary}
@@ -641,6 +643,7 @@ const CaseStudySectionCardComponent = ({ section }: { section: CaseStudySection 
                 fontSize: "1rem",
                 lineHeight: "28px",
                 fontWeight: 400,
+                whiteSpace: "pre-line",
               }}
             >
               {section.summary}
@@ -778,6 +781,7 @@ const CaseStudySectionCardComponent = ({ section }: { section: CaseStudySection 
               lineHeight: "28px", // Exact line height from Figma
               fontWeight: 400,
               mb: { xs: 1, md: 0 },
+              whiteSpace: "pre-line",
             }}
           >
             {section.summary}

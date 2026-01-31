@@ -7,11 +7,8 @@ import CaseStudyOverviewSection from "./components/CaseStudyOverviewSection";
 import CaseStudyRelatedSection from "./components/CaseStudyRelatedSection";
 import useCaseStudyNavigation from "./hooks/useCaseStudyNavigation";
 import useRelatedCaseStudies from "./hooks/useRelatedCaseStudies";
-import {
-  caseStudyEntries,
-  setareYekOverview,
-  setareYekSections,
-} from "./data/content";
+import { caseStudyEntries } from "./data/content";
+import { setareYekOverview, setareYekSections } from "./data/setareYekContent";
 import { setareYekCaseStudyMetadata } from "./seo";
 
 const CaseStudySetareYekPage = () => {

@@ -113,6 +113,11 @@ const CaseStudyOverviewSection = ({
                   {overview.subtitle ?? subtitleFallback}
                 </Typography>
               )}
+              {overview.description && (
+                <Typography variant="body1" color="text.secondary" sx={{ lineHeight: 1.65 }}>
+                  {overview.description}
+                </Typography>
+              )}
             </Stack>
 
             <Divider />

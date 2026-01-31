@@ -7,11 +7,8 @@ import CaseStudyOverviewSection from "./components/CaseStudyOverviewSection";
 import CaseStudyRelatedSection from "./components/CaseStudyRelatedSection";
 import useCaseStudyNavigation from "./hooks/useCaseStudyNavigation";
 import useRelatedCaseStudies from "./hooks/useRelatedCaseStudies";
-import {
-  caseStudyEntries,
-  divarOverview,
-  divarSections,
-} from "./data/content";
+import { caseStudyEntries } from "./data/content";
+import { divarOverview, divarSections } from "./data/divarContent";
 import { divarCaseStudyMetadata } from "./seo";
 
 const CaseStudyDivarPage = () => {
@@ -23,10 +20,11 @@ const CaseStudyDivarPage = () => {
     <>
       <Seo {...divarCaseStudyMetadata} />
       <CaseStudyOverviewSection
-        eyebrow="Trust & Safety · Case Study"
+        eyebrow="TRUST & SAFETY • CASE STUDY"
         overview={divarOverview}
         subtitleFallback={divarCaseStudyMetadata.description}
-        statsTitle="Impact snapshot"
+        metaTitle="PROJECT DETAILS"
+        statsTitle="IMPACT SNAPSHOT"
       />
 
       <Box component="section" sx={{ py: 3 }}>
