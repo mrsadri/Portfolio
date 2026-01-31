@@ -18,7 +18,7 @@ const resumeData = {
   experience: [
     {
       company: "BimeBazar | B2B/B2C insurance marketplace & digital distribution platform | Nationwide scale",
-      role: "Staff Product Designer",
+      role: "Senior Product Designer",
       jobType: "· Remote, Full-time",
       period: "August 2025 – Present | 5 months",
       description: "",
