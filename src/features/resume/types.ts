@@ -10,12 +10,17 @@ export type ResumeSummary = {
   description: string;
 };
 
+export type ThematicHighlight = {
+  theme: string;
+  text: string;
+};
+
 export type TimelineItem = {
   company: string;
   role: string;
   period: string;
   description: string;
-  highlights: readonly string[];
+  highlights: readonly (string | ThematicHighlight)[];
   location?: string;
   jobType?: string;
 };

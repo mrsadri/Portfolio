@@ -23,10 +23,10 @@ const ResumePage = () => {
 
       <HeaderSection summary={resumeSummary} actions={resumeActions} />
       <ExperienceSection items={professionalExperience} />
-      <VolunteerSection items={volunteerExperience} />
       <SkillsSection categories={skillCategories} />
-      <EducationSection items={resumeEducation} />
       <CertificatesSection certificates={resumeCertificates} />
+      <VolunteerSection items={volunteerExperience} />
+      <EducationSection items={resumeEducation} />
     </>
   );
 };

@@ -1,4 +1,4 @@
-import { Card, CardContent, Stack, Typography } from "@mui/material";
+import { Box, Card, CardContent, Stack, Typography } from "@mui/material";
 
 type ResumeCardProps = {
   // Header content
@@ -10,7 +10,7 @@ type ResumeCardProps = {
   
   // Body content
   description?: string;
-  highlights?: readonly string[];
+  highlights?: readonly (string | { theme: string; text: string })[];
   skills?: readonly string[];
   
   // Layout options
@@ -104,29 +104,43 @@ const ResumeCard = ({
       )}
       {highlights && highlights.length > 0 && (
         <Stack spacing={1.2} sx={{ mb: 0 }}>
-          {highlights.map((highlight) => (
-            <Stack key={highlight} direction="row" spacing={1.5} alignItems="flex-start">
-              <Typography
-                sx={{
-                  color: "primary.main",
-                  fontSize: "1.25rem",
-                  fontWeight: 600,
-                  mt: 0.25,
-                  flexShrink: 0,
-                  lineHeight: 1.6,
-                }}
-              >
-                ✓
-              </Typography>
-              <Typography
-                variant="body1"
-                color="text.primary"
-                sx={{ fontWeight: 400, lineHeight: 1.6 }}
-              >
-                {highlight}
-              </Typography>
-            </Stack>
-          ))}
+          {highlights.map((highlight, idx) => {
+            const isThematic = typeof highlight === "object" && "theme" in highlight;
+            const display = isThematic ? `${highlight.theme}: ${highlight.text}` : highlight;
+            const key = isThematic ? `${highlight.theme}-${idx}` : String(highlight).slice(0, 50);
+            return (
+              <Stack key={key} direction="row" spacing={1.5} alignItems="flex-start">
+                <Typography
+                  sx={{
+                    color: "primary.main",
+                    fontSize: "1.25rem",
+                    fontWeight: 600,
+                    mt: 0.25,
+                    flexShrink: 0,
+                    lineHeight: 1.6,
+                  }}
+                >
+                  ✓
+                </Typography>
+                <Typography
+                  variant="body1"
+                  color="text.primary"
+                  sx={{ fontWeight: 400, lineHeight: 1.6 }}
+                >
+                  {isThematic ? (
+                    <>
+                      <Box component="span" sx={{ fontWeight: 600 }}>
+                        {highlight.theme}:
+                      </Box>{" "}
+                      {highlight.text}
+                    </>
+                  ) : (
+                    display
+                  )}
+                </Typography>
+              </Stack>
+            );
+          })}
         </Stack>
       )}
       {skills && skills.length > 0 && (

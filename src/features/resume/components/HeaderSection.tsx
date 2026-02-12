@@ -1,5 +1,6 @@
 import DownloadRoundedIcon from "@mui/icons-material/DownloadRounded";
 import EmailRoundedIcon from "@mui/icons-material/EmailRounded";
+import ColorLensOutlinedIcon from "@mui/icons-material/ColorLensOutlined";
 import LanguageRoundedIcon from "@mui/icons-material/LanguageRounded";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import LocationOnRoundedIcon from "@mui/icons-material/LocationOnRounded";
@@ -138,7 +139,23 @@ const HeaderSection = ({ summary, actions }: HeaderSectionProps) => {
               icon={<LanguageRoundedIcon sx={{ fontSize: "1.125rem" }} />}
               label="Portfolio"
               component="a"
-              href="https://masihsadri.com"
+              href="https://mrsadri.github.io/Portfolio/"
+              target="_blank"
+              clickable
+              sx={{
+                ...chipStyles,
+                minHeight: 44,
+                "& .MuiChip-label": {
+                  paddingLeft: 1,
+                  paddingRight: 1.5,
+                },
+              }}
+            />
+            <Chip
+              icon={<ColorLensOutlinedIcon sx={{ fontSize: "1.125rem" }} />}
+              label="Figma Community"
+              component="a"
+              href="https://www.figma.com/community/file/1069259333467083182/morph-design-system"
               target="_blank"
               clickable
               sx={{
@@ -170,7 +187,7 @@ const HeaderSection = ({ summary, actions }: HeaderSectionProps) => {
             />
             <Chip
               icon={<LocationOnRoundedIcon sx={{ fontSize: "1.125rem" }} />}
-              label="Tehran, Iran • Willing to relocate"
+              label="Tehran, Iran"
               sx={{
                 ...chipStyles,
                 minHeight: 44,
@@ -188,9 +205,11 @@ const HeaderSection = ({ summary, actions }: HeaderSectionProps) => {
               const importantPhrases = [
                 "6+ years",
                 "40M+ users",
-                "two semi-unicorn tech companies",
-                "B2B and B2C",
-                "embedded, centralized, and single-threaded",
+                "Data Analytics",
+                "AI tools (Claude, Cursor)",
+                "1.8x lift",
+                "60% reduction",
+                "8,600+ global users",
               ];
               
               const parts: Array<{ text: string; bold: boolean }> = [];

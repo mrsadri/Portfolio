@@ -12,9 +12,9 @@ type SkillsSectionProps = {
 const SkillsSection = ({ categories }: SkillsSectionProps) => (
   <ResumeSectionWrapper>
         <SectionHeader variant="compact" icon={<MilitaryTechOutlinedIcon color="primary" sx={{ fontSize: "1.75rem" }} />} title="Skills" />
-        <Grid container spacing={3}>
+        <Grid container spacing={2}>
           {categories.map((category) => (
-            <Grid size={{ xs: 12, md: 4 }} key={category.title}>
+            <Grid size={{ xs: 12 }} key={category.title}>
           <ResumeCard
             title={category.title}
             skills={category.skills}
