@@ -1,42 +1,73 @@
 /* ============ RESUME HEADER ============ */
 .resume-header {
   background: var(--color-bg);
-  padding: 72px 0 48px;
+  padding: 72px 0 64px;
 }
 
 .resume-header-inner {
   display: flex;
   flex-direction: column;
-  gap: 24px;
-}
-
-@media (min-width: 768px) {
-  .resume-header-inner {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
-  }
+  align-items: center;
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto;
 }
 
 .resume-header h1 {
-  font-size: clamp(2rem, 4vw, 2.4rem);
+  font-size: clamp(2.8rem, 6vw, 4rem);
   font-weight: 700;
-  letter-spacing: -0.02em;
-  margin-bottom: 4px;
-}
-
-.resume-role {
-  font-size: 1.125rem;
-  color: var(--color-primary);
-  font-weight: 500;
+  letter-spacing: -0.025em;
+  color: var(--color-text-primary);
   margin-bottom: 12px;
 }
 
-.resume-summary {
-  font-size: 0.9375rem;
+.resume-role {
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: 28px;
+}
+
+.resume-contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+
+.resume-contact-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.875rem;
   color: var(--color-text-secondary);
-  line-height: 1.7;
-  max-width: 640px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  padding: 7px 16px;
+  text-decoration: none;
+  transition: border-color 160ms ease, color 160ms ease;
+}
+
+a.resume-contact-link:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.resume-summary {
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  line-height: 1.75;
+  max-width: 620px;
+  margin-bottom: 36px;
+  text-align: center;
+}
+
+.resume-download-btn {
+  font-size: 1rem;
+  padding: 14px 32px;
+  border-radius: var(--radius-pill);
 }
 
 /* ============ RESUME SECTIONS ============ */
