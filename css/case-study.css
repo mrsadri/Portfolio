@@ -216,7 +216,36 @@
   flex: 1;
 }
 
+@media (min-width: 640px) {
+  .cs-section-images.side-by-side-asymmetric {
+    flex-direction: row;
+    align-items: stretch;
+  }
+  .cs-section-images.side-by-side-asymmetric img:first-child {
+    flex: 3;
+  }
+  .cs-section-images.side-by-side-asymmetric img:last-child {
+    flex: 1;
+    object-fit: cover;
+  }
+}
+
 /* Bullets */
+.cs-numbered-list {
+  margin: 12px 0 4px;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.cs-numbered-list li {
+  font-size: 0.9375rem;
+  color: var(--color-primary);
+  line-height: 1.6;
+  font-weight: 500;
+}
+
 .cs-bullets {
   display: flex;
   flex-direction: column;
