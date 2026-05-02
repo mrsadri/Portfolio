@@ -121,8 +121,38 @@
       align-items: center;
       justify-content: space-between;
       padding: 8px 16px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
       background: rgba(255, 255, 255, 0.03);
+      cursor: pointer;
+      user-select: none;
+      transition: background 160ms ease;
+    }
+    .code-block-header:hover {
+      background: rgba(255, 255, 255, 0.06);
+    }
+    .code-block.is-open .code-block-header {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    }
+    .code-block-header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .code-block-toggle-hint {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.6875rem;
+      color: rgba(255, 255, 255, 0.35);
+      transition: color 160ms ease;
+    }
+    .code-block-toggle-hint i {
+      transition: transform 220ms ease;
+    }
+    .code-block.is-open .code-block-toggle-hint i {
+      transform: rotate(180deg);
+    }
+    .code-block-header:hover .code-block-toggle-hint {
+      color: rgba(255, 255, 255, 0.6);
     }
     .code-block-lang {
       font-family: 'Courier New', monospace;
@@ -141,11 +171,14 @@
       font-family: inherit;
       cursor: pointer;
       padding: 4px 10px;
-      display: flex;
+      display: none;
       align-items: center;
       gap: 5px;
       transition: all 160ms ease;
       line-height: 1;
+    }
+    .code-block.is-open .code-block-copy {
+      display: flex;
     }
     .code-block-copy:hover {
       background: rgba(255, 255, 255, 0.07);
@@ -156,9 +189,12 @@
       font-size: 0.75rem;
       color: #a9b1d6;
       white-space: pre;
-      display: block;
+      display: none;
       padding: 20px;
       overflow-x: auto;
+    }
+    .code-block.is-open code {
+      display: block;
     }
     .code-comment { color: #565f89; }
     .code-kw  { color: #7aa2f7; }
@@ -388,6 +424,57 @@
     .line-chart-wrap { padding: 8px 16px; }
     .line-chart-wrap svg text { fill: var(--color-text-secondary); }
     .line-chart-wrap svg line { stroke: var(--color-border); }
+
+    /* ── LinkedIn card ── */
+    .linkedin-card {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--color-subtle);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 12px 16px;
+      text-decoration: none;
+      transition: border-color 160ms ease, background 160ms ease;
+      margin-top: 16px;
+      max-width: 300px;
+    }
+    .linkedin-card:hover {
+      border-color: #0a66c2;
+      background: rgba(10, 102, 194, 0.06);
+    }
+    .linkedin-card-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #0a66c2;
+      color: #fff;
+      font-size: 0.8125rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      letter-spacing: 0.03em;
+    }
+    .linkedin-card-info { flex: 1; min-width: 0; }
+    .linkedin-card-name {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--color-text-primary);
+      white-space: nowrap;
+    }
+    .linkedin-card-role {
+      font-size: 0.75rem;
+      color: var(--color-text-secondary);
+      margin-top: 2px;
+      white-space: nowrap;
+    }
+    .linkedin-card-icon {
+      font-size: 1.125rem;
+      color: #0a66c2;
+      flex-shrink: 0;
+    }
   </style>
 </head>
 <body>
@@ -496,11 +583,9 @@
               <li><a href="#investigation" class="cs-outline-link">Investigation Process</a></li>
               <li><a href="#inv-a" class="cs-outline-link">Investigation A: Social Media</a></li>
               <li><a href="#inv-b" class="cs-outline-link">Investigation B: User Defense</a></li>
-              <li><a href="#inv-c" class="cs-outline-link">Investigation C: Scammer Patterns</a></li>
               <li><a href="#solution" class="cs-outline-link">Picking the Solution</a></li>
               <li><a href="#journey" class="cs-outline-link">Implementation Journey</a></li>
               <li><a href="#iter2" class="cs-outline-link">Second Iteration</a></li>
-              <li><a href="#iter3" class="cs-outline-link">Third Iteration</a></li>
               <li><a href="#impact" class="cs-outline-link">The Impact</a></li>
               <li><a href="#learnings" class="cs-outline-link">Key Learnings</a></li>
               <li><a href="#reflection" class="cs-outline-link">Reflection</a></li>
@@ -514,6 +599,10 @@
             <div id="context" class="cs-section fade-up">
               <div class="cs-section-title">The Context</div>
               <p class="cs-section-summary">What is Divar Classified Ads Platform?</p>
+              <div class="cs-body">
+                <p>Divar is Iran's largest and most popular online classified ads platform (launched in 2012). It serves as a go-to marketplace for everyday transactions, covering categories like real estate, vehicles, jobs, services, and personal items.</p>
+              </div>
+              <img src="../images/divar-introduction.png" alt="Divar platform introduction" class="cs-section-image" loading="lazy" />
               <div class="cs-metrics-row">
                 <div class="cs-metric-card">
                   <div class="cs-metric-value">53M+</div>
@@ -528,10 +617,6 @@
                   <div class="cs-metric-label">Annual Ad Views</div>
                 </div>
               </div>
-              <div class="cs-body">
-                <p>Divar is Iran's largest and most popular online classified ads platform (launched in 2012). It serves as a go-to marketplace for everyday transactions, covering categories like real estate, vehicles, jobs, services, and personal items.</p>
-              </div>
-              <img src="../images/divar-introduction.png" alt="Divar platform introduction" class="cs-section-image" loading="lazy" />
             </div>
 
             <!-- ISSUE -->
@@ -638,11 +723,52 @@
                 </div>
               </div>
 
-              <p class="cs-sub-title">Key Findings:</p>
-              <ul class="cs-bullets">
-                <li class="cs-bullet">Harassment victims were significantly more likely to have a recognisable profile image on social media.</li>
-                <li class="cs-bullet">We could not recommend sellers hide profile pictures — this reduces trust with legitimate customers.</li>
-              </ul>
+              <div class="code-block">
+                <div class="code-block-header" onclick="toggleCode(this)">
+                  <span class="code-block-lang">SQL</span>
+                  <div class="code-block-header-actions">
+                    <span class="code-block-toggle-hint">Show query <i class="bi bi-chevron-down"></i></span>
+                    <button class="code-block-copy" onclick="event.stopPropagation(); copyCode(this)" aria-label="Copy code"><i class="bi bi-clipboard"></i> Copy</button>
+                  </div>
+                </div>
+                <code><span class="code-comment">-- WhatsApp profile type: random sample vs harassment victims</span>
+<span class="code-kw">WITH</span> seller_sample <span class="code-kw">AS</span> (
+    <span class="code-kw">SELECT</span>
+        s.user_id,
+        <span class="code-kw">CASE</span>
+            <span class="code-kw">WHEN</span> w.has_account = <span class="code-kw">TRUE</span>  <span class="code-kw">AND</span> w.has_profile_image = <span class="code-kw">TRUE</span>  <span class="code-kw">THEN</span> <span class="code-str">'WA + image'</span>
+            <span class="code-kw">WHEN</span> w.has_account = <span class="code-kw">TRUE</span>  <span class="code-kw">AND</span> w.has_profile_image = <span class="code-kw">FALSE</span> <span class="code-kw">THEN</span> <span class="code-str">'WA, no image'</span>
+            <span class="code-kw">ELSE</span> <span class="code-str">'No WA account'</span>
+        <span class="code-kw">END AS</span> wa_type,
+        <span class="code-kw">CASE</span>
+            <span class="code-kw">WHEN</span> h.user_id <span class="code-kw">IS NOT NULL</span> <span class="code-kw">THEN</span> <span class="code-str">'Victims of Harassment'</span>
+            <span class="code-kw">ELSE</span> <span class="code-str">'Random Sample'</span>
+        <span class="code-kw">END AS</span> cohort
+    <span class="code-kw">FROM</span> sellers s
+    <span class="code-kw">LEFT JOIN</span> whatsapp_profiles w  <span class="code-kw">ON</span> s.phone_number = w.phone_number
+    <span class="code-kw">LEFT JOIN</span> harassment_reports h <span class="code-kw">ON</span> s.user_id = h.reported_user_id
+    <span class="code-kw">WHERE</span> s.category_name = <span class="code-str">'Fashion/Apparel'</span>
+      <span class="code-kw">AND</span> s.created_at >= <span class="code-fn">CURRENT_DATE</span> - <span class="code-fn">INTERVAL</span> <span class="code-str">'2 months'</span>
+)
+<span class="code-kw">SELECT</span>
+    cohort,
+    wa_type,
+    <span class="code-fn">COUNT</span>(*) * <span class="code-num">100.0</span> /
+        <span class="code-fn">SUM</span>(<span class="code-fn">COUNT</span>(*)) <span class="code-kw">OVER</span> (<span class="code-kw">PARTITION BY</span> cohort) <span class="code-kw">AS</span> pct
+<span class="code-kw">FROM</span> seller_sample
+<span class="code-kw">GROUP BY</span> cohort, wa_type
+<span class="code-kw">ORDER BY</span> cohort, wa_type;
+
+<span class="code-comment">-- Note: Table and column names are changed for company privacy</span></code>
+              </div>
+
+              <div class="cs-key-findings">
+                <div class="cs-key-findings-header"><i class="bi bi-lightbulb-fill"></i> Key Findings</div>
+                <ul class="cs-key-findings-list">
+                  <li class="cs-key-findings-item">Harassment victims were significantly more likely to have a recognisable profile image on social media.</li>
+                </ul>
+              </div>
+              <p class="cs-note">We could not recommend sellers hide profile pictures — this reduces trust with legitimate customers.</p>
             </div>
 
             <!-- INV B -->
@@ -705,22 +831,30 @@
               </div>
 
               <div class="code-block">
-                <div class="code-block-header">
+                <div class="code-block-header" onclick="toggleCode(this)">
                   <span class="code-block-lang">SQL</span>
-                  <button class="code-block-copy" onclick="copyCode(this)" aria-label="Copy code"><i class="bi bi-clipboard"></i> Copy</button>
+                  <div class="code-block-header-actions">
+                    <span class="code-block-toggle-hint">Show query <i class="bi bi-chevron-down"></i></span>
+                    <button class="code-block-copy" onclick="event.stopPropagation(); copyCode(this)" aria-label="Copy code"><i class="bi bi-clipboard"></i> Copy</button>
+                  </div>
                 </div>
                 <code><span class="code-comment">-- Cross-category hidden number analysis</span>
 <span class="code-kw">SELECT</span>
-  category_name,
-  <span class="code-fn">COUNT</span>(*) <span class="code-kw">AS</span> total_ads,
-  <span class="code-fn">SUM</span>(<span class="code-kw">CASE WHEN</span> phone_number_visible = <span class="code-kw">FALSE</span> <span class="code-kw">THEN</span> <span class="code-num">1</span> <span class="code-kw">ELSE</span> <span class="code-num">0</span> <span class="code-kw">END</span>) <span class="code-kw">AS</span> hidden,
-  <span class="code-fn">ROUND</span>(hidden * <span class="code-num">100.0</span> / total_ads, <span class="code-num">2</span>) <span class="code-kw">AS</span> hidden_pct
-<span class="code-kw">FROM</span> advertisements
+    category_name,
+    <span class="code-fn">COUNT</span>(<span class="code-kw">CASE WHEN</span> phone_number_visible = <span class="code-kw">FALSE</span>
+          <span class="code-kw">THEN</span> <span class="code-num">1</span> <span class="code-kw">END</span>) * <span class="code-num">100.0</span> / <span class="code-fn">COUNT</span>(*) <span class="code-kw">AS</span> pct_hidden,
+    <span class="code-fn">COUNT</span>(<span class="code-kw">CASE WHEN</span> phone_number_visible = <span class="code-kw">TRUE</span>
+          <span class="code-kw">THEN</span> <span class="code-num">1</span> <span class="code-kw">END</span>) * <span class="code-num">100.0</span> / <span class="code-fn">COUNT</span>(*) <span class="code-kw">AS</span> pct_shown,
+    <span class="code-fn">COUNT</span>(*) <span class="code-kw">AS</span> total_ads
+<span class="code-kw">FROM</span>
+    advertisements
 <span class="code-kw">WHERE</span>
-  created_at >= <span class="code-fn">CURRENT_DATE</span> - <span class="code-fn">INTERVAL</span> <span class="code-str">'3 months'</span>
-  <span class="code-kw">AND</span> status = <span class="code-str">'active'</span>
-<span class="code-kw">GROUP BY</span> category_name
-<span class="code-kw">ORDER BY</span> hidden_pct <span class="code-kw">DESC</span>;
+    created_at >= <span class="code-fn">CURRENT_DATE</span> - <span class="code-fn">INTERVAL</span> <span class="code-str">'2 months'</span>
+    <span class="code-kw">AND</span> status = <span class="code-str">'active'</span>
+<span class="code-kw">GROUP BY</span>
+    category_name
+<span class="code-kw">ORDER BY</span>
+    pct_hidden <span class="code-kw">DESC</span>;
 
 <span class="code-comment">-- Note: Table and column names are changed for company privacy</span></code>
               </div>
@@ -769,80 +903,77 @@
               </div>
 
               <div class="code-block">
-                <div class="code-block-header">
+                <div class="code-block-header" onclick="toggleCode(this)">
                   <span class="code-block-lang">SQL</span>
-                  <button class="code-block-copy" onclick="copyCode(this)" aria-label="Copy code"><i class="bi bi-clipboard"></i> Copy</button>
+                  <div class="code-block-header-actions">
+                    <span class="code-block-toggle-hint">Show query <i class="bi bi-chevron-down"></i></span>
+                    <button class="code-block-copy" onclick="event.stopPropagation(); copyCode(this)" aria-label="Copy code"><i class="bi bi-clipboard"></i> Copy</button>
+                  </div>
                 </div>
                 <code><span class="code-comment">-- Experience-based posting behaviour analysis</span>
-<span class="code-kw">WITH</span> user_ad_seq <span class="code-kw">AS</span> (
-  <span class="code-kw">SELECT</span>
-    user_id, ad_id, category_name,
-    phone_number_visible,
-    <span class="code-fn">ROW_NUMBER</span>() <span class="code-kw">OVER</span>(
-      <span class="code-kw">PARTITION BY</span> user_id <span class="code-kw">ORDER BY</span> created_at
-    ) <span class="code-kw">AS</span> ad_sequence_number
-  <span class="code-kw">FROM</span> advertisements
-  <span class="code-kw">WHERE</span> created_at >= <span class="code-fn">CURRENT_DATE</span> - <span class="code-fn">INTERVAL</span> <span class="code-str">'2 months'</span>
+<span class="code-kw">WITH</span> user_ads_ranked <span class="code-kw">AS</span> (
+    <span class="code-kw">SELECT</span>
+        user_id,
+        ad_id,
+        category_name,
+        phone_number_visible,
+        created_at,
+        <span class="code-fn">ROW_NUMBER</span>() <span class="code-kw">OVER</span> (
+            <span class="code-kw">PARTITION BY</span> user_id
+            <span class="code-kw">ORDER BY</span> created_at
+        ) <span class="code-kw">AS</span> ad_sequence_number
+    <span class="code-kw">FROM</span>
+        advertisements
+    <span class="code-kw">WHERE</span>
+        created_at >= <span class="code-fn">CURRENT_DATE</span> - <span class="code-fn">INTERVAL</span> <span class="code-str">'2 months'</span>
 )
 <span class="code-kw">SELECT</span>
-  ad_sequence_number,
-  category_name,
-  <span class="code-fn">AVG</span>(<span class="code-kw">CASE WHEN</span> phone_number_visible = <span class="code-kw">FALSE</span> <span class="code-kw">THEN</span> <span class="code-num">1.0</span> <span class="code-kw">ELSE</span> <span class="code-num">0</span> <span class="code-kw">END</span>) <span class="code-kw">AS</span> hidden_rate
-<span class="code-kw">FROM</span> user_ad_seq
-<span class="code-kw">GROUP BY</span> ad_sequence_number, category_name
-<span class="code-kw">ORDER BY</span> ad_sequence_number, category_name;</code>
+    <span class="code-kw">CASE</span>
+        <span class="code-kw">WHEN</span> ad_sequence_number = <span class="code-num">1</span> <span class="code-kw">THEN</span> <span class="code-str">'1st Ad'</span>
+        <span class="code-kw">WHEN</span> ad_sequence_number = <span class="code-num">2</span> <span class="code-kw">THEN</span> <span class="code-str">'2nd Ad'</span>
+        <span class="code-kw">WHEN</span> ad_sequence_number = <span class="code-num">3</span> <span class="code-kw">THEN</span> <span class="code-str">'3rd Ad'</span>
+        <span class="code-kw">ELSE</span> <span class="code-str">'4th+ Ad'</span>
+    <span class="code-kw">END AS</span> ad_number,
+    <span class="code-fn">COUNT</span>(<span class="code-kw">CASE WHEN</span> category_name = <span class="code-str">'Fashion/Apparel'</span>
+              <span class="code-kw">AND</span> phone_number_visible = <span class="code-kw">FALSE</span>
+          <span class="code-kw">THEN</span> <span class="code-num">1</span> <span class="code-kw">END</span>) * <span class="code-num">100.0</span> /
+    <span class="code-fn">NULLIF</span>(<span class="code-fn">COUNT</span>(<span class="code-kw">CASE WHEN</span> category_name = <span class="code-str">'Fashion/Apparel'</span>
+                <span class="code-kw">THEN</span> <span class="code-num">1</span> <span class="code-kw">END</span>), <span class="code-num">0</span>) <span class="code-kw">AS</span> fashion_pct_hidden,
+    <span class="code-fn">COUNT</span>(<span class="code-kw">CASE WHEN</span> category_name != <span class="code-str">'Fashion/Apparel'</span>
+              <span class="code-kw">AND</span> phone_number_visible = <span class="code-kw">FALSE</span>
+          <span class="code-kw">THEN</span> <span class="code-num">1</span> <span class="code-kw">END</span>) * <span class="code-num">100.0</span> /
+    <span class="code-fn">NULLIF</span>(<span class="code-fn">COUNT</span>(<span class="code-kw">CASE WHEN</span> category_name != <span class="code-str">'Fashion/Apparel'</span>
+                <span class="code-kw">THEN</span> <span class="code-num">1</span> <span class="code-kw">END</span>), <span class="code-num">0</span>) <span class="code-kw">AS</span> other_pct_hidden
+<span class="code-kw">FROM</span>
+    user_ads_ranked
+<span class="code-kw">GROUP BY</span>
+    <span class="code-kw">CASE</span>
+        <span class="code-kw">WHEN</span> ad_sequence_number = <span class="code-num">1</span> <span class="code-kw">THEN</span> <span class="code-str">'1st Ad'</span>
+        <span class="code-kw">WHEN</span> ad_sequence_number = <span class="code-num">2</span> <span class="code-kw">THEN</span> <span class="code-str">'2nd Ad'</span>
+        <span class="code-kw">WHEN</span> ad_sequence_number = <span class="code-num">3</span> <span class="code-kw">THEN</span> <span class="code-str">'3rd Ad'</span>
+        <span class="code-kw">ELSE</span> <span class="code-str">'4th+ Ad'</span>
+    <span class="code-kw">END</span>
+<span class="code-kw">ORDER BY</span>
+    <span class="code-fn">MIN</span>(ad_sequence_number);
+
+<span class="code-comment">-- Note: Table and column names are changed for company privacy</span></code>
               </div>
 
-              <p class="cs-sub-title">Key Findings:</p>
-              <ul class="cs-bullets">
-                <li class="cs-bullet">Most experienced fashion sellers hide their phone numbers — higher than in any other category.</li>
-                <li class="cs-bullet">Sellers learn defensive behaviour immediately — sharp decrease between 1st and 2nd ad in the clothing category.</li>
-                <li class="cs-bullet">Data shows fashion sellers have been forced to adopt systematic self-protection strategies.</li>
-              </ul>
+              <div class="cs-key-findings">
+                <div class="cs-key-findings-header"><i class="bi bi-lightbulb-fill"></i> Key Findings</div>
+                <ul class="cs-key-findings-list">
+                  <li class="cs-key-findings-item">Most experienced fashion sellers hide their phone numbers — higher than in any other category.</li>
+                  <li class="cs-key-findings-item">Sellers learn defensive behaviour immediately — sharp decrease between 1st and 2nd ad in the clothing category.</li>
+                  <li class="cs-key-findings-item">Data shows fashion sellers have been forced to adopt systematic self-protection strategies.</li>
+                </ul>
+              </div>
               <div class="cs-body">
                 <p>And we know what people do to prevent it: <strong>They use in-app messaging instead of sharing their numbers.</strong></p>
               </div>
             </div>
 
-            <!-- INV C -->
-            <div id="inv-c" class="cs-section fade-up">
-              <div class="cs-section-title">Investigation C: Scammer Behavioural Patterns</div>
-              <div class="cs-body">
-                <p>I cross-referenced call logs and ad data to identify the typical scammer fingerprint:</p>
-              </div>
 
-              <div class="code-block">
-                <div class="code-block-header">
-                  <span class="code-block-lang">SQL</span>
-                  <button class="code-block-copy" onclick="copyCode(this)" aria-label="Copy code"><i class="bi bi-clipboard"></i> Copy</button>
-                </div>
-                <code><span class="code-comment">-- Identifying repeat-caller harassment patterns</span>
-<span class="code-kw">WITH</span> call_counts <span class="code-kw">AS</span> (
-  <span class="code-kw">SELECT</span>
-    caller_id,
-    ad_id,
-    category_name,
-    <span class="code-fn">COUNT</span>(*) <span class="code-kw">AS</span> total_calls,
-    <span class="code-fn">COUNT</span>(<span class="code-fn">DISTINCT</span> ad_id) <span class="code-kw">AS</span> unique_ads_called
-  <span class="code-kw">FROM</span> call_logs
-  <span class="code-kw">WHERE</span> category_name = <span class="code-str">'Fashion/Apparel'</span>
-  <span class="code-kw">GROUP BY</span> caller_id, ad_id, category_name
-)
-<span class="code-kw">SELECT</span> *
-<span class="code-kw">FROM</span> call_counts
-<span class="code-kw">WHERE</span> total_calls > <span class="code-num">3</span> <span class="code-kw">OR</span> unique_ads_called > <span class="code-num">10</span>
-<span class="code-kw">ORDER BY</span> total_calls <span class="code-kw">DESC</span>;</code>
-              </div>
-
-              <p class="cs-sub-title">Key Findings:</p>
-              <ul class="cs-bullets">
-                <li class="cs-bullet">Harassers typically called from numbers not registered in Divar — cross-platform scraping was systematic.</li>
-                <li class="cs-bullet">A small group of persistent callers was responsible for a disproportionate share of harassment reports.</li>
-                <li class="cs-bullet">The phone number was the single point of vulnerability in every incident.</li>
-              </ul>
-            </div>
-
-            <!-- SOLUTION -->
+<!-- SOLUTION -->
             <div id="solution" class="cs-section fade-up">
               <div class="cs-section-title">Pick the Right Solution</div>
               <p class="cs-section-summary">We evaluated three potential approaches to solve the privacy issue.</p>
@@ -900,7 +1031,6 @@
 
             <!-- ITER 2 -->
             <div id="iter2" class="cs-section fade-up">
-              <div class="iteration-label">— Second Iteration —</div>
               <div class="cs-body">
                 <p>The results were… problematic.</p>
               </div>
@@ -940,12 +1070,8 @@
                 </ul>
               </div>
 
-              <figure style="margin:16px 0">
-                <img src="../images/divar-team.jpg" alt="Masih reviewing pilot findings with the product team" class="cs-section-image" style="margin:0" loading="lazy" />
-                <figcaption style="font-size:0.8rem;color:var(--color-text-secondary);text-align:center;margin-top:8px;font-style:italic">The Divar Trust &amp; Safety team during the rollout sprint, Tehran 2023.</figcaption>
-              </figure>
 
-              <p class="cs-sub-title">Refined Solutions</p>
+<p class="cs-sub-title">Refined Solutions</p>
               <div class="refined-list">
                 <div class="refined-item">
                   <div class="refined-icon">🔄</div>
@@ -978,22 +1104,7 @@
               </div>
             </div>
 
-            <!-- ITER 3 -->
-            <div id="iter3" class="cs-section fade-up">
-              <div class="iteration-label">— Third Iteration —</div>
-              <div class="ui-mockup-grid">
-                <div class="ui-mockup-card">
-                  <div class="ui-mockup-label">Phase 1 · Proxy number flow</div>
-                  <img src="../images/divar-light-theme-interface.png" alt="Final UI Phase 1 — Proxy number flow in the calling interface" loading="lazy" />
-                </div>
-                <div class="ui-mockup-card">
-                  <div class="ui-mockup-label">Phase 2 · Bidirectional call-back</div>
-                  <img src="../images/divar-dark-theme-interface.png" alt="Final UI Phase 2 — Bidirectional call-back experience and onboarding" loading="lazy" />
-                </div>
-              </div>
-            </div>
-
-            <!-- IMPACT -->
+<!-- IMPACT -->
             <div id="impact" class="cs-section fade-up">
               <div class="cs-section-title">The Impact</div>
               <p class="cs-section-summary">After rollout, harassment reports dropped dramatically and sellers felt safe enough to keep listings live.</p>
@@ -1065,7 +1176,15 @@
               <div class="cs-section-title">Reflection</div>
               <div class="cs-body">
                 <p>This project reinforced my belief that solving hard problems starts with understanding behaviour. By blending research, data, and rapid iteration, we built a safety layer that still protects millions of people each week. The harassment problem may never disappear entirely, but Divar is significantly safer for the users who need it most.</p>
-                <p><em>Thanks to Omid Morousi, the product manager, and the entire dev team.</em></p>
+                <p>Special thanks to the product manager who kept this project grounded, and to the entire dev team.</p>
+                <a href="https://www.linkedin.com/in/morousi/" target="_blank" rel="noopener noreferrer" class="linkedin-card">
+                  <div class="linkedin-card-avatar">OM</div>
+                  <div class="linkedin-card-info">
+                    <div class="linkedin-card-name">Omid Morousi</div>
+                    <div class="linkedin-card-role">Product Manager · Divar</div>
+                  </div>
+                  <i class="bi bi-linkedin linkedin-card-icon"></i>
+                </a>
               </div>
             </div>
 
@@ -1129,6 +1248,14 @@
   <script src="../js/case-study.js"></script>
   <script src="../js/contact-modal.js"></script>
   <script>
+    function toggleCode(header) {
+      const block = header.closest('.code-block');
+      const hint = header.querySelector('.code-block-toggle-hint');
+      const open = block.classList.toggle('is-open');
+      hint.innerHTML = open
+        ? 'Hide query <i class="bi bi-chevron-down"></i>'
+        : 'Show query <i class="bi bi-chevron-down"></i>';
+    }
     function copyCode(btn) {
       const code = btn.closest('.code-block').querySelector('code');
       navigator.clipboard.writeText(code.innerText).then(() => {
