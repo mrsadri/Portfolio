@@ -44,7 +44,7 @@ a:hover {
 }
 
 a:focus-visible {
-  outline: 2px solid rgba(122, 162, 255, 0.45);
+  outline: 2px solid rgba(204, 107, 61, 0.45);
   outline-offset: 2px;
   border-radius: 4px;
 }
@@ -60,7 +60,13 @@ button {
   background: none;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3 {
+  font-family: var(--font-family-serif);
+  color: var(--color-text-primary);
+  line-height: 1.2;
+}
+
+h4, h5, h6 {
   font-family: var(--font-family);
   color: var(--color-text-primary);
   line-height: 1.2;
