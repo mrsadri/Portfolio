@@ -6,10 +6,7 @@
       const stored = localStorage.getItem(STORAGE_KEY);
       if (stored === 'light' || stored === 'dark') return stored;
     } catch {}
-    try {
-      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    } catch {}
-    return 'light';
+    return 'dark';
   }
 
   function applyMode(mode) {
