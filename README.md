@@ -1,69 +1,69 @@
 # Masih Sadri — Product Designer Portfolio
 
-A personal portfolio website built with **pure HTML, CSS, and JavaScript** — no frameworks, no build tools, no dependencies. Just fast, maintainable, and fully hand-crafted code.
+A designer's portfolio has one job: replace the question *"Can this person think?"* with evidence.
+
+This site doesn't just show what I shipped — it shows how I framed the problem, what I investigated, what I was wrong about, and what changed because of the work. Every case study is written to give a hiring manager, founder, or collaborator enough signal to decide if we're a fit — before we've exchanged a single message.
+
+**Live site:** [mrsadri.github.io/Portfolio](https://mrsadri.github.io/Portfolio)
+
+---
 
 ## What's inside
 
-| Page | Purpose |
-|------|---------|
-| `index.html` | Homepage — hero, metrics, case study cards, testimonials |
-| `resume.html` | CV / Resume with downloadable PDF |
-| `my-story.html` | Personal story, design philosophy, photo gallery |
-| `contact.html` | Contact form |
-| `case-studies/divar-secure-call.html` | Divar Secure Call — deep-dive case study |
-| `case-studies/setare-aval-engagement.html` | Setare Aval engagement case study |
-| `case-studies/setare-yek-bill-payment.html` | Setare Yek bill payment case study |
+| Page | What it answers |
+|------|----------------|
+| [index.html](index.html) | Who am I, what kind of work I do, and why it matters |
+| [resume.html](resume.html) | Work history, skills, and certifications — also as a downloadable PDF |
+| [my-story.html](my-story.html) | The non-resume version: how I think, what shaped me, what I care about |
+| [contact.html](contact.html) | How to reach me |
+| [case-studies/divar-secure-call.html](case-studies/divar-secure-call.html) | Privacy UX for a feature used by 40M+ users on Iran's largest marketplace |
+| [case-studies/setare-aval-engagement.html](case-studies/setare-aval-engagement.html) | Engagement design for a content platform |
+| [case-studies/setare-yek-bill-payment.html](case-studies/setare-yek-bill-payment.html) | Simplifying bill payment flow end-to-end |
 
-## Stack
+---
 
-- **HTML5** — semantic, accessible markup
-- **CSS3** — custom properties (design tokens), Flexbox, Grid, `clamp()` for fluid type
-- **Vanilla JS** — scroll animations, collapsible code blocks, copy-to-clipboard
-- **Bootstrap Icons** — icon set via CDN (no JS, only SVG icons used)
-- **Google Fonts** — Inter typeface
+## Why pure HTML/CSS/JS
 
-## CSS architecture
+No framework, no build tool, no dependencies. This was a deliberate choice:
 
+- **The work loads instantly.** A recruiter shouldn't wait for a JS bundle to hydrate before they can read my case studies.
+- **The code reflects design values.** Clean, purposeful, nothing unnecessary — the same standard I apply to product decisions.
+- **It's fully mine.** Every layout decision, every spacing value, every interaction is something I chose and can explain.
+
+---
+
+## Technical details
+
+**Stack:** HTML5 · CSS3 (custom properties, Flexbox, Grid) · Vanilla JS · Bootstrap Icons · Inter (Google Fonts)
+
+**CSS architecture:**
 ```
 css/
-├── variables.css     # Design tokens (colors, spacing, radius, shadows)
-├── base.css          # Reset, body, typography defaults
-├── layout.css        # Container, section wrapper, shared grid patterns
-├── components.css    # Reusable components (buttons, badges, cards, tags)
-├── animations.css    # Scroll-triggered fade-up / delay utilities
-├── home.css          # Homepage-specific styles
-├── resume.css        # Resume page styles
-├── my-story.css      # My Story page styles
-├── contact.css       # Contact page styles
+├── variables.css     # Design tokens — colors, spacing, radius, shadows
+├── base.css          # Reset + typography defaults
+├── layout.css        # Container, nav, shared grid patterns
+├── components.css    # Buttons, badges, cards, tags
+├── animations.css    # Scroll-triggered fade-up utilities
+├── home.css          # Homepage
+├── resume.css        # Resume/CV page
+├── my-story.css      # My Story page
+├── contact.css       # Contact page
 └── case-study.css    # Shared case study styles
 ```
 
-## Running locally
+**Notable implementation details:**
+- Dark mode default — `localStorage` persists user preference; dark on first visit
+- Collapsible SQL blocks — real queries from the actual investigations, collapsed by default
+- Fluid typography — `clamp()` on all headings, no breakpoint-based font sizes
+- Design tokens — one file (`variables.css`) controls the full visual theme
 
-No build step needed — just open any HTML file in a browser:
-
+**Run locally:**
 ```bash
-# Option 1: open directly
 open index.html
-
-# Option 2: serve with any static server (avoids some CORS quirks)
-npx serve .
 # or
 python3 -m http.server 8000
 ```
 
-## Key design decisions
-
-- **Zero dependencies** — no React, no Tailwind, no bundler. Every byte is intentional.
-- **Design tokens** — all colors, radii, and shadows live in `css/variables.css`; theming is one-file change.
-- **Collapsible SQL blocks** — case studies embed real SQL queries; they're collapsed by default and expand on click with syntax highlighting.
-- **Key findings cards** — reusable `.cs-key-findings` component used across all case studies to surface insights consistently.
-- **Fluid typography** — `clamp()` on all headings; no media-query breakpoints needed for type scaling.
-
-## Deployment
-
-The site is deployed via **GitHub Pages** from the `main` branch of [mrsadri/Portfolio](https://github.com/mrsadri/Portfolio).
-
 ---
 
-Built by [Masih Sadri](https://www.linkedin.com/in/masihsadri/) · sadrimasih@gmail.com
+[LinkedIn](https://www.linkedin.com/in/masihsadri/) · sadrimasih@gmail.com · Tehran, Iran
