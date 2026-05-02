@@ -58,12 +58,39 @@
   justify-content: center;
 }
 
+.hero-portrait-frame {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  max-width: 336px;
+}
+
 .hero-portrait {
   width: 100%;
-  max-width: 420px;
   border-radius: var(--radius-xl);
   object-fit: cover;
   box-shadow: var(--shadow-2);
+  display: block;
+}
+
+.certified-badge {
+  position: absolute;
+  bottom: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--btn-gradient);
+  color: var(--btn-text);
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 20px;
+  border-radius: var(--radius-pill);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  box-shadow: 0 6px 18px rgba(168, 78, 40, 0.38);
+  z-index: 1;
 }
 
 /* ============ METRICS SECTION ============ */

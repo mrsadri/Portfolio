@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/mrsadri/Portfolio/main/images/masih-sadri-profile.webp" width="120" height="120" style="border-radius:50%" alt="Masih Sadri" />
+<img src="https://raw.githubusercontent.com/mrsadri/Portfolio/main/images/masih-sadri-profile.jpeg" width="120" height="120" style="border-radius:50%" alt="Masih Sadri" />
 
 # Masih Sadri
 ### Product Designer
