@@ -1,0 +1,507 @@
+/* ============ CASE STUDY OVERVIEW ============ */
+.cs-overview {
+  background: var(--color-bg);
+  padding: 72px 0 48px;
+}
+
+.cs-overview-title {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin-bottom: 12px;
+  color: var(--color-text-primary);
+}
+
+.cs-overview-subtitle {
+  font-size: 1.125rem;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  max-width: 680px;
+  margin-bottom: 24px;
+}
+
+.cs-meta-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.cs-meta-item {}
+
+.cs-meta-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-secondary);
+  margin-bottom: 2px;
+}
+
+.cs-meta-value {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.cs-stats-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 36px;
+}
+
+.cs-stat-pill {
+  background: var(--color-subtle);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 16px 24px;
+  text-align: center;
+  min-width: 140px;
+}
+
+.cs-stat-pill-value {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.cs-stat-pill-label {
+  font-size: 0.8125rem;
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+}
+
+.cs-stat-pill-desc {
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+  margin-top: 4px;
+}
+
+.cs-hero-image {
+  width: 100%;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-2);
+  margin-top: 8px;
+}
+
+/* ============ CASE STUDY LAYOUT ============ */
+.cs-layout {
+  display: grid;
+  gap: 48px;
+  padding: 48px 0;
+}
+
+@media (min-width: 1024px) {
+  .cs-layout {
+    grid-template-columns: 220px 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+}
+
+/* ============ OUTLINE NAV ============ */
+.cs-outline {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .cs-outline {
+    display: block;
+    position: sticky;
+    top: 96px;
+  }
+}
+
+.cs-outline-title {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-text-secondary);
+  margin-bottom: 12px;
+}
+
+.cs-outline-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.cs-outline-link {
+  font-size: 0.8125rem;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  padding: 6px 10px;
+  border-radius: var(--radius-xs);
+  border-left: 2px solid transparent;
+  transition: var(--transition);
+  line-height: 1.4;
+  display: block;
+}
+
+.cs-outline-link:hover {
+  color: var(--color-primary);
+  background: var(--color-brand-muted);
+  text-decoration: none;
+}
+
+.cs-outline-link.active {
+  color: var(--color-primary);
+  border-left-color: var(--color-primary);
+  background: var(--color-subtle);
+  font-weight: 600;
+}
+
+/* ============ CASE STUDY CONTENT ============ */
+.cs-content {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+}
+
+.cs-section {
+  scroll-margin-top: 96px;
+}
+
+.cs-section-eyebrow {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-primary);
+  margin-bottom: 8px;
+}
+
+.cs-section-title {
+  font-size: clamp(1.3rem, 2.5vw, 1.6rem);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: 16px;
+}
+
+.cs-section-summary {
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  margin-bottom: 20px;
+  white-space: pre-line;
+}
+
+.cs-section-image {
+  width: 100%;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-1);
+  margin: 20px 0;
+}
+
+.cs-section-images {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 20px 0;
+}
+
+@media (min-width: 640px) {
+  .cs-section-images.side-by-side {
+    flex-direction: row;
+  }
+}
+
+.cs-section-images.side-by-side img {
+  flex: 1;
+}
+
+/* Bullets */
+.cs-bullets {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.cs-bullet {
+  display: flex;
+  gap: 10px;
+  font-size: 0.9375rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  white-space: pre-line;
+}
+
+.cs-bullet::before {
+  content: '→';
+  color: var(--color-primary);
+  flex-shrink: 0;
+  font-weight: 700;
+  margin-top: 1px;
+}
+
+/* Body text */
+.cs-body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cs-body p {
+  font-size: 0.9375rem;
+  line-height: 1.7;
+}
+
+/* Quotes */
+.cs-quote {
+  border-left: 3px solid var(--color-primary);
+  padding: 16px 20px;
+  background: var(--color-subtle);
+  border-radius: 0 var(--radius-xs) var(--radius-xs) 0;
+  margin: 16px 0;
+}
+
+.cs-quote-text {
+  font-size: 0.9375rem;
+  font-style: italic;
+  color: var(--color-text-primary);
+  line-height: 1.7;
+  margin-bottom: 8px;
+}
+
+.cs-quote-author {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.cs-quote-role {
+  font-size: 0.8125rem;
+  color: var(--color-text-secondary);
+}
+
+/* Highlights (callouts) */
+.cs-highlights {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 16px 0;
+}
+
+.cs-highlight {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  background: var(--color-brand-muted);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xs);
+  padding: 10px 14px;
+}
+
+/* Metrics */
+.cs-metrics-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 20px 0;
+}
+
+.cs-metric-card {
+  background: var(--color-subtle);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  min-width: 140px;
+}
+
+.cs-metric-value {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.cs-metric-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: 4px;
+}
+
+.cs-metric-desc {
+  font-size: 0.8125rem;
+  color: var(--color-text-secondary);
+}
+
+/* ============ RELATED CASE STUDIES (dark) ============ */
+.cs-related {
+  background: #071322;
+  padding: 80px 0;
+}
+
+.cs-related-tag {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.35);
+  margin-bottom: 16px;
+}
+
+.cs-related h2 {
+  font-size: clamp(1.75rem, 3.5vw, 2.25rem);
+  font-weight: 700;
+  color: white;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+
+.cs-related-sub {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  max-width: 520px;
+  margin-bottom: 40px;
+}
+
+.cs-related-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 1fr;
+  margin-bottom: 40px;
+}
+
+@media (min-width: 640px) {
+  .cs-related-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.cs-related-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  text-decoration: none;
+  display: block;
+  transition: background 200ms ease;
+}
+
+.cs-related-card:hover {
+  background: rgba(255, 255, 255, 0.09);
+  text-decoration: none;
+  transform: none;
+  box-shadow: none;
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.cs-related-card-tag {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.3);
+  margin-bottom: 12px;
+}
+
+.cs-related-card h4 {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 8px;
+  line-height: 1.35;
+}
+
+.cs-related-card p {
+  font-size: 0.8375rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 12px;
+  line-height: 1.6;
+}
+
+.cs-related-card-link {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #91a7ff;
+}
+
+.cs-related-cta {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.btn-dark-primary {
+  background: #2254ff;
+  color: white;
+  padding: 13px 28px;
+  border-radius: var(--radius-pill);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+  transition: opacity 200ms ease;
+}
+
+.btn-dark-primary:hover {
+  opacity: 0.85;
+  text-decoration: none;
+}
+
+.btn-dark-ghost {
+  background: transparent;
+  color: white;
+  padding: 13px 28px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+  transition: background 200ms ease;
+}
+
+.btn-dark-ghost:hover {
+  background: rgba(255, 255, 255, 0.06);
+  text-decoration: none;
+}
+
+/* ============ MOBILE RESPONSIVE ============ */
+@media (max-width: 767px) {
+
+  /* Overview */
+  .cs-overview { padding: 40px 0 0; }
+  .cs-overview-title { margin-bottom: 8px; }
+  .cs-overview-subtitle { margin-bottom: 16px; }
+  .cs-meta-grid { gap: 12px; margin-bottom: 20px; }
+  .cs-stats-row { gap: 12px; margin-bottom: 20px; }
+  .cs-stat-pill { min-width: 120px; padding: 12px 16px; }
+  .cs-stat-pill-value { font-size: 1.4rem; }
+
+  /* Layout: single column */
+  .cs-layout {
+    grid-template-columns: 1fr !important;
+    gap: 0;
+    padding-top: 24px !important;
+  }
+  .cs-outline { display: none; }
+  .cs-content { gap: 40px; }
+
+  /* Sections */
+  .cs-section-title { font-size: 1.25rem; }
+  .cs-section-summary { font-size: 0.9375rem; }
+  .cs-metrics-row { gap: 10px; }
+  .cs-metric-card { min-width: 120px; padding: 12px 14px; }
+  .cs-metric-value { font-size: 1.4rem; }
+
+  /* Related dark section */
+  .cs-related { padding: 48px 0; }
+  .cs-related h2 { font-size: 1.5rem; }
+  .cs-related-grid { grid-template-columns: 1fr; }
+  .cs-related-card { padding: 20px; }
+  .cs-related-cta { flex-direction: column; }
+  .btn-dark-primary, .btn-dark-ghost { text-align: center; }
+}

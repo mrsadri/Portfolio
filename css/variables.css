@@ -1,0 +1,67 @@
+/* Light mode (default) */
+:root {
+  --color-primary: #2254ff;
+  --color-secondary: #0a387d;
+  --color-bg: #f1f6ff;
+  --color-bg-paper: #ffffff;
+  --color-surface: #ffffff;
+  --color-surface-elevated: rgba(255, 255, 255, 0.94);
+  --color-surface-glass: rgba(244, 247, 251, 0.75);
+  --color-text-primary: #0b1c33;
+  --color-text-secondary: #4a5d7d;
+  --color-border: rgba(11, 34, 74, 0.12);
+  --color-subtle: rgba(34, 84, 255, 0.06);
+  --color-brand-muted: rgba(34, 84, 255, 0.08);
+  --color-brand-accent: #d8e5ff;
+  --color-divider: rgba(9, 29, 61, 0.12);
+  --color-chip-bg: #e3f1ff;
+  --color-chip-text: #0b5394;
+  --color-link: #1f6feb;
+  --color-nav-bg: rgba(241, 246, 255, 0.9);
+  --color-nav-border: rgba(12, 51, 106, 0.08);
+  --btn-gradient: linear-gradient(135deg, #2254ff, #0f2e84);
+  --btn-text: #ffffff;
+
+  --radius-xs: 8px;
+  --radius-sm: 12px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --radius-pill: 999px;
+
+  --shadow-1: 0 8px 18px rgba(15, 23, 42, 0.08);
+  --shadow-2: 0 14px 28px rgba(15, 23, 42, 0.12);
+  --shadow-3: 0 24px 48px rgba(15, 23, 42, 0.16);
+
+  --transition: all 160ms ease;
+
+  --container-max: 1200px;
+  --container-padding: 24px;
+
+  --font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Dark mode */
+[data-theme="dark"] {
+  --color-primary: #91a7ff;
+  --color-secondary: #7db4ff;
+  --color-bg: #050b18;
+  --color-bg-paper: #0a101d;
+  --color-surface: rgba(10, 16, 29, 0.92);
+  --color-surface-elevated: rgba(14, 22, 38, 0.9);
+  --color-surface-glass: rgba(18, 28, 48, 0.7);
+  --color-text-primary: #f5f7ff;
+  --color-text-secondary: #b7c4e5;
+  --color-border: rgba(145, 167, 255, 0.28);
+  --color-subtle: rgba(145, 167, 255, 0.14);
+  --color-brand-muted: rgba(145, 167, 255, 0.18);
+  --color-brand-accent: #2a4bad;
+  --color-divider: rgba(130, 151, 203, 0.26);
+  --color-chip-bg: rgba(114, 148, 227, 0.26);
+  --color-chip-text: #d5dfff;
+  --color-link: #9eb8ff;
+  --color-nav-bg: rgba(10, 16, 30, 0.9);
+  --color-nav-border: rgba(122, 162, 255, 0.24);
+  --btn-gradient: linear-gradient(135deg, #688cff, #2f4db8);
+  --btn-text: #f5f7ff;
+}

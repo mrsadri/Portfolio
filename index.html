@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Masih Sadri — Product Designer</title>
+  <meta name="description" content="Impact-oriented Product Designer with 6+ years of experience scaling products for 40M+ users. Specialized in data-driven design and AI-assisted workflows." />
+  <meta name="theme-color" content="#2254ff" />
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png" />
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+  <meta property="og:title" content="Masih Sadri — Product Designer" />
+  <meta property="og:description" content="Impact-oriented Product Designer scaling products for 40M+ users." />
+  <meta property="og:image" content="images/hero-section-og.png" />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/home.css" />
+  <script src="js/theme.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container">
+      <nav class="nav-inner" aria-label="Main navigation">
+        <a href="index.html" class="nav-logo">Masih Sadri</a>
+
+        <div class="nav-links">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="my-story.html" class="nav-link">My Story</a>
+          <a href="index.html#section-case-studies" class="nav-link">Case Studies</a>
+          <a href="contact.html" class="nav-link">Contact</a>
+          <a href="resume.html" class="nav-link">Resume</a>
+        </div>
+
+        <div class="nav-actions">
+          <a href="https://www.linkedin.com/in/msadri/" target="_blank" rel="noopener noreferrer"
+             class="nav-icon-btn" title="LinkedIn Profile" aria-label="LinkedIn Profile">
+            <i class="bi bi-linkedin"></i>
+          </a>
+          <a href="https://t.me/masihsadri" target="_blank" rel="noopener noreferrer"
+             class="nav-icon-btn" title="Telegram" aria-label="Message on Telegram">
+            <i class="bi bi-telegram"></i>
+          </a>
+
+          <label class="theme-toggle" data-theme-toggle aria-label="Toggle dark mode" title="Toggle dark/light mode">
+            <i class="bi bi-sun icon-sun"></i>
+            <span class="theme-switch">
+              <input type="checkbox" class="theme-checkbox" aria-label="Dark mode" />
+              <span class="theme-switch-track"></span>
+              <span class="theme-switch-thumb"></span>
+            </span>
+            <i class="bi bi-moon icon-moon"></i>
+          </label>
+        </div>
+
+        <button class="nav-mobile-toggle" id="nav-mobile-open" aria-label="Open navigation menu" aria-expanded="false">
+          <i class="bi bi-list"></i>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div id="mobile-drawer-overlay" class="mobile-drawer-overlay" aria-hidden="true"></div>
+  <div id="mobile-drawer" class="mobile-drawer" role="dialog" aria-label="Navigation menu" aria-modal="true">
+    <div class="mobile-drawer-header">
+      <h3>Navigate</h3>
+      <button class="mobile-drawer-close" id="nav-mobile-close" aria-label="Close navigation menu">
+        <i class="bi bi-x-lg"></i>
+      </button>
+    </div>
+    <ul class="mobile-nav-list">
+      <li><a href="index.html" class="mobile-nav-link">Home</a></li>
+      <li><a href="my-story.html" class="mobile-nav-link">My Story</a></li>
+      <li><a href="index.html#section-case-studies" class="mobile-nav-link">Case Studies</a></li>
+      <li><a href="contact.html" class="mobile-nav-link">Contact</a></li>
+      <li><a href="resume.html" class="mobile-nav-link">Resume</a></li>
+    </ul>
+    <div class="mobile-drawer-divider"></div>
+    <div class="mobile-drawer-socials">
+      <a href="https://www.linkedin.com/in/msadri/" target="_blank" rel="noopener noreferrer"
+         class="mobile-social-btn" aria-label="LinkedIn">
+        <i class="bi bi-linkedin"></i>
+      </a>
+      <a href="https://t.me/masihsadri" target="_blank" rel="noopener noreferrer"
+         class="mobile-social-btn" aria-label="Telegram">
+        <i class="bi bi-telegram"></i>
+      </a>
+    </div>
+    <div class="mobile-theme-row">
+      <label class="theme-toggle" data-theme-toggle aria-label="Toggle dark mode">
+        <i class="bi bi-sun icon-sun"></i>
+        <span class="theme-switch">
+          <input type="checkbox" class="theme-checkbox" aria-label="Dark mode" />
+          <span class="theme-switch-track"></span>
+          <span class="theme-switch-thumb"></span>
+        </span>
+        <i class="bi bi-moon icon-moon"></i>
+      </label>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <main id="main-content">
+
+    <!-- HERO -->
+    <section class="hero-section">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-content">
+            <p class="eyebrow hero-eyebrow fade-up">Hello 👋🏼, I am</p>
+            <h1 class="hero-name fade-up delay-1">Masih Sadri</h1>
+            <p class="hero-title fade-up delay-2">an impact-oriented Product Designer</p>
+            <p class="hero-subtitle fade-up delay-3">
+              Former iOS developer turned designer, building data-driven experiences that drive user retention and business growth for 40+ million users across B2B and B2C products
+            </p>
+            <div class="hero-ctas fade-up delay-4">
+              <a href="#section-case-studies" class="btn btn-primary">View Case Study</a>
+              <a href="#section-contact" class="btn btn-outlined">Get in touch</a>
+            </div>
+          </div>
+          <div class="hero-portrait-wrap fade-in delay-2">
+            <img
+              src="images/masih-sadri-profile.webp"
+              alt="Masih Sadri - Product Designer"
+              class="hero-portrait"
+              width="420"
+              height="420"
+              loading="eager"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- METRICS -->
+    <section class="metrics-section">
+      <div class="container">
+        <div class="metrics-grid">
+          <div class="stat-card fade-up">
+            <div class="stat-value">60%</div>
+            <div class="stat-label">Reduction in harassment incidents</div>
+            <div class="stat-desc">Co-led Divar's secure call system with Trust &amp; Safety to safeguard 2.1M weekly callers.</div>
+          </div>
+          <div class="stat-card fade-up delay-1">
+            <div class="stat-value">8.3K+</div>
+            <div class="stat-label">Product teams using Morph</div>
+            <div class="stat-desc">Built an open design system that powers Figma handoffs and accelerates high-quality releases.</div>
+          </div>
+          <div class="stat-card fade-up delay-2">
+            <div class="stat-value">10x</div>
+            <div class="stat-label">Growth in feature adoption</div>
+            <div class="stat-desc">Redesigned SetareYek's bill payment feature, increasing adoption from 4% to 47% through user research and iterative design.</div>
+          </div>
+          <div class="stat-card fade-up delay-3">
+            <div class="stat-value">80%</div>
+            <div class="stat-label">Lift in qualified leads</div>
+            <div class="stat-desc">Redesigned Persol's sign-up funnel end-to-end, removing friction and boosting lead generation in 3 months.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY HIRE ME -->
+    <section class="why-hire-section">
+      <div class="container">
+        <div class="section-header fade-up">
+          <p class="eyebrow">About Me</p>
+          <h2>What I Bring</h2>
+        </div>
+        <div class="why-hire-grid">
+          <div>
+            <div class="differentiators-grid">
+              <div class="differentiator-card fade-up">
+                <h4>AI-Familiar &amp; Technical</h4>
+                <p>Built this portfolio from scratch using modern AI-assisted development tools (Claude, GPT-4). Former iOS developer with deep understanding of technical constraints and implementation details. Experienced in leveraging AI tools for design ideation, code generation, and workflow optimization.</p>
+              </div>
+              <div class="differentiator-card fade-up delay-1">
+                <h4>Data-Driven Decision Making</h4>
+                <p>Completed a 170-hour data analyst course. I use data to validate design decisions and measure impact, not just intuition.</p>
+              </div>
+              <div class="differentiator-card fade-up delay-2">
+                <h4>User Retention Expertise at Scale</h4>
+                <p>Proven track record of improving user retention and engagement for 40+ million unique users. Co-led cross-functional initiatives that drive long-term user value and business growth.</p>
+              </div>
+              <div class="differentiator-card fade-up delay-3">
+                <h4>Teaching &amp; Mentorship Leadership</h4>
+                <p>3rd year teaching at college, mentored 200+ students. This translates to strong communication skills, curriculum design, and the ability to elevate team capabilities.</p>
+              </div>
+              <div class="differentiator-card fade-up delay-4">
+                <h4>Cross-Product Experience</h4>
+                <p>Experience across both B2C and B2B products, with a background in project management. I understand business strategy and can navigate complex stakeholder landscapes.</p>
+              </div>
+              <div class="differentiator-card fade-up delay-5">
+                <h4>Adaptable to Any Team Structure</h4>
+                <p>Experienced in generalized teams, embedded product teams, and solo design roles across B2B and B2C products. I adapt my workflow to fit any organizational model.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="why-hire-sidebar">
+            <div class="looking-for-card fade-up">
+              <h3>What I'm Looking For</h3>
+              <p>I'm seeking senior product design roles where I can leverage my data-driven approach and technical background to drive measurable business impact. I thrive in cross-functional environments where design, engineering, and business strategy intersect, and I'm passionate about creating solutions that deliver tangible results.</p>
+              <a href="resume.html" class="btn btn-outlined">View My Resume</a>
+            </div>
+            <div class="fade-up delay-1">
+              <div class="quick-stats-grid">
+                <div class="quick-stat">
+                  <div class="quick-stat-value">6 Years</div>
+                  <div class="quick-stat-label">Product Experience</div>
+                </div>
+                <div class="quick-stat">
+                  <div class="quick-stat-value">200+</div>
+                  <div class="quick-stat-label">Students Mentored</div>
+                </div>
+                <div class="quick-stat">
+                  <div class="quick-stat-value">7 Semesters</div>
+                  <div class="quick-stat-label">Teaching Experience</div>
+                </div>
+                <div class="quick-stat">
+                  <div class="quick-stat-value">B2C &amp; B2B</div>
+                  <div class="quick-stat-label">Product Experience</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CASE STUDIES -->
+    <section id="section-case-studies" class="case-studies-section">
+      <div class="container">
+        <div class="section-header fade-up">
+          <h2>Case Studies</h2>
+          <p>Examples of the impact I have made</p>
+        </div>
+        <div class="grid grid-2">
+
+          <!-- Case Study 1: Divar -->
+          <div class="case-study-card featured fade-up">
+            <div class="cs-number">01</div>
+            <div class="cs-tag">Improving User Safety</div>
+            <h3 class="cs-title">The Story of Reducing Harassment by 60%</h3>
+            <div class="cs-platform">on Divar</div>
+            <div class="cs-platform-detail">Classified Ads Platform</div>
+            <div class="cs-stat">A feature used by 2.1 million users per week</div>
+            <div class="cs-tags">
+              <span class="chip chip-tag">real project</span>
+              <span class="chip chip-tag">trust &amp; safety</span>
+              <span class="chip chip-tag">impact at scale</span>
+            </div>
+            <div class="cs-footer">
+              <span class="reading-time"><i class="bi bi-clock"></i> 8 min read</span>
+              <button class="btn btn-outlined" data-recap="divar" style="margin-left:auto">Quick Recap</button>
+              <a href="case-studies/divar-secure-call.html" class="btn btn-primary">View Case Study</a>
+            </div>
+          </div>
+
+          <!-- Case Study 2: Setare Aval -->
+          <div class="case-study-card fade-up delay-1">
+            <div class="cs-number">02</div>
+            <div class="cs-tag">Boosting User Engagement</div>
+            <h3 class="cs-title">Turning One-Time Visitors into Lifelong Customers</h3>
+            <div class="cs-platform">at Setare Aval Co.</div>
+            <div class="cs-platform-detail">Retention strategy</div>
+            <div class="cs-tags">
+              <span class="chip chip-tag">real project</span>
+              <span class="chip chip-tag">retention strategy</span>
+              <span class="chip chip-tag">cross-functional leadership</span>
+            </div>
+            <div class="cs-footer">
+              <span class="reading-time"><i class="bi bi-clock"></i> 7 min read</span>
+              <button class="btn btn-outlined" data-recap="setare-aval" style="margin-left:auto">Quick Recap</button>
+              <a href="case-studies/setare-aval-engagement.html" class="btn btn-primary">View Case Study</a>
+            </div>
+          </div>
+
+          <!-- Case Study 3: Setare Yek -->
+          <div class="case-study-card fade-up delay-2">
+            <div class="cs-number">03</div>
+            <div class="cs-tag">Product Design &amp; Growth</div>
+            <h3 class="cs-title">From 4% to 47%: Turning a Failing Feature Into Core Value</h3>
+            <div class="cs-platform">at Setare Aval</div>
+            <div class="cs-platform-detail">SetareYek App</div>
+            <div class="cs-stat">10x growth in bill payment adoption</div>
+            <div class="cs-tags">
+              <span class="chip chip-tag">real project</span>
+              <span class="chip chip-tag">product design</span>
+              <span class="chip chip-tag">user research</span>
+              <span class="chip chip-tag">growth</span>
+            </div>
+            <div class="cs-footer">
+              <span class="reading-time"><i class="bi bi-clock"></i> 10 min read</span>
+              <button class="btn btn-outlined" data-recap="setare-yek" style="margin-left:auto">Quick Recap</button>
+              <a href="case-studies/setare-yek-bill-payment.html" class="btn btn-primary">View Case Study</a>
+            </div>
+          </div>
+
+          <!-- Case Study 4: Physical Receipt (Locked) -->
+          <div class="case-study-card fade-up delay-3">
+            <div class="cs-number">04</div>
+            <div class="cs-tag">Retention &amp; Cost Optimization</div>
+            <h3 class="cs-title">How Physical Receipts Increased Retention by 6%</h3>
+            <div class="cs-platform">at BimeBazar</div>
+            <div class="cs-platform-detail">User Retention Strategy</div>
+            <div class="cs-stat">6% higher retention vs. digital-only users</div>
+            <div class="cs-tags">
+              <span class="chip chip-tag">in progress</span>
+              <span class="chip chip-tag">retention</span>
+              <span class="chip chip-tag">data-driven</span>
+              <span class="chip chip-tag">NDA</span>
+            </div>
+            <div class="cs-footer">
+              <span class="cs-in-progress-badge">In Progress</span>
+              <span class="cs-locked-badge" style="margin-left:auto">
+                <i class="bi bi-lock-fill"></i> Under NDA
+              </span>
+              <button class="btn btn-outlined" data-recap="physical-receipt">Quick Recap</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials-section">
+      <div class="container">
+        <div class="section-header fade-up">
+          <h2>What People Say</h2>
+          <p>Colleagues, mentees, and managers share their experience working with me</p>
+        </div>
+        <div class="testimonial-carousel fade-up">
+          <div class="testimonial-track" id="testimonial-track">
+
+            <div class="testimonial-card">
+              <p class="testimonial-quote">Masih Sadri has been an incredible mentor throughout my learning journey. He consistently shared his vast knowledge and useful resources, always encouraging me to practice and grow.</p>
+              <div class="testimonial-author">
+                <img src="images/testimonials/mahdi-ahmadizadeh.jpeg" alt="Mahdi Ahmadizadeh" class="testimonial-avatar" width="44" height="44" />
+                <div>
+                  <div class="testimonial-author-name">Mahdi Ahmadizadeh</div>
+                  <div class="testimonial-author-role">Design System Manager · Snapp! Market</div>
+                  <div class="testimonial-relation">Mentee</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-card">
+              <p class="testimonial-quote">Masih is an incredibly talented person, a very mature and seasoned professional, and a great mentor to have. He has a warm and engaging style, and the quality of his design work and illustrations is exceptional.</p>
+              <div class="testimonial-author">
+                <img src="images/testimonials/nahid-k.jpeg" alt="Nahid K." class="testimonial-avatar" width="44" height="44" />
+                <div>
+                  <div class="testimonial-author-name">Nahid K.</div>
+                  <div class="testimonial-author-role">Product Manager · ITSM</div>
+                  <div class="testimonial-relation">Colleague</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-card">
+              <p class="testimonial-quote">His problem-solving, interaction skills and eye for details are remarkable. I have always been impressed by his severe motivation and deep knowledge in user experience.</p>
+              <div class="testimonial-author">
+                <img src="images/testimonials/shadi-zarei.jpeg" alt="Shadi Zarei" class="testimonial-avatar" width="44" height="44" />
+                <div>
+                  <div class="testimonial-author-name">Shadi Zarei</div>
+                  <div class="testimonial-author-role">Researcher &amp; UX/UI Designer · PhD Candidate</div>
+                  <div class="testimonial-relation">Classmate</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-card">
+              <p class="testimonial-quote">He has a curious mind and considers personal development. In addition to what is taught in the classroom, he always refers to more resources to solve problems in the best possible way.</p>
+              <div class="testimonial-author">
+                <img src="images/testimonials/sadeq-b.jpeg" alt="Sadeq .B" class="testimonial-avatar" width="44" height="44" />
+                <div>
+                  <div class="testimonial-author-name">Sadeq .B</div>
+                  <div class="testimonial-author-role">Senior iOS Engineer</div>
+                  <div class="testimonial-relation">Classmate</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-card">
+              <p class="testimonial-quote">Masih is one of my privileged students who is determined to improve his knowledge and skills. His commitment and punctuality in delivering assignments are commendable.</p>
+              <div class="testimonial-author">
+                <div class="testimonial-avatar-placeholder">A</div>
+                <div>
+                  <div class="testimonial-author-name">Ali Azade</div>
+                  <div class="testimonial-author-role">Software Engineer · UserTesting</div>
+                  <div class="testimonial-relation">Former Teacher</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-card">
+              <p class="testimonial-quote">It was my fortune to start my professional journey with a sympathetic person who has remarkable skills in empathizing with colleagues. He also knows how to prioritize tasks based on individuals' interests and assigns them to the team members.</p>
+              <div class="testimonial-author">
+                <img src="images/testimonials/saeed-abolghasemi.jpg" alt="Saeed Abolghasemi" class="testimonial-avatar" width="44" height="44" />
+                <div>
+                  <div class="testimonial-author-name">Saeed Abolghasemi</div>
+                  <div class="testimonial-author-role">Principal Product Designer</div>
+                  <div class="testimonial-relation">Direct Report</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-card">
+              <p class="testimonial-quote">When it comes to consistent, top-quality design, It is enough to handover confusions and raw data to Masih. While working together in the product team at Setare aval company, Masih's specialties were instrumental in problem definition, finding proper solutions, and designing flows.</p>
+              <div class="testimonial-author">
+                <img src="images/testimonials/hossein-mahmoudvand.jpeg" alt="Hossein Mahmoudvand" class="testimonial-avatar" width="44" height="44" />
+                <div>
+                  <div class="testimonial-author-name">Hossein Mahmoudvand</div>
+                  <div class="testimonial-author-role">Product Design Lead · SnappPay</div>
+                  <div class="testimonial-relation">Former Manager</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-card">
+              <p class="testimonial-quote">Masih is a very talented and professional UX specialist who made a great addition to our great company. Masih began contributing on day one by porting our existing product.</p>
+              <div class="testimonial-author">
+                <img src="images/testimonials/shayan-mehranpour.jpeg" alt="Shayan Mehranpour" class="testimonial-avatar" width="44" height="44" />
+                <div>
+                  <div class="testimonial-author-name">Shayan Mehranpour</div>
+                  <div class="testimonial-author-role">Senior Software Engineer · Flix</div>
+                  <div class="testimonial-relation">Team Member</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="carousel-controls">
+          <button class="carousel-btn" id="carousel-prev" aria-label="Previous testimonial">
+            <i class="bi bi-chevron-left"></i>
+          </button>
+          <div class="carousel-dots" role="tablist" aria-label="Testimonial navigation">
+            <button class="carousel-dot active" role="tab" aria-label="Go to testimonial 1"></button>
+            <button class="carousel-dot" role="tab" aria-label="Go to testimonial 2"></button>
+            <button class="carousel-dot" role="tab" aria-label="Go to testimonial 3"></button>
+            <button class="carousel-dot" role="tab" aria-label="Go to testimonial 4"></button>
+            <button class="carousel-dot" role="tab" aria-label="Go to testimonial 5"></button>
+            <button class="carousel-dot" role="tab" aria-label="Go to testimonial 6"></button>
+          </div>
+          <button class="carousel-btn" id="carousel-next" aria-label="Next testimonial">
+            <i class="bi bi-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- LETS TALK -->
+    <section id="section-contact" class="lets-talk">
+      <div class="container">
+        <div class="lets-talk-inner fade-up">
+          <p class="eyebrow" style="text-align:center;margin-bottom:12px">Let's Connect</p>
+          <h2>Let's Work Together</h2>
+          <p>I'm always open to discussing new projects, creative ideas, or mentorship opportunities. Whether you want to explore a product idea or simply connect, I'd love to hear from you.</p>
+          <div class="lets-talk-actions">
+            <a href="contact.html" class="btn btn-primary" data-contact-modal data-contact-page="contact.html">Get in Touch</a>
+            <a href="resume.html" class="btn btn-outlined">View Resume</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2026 Masih Sadri. Crafted with empathy and care.</p>
+      <p>Built from scratch by Masih ❤️</p>
+    </div>
+  </footer>
+
+  <!-- RECAP MODAL -->
+  <div id="recap-modal-overlay" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="recap-headline">
+    <div id="recap-modal" class="modal">
+      <div class="modal-header">
+        <p id="recap-headline" class="modal-headline"></p>
+        <button id="recap-modal-close" class="modal-close" aria-label="Close recap">
+          <i class="bi bi-x-lg"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <ul id="recap-bullets" class="modal-bullets"></ul>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/navigation.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/home.js"></script>
+  <script src="js/contact-modal.js"></script>
+</body>
+</html>

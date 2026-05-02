@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Story — Masih Sadri</title>
+  <meta name="description" content="Learn about Masih Sadri's journey as a Product Designer — from mountaineering and wood carving to building impactful digital products." />
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/my-story.css" />
+  <script src="js/theme.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container">
+      <nav class="nav-inner" aria-label="Main navigation">
+        <a href="index.html" class="nav-logo">Masih Sadri</a>
+        <div class="nav-links">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="my-story.html" class="nav-link">My Story</a>
+          <a href="index.html#section-case-studies" class="nav-link">Case Studies</a>
+          <a href="contact.html" class="nav-link">Contact</a>
+          <a href="resume.html" class="nav-link">Resume</a>
+        </div>
+        <div class="nav-actions">
+          <a href="https://www.linkedin.com/in/msadri/" target="_blank" rel="noopener noreferrer" class="nav-icon-btn" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+          <a href="https://t.me/masihsadri" target="_blank" rel="noopener noreferrer" class="nav-icon-btn" aria-label="Telegram"><i class="bi bi-telegram"></i></a>
+          <label class="theme-toggle" data-theme-toggle aria-label="Toggle dark mode">
+            <i class="bi bi-sun icon-sun"></i>
+            <span class="theme-switch"><input type="checkbox" class="theme-checkbox" /><span class="theme-switch-track"></span><span class="theme-switch-thumb"></span></span>
+            <i class="bi bi-moon icon-moon"></i>
+          </label>
+        </div>
+        <button class="nav-mobile-toggle" id="nav-mobile-open" aria-label="Open navigation menu"><i class="bi bi-list"></i></button>
+      </nav>
+    </div>
+  </header>
+  <div id="mobile-drawer-overlay" class="mobile-drawer-overlay"></div>
+  <div id="mobile-drawer" class="mobile-drawer" role="dialog" aria-label="Navigation menu" aria-modal="true">
+    <div class="mobile-drawer-header">
+      <h3>Navigate</h3>
+      <button class="mobile-drawer-close" id="nav-mobile-close" aria-label="Close"><i class="bi bi-x-lg"></i></button>
+    </div>
+    <ul class="mobile-nav-list">
+      <li><a href="index.html" class="mobile-nav-link">Home</a></li>
+      <li><a href="my-story.html" class="mobile-nav-link">My Story</a></li>
+      <li><a href="index.html#section-case-studies" class="mobile-nav-link">Case Studies</a></li>
+      <li><a href="contact.html" class="mobile-nav-link">Contact</a></li>
+      <li><a href="resume.html" class="mobile-nav-link">Resume</a></li>
+    </ul>
+    <div class="mobile-drawer-divider"></div>
+    <div class="mobile-drawer-socials">
+      <a href="https://www.linkedin.com/in/msadri/" target="_blank" rel="noopener noreferrer" class="mobile-social-btn" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+      <a href="https://t.me/masihsadri" target="_blank" rel="noopener noreferrer" class="mobile-social-btn" aria-label="Telegram"><i class="bi bi-telegram"></i></a>
+    </div>
+    <div class="mobile-theme-row">
+      <label class="theme-toggle" data-theme-toggle aria-label="Toggle dark mode">
+        <i class="bi bi-sun icon-sun"></i>
+        <span class="theme-switch"><input type="checkbox" class="theme-checkbox" /><span class="theme-switch-track"></span><span class="theme-switch-thumb"></span></span>
+        <i class="bi bi-moon icon-moon"></i>
+      </label>
+    </div>
+  </div>
+
+  <main id="main-content">
+
+    <!-- HERO -->
+    <section class="story-hero">
+      <div class="container">
+        <p class="eyebrow fade-up" style="text-align:center;margin-bottom:8px">Hello, I'm</p>
+        <h1 class="fade-up delay-1">I am Masih</h1>
+        <p class="story-hero-subtitle fade-up delay-2">A Creator of Meaningful Experiences</p>
+        <p class="story-hero-desc fade-up delay-3">Outside of design, I enjoy exploring challenges and learning through experiences like mountaineering, wood carving, and teaching. These pursuits have taught me patience, resilience, and empathy, which I bring into my work to craft meaningful and thoughtful designs.</p>
+        <div class="emoji-row fade-up delay-4" aria-hidden="true">
+          <span>☕️</span><span>🧗🏽</span><span>💻</span><span>📚</span><span>🎨</span><span>🪴</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- PHILOSOPHY -->
+    <section class="philosophy-section">
+      <div class="container">
+        <div class="section-header fade-up">
+          <p class="eyebrow">My Design Philosophy</p>
+        </div>
+        <p class="philosophy-text fade-up delay-1">
+          "I design experiences that not only solve problems but create value for both businesses and users. I enjoy digging deep into challenges, analyzing them thoroughly, and coming up with solutions that truly make a difference."
+        </p>
+      </div>
+    </section>
+
+    <!-- PHOTO GALLERY -->
+    <section class="gallery-section">
+      <div class="container">
+        <div class="section-header fade-up">
+          <p class="eyebrow">Many Faces of Masih</p>
+          <h2>A Few Snapshots</h2>
+        </div>
+        <div class="gallery-grid">
+          <div class="gallery-item fade-up">
+            <img src="images/masih-child-photo.png" alt="Masih as a child in his dad's jacket" loading="lazy" />
+            <div class="gallery-caption">Me as a Child in My Dad's Jacket</div>
+          </div>
+          <div class="gallery-item fade-up delay-1">
+            <img src="images/masih-mountaineer.png" alt="Masih as a mountaineer" loading="lazy" />
+            <div class="gallery-caption">Me as a Mountaineer</div>
+          </div>
+          <div class="gallery-item fade-up delay-2">
+            <img src="images/masih-coffee-artist.png" alt="Masih's latte art" loading="lazy" />
+            <div class="gallery-caption">My art on a Latte ☕</div>
+          </div>
+          <div class="gallery-item fade-up delay-3">
+            <img src="images/masih-ux-designer.png" alt="Masih as a UX Designer" loading="lazy" />
+            <div class="gallery-caption">Me as a UX Designer</div>
+          </div>
+          <div class="gallery-item fade-up delay-4">
+            <img src="images/masih-wood-carver.png" alt="Masih as a wood carver" loading="lazy" />
+            <div class="gallery-caption">Me as a Wood Carver</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- READING JOURNEY -->
+    <section class="reading-section">
+      <div class="container">
+        <div class="section-header fade-up">
+          <p class="eyebrow">Learning &amp; Growth</p>
+          <h2>Design Books Guiding My Craft</h2>
+          <p>Inspired by the living bookshelves shared by peers like Kyle Johnston, Sawyer Hollenshead, Jason Zook, and Amy McLay Paterson, I keep a curated record of the ideas that shape my practice.</p>
+        </div>
+        <div class="books-grid">
+
+          <div class="book-card fade-up">
+            <img src="images/books/design-of-everyday-things.jpg" alt="The Design of Everyday Things book cover" class="book-cover" loading="lazy" />
+            <div class="book-info">
+              <div class="book-label">Read in 2018 · Revisited 2024</div>
+              <div class="book-title">The Design of Everyday Things</div>
+              <div class="book-author">Don Norman</div>
+              <p class="book-summary">Norman's framework for affordances and feedback helped me build resilience against bias when testing safety-critical flows, especially when we redesigned voice masking for Divar.</p>
+              <ul class="book-takeaways">
+                <li class="book-takeaway">Reinforced my habit of prototyping error states first.</li>
+                <li class="book-takeaway">Influenced my heuristics checklist for accessibility reviews.</li>
+                <li class="book-takeaway">Taught me to narrate "user goals" in every design critique.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="book-card fade-up delay-1">
+            <img src="images/books/sprint.jpg" alt="Sprint book cover" class="book-cover" loading="lazy" />
+            <div class="book-info">
+              <div class="book-label">Read in 2020</div>
+              <div class="book-title">Sprint</div>
+              <div class="book-author">Jake Knapp &amp; the GV Design Team</div>
+              <p class="book-summary">Borrowing the sprint rhythm helped me coach product squads toward decision clarity. We prototyped and launched a loyalty program at Setare Aval using a 4-day variation of this playbook.</p>
+              <ul class="book-takeaways">
+                <li class="book-takeaway">Adopted lightning talks to align stakeholders fast.</li>
+                <li class="book-takeaway">Made "How might we" synthesis a staple in my workshops.</li>
+                <li class="book-takeaway">Improved remote facilitation using structured voting rituals.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="book-card fade-up delay-2">
+            <img src="images/books/creative-confidence.jpg" alt="Creative Confidence book cover" class="book-cover" loading="lazy" />
+            <div class="book-info">
+              <div class="book-label">Read in 2021</div>
+              <div class="book-title">Creative Confidence</div>
+              <div class="book-author">Tom &amp; David Kelley</div>
+              <p class="book-summary">This book reframed how I mentor new designers—shifting critiques from solution judgment to capability building and psychological safety.</p>
+              <ul class="book-takeaways">
+                <li class="book-takeaway">Introduced "confidence mapping" in my mentorship sessions.</li>
+                <li class="book-takeaway">Drove me to design project-based curricula at Rahnema College.</li>
+                <li class="book-takeaway">Encouraged storytelling rituals to celebrate incremental wins.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="book-card highlighted fade-up delay-3">
+            <img src="images/books/ai-and-ux.jpg" alt="AI and UX book cover" class="book-cover" loading="lazy" />
+            <div class="book-info">
+              <div class="book-now-reading">📖 Now Reading</div>
+              <div class="book-label">In progress · Q4 2025</div>
+              <div class="book-title">AI and UX: Why Artificial Intelligence Needs User Experience</div>
+              <div class="book-author">Pamela Pavliscak</div>
+              <p class="book-summary">I'm exploring how human-centered methods evolve when models make probabilistic decisions—informing the guardrails I craft for AI-augmented solutions.</p>
+              <ul class="book-takeaways">
+                <li class="book-takeaway">Building an ethical checklist for AI experiments.</li>
+                <li class="book-takeaway">Pairing qualitative interviews with model metrics.</li>
+                <li class="book-takeaway">Documenting prompt design patterns for my team.</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- TEAM MEMORIES -->
+    <section class="memories-section">
+      <div class="container">
+        <div class="section-header fade-up">
+          <p class="eyebrow">People &amp; Places</p>
+          <h2>Moments That Shaped Me</h2>
+        </div>
+        <div class="grid" style="gap:32px">
+
+          <div class="memory-card fade-up">
+            <div class="memory-image-wrap">
+              <img src="images/memories/professional/divar-product-team.jpg" alt="Masih Sadri with the Divar product team" loading="lazy" />
+            </div>
+            <div class="memory-content">
+              <div class="memory-title">My Colleagues at Divar</div>
+              <p class="memory-desc">A rooftop gathering with our product design team at Divar—a group of exceptional designers representing some of the finest talent in our country's design community. Together, we formed a 32-person product organization that blended design, research, product, and engineering to create experiences serving millions of users.</p>
+              <blockquote class="memory-quote">"Designing with professionals keeps the work humble, ambitious, and joyful."</blockquote>
+              <p class="memory-caption">Divar Product Experience Team — collaborating across research, product design, and engineering.</p>
+            </div>
+          </div>
+
+          <div class="memory-card fade-up delay-1">
+            <div class="memory-image-wrap">
+              <img src="images/memories/professional/rahnema-teaching-2023.jpeg" alt="Teaching Product Design at Rahnema College" loading="lazy" />
+            </div>
+            <div class="memory-content">
+              <div class="memory-title">Teaching Product Design at Rahnema College</div>
+              <p class="memory-desc">Celebrating the completion of a product design course at Rahnema College in winter 2023. Since then, I've been teaching product design courses seasonally, sharing my experience with the next generation of designers. It's rewarding to see students grow into successful designers who make meaningful contributions to our design community.</p>
+              <blockquote class="memory-quote">"The best way to learn is to teach; the best way to teach is to keep learning."</blockquote>
+              <p class="memory-caption">Celebrating the completion of a product design course at Rahnema College, Winter 2023</p>
+            </div>
+          </div>
+
+          <div class="memory-card fade-up delay-2">
+            <div class="memory-image-wrap">
+              <img src="images/memories/professional/data-analysis-bootcamp.jpeg" alt="Completing Data Analysis Bootcamp" loading="lazy" />
+            </div>
+            <div class="memory-content">
+              <div class="memory-title">Completing the Data Analysis Bootcamp</div>
+              <p class="memory-desc">The end of a 170-hour Data Analysis Bootcamp at Rahnema College in Spring 2024. The course covered data preprocessing, business metrics, statistical inference, and A/B testing, giving me tools to bridge design intuition with quantitative insights. This experience transformed my approach to product design, teaching me to validate decisions with data and create evidence-based solutions.</p>
+              <blockquote class="memory-quote">"Great design is the perfect marriage of intuition and data."</blockquote>
+            </div>
+          </div>
+
+          <div class="memory-card fade-up delay-3">
+            <div class="memory-image-wrap">
+              <img src="images/memories/entertainment/tochal-mountain-group.jpeg" alt="Sunday night mountaineering group at Tochal Peak" loading="lazy" />
+            </div>
+            <div class="memory-content">
+              <div class="memory-title">Building Community Through Adventure: Tochal Mountain Group</div>
+              <p class="memory-desc">Sunday night mountaineering trips to Tochal Peak in Tehran—what started as a small group of friends has grown into a thriving community of over 500 members who gather weekly for diverse adventures. This reflects my core belief that great experiences emerge when we bring people together around shared passions.</p>
+              <blockquote class="memory-quote">"Great experiences emerge when we bring people together around shared passions."</blockquote>
+              <p class="memory-caption">Nighttime gathering at Tochal Peak with the mountaineering community, October 2022</p>
+            </div>
+          </div>
+
+          <div class="memory-card fade-up delay-4">
+            <div class="memory-image-wrap">
+              <img src="images/memories/entertainment/wood-carving-workshop.jpg" alt="Learning wood carving from a master craftsman" loading="lazy" />
+            </div>
+            <div class="memory-content">
+              <div class="memory-title">Wood Carving Workshop: Lessons in Precision and Patience</div>
+              <p class="memory-desc">Learning wood carving from a master craftsman, carefully observing his technique to create a wooden bird. Wood carving taught me that great work requires patience, the willingness to learn from masters, and the discipline to refine every detail until it's right. These lessons directly inform my approach to product design.</p>
+              <blockquote class="memory-quote">"The best designs emerge from precision, patience, and the refusal to give up."</blockquote>
+              <p class="memory-caption">Wood carving workshop: learning precision and patience from a master craftsman</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION & CERTIFICATES TIMELINE -->
+    <section class="timeline-section">
+      <div class="container">
+        <div class="section-header fade-up">
+          <p class="eyebrow">Background</p>
+          <h2>Education &amp; Certificates</h2>
+        </div>
+
+        <div class="timeline fade-up delay-1">
+          <div class="timeline-item">
+            <div class="timeline-dot" style="font-size:0.6rem">BSc</div>
+            <div class="timeline-body">
+              <div class="timeline-date">2015 – 2018</div>
+              <div class="timeline-title">BSc in Project Management Engineering</div>
+              <div class="timeline-institution">Payame Noor University</div>
+              <div class="timeline-details">Teaching Assistant, appointed by Dr. E. Rajabi, Head of the Science Committee · Active Member of the Civil Engineering and Project Management Scientific Society</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot" style="font-size:0.6rem">Cert</div>
+            <div class="timeline-body">
+              <div class="timeline-date">July 2025</div>
+              <div class="timeline-title">Data Analysis BootCamp</div>
+              <div class="timeline-institution">Rahnema College — 170h</div>
+              <div class="timeline-details">Data Preprocessing, Business Metrics, BI Tools, Introductory Python, Storytelling with Data, Statistical Inference, A/B Testing</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot" style="font-size:0.6rem">IELTS</div>
+            <div class="timeline-body">
+              <div class="timeline-date">May 2022</div>
+              <div class="timeline-title">IELTS (Academic)</div>
+              <div class="timeline-institution">International Development Program (IDP)</div>
+              <div class="timeline-details">Overall Score: 7.0</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot" style="font-size:0.6rem">UX</div>
+            <div class="timeline-body">
+              <div class="timeline-date">July 2021</div>
+              <div class="timeline-title">Conducting Usability Testing</div>
+              <div class="timeline-institution">The Interaction Design Foundation</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot" style="font-size:0.6rem">UX</div>
+            <div class="timeline-body">
+              <div class="timeline-date">July 2019</div>
+              <div class="timeline-title">UI/UX Design BootCamp</div>
+              <div class="timeline-institution">Rahnema College — 150h intensive</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LETS TALK -->
+    <section class="lets-talk">
+      <div class="container">
+        <div class="lets-talk-inner fade-up">
+          <p class="eyebrow" style="text-align:center;margin-bottom:12px">Let's Connect</p>
+          <h2>Let's Work Together</h2>
+          <p>Curious about my work or just want to say hello? I'd love to hear from you.</p>
+          <div class="lets-talk-actions">
+            <a href="contact.html" class="btn btn-primary" data-contact-modal data-contact-page="contact.html">Get in Touch</a>
+            <a href="resume.html" class="btn btn-outlined">View Resume</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2026 Masih Sadri. Crafted with empathy and care.</p>
+      <p>Built from scratch by Masih ❤️</p>
+    </div>
+  </footer>
+
+  <script src="js/navigation.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/contact-modal.js"></script>
+</body>
+</html>

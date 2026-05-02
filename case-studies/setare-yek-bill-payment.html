@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SetareYek Bill Payment — Masih Sadri</title>
+  <meta name="description" content="How I turned a failing bill payment feature from 4% to 47% adoption at SetareYek through user research and iterative design." />
+  <link rel="icon" type="image/svg+xml" href="../images/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <link rel="stylesheet" href="../css/variables.css" />
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/layout.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+  <link rel="stylesheet" href="../css/animations.css" />
+  <link rel="stylesheet" href="../css/case-study.css" />
+  <script src="../js/theme.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container">
+      <nav class="nav-inner" aria-label="Main navigation">
+        <a href="../index.html" class="nav-logo">Masih Sadri</a>
+        <div class="nav-links">
+          <a href="../index.html" class="nav-link">Home</a>
+          <a href="../my-story.html" class="nav-link">My Story</a>
+          <a href="../index.html#section-case-studies" class="nav-link">Case Studies</a>
+          <a href="../contact.html" class="nav-link">Contact</a>
+          <a href="../resume.html" class="nav-link">Resume</a>
+        </div>
+        <div class="nav-actions">
+          <a href="https://www.linkedin.com/in/msadri/" target="_blank" rel="noopener noreferrer" class="nav-icon-btn" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+          <a href="https://t.me/masihsadri" target="_blank" rel="noopener noreferrer" class="nav-icon-btn" aria-label="Telegram"><i class="bi bi-telegram"></i></a>
+          <label class="theme-toggle" data-theme-toggle aria-label="Toggle dark mode">
+            <i class="bi bi-sun icon-sun"></i>
+            <span class="theme-switch"><input type="checkbox" class="theme-checkbox" /><span class="theme-switch-track"></span><span class="theme-switch-thumb"></span></span>
+            <i class="bi bi-moon icon-moon"></i>
+          </label>
+        </div>
+        <button class="nav-mobile-toggle" id="nav-mobile-open" aria-label="Open navigation menu"><i class="bi bi-list"></i></button>
+      </nav>
+    </div>
+  </header>
+  <div id="mobile-drawer-overlay" class="mobile-drawer-overlay"></div>
+  <div id="mobile-drawer" class="mobile-drawer" role="dialog" aria-label="Navigation menu" aria-modal="true">
+    <div class="mobile-drawer-header">
+      <h3>Navigate</h3>
+      <button class="mobile-drawer-close" id="nav-mobile-close" aria-label="Close"><i class="bi bi-x-lg"></i></button>
+    </div>
+    <ul class="mobile-nav-list">
+      <li><a href="../index.html" class="mobile-nav-link">Home</a></li>
+      <li><a href="../my-story.html" class="mobile-nav-link">My Story</a></li>
+      <li><a href="../index.html#section-case-studies" class="mobile-nav-link">Case Studies</a></li>
+      <li><a href="../contact.html" class="mobile-nav-link">Contact</a></li>
+      <li><a href="../resume.html" class="mobile-nav-link">Resume</a></li>
+    </ul>
+    <div class="mobile-drawer-divider"></div>
+    <div class="mobile-drawer-socials">
+      <a href="https://www.linkedin.com/in/msadri/" target="_blank" rel="noopener noreferrer" class="mobile-social-btn" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+      <a href="https://t.me/masihsadri" target="_blank" rel="noopener noreferrer" class="mobile-social-btn" aria-label="Telegram"><i class="bi bi-telegram"></i></a>
+    </div>
+    <div class="mobile-theme-row">
+      <label class="theme-toggle" data-theme-toggle aria-label="Toggle dark mode">
+        <i class="bi bi-sun icon-sun"></i>
+        <span class="theme-switch"><input type="checkbox" class="theme-checkbox" /><span class="theme-switch-track"></span><span class="theme-switch-thumb"></span></span>
+        <i class="bi bi-moon icon-moon"></i>
+      </label>
+    </div>
+  </div>
+
+  <main id="main-content">
+
+    <!-- OVERVIEW -->
+    <section class="cs-overview">
+      <div class="container">
+        <p class="eyebrow fade-up" style="margin-bottom:8px">Case Study 03 · Product Design &amp; Growth</p>
+        <h1 class="cs-overview-title fade-up delay-1">From 4% to 47%: How I Turned a Failing Feature Into a Core Product Value</h1>
+        <p class="cs-overview-subtitle fade-up delay-2">Despite millions of active users, only 4% of payments were bills. Session recordings showed users were trying but failing. I led the complete redesign from research through launch, increasing adoption to 47%.</p>
+
+        <div class="cs-meta-grid fade-up delay-3">
+          <div class="cs-meta-item"><div class="cs-meta-label">Role</div><div class="cs-meta-value">Senior Product Designer</div></div>
+          <div class="cs-meta-item"><div class="cs-meta-label">Timeline</div><div class="cs-meta-value">2022 – 2023</div></div>
+          <div class="cs-meta-item"><div class="cs-meta-label">Company</div><div class="cs-meta-value">Setare Aval (SetareYek app)</div></div>
+          <div class="cs-meta-item"><div class="cs-meta-label">Constraint</div><div class="cs-meta-value">Sole designer — balanced deep research with rapid execution</div></div>
+        </div>
+
+        <div class="cs-stats-row fade-up delay-4">
+          <div class="cs-stat-pill">
+            <div class="cs-stat-pill-value">4%→47%</div>
+            <div class="cs-stat-pill-label">Adoption rate</div>
+            <div class="cs-stat-pill-desc">10x growth in bill payment share</div>
+          </div>
+          <div class="cs-stat-pill">
+            <div class="cs-stat-pill-value">80%</div>
+            <div class="cs-stat-pill-label">Drop reduction</div>
+            <div class="cs-stat-pill-desc">After Version 2 performance fixes</div>
+          </div>
+          <div class="cs-stat-pill">
+            <div class="cs-stat-pill-value">1M+</div>
+            <div class="cs-stat-pill-label">Users</div>
+            <div class="cs-stat-pill-desc">SetareYek platform scale</div>
+          </div>
+        </div>
+
+        <img src="../images/setare-aval-user-flow.webp"
+             alt="SetareYek bill payment user flow"
+             class="cs-hero-image fade-up delay-5"
+             loading="eager" />
+      </div>
+    </section>
+
+    <!-- BODY -->
+    <section style="background:var(--color-bg-paper);border-top:1px solid var(--color-divider)">
+      <div class="container">
+        <div class="cs-layout">
+
+          <nav class="cs-outline" aria-label="Section outline">
+            <div class="cs-outline-title">Contents</div>
+            <ul class="cs-outline-list">
+              <li><a href="#challenge" class="cs-outline-link">The Challenge</a></li>
+              <li><a href="#about-setareyek" class="cs-outline-link">About SetareYek</a></li>
+              <li><a href="#discovery" class="cs-outline-link">Discovery</a></li>
+              <li><a href="#personas" class="cs-outline-link">Personas</a></li>
+              <li><a href="#insights" class="cs-outline-link">Insights</a></li>
+              <li><a href="#philosophy" class="cs-outline-link">Design Philosophy</a></li>
+              <li><a href="#solutions" class="cs-outline-link">The Solutions</a></li>
+              <li><a href="#failure" class="cs-outline-link">Learning from Failure</a></li>
+              <li><a href="#version2" class="cs-outline-link">Version 2</a></li>
+              <li><a href="#impact" class="cs-outline-link">Results</a></li>
+              <li><a href="#learnings" class="cs-outline-link">Learnings</a></li>
+            </ul>
+          </nav>
+
+          <div class="cs-content">
+
+            <div id="challenge" class="cs-section fade-up">
+              <div class="cs-section-title">The Challenge</div>
+              <p class="cs-section-summary">Despite millions of active users, only 4% of payments were bills. Session recordings showed users were trying but failing.</p>
+              <ul class="cs-bullets">
+                <li class="cs-bullet">96% of payments were not bills</li>
+                <li class="cs-bullet">High drop-off rates at specific steps</li>
+                <li class="cs-bullet">Users spending unusually long on single screens</li>
+                <li class="cs-bullet">Many abandoned attempts before payment confirmation</li>
+              </ul>
+              <blockquote class="cs-quote">
+                <p class="cs-quote-text">"People pay bills every month—it's not optional. So why are they avoiding our app?"</p>
+                <div class="cs-quote-author">Key Research Question</div>
+              </blockquote>
+              <div class="cs-highlights">
+                <div class="cs-highlight">This wasn't about adding features. Something fundamental was broken.</div>
+              </div>
+            </div>
+
+            <div id="about-setareyek" class="cs-section fade-up">
+              <div class="cs-section-title">About SetareYek</div>
+              <p class="cs-section-summary">Iran's largest fintech platform serving millions of users for everyday financial transactions.</p>
+              <div class="cs-metrics-row">
+                <div class="cs-metric-card">
+                  <div class="cs-metric-value">10.6M+</div>
+                  <div class="cs-metric-label">Monthly Active Users</div>
+                  <div class="cs-metric-desc">Nationwide fintech platform</div>
+                </div>
+                <div class="cs-metric-card">
+                  <div class="cs-metric-value">2.36M+</div>
+                  <div class="cs-metric-label">Total Installs</div>
+                  <div class="cs-metric-desc">Growing user base</div>
+                </div>
+              </div>
+              <div class="cs-body">
+                <p><strong>The opportunity:</strong> Bill payment is a high-frequency, high-stress task that every household faces monthly. If we could solve it well, we'd become indispensable.</p>
+                <p><strong>The problem:</strong> We had the feature, but almost nobody used it.</p>
+              </div>
+            </div>
+
+            <div id="discovery" class="cs-section fade-up">
+              <div class="cs-section-eyebrow">What Users Actually Needed</div>
+              <div class="cs-section-title">Discovery</div>
+              <p class="cs-section-summary">Multi-method research combining qualitative interviews, contextual inquiry, digital behavior analysis, and quantitative patterns.</p>
+              <ul class="cs-bullets">
+                <li class="cs-bullet">Qualitative: In-depth interviews with building managers, heads of households, and everyday users</li>
+                <li class="cs-bullet">Contextual inquiry: Observing bill payment in real contexts</li>
+                <li class="cs-bullet">Ethnographic details: Studying a building manager's physical notebook</li>
+                <li class="cs-bullet">Digital behavior: Session recordings, app store reviews, social media sentiment</li>
+                <li class="cs-bullet">Quantitative: Drop-off analysis and behavior patterns</li>
+              </ul>
+            </div>
+
+            <div id="personas" class="cs-section fade-up">
+              <div class="cs-section-eyebrow">Two Core Personas</div>
+              <div class="cs-section-title">Personas</div>
+              <p class="cs-section-summary">Two distinct personas emerged with different needs driving every design decision.</p>
+              <blockquote class="cs-quote">
+                <p class="cs-quote-text">"I make photocopies of every receipt and give them to residents. I need proof that it's paid."</p>
+                <div class="cs-quote-author">Building Manager, Age 55+</div>
+                <div class="cs-quote-role">Manages utilities for entire apartment building · Needs official documentation · Zero tolerance for ambiguity.</div>
+              </blockquote>
+              <blockquote class="cs-quote">
+                <p class="cs-quote-text">"Entering this 13-digit code every single month is torture."</p>
+                <div class="cs-quote-author">Head of Household</div>
+                <div class="cs-quote-role">Pays all family bills monthly · Needs to avoid re-entering codes · Constantly forgets due dates.</div>
+              </blockquote>
+            </div>
+
+            <div id="insights" class="cs-section fade-up">
+              <div class="cs-section-eyebrow">The Breakthrough Insights</div>
+              <div class="cs-section-title">Insights</div>
+              <p class="cs-section-summary">Three insights fundamentally changed our approach.</p>
+              <ul class="cs-bullets">
+                <li class="cs-bullet"><strong>Insight #1: Users weren't confused about coverage—they were confused about us.</strong> They had no idea which bills we supported, forcing trial-and-error that destroyed trust.</li>
+                <li class="cs-bullet"><strong>Insight #2: The receipt was everything.</strong> Users needed an official document they could show to family, share with residents, or present to landlords. This wasn't a "nice-to-have"—it was the core emotional need.</li>
+                <li class="cs-bullet"><strong>Insight #3: Bill payment isn't a one-time task—it's a recurring cycle.</strong> Our flow treated every payment like a new transaction, forcing users to re-enter everything monthly.</li>
+              </ul>
+              <div class="cs-highlights">
+                <div class="cs-highlight">The receipt wasn't decoration—it was the entire value proposition</div>
+                <div class="cs-highlight">People pay the same bills repeatedly. They need a system that remembers</div>
+              </div>
+            </div>
+
+            <div id="philosophy" class="cs-section fade-up">
+              <div class="cs-section-title">Design Philosophy</div>
+              <p class="cs-section-summary">Digitize what people already do in the physical world—then make it 10x better.</p>
+              <ul class="cs-bullets">
+                <li class="cs-bullet">Keep notebooks of bill IDs → We built a digital bill list</li>
+                <li class="cs-bullet">Set calendar reminders → We built smart notifications</li>
+                <li class="cs-bullet">Make photocopies of receipts → We created shareable official receipts</li>
+              </ul>
+              <div class="cs-highlights">
+                <div class="cs-highlight">The experience had to feel natural from day one, not like learning new software</div>
+              </div>
+            </div>
+
+            <div id="solutions" class="cs-section fade-up">
+              <div class="cs-section-title">The Solutions</div>
+              <p class="cs-section-summary">Six interconnected solutions addressing core user needs.</p>
+              <ul class="cs-bullets">
+                <li class="cs-bullet"><strong>Saved Bills &amp; One-Tap Updates:</strong> Register a bill once, use it forever. "Check for new amount" button fetches latest bill instantly—no more re-entering 13-digit codes.</li>
+                <li class="cs-bullet"><strong>Digital Bill Management Hub:</strong> All bills in one organized list with status labels (Paid, Pending, Overdue). Backward-compatible: returning users saw history immediately.</li>
+                <li class="cs-bullet"><strong>Smart Reminders:</strong> Set custom reminders for each bill with push notifications before due dates.</li>
+                <li class="cs-bullet"><strong>QR/Barcode Scanning:</strong> Instant bill entry via camera—critical for older users and busy personas.</li>
+                <li class="cs-bullet"><strong>Immediate Transparency:</strong> Supported bill providers shown upfront with logos. Clear guidance on what we can and can't process—no more trial-and-error.</li>
+                <li class="cs-bullet"><strong>Official, Shareable Receipts:</strong> PDF-quality receipts with all legal details. One-tap sharing via any channel—built specifically for the "proof" requirement.</li>
+              </ul>
+            </div>
+
+            <div id="failure" class="cs-section fade-up">
+              <div class="cs-section-eyebrow">Version 1: The Failure That Made Everything Better</div>
+              <div class="cs-section-title">Learning from Failure</div>
+              <p class="cs-section-summary">Version 1 launched and failed within 48 hours. Bill payments dropped 80%. We rolled back immediately.</p>
+              <div class="cs-body">
+                <p><strong>What happened:</strong> Bills took 8-10 seconds to load (we were fetching everything automatically). No loading states, no skeleton UI, no progress indicators. Users saw blank screens.</p>
+              </div>
+              <ul class="cs-bullets">
+                <li class="cs-bullet"><strong>What went wrong:</strong> Great UX design can't save poor technical performance. We skipped realistic latency testing, didn't simulate worst-case network conditions, prioritized automation over user control.</li>
+                <li class="cs-bullet"><strong>What changed:</strong> Switched to manual "Check Amount" buttons (instant feedback), added lazy loading + skeleton states everywhere, implemented comprehensive pre-launch technical testing, created new company-wide standards for performance testing.</li>
+              </ul>
+              <div class="cs-highlights">
+                <div class="cs-highlight">This failure became the most valuable part of the project</div>
+              </div>
+            </div>
+
+            <div id="version2" class="cs-section fade-up">
+              <div class="cs-section-eyebrow">The Launch That Worked</div>
+              <div class="cs-section-title">Version 2</div>
+              <p class="cs-section-summary">Armed with lessons from failure, we shipped a stable, fast, trustworthy experience.</p>
+              <ul class="cs-bullets">
+                <li class="cs-bullet">Manual control: Users trigger updates when ready</li>
+                <li class="cs-bullet">Instant feedback: Loading states for every action</li>
+                <li class="cs-bullet">Backward compatibility: Zero learning curve for returning users</li>
+                <li class="cs-bullet">Official receipts: Solved the core emotional need</li>
+                <li class="cs-bullet">Smart reminders: Addressed forgetfulness</li>
+                <li class="cs-bullet">Clear communication: Built confidence from screen one</li>
+              </ul>
+            </div>
+
+            <div id="impact" class="cs-section fade-up">
+              <div class="cs-section-eyebrow">Business Impact</div>
+              <div class="cs-section-title">Results</div>
+              <p class="cs-section-summary">4% → 47% adoption rate. That's 10x growth in bill payment share.</p>
+              <div class="cs-metrics-row">
+                <div class="cs-metric-card">
+                  <div class="cs-metric-value">4%→47%</div>
+                  <div class="cs-metric-label">Adoption rate</div>
+                  <div class="cs-metric-desc">10x growth in bill payment share</div>
+                </div>
+              </div>
+              <div class="cs-body">
+                <p>Bill payment went from a neglected feature to one of the app's primary value propositions.</p>
+              </div>
+              <ul class="cs-bullets">
+                <li class="cs-bullet"><strong>Trust:</strong> Official receipts and clear communication</li>
+                <li class="cs-bullet"><strong>Ease:</strong> One-time setup, recurring use</li>
+                <li class="cs-bullet"><strong>Reliability:</strong> Fast, stable, predictable</li>
+                <li class="cs-bullet"><strong>Alignment:</strong> Matched real-world behavior</li>
+              </ul>
+            </div>
+
+            <div id="learnings" class="cs-section fade-up">
+              <div class="cs-section-eyebrow">Key Takeaways</div>
+              <div class="cs-section-title">Learnings</div>
+              <ul class="cs-bullets">
+                <li class="cs-bullet"><strong>Design doesn't exist in isolation:</strong> Even perfect UX fails without technical performance</li>
+                <li class="cs-bullet"><strong>Emotional needs = Functional needs:</strong> The receipt wasn't decoration—it was the entire value proposition</li>
+                <li class="cs-bullet"><strong>Real behavior &gt; Assumptions:</strong> Users showed us what they needed. We listened</li>
+                <li class="cs-bullet"><strong>Backward compatibility is trust:</strong> Especially in financial products, familiarity = confidence</li>
+                <li class="cs-bullet"><strong>Failed launches can be the best learning:</strong> Owning mistakes and iterating fast built a stronger product and process</li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RELATED -->
+    <section class="cs-related">
+      <div class="container">
+        <p class="cs-related-tag">Keep Exploring</p>
+        <h2>More ways I design for users</h2>
+        <p class="cs-related-sub">Dive into other collaborations or get to know the person behind the work. Pick another case study, peek inside my story, or reach out directly.</p>
+        <div class="cs-related-grid">
+          <a href="divar-secure-call.html" class="cs-related-card">
+            <div class="cs-related-card-tag">Trust &amp; Safety</div>
+            <h4>The Story of Reducing Harassment by 60% on Divar</h4>
+            <p>We reduced harassment reports by 60% — building a proxy number system that still protects 2.1M weekly users in Iran's largest marketplace.</p>
+            <span class="cs-related-card-link">Read the case study →</span>
+          </a>
+          <a href="setare-aval-engagement.html" class="cs-related-card">
+            <div class="cs-related-card-tag">Retention &amp; Growth</div>
+            <h4>Turning One-Time Visitors into Lifelong Customers at Setare Aval</h4>
+            <p>Re-architected lifecycle journeys that doubled retained revenue and converted referral cohorts into 60k+ daily active users.</p>
+            <span class="cs-related-card-link">Read the case study →</span>
+          </a>
+        </div>
+        <div class="cs-related-cta">
+          <a href="../my-story.html" class="btn-dark-primary">Visit My Story</a>
+          <a href="../contact.html" class="btn-dark-ghost">Start a conversation</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="lets-talk">
+      <div class="container">
+        <div class="lets-talk-inner fade-up">
+          <p class="eyebrow" style="text-align:center;margin-bottom:12px">Let's Connect</p>
+          <h2>Liked What You Saw?</h2>
+          <p>I'm open to discussing new projects, design challenges, or potential collaborations.</p>
+          <div class="lets-talk-actions">
+            <a href="../contact.html" class="btn btn-primary" data-contact-modal data-contact-page="../contact.html">Get in Touch</a>
+            <a href="../index.html#section-case-studies" class="btn btn-outlined">All Case Studies</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2026 Masih Sadri. Crafted with empathy and care.</p>
+      <p>Built from scratch by Masih ❤️</p>
+    </div>
+  </footer>
+
+  <script src="../js/navigation.js"></script>
+  <script src="../js/animations.js"></script>
+  <script src="../js/case-study.js"></script>
+  <script src="../js/contact-modal.js"></script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Page Not Found — Masih Sadri</title>
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <script src="js/theme.js"></script>
+  <style>
+    .not-found {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 60vh;
+      text-align: center;
+      padding: 48px 24px;
+    }
+    .not-found-code {
+      font-size: clamp(5rem, 15vw, 10rem);
+      font-weight: 700;
+      color: var(--color-primary);
+      opacity: 0.15;
+      line-height: 1;
+      letter-spacing: -0.05em;
+    }
+    .not-found h1 {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      margin-bottom: 12px;
+    }
+    .not-found p {
+      max-width: 400px;
+      margin: 0 auto 32px;
+    }
+    .not-found-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <nav class="nav-inner" aria-label="Main navigation">
+        <a href="index.html" class="nav-logo">Masih Sadri</a>
+        <div class="nav-links">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="my-story.html" class="nav-link">My Story</a>
+          <a href="contact.html" class="nav-link">Contact</a>
+          <a href="resume.html" class="nav-link">Resume</a>
+        </div>
+        <div class="nav-actions">
+          <label class="theme-toggle" data-theme-toggle aria-label="Toggle dark mode">
+            <i class="bi bi-sun icon-sun"></i>
+            <span class="theme-switch"><input type="checkbox" class="theme-checkbox" /><span class="theme-switch-track"></span><span class="theme-switch-thumb"></span></span>
+            <i class="bi bi-moon icon-moon"></i>
+          </label>
+        </div>
+        <button class="nav-mobile-toggle" id="nav-mobile-open" aria-label="Open navigation"><i class="bi bi-list"></i></button>
+      </nav>
+    </div>
+  </header>
+  <div id="mobile-drawer-overlay" class="mobile-drawer-overlay"></div>
+  <div id="mobile-drawer" class="mobile-drawer" role="dialog" aria-modal="true">
+    <div class="mobile-drawer-header">
+      <h3>Navigate</h3>
+      <button class="mobile-drawer-close" id="nav-mobile-close" aria-label="Close"><i class="bi bi-x-lg"></i></button>
+    </div>
+    <ul class="mobile-nav-list">
+      <li><a href="index.html" class="mobile-nav-link">Home</a></li>
+      <li><a href="my-story.html" class="mobile-nav-link">My Story</a></li>
+      <li><a href="contact.html" class="mobile-nav-link">Contact</a></li>
+      <li><a href="resume.html" class="mobile-nav-link">Resume</a></li>
+    </ul>
+  </div>
+
+  <main>
+    <div class="not-found">
+      <div class="not-found-code">404</div>
+      <h1>Page not found</h1>
+      <p>The page you're looking for doesn't exist or has been moved.</p>
+      <div class="not-found-actions">
+        <a href="index.html" class="btn btn-primary">Go Home</a>
+        <a href="contact.html" class="btn btn-outlined">Contact Me</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2026 Masih Sadri. Crafted with empathy and care.</p>
+    </div>
+  </footer>
+
+  <script src="js/navigation.js"></script>
+</body>
+</html>
