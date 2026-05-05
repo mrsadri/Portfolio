@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
       headline: "How cross-functional guardrails helped Divar reduce harassment incidents by 60%",
       bullets: [
         "Co-led a task force bridging Trust & Safety, Legal, and Engineering.",
-        "Shipped dynamic voice-masking with abuse detection for 2.1M weekly callers.",
+        "Shipped dynamic voice-masking with abuse detection for 1.2M weekly callers.",
         "Stood up playbooks for moderation ops to monitor repeat offenders.",
       ],
     },

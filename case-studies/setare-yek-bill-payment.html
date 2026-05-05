@@ -16,6 +16,13 @@
   <link rel="stylesheet" href="../css/components.css" />
   <link rel="stylesheet" href="../css/animations.css" />
   <link rel="stylesheet" href="../css/case-study.css" />
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "umgef0oawe");
+  </script>
   <script src="../js/theme.js"></script>
   <style>
     /* ── Numbered learning / constraint items ── */
@@ -344,7 +351,7 @@
               <li><a href="#constraints" class="cs-outline-link">Constraints &amp; Tradeoffs</a></li>
               <li><a href="#discovery" class="cs-outline-link">Discovery: 6 Frustrations</a></li>
               <li><a href="#reframe" class="cs-outline-link">The Strategic Reframe</a></li>
-              <li><a href="#iter1" class="cs-outline-link">Iteration 1: What Broke</a></li>
+              <li><a href="#iter1" class="cs-outline-link">Iteration 1: Latency Assumption</a></li>
               <li><a href="#iter2" class="cs-outline-link">Iteration 2: 3-Day Fix</a></li>
               <li><a href="#iter3" class="cs-outline-link">Iteration 3: Full Solution</a></li>
               <li><a href="#testing" class="cs-outline-link">Usability Testing</a></li>
@@ -521,11 +528,12 @@
             <!-- REFRAME -->
             <div id="reframe" class="cs-section fade-up">
               <div class="cs-section-title">The Strategic Reframe</div>
-              <p class="cs-section-summary">This single insight changed every downstream decision.</p>
+              <p class="cs-section-summary">The lift came from this reframe — not from the visual design.</p>
               <div class="cs-highlights">
-                <div class="cs-highlight">Bill payment couldn't be designed as a faster button. It had to be designed as an <strong>inventory system</strong> — a place where users' bills lived, updated themselves, and could be paid, shared, and referenced over time.</div>
+                <div class="cs-highlight" style="font-size:1.125rem;font-weight:700;line-height:1.6">Bill payment couldn't be designed as a faster button. It had to be designed as an <strong>inventory system</strong> — a place where users' bills lived, updated themselves, and could be paid, shared, and referenced over time.</div>
               </div>
               <div class="cs-body">
+                <p><strong>This single insight changed every downstream decision.</strong></p>
                 <p>The physical world already had this system. Building managers kept notebooks of bill IDs. Households set calendar reminders. People made photocopies of receipts. The digital design needed to replace each of these behaviours — not just the payment step.</p>
               </div>
               <ul class="cs-bullets">
@@ -537,18 +545,18 @@
 
             <!-- ITERATION 1 -->
             <div id="iter1" class="cs-section fade-up">
-              <div class="cs-section-title">Iteration 1: The 14-Day Mistake</div>
-              <p class="cs-section-summary">I designed iteration 1 in 5 days after 14 days of research. It broke in production within 24 hours.</p>
+              <div class="cs-section-title">Iteration 1: The Latency Assumption I Missed</div>
+              <p class="cs-section-summary">I designed iteration 1 in 5 days after 14 days of research. Live for ~24 hours before rollback.</p>
               <div class="cs-body">
                 <p>The core idea: a list of bill cards, each showing the current bill price prominently with a "Pay Now" button. Click → pay. Minimal friction.</p>
-                <p>It went into the dev queue, launched 14 days later, and was rolled back the same day.</p>
+                <p>It went into the dev queue, launched 14 days later. Live for ~24 hours before rollback.</p>
               </div>
 
               <div class="impact-cards-row">
                 <div class="impact-big-card danger">
                   <div class="impact-big-num">24h</div>
                   <div class="impact-big-label">Time to production failure</div>
-                  <div class="impact-big-sub">Rolled back the same day</div>
+                  <div class="impact-big-sub">~24h before rollback</div>
                 </div>
               </div>
 
@@ -582,7 +590,7 @@
             <!-- ITERATION 2 -->
             <div id="iter2" class="cs-section fade-up">
               <div class="cs-section-title">Iteration 2: Three Days to Fix</div>
-              <p class="cs-section-summary">Three architectural changes. Shipped 3 days after iteration 1 rolled back.</p>
+              <p class="cs-section-summary">Three architectural changes. Design completed in 3 days; full iteration shipped after standard dev cycle.</p>
               <div class="refined-list">
                 <div class="refined-item">
                   <div class="refined-icon"><i class="bi bi-hand-index" style="color:var(--color-primary)"></i></div>
@@ -606,14 +614,15 @@
                   </div>
                 </div>
               </div>
+              <p class="cs-note"><strong>Frustrations resolved at this stage:</strong> #1 (flow too difficult, via persistent identifiers) and #3 (physical bills lost, via the inventory itself) were solved at the architectural level here, not at the feature level.</p>
             </div>
 
             <!-- ITERATION 3 -->
             <div id="iter3" class="cs-section fade-up">
               <div class="cs-section-title">Iteration 3: Full Solution + Two Growth Features</div>
-              <p class="cs-section-summary">With the inventory architecture stable, I addressed the remaining 5 frustrations — and proposed two growth features that weren't in the PM's brief.</p>
+              <p class="cs-section-summary">With the inventory architecture stable, I addressed the remaining 4 frustrations — and proposed two growth features that weren't in the PM's brief.</p>
 
-              <p class="cs-sub-title">Solving the remaining 5 frustrations</p>
+              <p class="cs-sub-title">Solving the remaining 4 frustrations</p>
               <div class="refined-list">
                 <div class="refined-item">
                   <div class="refined-icon"><i class="bi bi-share" style="color:var(--color-primary)"></i></div>
@@ -645,6 +654,15 @@
                 </div>
               </div>
 
+              <div class="cs-key-findings" style="margin:16px 0">
+                <div class="cs-key-findings-header"><i class="bi bi-map"></i> Frustration mapping recap</div>
+                <ul class="cs-key-findings-list">
+                  <li class="cs-key-findings-item"><strong>Iteration 2 (architecture)</strong> → solved #1 (flow too difficult) and #3 (physical bills lost)</li>
+                  <li class="cs-key-findings-item"><strong>Iteration 3 (features)</strong> → solved #2 (no proof for landlords), #4 (forgetting to pay on time), #5 (paper had administrative value), #6 (no payment history)</li>
+                  <li class="cs-key-findings-item">All 6 frustrations addressed across the redesign.</li>
+                </ul>
+              </div>
+
               <figure style="margin:24px 0 0">
                 <img src="../images/setare-aval-user-flow.webp" alt="SetareYek bill payment user flow — Iteration 3" class="cs-section-image" loading="lazy" />
                 <figcaption style="font-size:0.8rem;color:var(--color-text-secondary);text-align:center;margin-top:8px;font-style:italic">Iteration 3 — full bill inventory flow with history, receipt sharing, and time-ordered list</figcaption>
@@ -652,7 +670,7 @@
 
               <p class="cs-sub-title">Two growth features I proposed (not in PM brief)</p>
               <div class="cs-body">
-                <p>While running discovery, I noticed two patterns the PM hadn't asked about. I proposed both — they shipped as part of iteration 3.</p>
+                <p>During discovery I noticed two patterns the PM hadn't asked about. I held them, validated them through the same research method as the core feature, and proposed them for iteration 3 — backed by data, not opportunism.</p>
               </div>
 
               <div class="growth-feature-card">
@@ -669,14 +687,14 @@
 
               <div class="impact-cards-row">
                 <div class="impact-big-card growth">
-                  <div class="impact-big-num">~1 in 3</div>
-                  <div class="impact-big-label">Referral conversion rate</div>
-                  <div class="impact-big-sub">Auto-referral feature (Feature B)</div>
+                  <div class="impact-big-num">~60K</div>
+                  <div class="impact-big-label">Referral invitations sent</div>
+                  <div class="impact-big-sub">First 2 months of Feature B</div>
                 </div>
                 <div class="impact-big-card growth">
-                  <div class="impact-big-num">~20K</div>
-                  <div class="impact-big-label">New active users</div>
-                  <div class="impact-big-sub">Acquired in first 2 months of Feature B</div>
+                  <div class="impact-big-num">~1 in 3</div>
+                  <div class="impact-big-label">Referral conversion rate</div>
+                  <div class="impact-big-sub">~20K new active users acquired</div>
                 </div>
               </div>
               <p class="cs-note">Both features were my proposals — neither was in the PM's original brief. The growth impact was on top of the 6%→47% payment-share lift, not part of it.</p>
@@ -684,12 +702,19 @@
 
             <!-- USABILITY TESTING -->
             <div id="testing" class="cs-section fade-up">
-              <div class="cs-section-title">Solo Usability Testing</div>
-              <p class="cs-section-summary">After iteration 3 design but before development, I ran 2 weeks of usability testing solo.</p>
+              <div class="cs-section-title">Usability Testing</div>
+              <p class="cs-section-summary">After iteration 3 design but before development, I ran 2 weeks of usability testing solo — the safeguard iteration 1 skipped.</p>
               <div class="cs-body">
-                <p>Unmoderated and moderated mixed sessions. I tested the core inventory flow, bill update flow, receipt-sharing flow, and history search.</p>
-                <p>Found small UX bugs — mostly around tap targets and the "share" affordance — and fixed them before development started.</p>
+                <p><strong>Format:</strong> Mixed — moderated sessions for the core flows (inventory creation, bill update + payment, receipt sharing) and unmoderated tasks for the discovery flows (history search, family package view).</p>
+                <p><strong>Recruitment:</strong> SetareYek's existing user base and personal network, covering both personas — Head of Household and Building Manager.</p>
+                <p><strong>Four core flows tested:</strong> inventory creation, bill update + payment, receipt sharing with landlord verification, payment history search.</p>
+                <p><strong>What I found and fixed before dev:</strong></p>
               </div>
+              <ul class="cs-bullets">
+                <li class="cs-bullet">Tap target issues on the bill cards — especially for the older Building Manager persona</li>
+                <li class="cs-bullet">The "share" affordance was unclear — users didn't realise digital receipts could be sent outside the app</li>
+                <li class="cs-bullet">Verification instruction copy needed simplification for non-technical landlords</li>
+              </ul>
               <div class="cs-highlights">
                 <div class="cs-highlight">This testing window is the reason iteration 3 didn't break in production. Iteration 1 skipped it.</div>
               </div>
@@ -717,7 +742,7 @@
               <ul class="cs-bullets">
                 <li class="cs-bullet">Bill payment market share grew from 6% to 47% of IR-MCI internal payment volume across 3 iterations</li>
                 <li class="cs-bullet">~20,000 new active users acquired in first 2 months of the auto-referral feature</li>
-                <li class="cs-bullet">~1 in 3 referrals converted from gift payment invitations</li>
+                <li class="cs-bullet">~1 in 3 referrals converted from gift payment invitations (~60,000 invitations sent in that window)</li>
                 <li class="cs-bullet">Total time to peak: ~4.5 months (2.5 months design + development, 2 months adoption ramp)</li>
               </ul>
 
@@ -745,6 +770,13 @@
                   <div>
                     <h5>Run a smaller pilot before full rollout</h5>
                     <p>Iteration 1 went to 100% of users at launch. If I'd run it on a 5% cohort first, the price-fetch cost would have shown up the same way but with much less business damage and a faster rollback.</p>
+                  </div>
+                </div>
+                <div class="refined-item">
+                  <div class="refined-icon"><i class="bi bi-bar-chart-line" style="color:var(--color-primary)"></i></div>
+                  <div>
+                    <h5>Build the measurement dashboard before iteration 1 ships, not after</h5>
+                    <p>We caught the 24-hour drop because DevOps was watching infrastructure metrics — not because I'd instrumented the design for measurement. A senior designer owns the measurement framework as part of the design, not as a post-launch ask.</p>
                   </div>
                 </div>
               </div>

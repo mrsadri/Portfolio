@@ -28,7 +28,7 @@ My background is technical (started as an iOS developer), and I bring that into 
 
 | | |
 |---|---|
-| **60%** reduction in harassment incidents | Co-led Divar's Secure Call system protecting 2.1M weekly callers |
+| **60%** reduction in harassment incidents | Co-led Divar's Secure Call system protecting 1.2M weekly callers |
 | **10×** growth in feature adoption | Took SetareYek's bill payment from 4% to 47% through research-led redesign |
 | **80%** lift in qualified leads | Redesigned Persol's sign-up funnel end-to-end in 3 months |
 | **8,300+** product teams | Using Morph, the open design system I built for Figma handoffs |
@@ -41,7 +41,7 @@ My background is technical (started as an iOS developer), and I bring that into 
 **Platform:** Divar · Iran's largest classified ads marketplace (40M+ users)  
 **Problem:** Users making phone calls to strangers through the platform faced harassment, fraud, and privacy exposure.  
 **What I did:** Led the UX for a Secure Call system with Trust & Safety — number masking, abuse reporting, behavioral signals.  
-**Outcome:** 60% reduction in harassment incidents across 2.1M calls per week.
+**Outcome:** 60% reduction in harassment incidents across 1.2M calls per week.
 
 → [Read the case study](https://mrsadri.github.io/Portfolio/case-studies/divar-secure-call.html)
 
