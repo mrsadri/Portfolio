@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SetareYek Bill Payment — Masih Sadri</title>
-  <meta name="description" content="How I turned a failing bill payment feature from 4% to 47% adoption at SetareYek through user research and iterative design." />
+  <meta name="description" content="How I grew bill payment market share from 6% to 47% at SetareYek in 4.5 months — sole designer across 3 iterations, one production rollback, and two self-proposed growth features that acquired 20K new users." />
   <link rel="icon" type="image/svg+xml" href="../images/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -17,6 +17,213 @@
   <link rel="stylesheet" href="../css/animations.css" />
   <link rel="stylesheet" href="../css/case-study.css" />
   <script src="../js/theme.js"></script>
+  <style>
+    /* ── Numbered learning / constraint items ── */
+    .learnings-list { display: flex; flex-direction: column; gap: 12px; margin: 16px 0; }
+    .learning-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      background: var(--color-subtle);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      padding: 18px 20px;
+    }
+    .learning-num {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--color-border);
+      line-height: 1;
+      flex-shrink: 0;
+      width: 32px;
+    }
+    .learning-item h5 { font-size: 0.9375rem; font-weight: 600; color: var(--color-text-primary); margin-bottom: 4px; }
+    .learning-item p  { font-size: 0.875rem; color: var(--color-text-secondary); margin: 0; line-height: 1.6; }
+
+    /* ── Refined solution list ── */
+    .refined-list { display: flex; flex-direction: column; gap: 12px; margin: 16px 0; }
+    .refined-item {
+      background: var(--color-subtle);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      padding: 16px 20px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+    .refined-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--color-brand-muted);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.125rem;
+      flex-shrink: 0;
+    }
+    .refined-item h5 { font-size: 0.875rem; font-weight: 600; color: var(--color-text-primary); margin-bottom: 4px; }
+    .refined-item p  { font-size: 0.8375rem; color: var(--color-text-secondary); margin: 0; line-height: 1.6; }
+
+    /* ── Issue categories (root cause analysis) ── */
+    .issue-category {
+      border-left: 3px solid var(--color-border);
+      padding: 10px 0 10px 16px;
+      margin-bottom: 14px;
+    }
+    .issue-category h5 { font-size: 0.875rem; font-weight: 600; color: var(--color-text-primary); margin-bottom: 6px; }
+    .issue-category ul { margin: 0; padding-left: 18px; }
+    .issue-category li { font-size: 0.8375rem; color: var(--color-text-secondary); margin-bottom: 3px; }
+
+    /* ── Impact metric cards (big) ── */
+    .impact-cards-row {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin: 20px 0;
+    }
+    .impact-big-card {
+      flex: 1;
+      min-width: 140px;
+      background: var(--color-subtle);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      text-align: center;
+    }
+    .impact-big-card.danger {
+      background: #fff5f5;
+      border-color: #ffc9c9;
+    }
+    [data-theme="dark"] .impact-big-card.danger {
+      background: rgba(224, 49, 49, 0.08);
+      border-color: rgba(224, 49, 49, 0.3);
+    }
+    .impact-big-card.growth {
+      background: #f0fdf4;
+      border-color: #86efac;
+    }
+    [data-theme="dark"] .impact-big-card.growth {
+      background: rgba(55, 178, 77, 0.08);
+      border-color: rgba(55, 178, 77, 0.3);
+    }
+    .impact-big-num {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--color-primary);
+      line-height: 1;
+      letter-spacing: -0.03em;
+      margin-bottom: 8px;
+    }
+    .impact-big-card.danger .impact-big-num { color: #e03131; }
+    .impact-big-card.growth .impact-big-num { color: #37b24d; }
+    .impact-big-label { font-size: 0.875rem; font-weight: 600; color: var(--color-text-primary); margin-bottom: 4px; }
+    .impact-big-sub   { font-size: 0.75rem; color: var(--color-text-secondary); }
+
+    /* ── Iteration label divider ── */
+    .iteration-label {
+      text-align: center;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--color-text-secondary);
+      padding: 24px 0 8px;
+      border-top: 1px solid var(--color-divider);
+      margin-bottom: 8px;
+      letter-spacing: 0.02em;
+    }
+
+    /* ── Sub-heading ── */
+    .cs-sub-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--color-text-primary);
+      margin: 20px 0 8px;
+    }
+
+    /* ── Frustration table ── */
+    .frustration-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      font-size: 0.8375rem;
+    }
+    .frustration-table th {
+      text-align: left;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-text-secondary);
+      padding: 8px 12px;
+      border-bottom: 2px solid var(--color-border);
+    }
+    .frustration-table td {
+      padding: 12px;
+      border-bottom: 1px solid var(--color-border);
+      vertical-align: top;
+      color: var(--color-text-secondary);
+      line-height: 1.55;
+    }
+    .frustration-table tr:last-child td { border-bottom: none; }
+    .frustration-table .fnum {
+      font-weight: 700;
+      color: var(--color-primary);
+      font-size: 0.75rem;
+      white-space: nowrap;
+    }
+    .frustration-table .fname {
+      font-weight: 600;
+      color: var(--color-text-primary);
+    }
+    .frustration-table tr:hover td { background: var(--color-subtle); }
+
+    /* ── Growth feature card ── */
+    .growth-feature-card {
+      background: var(--color-subtle);
+      border: 1px solid var(--color-border);
+      border-left: 3px solid var(--color-primary);
+      border-radius: var(--radius-sm);
+      padding: 18px 20px;
+      margin-bottom: 12px;
+    }
+    .growth-feature-card h5 { font-size: 0.9375rem; font-weight: 600; color: var(--color-text-primary); margin-bottom: 6px; }
+    .growth-feature-card p  { font-size: 0.8375rem; color: var(--color-text-secondary); margin: 0; line-height: 1.6; }
+    .growth-feature-label {
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-primary);
+      margin-bottom: 6px;
+    }
+
+    /* ── LinkedIn card ── */
+    .linkedin-card {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--color-subtle);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 12px 16px;
+      text-decoration: none;
+      transition: border-color 160ms ease, background 160ms ease;
+      margin-top: 16px;
+      max-width: 300px;
+    }
+    .linkedin-card:hover { border-color: #0a66c2; background: rgba(10, 102, 194, 0.06); }
+    .linkedin-card-avatar {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: #0a66c2; color: #fff;
+      font-size: 0.8125rem; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; letter-spacing: 0.03em;
+    }
+    .linkedin-card-info { flex: 1; min-width: 0; }
+    .linkedin-card-name { font-size: 0.875rem; font-weight: 600; color: var(--color-text-primary); white-space: nowrap; }
+    .linkedin-card-role { font-size: 0.75rem; color: var(--color-text-secondary); margin-top: 2px; white-space: nowrap; }
+    .linkedin-card-icon { font-size: 1.125rem; color: #0a66c2; flex-shrink: 0; }
+  </style>
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -75,33 +282,46 @@
   <main id="main-content">
 
     <!-- OVERVIEW -->
-    <section class="cs-overview">
+    <section class="cs-overview" style="padding-bottom:0">
       <div class="container">
         <p class="eyebrow fade-up" style="margin-bottom:8px">Case Study 03 · Product Design &amp; Growth</p>
-        <h1 class="cs-overview-title fade-up delay-1">From 4% to 47%: How I Turned a Failing Feature Into a Core Product Value</h1>
-        <p class="cs-overview-subtitle fade-up delay-2">Despite millions of active users, only 4% of payments were bills. Session recordings showed users were trying but failing. I led the complete redesign from research through launch, increasing adoption to 47%.</p>
+        <h1 class="cs-overview-title fade-up delay-1">From 6% to 47%: Turning a Failing Feature Into Core Value</h1>
+        <p class="cs-overview-subtitle fade-up delay-2">How I redesigned the SetareYek bill payment flow to grow market share 6%→47% in 4.5 months</p>
+        <p class="cs-overview-subtitle fade-up delay-2" style="font-size:1rem">I came in expecting to find one blocker. I found six. The fix required reframing the entire product from a payment button to an inventory system — one production rollback and two self-proposed growth features later.</p>
 
         <div class="cs-meta-grid fade-up delay-3">
-          <div class="cs-meta-item"><div class="cs-meta-label">Role</div><div class="cs-meta-value">Senior Product Designer</div></div>
-          <div class="cs-meta-item"><div class="cs-meta-label">Timeline</div><div class="cs-meta-value">2022 – 2023</div></div>
-          <div class="cs-meta-item"><div class="cs-meta-label">Company</div><div class="cs-meta-value">Setare Aval (SetareYek app)</div></div>
-          <div class="cs-meta-item"><div class="cs-meta-label">Constraint</div><div class="cs-meta-value">Sole designer — balanced deep research with rapid execution</div></div>
+          <div class="cs-meta-item">
+            <div class="cs-meta-label">Company</div>
+            <div class="cs-meta-value">Setare Aval (SetareYek)</div>
+          </div>
+          <div class="cs-meta-item">
+            <div class="cs-meta-label">My Role</div>
+            <div class="cs-meta-value">Sole Designer</div>
+          </div>
+          <div class="cs-meta-item">
+            <div class="cs-meta-label">Timeline</div>
+            <div class="cs-meta-value">4.5 months (2022–2023)</div>
+          </div>
+          <div class="cs-meta-item">
+            <div class="cs-meta-label">Stakeholder</div>
+            <div class="cs-meta-value">Ali YaseriPour (PM)</div>
+          </div>
         </div>
 
         <div class="cs-stats-row fade-up delay-4">
           <div class="cs-stat-pill">
-            <div class="cs-stat-pill-value">4%→47%</div>
-            <div class="cs-stat-pill-label">Adoption rate</div>
-            <div class="cs-stat-pill-desc">10x growth in bill payment share</div>
+            <div class="cs-stat-pill-value">6%→47%</div>
+            <div class="cs-stat-pill-label">Bill payment market share</div>
+            <div class="cs-stat-pill-desc">vs. other in-app payment categories</div>
           </div>
           <div class="cs-stat-pill">
-            <div class="cs-stat-pill-value">80%</div>
-            <div class="cs-stat-pill-label">Drop reduction</div>
-            <div class="cs-stat-pill-desc">After Version 2 performance fixes</div>
+            <div class="cs-stat-pill-value">20K</div>
+            <div class="cs-stat-pill-label">New users acquired</div>
+            <div class="cs-stat-pill-desc">Auto-referral feature (self-proposed)</div>
           </div>
           <div class="cs-stat-pill">
             <div class="cs-stat-pill-value">1M+</div>
-            <div class="cs-stat-pill-label">Users</div>
+            <div class="cs-stat-pill-label">Google Play installs</div>
             <div class="cs-stat-pill-desc">SetareYek platform scale</div>
           </div>
         </div>
@@ -116,204 +336,474 @@
     <!-- BODY -->
     <section style="background:var(--color-bg-paper);border-top:1px solid var(--color-divider)">
       <div class="container">
-        <div class="cs-layout">
+        <div class="cs-layout" style="padding-top:24px">
 
+          <!-- OUTLINE -->
           <nav class="cs-outline" aria-label="Section outline">
             <div class="cs-outline-title">Contents</div>
             <ul class="cs-outline-list">
-              <li><a href="#challenge" class="cs-outline-link">The Challenge</a></li>
-              <li><a href="#about-setareyek" class="cs-outline-link">About SetareYek</a></li>
-              <li><a href="#discovery" class="cs-outline-link">Discovery</a></li>
-              <li><a href="#personas" class="cs-outline-link">Personas</a></li>
-              <li><a href="#insights" class="cs-outline-link">Insights</a></li>
-              <li><a href="#philosophy" class="cs-outline-link">Design Philosophy</a></li>
-              <li><a href="#solutions" class="cs-outline-link">The Solutions</a></li>
-              <li><a href="#failure" class="cs-outline-link">Learning from Failure</a></li>
-              <li><a href="#version2" class="cs-outline-link">Version 2</a></li>
-              <li><a href="#impact" class="cs-outline-link">Results</a></li>
-              <li><a href="#learnings" class="cs-outline-link">Learnings</a></li>
+              <li><a href="#challenge" class="cs-outline-link">The Problem</a></li>
+              <li><a href="#context" class="cs-outline-link">About SetareYek</a></li>
+              <li><a href="#metrics" class="cs-outline-link">Success Metrics</a></li>
+              <li><a href="#constraints" class="cs-outline-link">Constraints &amp; Tradeoffs</a></li>
+              <li><a href="#discovery" class="cs-outline-link">Discovery: 6 Frustrations</a></li>
+              <li><a href="#reframe" class="cs-outline-link">The Strategic Reframe</a></li>
+              <li><a href="#iter1" class="cs-outline-link">Iteration 1: What Broke</a></li>
+              <li><a href="#iter2" class="cs-outline-link">Iteration 2: 3-Day Fix</a></li>
+              <li><a href="#iter3" class="cs-outline-link">Iteration 3: Full Solution</a></li>
+              <li><a href="#testing" class="cs-outline-link">Usability Testing</a></li>
+              <li><a href="#impact" class="cs-outline-link">The Impact</a></li>
+              <li><a href="#differently" class="cs-outline-link">What I'd Do Differently</a></li>
+              <li><a href="#learnings" class="cs-outline-link">Key Learnings</a></li>
             </ul>
           </nav>
 
+          <!-- CONTENT -->
           <div class="cs-content">
 
+            <!-- CHALLENGE -->
             <div id="challenge" class="cs-section fade-up">
-              <div class="cs-section-title">The Challenge</div>
-              <p class="cs-section-summary">Despite millions of active users, only 4% of payments were bills. Session recordings showed users were trying but failing.</p>
+              <div class="cs-section-title">The Problem</div>
+              <p class="cs-section-summary">Bill payment was underused. Users had the feature but avoided it — paying through banks, ATMs, or external apps instead.</p>
+              <div class="cs-body">
+                <p>Baseline market share: <strong>6% of bill payment volume</strong>, measured internally against IR-MCI's other payment categories.</p>
+                <p>The strategic stakes: if IR-MCI didn't make in-app bill payment compelling soon, banks and dedicated fintech apps would lock in the habit. The PM wanted me to find out <em>why</em> users weren't using it — and fix it.</p>
+              </div>
               <ul class="cs-bullets">
-                <li class="cs-bullet">96% of payments were not bills</li>
-                <li class="cs-bullet">High drop-off rates at specific steps</li>
+                <li class="cs-bullet">High drop-off at specific steps in the payment flow</li>
                 <li class="cs-bullet">Users spending unusually long on single screens</li>
                 <li class="cs-bullet">Many abandoned attempts before payment confirmation</li>
+                <li class="cs-bullet">Users who'd paid once rarely returning to pay again</li>
               </ul>
               <blockquote class="cs-quote">
-                <p class="cs-quote-text">"People pay bills every month—it's not optional. So why are they avoiding our app?"</p>
-                <div class="cs-quote-author">Key Research Question</div>
+                <p class="cs-quote-text">"People pay bills every month — it's not optional. So why are they avoiding our app?"</p>
+                <div class="cs-quote-author">The research question I started with</div>
               </blockquote>
-              <div class="cs-highlights">
-                <div class="cs-highlight">This wasn't about adding features. Something fundamental was broken.</div>
-              </div>
             </div>
 
-            <div id="about-setareyek" class="cs-section fade-up">
+            <!-- CONTEXT -->
+            <div id="context" class="cs-section fade-up">
               <div class="cs-section-title">About SetareYek</div>
-              <p class="cs-section-summary">Iran's largest fintech platform serving millions of users for everyday financial transactions.</p>
+              <p class="cs-section-summary">SetareYek is the main consumer fintech app of Setare Aval Co. — the payment subsidiary of IR-MCI, Iran's largest mobile telecom.</p>
               <div class="cs-metrics-row">
                 <div class="cs-metric-card">
-                  <div class="cs-metric-value">10.6M+</div>
-                  <div class="cs-metric-label">Monthly Active Users</div>
-                  <div class="cs-metric-desc">Nationwide fintech platform</div>
+                  <div class="cs-metric-value">1M+</div>
+                  <div class="cs-metric-label">Google Play installs</div>
+                  <div class="cs-metric-desc">Additional Cafe Bazaar installs not publicly disclosed</div>
                 </div>
                 <div class="cs-metric-card">
-                  <div class="cs-metric-value">2.36M+</div>
-                  <div class="cs-metric-label">Total Installs</div>
-                  <div class="cs-metric-desc">Growing user base</div>
+                  <div class="cs-metric-value">Blue ocean</div>
+                  <div class="cs-metric-label">Strategic context</div>
+                  <div class="cs-metric-desc">In-app bill payment turning competitive — first-mover window closing</div>
                 </div>
               </div>
               <div class="cs-body">
-                <p><strong>The opportunity:</strong> Bill payment is a high-frequency, high-stress task that every household faces monthly. If we could solve it well, we'd become indispensable.</p>
-                <p><strong>The problem:</strong> We had the feature, but almost nobody used it.</p>
+                <p><strong>The opportunity:</strong> Bill payment is a high-frequency, high-stress task every household faces monthly. If we could own it inside the app, we'd become indispensable.</p>
+                <p><strong>The problem:</strong> The feature existed. Almost nobody used it.</p>
               </div>
             </div>
 
-            <div id="discovery" class="cs-section fade-up">
-              <div class="cs-section-eyebrow">What Users Actually Needed</div>
-              <div class="cs-section-title">Discovery</div>
-              <p class="cs-section-summary">Multi-method research combining qualitative interviews, contextual inquiry, digital behavior analysis, and quantitative patterns.</p>
-              <ul class="cs-bullets">
-                <li class="cs-bullet">Qualitative: In-depth interviews with building managers, heads of households, and everyday users</li>
-                <li class="cs-bullet">Contextual inquiry: Observing bill payment in real contexts</li>
-                <li class="cs-bullet">Ethnographic details: Studying a building manager's physical notebook</li>
-                <li class="cs-bullet">Digital behavior: Session recordings, app store reviews, social media sentiment</li>
-                <li class="cs-bullet">Quantitative: Drop-off analysis and behavior patterns</li>
-              </ul>
+            <!-- SUCCESS METRICS -->
+            <div id="metrics" class="cs-section fade-up">
+              <div class="cs-section-title">Success Metrics</div>
+              <p class="cs-section-summary">North star and non-negotiable guardrails defined before a single wireframe.</p>
+              <div class="cs-body">
+                <p><strong>North star:</strong> % of total IR-MCI internal payment volume going through in-app bill payment, vs. other payment categories.</p>
+              </div>
+              <div class="cs-key-findings">
+                <div class="cs-key-findings-header"><i class="bi bi-shield-check"></i> Non-negotiable guardrails</div>
+                <ul class="cs-key-findings-list">
+                  <li class="cs-key-findings-item">Must not break the existing flow for power users</li>
+                  <li class="cs-key-findings-item">Must work on the spectrum of devices used across Iran (low-end Android included)</li>
+                  <li class="cs-key-findings-item">Must not introduce new friction in pursuit of new features</li>
+                  <li class="cs-key-findings-item">Receipt sharing must satisfy landlords (verifiable by non-app users)</li>
+                </ul>
+              </div>
             </div>
 
-            <div id="personas" class="cs-section fade-up">
-              <div class="cs-section-eyebrow">Two Core Personas</div>
-              <div class="cs-section-title">Personas</div>
-              <p class="cs-section-summary">Two distinct personas emerged with different needs driving every design decision.</p>
-              <blockquote class="cs-quote">
-                <p class="cs-quote-text">"I make photocopies of every receipt and give them to residents. I need proof that it's paid."</p>
-                <div class="cs-quote-author">Building Manager, Age 55+</div>
-                <div class="cs-quote-role">Manages utilities for entire apartment building · Needs official documentation · Zero tolerance for ambiguity.</div>
-              </blockquote>
+            <!-- CONSTRAINTS -->
+            <div id="constraints" class="cs-section fade-up">
+              <div class="cs-section-title">Constraints &amp; Tradeoffs</div>
+              <p class="cs-section-summary">Four constraints shaped every design decision in this project.</p>
+              <div class="learnings-list">
+                <div class="learning-item">
+                  <span class="learning-num">1</span>
+                  <div>
+                    <h5>Government-regulated payment codes</h5>
+                    <p>I couldn't change the 29 digits users had to enter — that was set by national infrastructure. I had to design <em>around</em> the constraint, not eliminate it. Solution: enter once, store, refresh automatically.</p>
+                  </div>
+                </div>
+                <div class="learning-item">
+                  <span class="learning-num">2</span>
+                  <div>
+                    <h5>Trust gap with landlords</h5>
+                    <p>Landlords are non-users of the app — but they're gatekeepers of whether tenants can use the feature. Any digital receipt had to be verifiable by someone who'd never installed SetareYek.</p>
+                  </div>
+                </div>
+                <div class="learning-item">
+                  <span class="learning-num">3</span>
+                  <div>
+                    <h5>Loss of administrative paper</h5>
+                    <p>Killing the paper bill created real-world problems for users (property sales, ADSL registration). The design had to make the digital version <em>more</em> useful than paper, not just equivalent.</p>
+                  </div>
+                </div>
+                <div class="learning-item">
+                  <span class="learning-num">4</span>
+                  <div>
+                    <h5>3 iterations only</h5>
+                    <p>Each iteration cost roughly 2–3 weeks of dev queue time. I couldn't afford more than three swings before the strategic window closed. This made the Iteration 1 failure especially costly.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- DISCOVERY -->
+            <div id="discovery" class="cs-section fade-up">
+              <div class="cs-section-title">Discovery: 6 Frustrations, Not 1</div>
+              <p class="cs-section-summary">I started expecting to find one main blocker. What I found was structural.</p>
+              <div class="cs-body">
+                <p>I ran in-depth interviews with building managers, heads of households, and everyday users. Combined with session recordings, drop-off analysis, and contextual inquiry — observing bill payment in real contexts including a building manager's physical notebook.</p>
+                <p>Six distinct frustrations were each contributing to abandonment:</p>
+              </div>
+
+              <div style="overflow-x:auto;margin:16px 0">
+                <table class="frustration-table">
+                  <thead>
+                    <tr>
+                      <th style="width:32px">#</th>
+                      <th style="width:200px">Frustration</th>
+                      <th>What I learned</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="fnum">1</td>
+                      <td class="fname">Flow too difficult</td>
+                      <td>Users had to enter a 13-digit bill code and a 16-digit payment code every time, then request the bill. Pure friction — from scratch each monthly cycle.</td>
+                    </tr>
+                    <tr>
+                      <td class="fnum">2</td>
+                      <td class="fname">No proof for landlords</td>
+                      <td>Users preferred paper receipts because landlords asked for proof. Online payment broke this trust loop between tenant and landlord.</td>
+                    </tr>
+                    <tr>
+                      <td class="fnum">3</td>
+                      <td class="fname">Physical bills got lost</td>
+                      <td>Municipalities mailed bills, users misplaced them, and then couldn't pay because they had no codes. No fallback.</td>
+                    </tr>
+                    <tr>
+                      <td class="fnum">4</td>
+                      <td class="fname">Forgetting to pay on time</td>
+                      <td>No reminder system. Late fees were a constant complaint — and a reason to distrust the app after the fact.</td>
+                    </tr>
+                    <tr>
+                      <td class="fnum">5</td>
+                      <td class="fname">Paper had administrative value</td>
+                      <td>Users needed paper bills as proof for selling property or registering for ADSL internet. Going digital felt like losing legal leverage.</td>
+                    </tr>
+                    <tr>
+                      <td class="fnum">6</td>
+                      <td class="fname">No payment history</td>
+                      <td>Users wanted to see what they'd paid and when — for both memory and documentation. The app had no record of past payments.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
               <blockquote class="cs-quote">
                 <p class="cs-quote-text">"Entering this 13-digit code every single month is torture."</p>
                 <div class="cs-quote-author">Head of Household</div>
-                <div class="cs-quote-role">Pays all family bills monthly · Needs to avoid re-entering codes · Constantly forgets due dates.</div>
+                <div class="cs-quote-role">Pays all family bills monthly · Constantly forgets due dates · Needs to avoid re-entering codes</div>
+              </blockquote>
+              <blockquote class="cs-quote">
+                <p class="cs-quote-text">"I make photocopies of every receipt and give them to residents. I need proof that it's paid."</p>
+                <div class="cs-quote-author">Building Manager, Age 55+</div>
+                <div class="cs-quote-role">Manages utilities for entire apartment building · Zero tolerance for ambiguity · Needs official documentation</div>
               </blockquote>
             </div>
 
-            <div id="insights" class="cs-section fade-up">
-              <div class="cs-section-eyebrow">The Breakthrough Insights</div>
-              <div class="cs-section-title">Insights</div>
-              <p class="cs-section-summary">Three insights fundamentally changed our approach.</p>
-              <div class="cs-key-findings">
-                <div class="cs-key-findings-header"><i class="bi bi-lightbulb-fill"></i> Key Findings</div>
-                <ul class="cs-key-findings-list">
-                  <li class="cs-key-findings-item"><strong>Insight #1: Users weren't confused about coverage—they were confused about us.</strong> They had no idea which bills we supported, forcing trial-and-error that destroyed trust.</li>
-                  <li class="cs-key-findings-item"><strong>Insight #2: The receipt was everything.</strong> Users needed an official document they could show to family, share with residents, or present to landlords. This wasn't a "nice-to-have"—it was the core emotional need.</li>
-                  <li class="cs-key-findings-item"><strong>Insight #3: Bill payment isn't a one-time task—it's a recurring cycle.</strong> Our flow treated every payment like a new transaction, forcing users to re-enter everything monthly.</li>
-                </ul>
-              </div>
+            <!-- REFRAME -->
+            <div id="reframe" class="cs-section fade-up">
+              <div class="cs-section-title">The Strategic Reframe</div>
+              <p class="cs-section-summary">This single insight changed every downstream decision.</p>
               <div class="cs-highlights">
-                <div class="cs-highlight">The receipt wasn't decoration—it was the entire value proposition</div>
-                <div class="cs-highlight">People pay the same bills repeatedly. They need a system that remembers</div>
+                <div class="cs-highlight">Bill payment couldn't be designed as a faster button. It had to be designed as an <strong>inventory system</strong> — a place where users' bills lived, updated themselves, and could be paid, shared, and referenced over time.</div>
               </div>
-            </div>
-
-            <div id="philosophy" class="cs-section fade-up">
-              <div class="cs-section-title">Design Philosophy</div>
-              <p class="cs-section-summary">Digitize what people already do in the physical world—then make it 10x better.</p>
-              <ul class="cs-bullets">
-                <li class="cs-bullet">Keep notebooks of bill IDs → We built a digital bill list</li>
-                <li class="cs-bullet">Set calendar reminders → We built smart notifications</li>
-                <li class="cs-bullet">Make photocopies of receipts → We created shareable official receipts</li>
-              </ul>
-              <div class="cs-highlights">
-                <div class="cs-highlight">The experience had to feel natural from day one, not like learning new software</div>
-              </div>
-            </div>
-
-            <div id="solutions" class="cs-section fade-up">
-              <div class="cs-section-title">The Solutions</div>
-              <p class="cs-section-summary">Six interconnected solutions addressing core user needs.</p>
-              <ul class="cs-bullets">
-                <li class="cs-bullet"><strong>Saved Bills &amp; One-Tap Updates:</strong> Register a bill once, use it forever. "Check for new amount" button fetches latest bill instantly—no more re-entering 13-digit codes.</li>
-                <li class="cs-bullet"><strong>Digital Bill Management Hub:</strong> All bills in one organized list with status labels (Paid, Pending, Overdue). Backward-compatible: returning users saw history immediately.</li>
-                <li class="cs-bullet"><strong>Smart Reminders:</strong> Set custom reminders for each bill with push notifications before due dates.</li>
-                <li class="cs-bullet"><strong>QR/Barcode Scanning:</strong> Instant bill entry via camera—critical for older users and busy personas.</li>
-                <li class="cs-bullet"><strong>Immediate Transparency:</strong> Supported bill providers shown upfront with logos. Clear guidance on what we can and can't process—no more trial-and-error.</li>
-                <li class="cs-bullet"><strong>Official, Shareable Receipts:</strong> PDF-quality receipts with all legal details. One-tap sharing via any channel—built specifically for the "proof" requirement.</li>
-              </ul>
-            </div>
-
-            <div id="failure" class="cs-section fade-up">
-              <div class="cs-section-eyebrow">Version 1: The Failure That Made Everything Better</div>
-              <div class="cs-section-title">Learning from Failure</div>
-              <p class="cs-section-summary">Version 1 launched and failed within 48 hours. Bill payments dropped 80%. We rolled back immediately.</p>
               <div class="cs-body">
-                <p><strong>What happened:</strong> Bills took 8-10 seconds to load (we were fetching everything automatically). No loading states, no skeleton UI, no progress indicators. Users saw blank screens.</p>
+                <p>The physical world already had this system. Building managers kept notebooks of bill IDs. Households set calendar reminders. People made photocopies of receipts. The digital design needed to replace each of these behaviours — not just the payment step.</p>
               </div>
               <ul class="cs-bullets">
-                <li class="cs-bullet"><strong>What went wrong:</strong> Great UX design can't save poor technical performance. We skipped realistic latency testing, didn't simulate worst-case network conditions, prioritized automation over user control.</li>
-                <li class="cs-bullet"><strong>What changed:</strong> Switched to manual "Check Amount" buttons (instant feedback), added lazy loading + skeleton states everywhere, implemented comprehensive pre-launch technical testing, created new company-wide standards for performance testing.</li>
-              </ul>
-              <div class="cs-highlights">
-                <div class="cs-highlight">This failure became the most valuable part of the project</div>
-              </div>
-            </div>
-
-            <div id="version2" class="cs-section fade-up">
-              <div class="cs-section-eyebrow">The Launch That Worked</div>
-              <div class="cs-section-title">Version 2</div>
-              <p class="cs-section-summary">Armed with lessons from failure, we shipped a stable, fast, trustworthy experience.</p>
-              <ul class="cs-bullets">
-                <li class="cs-bullet">Manual control: Users trigger updates when ready</li>
-                <li class="cs-bullet">Instant feedback: Loading states for every action</li>
-                <li class="cs-bullet">Backward compatibility: Zero learning curve for returning users</li>
-                <li class="cs-bullet">Official receipts: Solved the core emotional need</li>
-                <li class="cs-bullet">Smart reminders: Addressed forgetfulness</li>
-                <li class="cs-bullet">Clear communication: Built confidence from screen one</li>
+                <li class="cs-bullet">Keep notebooks of bill IDs → <strong>Digital bill inventory</strong> (enter once, stored permanently)</li>
+                <li class="cs-bullet">Set calendar reminders → <strong>Smart due-date notifications</strong></li>
+                <li class="cs-bullet">Make photocopies of receipts → <strong>Shareable official digital receipts</strong> with landlord verification</li>
               </ul>
             </div>
 
-            <div id="impact" class="cs-section fade-up">
-              <div class="cs-section-eyebrow">Business Impact</div>
-              <div class="cs-section-title">Results</div>
-              <p class="cs-section-summary">4% → 47% adoption rate. That's 10x growth in bill payment share.</p>
-              <div class="cs-metrics-row">
-                <div class="cs-metric-card">
-                  <div class="cs-metric-value">4%→47%</div>
-                  <div class="cs-metric-label">Adoption rate</div>
-                  <div class="cs-metric-desc">10x growth in bill payment share</div>
+            <!-- ITERATION 1 -->
+            <div id="iter1" class="cs-section fade-up">
+              <div class="cs-section-title">Iteration 1: The 14-Day Mistake</div>
+              <p class="cs-section-summary">I designed iteration 1 in 5 days after 14 days of research. It broke in production within 24 hours.</p>
+              <div class="cs-body">
+                <p>The core idea: a list of bill cards, each showing the current bill price prominently with a "Pay Now" button. Click → pay. Minimal friction.</p>
+                <p>It went into the dev queue, launched 14 days later, and was rolled back the same day.</p>
+              </div>
+
+              <div class="impact-cards-row">
+                <div class="impact-big-card danger">
+                  <div class="impact-big-num">24h</div>
+                  <div class="impact-big-label">Time to production failure</div>
+                  <div class="impact-big-sub">Rolled back the same day</div>
                 </div>
               </div>
-              <div class="cs-body">
-                <p>Bill payment went from a neglected feature to one of the app's primary value propositions.</p>
+
+              <p class="cs-sub-title">What went wrong</p>
+              <div class="issue-category" style="border-left-color:#e03131">
+                <h5>The latency assumption</h5>
+                <ul>
+                  <li>Building a list of bill cards with live price data required fetching the current price for every bill on every list render</li>
+                  <li>At scale, this took noticeable time — the list either loaded slowly or partially</li>
+                  <li>Users who'd previously used the old flow opened the new screen, saw nothing, and left</li>
+                </ul>
               </div>
+              <div class="issue-category" style="border-left-color:#f76707">
+                <h5>How I detected it</h5>
+                <ul>
+                  <li>The DevOps team identified the bill payment volume drop 24 hours after launch and flagged it to PM Ali</li>
+                  <li>Not fast by my standards now — but fast enough to roll back before the damage compounded</li>
+                </ul>
+              </div>
+
+              <div class="cs-key-findings">
+                <div class="cs-key-findings-header"><i class="bi bi-exclamation-triangle-fill"></i> What I should have caught earlier</div>
+                <ul class="cs-key-findings-list">
+                  <li class="cs-key-findings-item">I designed for an idealised state where data was already available. I didn't model the network and rendering cost of fetching live bill prices for every card on first paint.</li>
+                  <li class="cs-key-findings-item">A senior designer should treat latency as a UX dimension, not a technical handoff question.</li>
+                </ul>
+              </div>
+              <p class="cs-note">What I chose NOT to do here: patch the failure and re-launch quickly. The broken state was giving me exactly the insight I needed about what the system had to handle.</p>
+            </div>
+
+            <!-- ITERATION 2 -->
+            <div id="iter2" class="cs-section fade-up">
+              <div class="cs-section-title">Iteration 2: Three Days to Fix</div>
+              <p class="cs-section-summary">Three architectural changes. Shipped 3 days after iteration 1 rolled back.</p>
+              <div class="refined-list">
+                <div class="refined-item">
+                  <div class="refined-icon"><i class="bi bi-hand-index" style="color:var(--color-primary)"></i></div>
+                  <div>
+                    <h5>"Update Price" instead of "Pay Now" on cards</h5>
+                    <p>The card no longer pretended to have live data. Each card showed the saved bill identifier; the price loaded only when the user explicitly tapped "Update Price." This pushed the cost from list-render time to user-initiated action — predictable, controllable, and feedback-clear.</p>
+                  </div>
+                </div>
+                <div class="refined-item">
+                  <div class="refined-icon"><i class="bi bi-hourglass-split" style="color:var(--color-primary)"></i></div>
+                  <div>
+                    <h5>Loading states everywhere</h5>
+                    <p>Both the list view and individual cards now had explicit loading states. No more empty screens that looked broken. Users always knew the app was working.</p>
+                  </div>
+                </div>
+                <div class="refined-item">
+                  <div class="refined-icon"><i class="bi bi-archive" style="color:var(--color-primary)"></i></div>
+                  <div>
+                    <h5>Saved bill inventory as the core mental model</h5>
+                    <p>Users entered the 29 digits <em>once</em>, named the bill (e.g. "Apartment electricity"), and from then on the bill lived in their inventory. Update price → pay → keep history. The inventory system concept fully implemented.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ITERATION 3 -->
+            <div id="iter3" class="cs-section fade-up">
+              <div class="cs-section-title">Iteration 3: Full Solution + Two Growth Features</div>
+              <p class="cs-section-summary">With the inventory architecture stable, I addressed the remaining 5 frustrations — and proposed two growth features that weren't in the PM's brief.</p>
+
+              <p class="cs-sub-title">Solving the remaining 5 frustrations</p>
+              <div class="refined-list">
+                <div class="refined-item">
+                  <div class="refined-icon"><i class="bi bi-share" style="color:var(--color-primary)"></i></div>
+                  <div>
+                    <h5>Receipt sharing for landlords</h5>
+                    <p>Users could share digital receipts directly. I wrote in-receipt verification instructions so landlords — non-app users — could verify authenticity through Setare Aval's public verification page. Solved frustrations #2 and #5 simultaneously: digital receipts now had administrative weight.</p>
+                  </div>
+                </div>
+                <div class="refined-item">
+                  <div class="refined-icon"><i class="bi bi-sort-down" style="color:var(--color-primary)"></i></div>
+                  <div>
+                    <h5>Time-ordered bill list</h5>
+                    <p>Bills sorted by time-to-pay, with the most urgent on top. Solved frustration #4 (forgetting to pay on time).</p>
+                  </div>
+                </div>
+                <div class="refined-item">
+                  <div class="refined-icon"><i class="bi bi-clock-history" style="color:var(--color-primary)"></i></div>
+                  <div>
+                    <h5>Full payment history</h5>
+                    <p>Every paid bill stayed in a searchable history view. Solved frustration #6 (no record of what was paid and when).</p>
+                  </div>
+                </div>
+                <div class="refined-item">
+                  <div class="refined-icon"><i class="bi bi-bookmark-check" style="color:var(--color-primary)"></i></div>
+                  <div>
+                    <h5>Persistent bill identifiers</h5>
+                    <p>Once entered, the 13- and 16-digit codes never had to be re-entered — tied permanently to that named bill in inventory. Solved frustration #1 at the structural level.</p>
+                  </div>
+                </div>
+              </div>
+
+              <p class="cs-sub-title">Two growth features I proposed (not in PM brief)</p>
+              <div class="cs-body">
+                <p>While running discovery, I noticed two patterns the PM hadn't asked about. I proposed both — they shipped as part of iteration 3.</p>
+              </div>
+
+              <div class="growth-feature-card">
+                <div class="growth-feature-label">Feature A</div>
+                <h5>Family package visibility</h5>
+                <p>Research showed that many bill-payers purchased internet packages and top-ups <em>on behalf of</em> family members. The pain: they didn't know when a family member's package would expire, so renewals were late or guesswork. I designed a view showing how much of each purchased package remained — visible to the buyer, not just the recipient. This turned a one-off transaction into a recurring relationship.</p>
+              </div>
+
+              <div class="growth-feature-card">
+                <div class="growth-feature-label">Feature B — Auto-referral via gift payment</div>
+                <h5>Pay on behalf of → auto-invite recipient</h5>
+                <p>Extended Feature A: users could pay phone bills <em>on behalf of</em> parents, friends, or family. After a successful gift payment, the app auto-invited the recipient to download SetareYek with a referral code tied to the gift transaction.</p>
+              </div>
+
+              <div class="impact-cards-row">
+                <div class="impact-big-card growth">
+                  <div class="impact-big-num">~1 in 3</div>
+                  <div class="impact-big-label">Referral conversion rate</div>
+                  <div class="impact-big-sub">Auto-referral feature (Feature B)</div>
+                </div>
+                <div class="impact-big-card growth">
+                  <div class="impact-big-num">~20K</div>
+                  <div class="impact-big-label">New active users</div>
+                  <div class="impact-big-sub">Acquired in first 2 months of Feature B</div>
+                </div>
+              </div>
+              <p class="cs-note">Both features were my proposals — neither was in the PM's original brief. The growth impact was on top of the 6%→47% payment-share lift, not part of it.</p>
+            </div>
+
+            <!-- USABILITY TESTING -->
+            <div id="testing" class="cs-section fade-up">
+              <div class="cs-section-title">Solo Usability Testing</div>
+              <p class="cs-section-summary">After iteration 3 design but before development, I ran 2 weeks of usability testing solo.</p>
+              <div class="cs-body">
+                <p>Unmoderated and moderated mixed sessions. I tested the core inventory flow, bill update flow, receipt-sharing flow, and history search.</p>
+                <p>Found small UX bugs — mostly around tap targets and the "share" affordance — and fixed them before development started.</p>
+              </div>
+              <div class="cs-highlights">
+                <div class="cs-highlight">This testing window is the reason iteration 3 didn't break in production. Iteration 1 skipped it.</div>
+              </div>
+            </div>
+
+            <!-- IMPACT -->
+            <div id="impact" class="cs-section fade-up">
+              <div class="cs-section-title">The Impact</div>
+              <p class="cs-section-summary">Bill payment went from being IR-MCI's smallest payment line to being the largest in volume.</p>
+              <div class="impact-cards-row">
+                <div class="impact-big-card">
+                  <div class="impact-big-num">6%→47%</div>
+                  <div class="impact-big-label">Bill payment market share</div>
+                  <div class="impact-big-sub">vs. other in-app payment categories</div>
+                </div>
+                <div class="impact-big-card">
+                  <div class="impact-big-num">4.5 mo</div>
+                  <div class="impact-big-label">Design to peak adoption</div>
+                  <div class="impact-big-sub">2.5 mo design + dev, 2 mo ramp</div>
+                </div>
+              </div>
+              <p class="cs-note">Source: internal application payment share, measured against other payment categories within SetareYek. Nationwide scope.</p>
+
+              <p class="cs-sub-title">Quantitative results</p>
               <ul class="cs-bullets">
-                <li class="cs-bullet"><strong>Trust:</strong> Official receipts and clear communication</li>
-                <li class="cs-bullet"><strong>Ease:</strong> One-time setup, recurring use</li>
-                <li class="cs-bullet"><strong>Reliability:</strong> Fast, stable, predictable</li>
-                <li class="cs-bullet"><strong>Alignment:</strong> Matched real-world behavior</li>
+                <li class="cs-bullet">Bill payment market share grew from 6% to 47% of IR-MCI internal payment volume across 3 iterations</li>
+                <li class="cs-bullet">~20,000 new active users acquired in first 2 months of the auto-referral feature</li>
+                <li class="cs-bullet">~1 in 3 referrals converted from gift payment invitations</li>
+                <li class="cs-bullet">Total time to peak: ~4.5 months (2.5 months design + development, 2 months adoption ramp)</li>
+              </ul>
+
+              <p class="cs-sub-title">Qualitative results</p>
+              <ul class="cs-bullets">
+                <li class="cs-bullet">Users who'd previously churned returned — the inventory model removed the re-entry friction that drove abandonment</li>
+                <li class="cs-bullet">Landlords accepted digital receipts — the verification instructions solved the trust loop outside the app</li>
+                <li class="cs-bullet">Bill payment became a primary value proposition rather than a neglected feature</li>
               </ul>
             </div>
 
-            <div id="learnings" class="cs-section fade-up">
-              <div class="cs-section-eyebrow">Key Takeaways</div>
-              <div class="cs-section-title">Learnings</div>
-              <div class="cs-key-findings">
-                <div class="cs-key-findings-header"><i class="bi bi-lightbulb-fill"></i> Key Findings</div>
-                <ul class="cs-key-findings-list">
-                  <li class="cs-key-findings-item"><strong>Design doesn't exist in isolation:</strong> Even perfect UX fails without technical performance</li>
-                  <li class="cs-key-findings-item"><strong>Emotional needs = Functional needs:</strong> The receipt wasn't decoration—it was the entire value proposition</li>
-                  <li class="cs-key-findings-item"><strong>Real behavior &gt; Assumptions:</strong> Users showed us what they needed. We listened</li>
-                  <li class="cs-key-findings-item"><strong>Backward compatibility is trust:</strong> Especially in financial products, familiarity = confidence</li>
-                  <li class="cs-key-findings-item"><strong>Failed launches can be the best learning:</strong> Owning mistakes and iterating fast built a stronger product and process</li>
-                </ul>
+            <!-- WHAT I'D DO DIFFERENTLY -->
+            <div id="differently" class="cs-section fade-up">
+              <div class="cs-section-title">What I'd Do Differently</div>
+              <div class="refined-list">
+                <div class="refined-item">
+                  <div class="refined-icon"><i class="bi bi-wifi" style="color:var(--color-primary)"></i></div>
+                  <div>
+                    <h5>Model latency as a design dimension from the start</h5>
+                    <p>I designed for the ideal data state, not the real one. I now treat "what does this look like at the slowest acceptable network speed?" as a required design exercise, not a technical handoff question. Iteration 1 would not have broken in production.</p>
+                  </div>
+                </div>
+                <div class="refined-item">
+                  <div class="refined-icon"><i class="bi bi-diagram-2" style="color:var(--color-primary)"></i></div>
+                  <div>
+                    <h5>Run a smaller pilot before full rollout</h5>
+                    <p>Iteration 1 went to 100% of users at launch. If I'd run it on a 5% cohort first, the price-fetch cost would have shown up the same way but with much less business damage and a faster rollback.</p>
+                  </div>
+                </div>
               </div>
+            </div>
+
+            <!-- LEARNINGS -->
+            <div id="learnings" class="cs-section fade-up">
+              <div class="cs-section-title">Key Learnings</div>
+              <div class="learnings-list">
+                <div class="learning-item">
+                  <span class="learning-num">1</span>
+                  <div>
+                    <h5>Reframe before you redesign</h5>
+                    <p>I came in expecting "make payment faster." The real solution was "build an inventory system." That reframe — not the visual design — is what drove the 6%→47% lift.</p>
+                  </div>
+                </div>
+                <div class="learning-item">
+                  <span class="learning-num">2</span>
+                  <div>
+                    <h5>Design doesn't exist in isolation</h5>
+                    <p>Even perfect UX fails without technical performance. Latency is a design dimension. The 24-hour rollback was a direct consequence of not treating it as one.</p>
+                  </div>
+                </div>
+                <div class="learning-item">
+                  <span class="learning-num">3</span>
+                  <div>
+                    <h5>Emotional needs are functional needs</h5>
+                    <p>The receipt wasn't decoration — it was the entire value proposition. A landlord who can't verify a digital payment doesn't accept it. Design the full trust chain, not just the flow.</p>
+                  </div>
+                </div>
+                <div class="learning-item">
+                  <span class="learning-num">4</span>
+                  <div>
+                    <h5>Failure can be your most valuable data</h5>
+                    <p>Owning the iteration 1 rollback without defending it, redesigning in 3 days, and using the failure to set testing standards — that was the senior move. The fast rollback mattered more than the fast launch.</p>
+                  </div>
+                </div>
+                <div class="learning-item">
+                  <span class="learning-num">5</span>
+                  <div>
+                    <h5>The brief is the floor, not the ceiling</h5>
+                    <p>Family package visibility and auto-referral were my proposals — not the PM's. Both shipped. Auto-referral acquired ~20K active users. Discovery work pays for itself when you use it to see beyond the brief.</p>
+                  </div>
+                </div>
+              </div>
+
+              <p class="cs-sub-title" style="margin-top:28px">A note on PM</p>
+              <div class="cs-body">
+                <p>Special thanks to Ali YaseriPour, who kept the project grounded and gave me the space to push beyond the original scope.</p>
+              </div>
+              <a href="https://www.linkedin.com/in/ali-yaseripour/" target="_blank" rel="noopener noreferrer" class="linkedin-card">
+                <div class="linkedin-card-avatar">AY</div>
+                <div class="linkedin-card-info">
+                  <div class="linkedin-card-name">Ali YaseriPour</div>
+                  <div class="linkedin-card-role">Product Manager · Setare Aval</div>
+                </div>
+                <i class="bi bi-linkedin linkedin-card-icon"></i>
+              </a>
+
+              <p class="cs-note" style="margin-top:24px">Confidentiality: Market share figures (6%→47%) measured internally against other IR-MCI payment categories — not against external competitors. Adoption timeframe of 4.5 months represents design close to peak adoption. Company named with permission.</p>
             </div>
 
           </div>
@@ -325,13 +815,13 @@
     <section class="cs-related">
       <div class="container">
         <p class="cs-related-tag">Keep Exploring</p>
-        <h2>More ways I design for users</h2>
+        <h2>More ways I design for impact</h2>
         <p class="cs-related-sub">Dive into other collaborations or get to know the person behind the work. Pick another case study, peek inside my story, or reach out directly.</p>
         <div class="cs-related-grid">
           <a href="divar-secure-call.html" class="cs-related-card">
             <div class="cs-related-card-tag">Trust &amp; Safety</div>
             <h4>The Story of Reducing Harassment by 60% on Divar</h4>
-            <p>We reduced harassment reports by 60% — building a proxy number system that still protects 2.1M weekly users in Iran's largest marketplace.</p>
+            <p>We reduced harassment reports by 60% — building a proxy number system that still protects 1.2M weekly users in Iran's largest marketplace.</p>
             <span class="cs-related-card-link">Read the case study →</span>
           </a>
           <a href="setare-aval-engagement.html" class="cs-related-card">
