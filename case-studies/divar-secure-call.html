@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Divar Secure Call — Masih Sadri</title>
-  <meta name="description" content="How I reduced harassment incidents by 60% and protected 2.1M weekly users on Iran's largest marketplace." />
+  <meta name="description" content="How I reduced harassment incidents by 60% and protected 1.2M weekly users on Iran's largest marketplace." />
   <link rel="icon" type="image/svg+xml" href="../images/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -538,13 +538,21 @@
       <div class="container">
         <p class="eyebrow fade-up" style="margin-bottom:8px">Case Study 01 · Trust &amp; Safety</p>
         <h1 class="cs-overview-title fade-up delay-1">Solving Harassment at Scale</h1>
-        <p class="cs-overview-subtitle fade-up delay-2">How I Protected 2.1M Users on Iran's Largest Marketplace</p>
-        <p class="cs-overview-subtitle fade-up delay-2" style="font-size:1rem">We reduced harassment incidents by 60% inside Divar's clothing category by building a proxy calling experience that now protects 2.1M weekly users.</p>
+        <p class="cs-overview-subtitle fade-up delay-2">How I Protected 1.2M Users on Iran's Largest Marketplace</p>
+        <p class="cs-overview-subtitle fade-up delay-2" style="font-size:1rem">We reduced harassment incidents by 60% inside Divar's clothing category by building a proxy calling experience that now protects 1.2M weekly users.</p>
 
         <div class="cs-meta-grid fade-up delay-3">
           <div class="cs-meta-item">
+            <div class="cs-meta-label">Company</div>
+            <div class="cs-meta-value">Divar</div>
+          </div>
+          <div class="cs-meta-item">
+            <div class="cs-meta-label">Category</div>
+            <div class="cs-meta-value">Fashion &amp; Clothing</div>
+          </div>
+          <div class="cs-meta-item">
             <div class="cs-meta-label">My Role</div>
-            <div class="cs-meta-value">Senior UX Designer</div>
+            <div class="cs-meta-value">Senior UX Designer (Solo)</div>
           </div>
           <div class="cs-meta-item">
             <div class="cs-meta-label">Timeline</div>
@@ -559,8 +567,8 @@
             <div class="cs-stat-pill-desc">Within 8 weeks of launch</div>
           </div>
           <div class="cs-stat-pill">
-            <div class="cs-stat-pill-value">2.1M</div>
-            <div class="cs-stat-pill-label">Weekly sellers safeguarded</div>
+            <div class="cs-stat-pill-value">1.2M</div>
+            <div class="cs-stat-pill-label">Weekly users safeguarded</div>
             <div class="cs-stat-pill-desc">Ongoing safety infrastructure</div>
           </div>
         </div>
@@ -579,14 +587,17 @@
             <ul class="cs-outline-list">
               <li><a href="#context" class="cs-outline-link">The Context</a></li>
               <li><a href="#issue" class="cs-outline-link">The Issue</a></li>
+              <li><a href="#metrics" class="cs-outline-link">Success Metrics</a></li>
+              <li><a href="#constraints" class="cs-outline-link">Constraints &amp; Tradeoffs</a></li>
               <li><a href="#digging" class="cs-outline-link">Finding the Real Problem</a></li>
               <li><a href="#investigation" class="cs-outline-link">Investigation Process</a></li>
               <li><a href="#inv-a" class="cs-outline-link">Investigation A: Social Media</a></li>
               <li><a href="#inv-b" class="cs-outline-link">Investigation B: User Defense</a></li>
               <li><a href="#solution" class="cs-outline-link">Picking the Solution</a></li>
               <li><a href="#journey" class="cs-outline-link">Implementation Journey</a></li>
-              <li><a href="#iter2" class="cs-outline-link">Second Iteration</a></li>
+              <li><a href="#iter2" class="cs-outline-link">Pilot &amp; Iterations</a></li>
               <li><a href="#impact" class="cs-outline-link">The Impact</a></li>
+              <li><a href="#differently" class="cs-outline-link">What I'd Do Differently</a></li>
               <li><a href="#learnings" class="cs-outline-link">Key Learnings</a></li>
               <li><a href="#reflection" class="cs-outline-link">Reflection</a></li>
             </ul>
@@ -633,6 +644,75 @@
                 <div class="cs-quote-author">Layla, 32</div>
                 <div class="cs-quote-role">Professional artist selling bespoke clothing</div>
               </blockquote>
+            </div>
+
+            <!-- SUCCESS METRICS -->
+            <div id="metrics" class="cs-section fade-up">
+              <div class="cs-section-title">Success Metrics</div>
+              <p class="cs-section-summary">Before designing anything, we defined what success looked like — and where we could not compromise.</p>
+              <div class="cs-body">
+                <p><strong>North star:</strong> Reduce harassment-tagged calls from the call centre.</p>
+              </div>
+              <div class="cs-key-findings">
+                <div class="cs-key-findings-header"><i class="bi bi-shield-check"></i> Non-negotiable guardrails</div>
+                <ul class="cs-key-findings-list">
+                  <li class="cs-key-findings-item">Must not reduce legitimate buyer-seller call volume</li>
+                  <li class="cs-key-findings-item">Must not harm seller trust or increase listing abandonment</li>
+                  <li class="cs-key-findings-item">Must work on older Android devices (47% of the user base at the time)</li>
+                  <li class="cs-key-findings-item">Must not increase app size significantly</li>
+                  <li class="cs-key-findings-item">Must not expose real phone numbers at any point in the flow</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- CONSTRAINTS -->
+            <div id="constraints" class="cs-section fade-up">
+              <div class="cs-section-title">Constraints &amp; Tradeoffs</div>
+              <p class="cs-section-summary">Six constraints shaped every decision before a single wireframe was drawn.</p>
+              <div class="learnings-list">
+                <div class="learning-item">
+                  <span class="learning-num">1</span>
+                  <div>
+                    <h5>Older device compatibility</h5>
+                    <p>VoIP was an obvious solution — but 47% of users were on older Android versions where VoIP quality was inconsistent and implementation would significantly increase app size. Rejected early.</p>
+                  </div>
+                </div>
+                <div class="learning-item">
+                  <span class="learning-num">2</span>
+                  <div>
+                    <h5>Trust erosion risk from hiding numbers</h5>
+                    <p>Research showed that sellers who hid phone numbers received fewer responses from legitimate buyers. Any solution that made sellers feel less reachable would backfire.</p>
+                  </div>
+                </div>
+                <div class="learning-item">
+                  <span class="learning-num">3</span>
+                  <div>
+                    <h5>The anonymity problem</h5>
+                    <p>Hiding numbers entirely attracted a new problem: scammers could operate without accountability. The solution needed to protect sellers without enabling bad actors.</p>
+                  </div>
+                </div>
+                <div class="learning-item">
+                  <span class="learning-num">4</span>
+                  <div>
+                    <h5>No ground truth on how harassment was actually happening</h5>
+                    <p>The call centre knew <em>that</em> harassment was occurring but not <em>how</em> phone numbers were being obtained. My first instinct turned out to be only part of the story.</p>
+                  </div>
+                </div>
+                <div class="learning-item">
+                  <span class="learning-num">5</span>
+                  <div>
+                    <h5>56% pilot failure rate</h5>
+                    <p>The first implementation failed hard. The constraints I learned from that failure shaped every subsequent iteration.</p>
+                  </div>
+                </div>
+                <div class="learning-item">
+                  <span class="learning-num">6</span>
+                  <div>
+                    <h5>Timeline pressure</h5>
+                    <p>The category was losing sellers in real time. Speed mattered, but a bad fast solution was worse than a slower right one.</p>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <!-- DIGGING -->
@@ -1115,8 +1195,8 @@
                   <div class="impact-big-sub">Within 8 weeks of launch</div>
                 </div>
                 <div class="impact-big-card">
-                  <div class="impact-big-num">2.1M</div>
-                  <div class="impact-big-label">Weekly sellers protected</div>
+                  <div class="impact-big-num">1.2M</div>
+                  <div class="impact-big-label">Weekly users protected</div>
                   <div class="impact-big-sub">Ongoing safety infrastructure</div>
                 </div>
               </div>
@@ -1124,7 +1204,7 @@
               <p class="cs-sub-title">Quantitative Results</p>
               <ul class="cs-bullets">
                 <li class="cs-bullet">~60% reduction in harassment reports within 8 weeks of launch.</li>
-                <li class="cs-bullet">~2.1 million active users per week continuously protected by the secure call system.</li>
+                <li class="cs-bullet">~1.2 million distinct users per week continuously protected by the secure call system.</li>
                 <li class="cs-bullet">Significant increase in secure call adoption in the clothing category.</li>
               </ul>
 
@@ -1134,6 +1214,27 @@
                 <li class="cs-bullet">Increased trust in platform protection among the community.</li>
                 <li class="cs-bullet">Maintained communication efficiency without compromising privacy.</li>
               </ul>
+            </div>
+
+            <!-- WHAT I'D DO DIFFERENTLY -->
+            <div id="differently" class="cs-section fade-up">
+              <div class="cs-section-title">What I'd Do Differently</div>
+              <div class="refined-list">
+                <div class="refined-item">
+                  <div class="refined-icon"><i class="bi bi-clock-history" style="color:var(--color-primary)"></i></div>
+                  <div>
+                    <h5>Run the pilot longer before drawing conclusions</h5>
+                    <p>The 3-hour pilot gave directional signal but limited confidence. A longer pilot with a holdout group would have provided cleaner data on which failure modes were systemic versus time-of-day artefacts.</p>
+                  </div>
+                </div>
+                <div class="refined-item">
+                  <div class="refined-icon"><i class="bi bi-bar-chart-line" style="color:var(--color-primary)"></i></div>
+                  <div>
+                    <h5>Instrument earlier</h5>
+                    <p>I had to build the data queries reactively — after the pilot failed. Designing the measurement framework before launch would have let me catch failure modes faster in subsequent iterations.</p>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <!-- LEARNINGS -->
