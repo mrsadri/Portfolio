@@ -601,4 +601,66 @@
   .cs-related-card { padding: 20px; }
   .cs-related-cta { flex-direction: column; }
   .btn-dark-primary, .btn-dark-ghost { text-align: center; }
+
+  /* Flowchart */
+  .flowchart-wrapper { padding: 16px 8px; }
+  .flowchart-svg { min-width: 360px; }
 }
+
+/* ============ FLOWCHART ============ */
+.flowchart-wrapper {
+  background: #ffffff;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  padding: 24px 20px;
+  overflow-x: auto;
+}
+
+[data-theme="dark"] .flowchart-wrapper {
+  background: var(--color-bg-paper);
+}
+
+.flowchart-svg {
+  width: 100%;
+  max-width: 760px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  min-width: 480px;
+}
+
+/* Nodes */
+.fc-diamond { fill: #bbf7d0; stroke: #16a34a; stroke-width: 1.5; }
+.fc-box     { fill: #ede9fe; stroke: #7c3aed; stroke-width: 1.5; }
+
+/* Connectors */
+.fc-line      { stroke: #9ca3af; stroke-width: 1.5; fill: none; }
+.fc-arrowhead { fill: #9ca3af; }
+
+/* Text */
+.fc-diamond-text {
+  font-family: var(--font-family);
+  font-size: 9.5px;
+  fill: #14532d;
+  text-anchor: middle;
+}
+.fc-box-text {
+  font-family: var(--font-family);
+  font-size: 10.5px;
+  fill: #4c1d95;
+  text-anchor: middle;
+}
+.fc-edge-label {
+  font-family: var(--font-family);
+  font-size: 11px;
+  fill: #6b7280;
+}
+
+/* Dark mode */
+[data-theme="dark"] .fc-diamond { fill: #14532d; stroke: #4ade80; }
+[data-theme="dark"] .fc-box     { fill: #2e1065; stroke: #a78bfa; }
+[data-theme="dark"] .fc-line    { stroke: #6b7280; }
+[data-theme="dark"] .fc-arrowhead { fill: #6b7280; }
+[data-theme="dark"] .fc-diamond-text { fill: #bbf7d0; }
+[data-theme="dark"] .fc-box-text     { fill: #e9d5ff; }
+[data-theme="dark"] .fc-edge-label   { fill: #9ca3af; }

@@ -307,7 +307,7 @@
         <p class="eyebrow fade-up" style="margin-bottom:8px">Case Study 03 · Product Design &amp; Growth</p>
         <h1 class="cs-overview-title fade-up delay-1">From 6% to 47%: Turning a Failing Feature Into Core Value</h1>
         <p class="cs-overview-subtitle fade-up delay-2">How I redesigned the SetareYek bill payment flow to grow market share 6%→47% in 4.5 months</p>
-        <p class="cs-overview-subtitle fade-up delay-2" style="font-size:1rem">I came in expecting to find one blocker. I found six. The fix required reframing the entire product from a payment button to an inventory system — one production rollback and two self-proposed growth features later.</p>
+        <p class="cs-overview-subtitle fade-up delay-2" style="font-size:1rem">I came in expecting one blocker. I found six. The fix wasn't a faster flow — it was a different mental model. The redesign required one production rollback, three iterations, and two self-proposed growth features the PM hadn't asked for.</p>
 
         <div class="cs-meta-grid fade-up delay-3">
           <div class="cs-meta-item">
@@ -382,8 +382,8 @@
               <div class="cs-section-title">The Problem</div>
               <p class="cs-section-summary">Bill payment was underused. Users had the feature but avoided it — paying through banks, ATMs, or external apps instead.</p>
               <div class="cs-body">
-                <p>Baseline market share: <strong>6% of bill payment volume</strong>, measured internally against IR-MCI's other payment categories.</p>
-                <p>The strategic stakes: if IR-MCI didn't make in-app bill payment compelling soon, banks and dedicated fintech apps would lock in the habit. The PM wanted me to find out <em>why</em> users weren't using it — and fix it.</p>
+                <p>Baseline market share: <strong>6% of bill payment volume</strong>, measured internally against other SetareYek payment categories.</p>
+                <p>The strategic stakes: if SetareYek didn't make in-app bill payment compelling soon, banks and dedicated fintech apps would lock in the habit. The PM wanted me to find out <em>why</em> users weren't using it — and fix it.</p>
               </div>
               <ul class="cs-bullets">
                 <li class="cs-bullet">High drop-off at specific steps in the payment flow</li>
@@ -424,7 +424,7 @@
               <div class="cs-section-title">Success Metrics</div>
               <p class="cs-section-summary">North star and non-negotiable guardrails defined before a single wireframe.</p>
               <div class="cs-body">
-                <p><strong>North star:</strong> % of total IR-MCI internal payment volume going through in-app bill payment, vs. other payment categories.</p>
+                <p><strong>North star:</strong> % of total SetareYek internal payment volume going through in-app bill payment, vs. other payment categories.</p>
               </div>
               <div class="cs-key-findings">
                 <div class="cs-key-findings-header"><i class="bi bi-shield-check"></i> Non-negotiable guardrails</div>
@@ -585,7 +585,7 @@
               <div class="issue-category" style="border-left-color:#f76707">
                 <h5>How I detected it</h5>
                 <ul>
-                  <li>The DevOps team identified the bill payment volume drop 24 hours after launch and flagged it to PM Ali</li>
+                  <li>The DevOps team identified the bill payment volume drop ~24 hours after launch and flagged it to PM Ali</li>
                   <li>Not fast by my standards now — but fast enough to roll back before the damage compounded</li>
                 </ul>
               </div>
@@ -677,7 +677,116 @@
               </div>
 
               <figure style="margin:24px 0 0">
-                <img src="../images/setare-aval-user-flow.webp" alt="SetareYek bill payment user flow — Iteration 3" class="cs-section-image" loading="lazy" />
+                <div class="flowchart-wrapper">
+                  <svg class="flowchart-svg" viewBox="0 0 762 542" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Notification decision flow after purchasing internet or top-up for another user">
+                    <defs>
+                      <marker id="fc-arrow-bp" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+                        <polygon class="fc-arrowhead" points="0 0, 8 3, 0 6"/>
+                      </marker>
+                    </defs>
+
+                    <!-- ── CONNECTORS (drawn behind nodes) ── -->
+
+                    <!-- Start → Diamond 1 -->
+                    <line class="fc-line" x1="138" y1="100" x2="210" y2="100" marker-end="url(#fc-arrow-bp)"/>
+
+                    <!-- Diamond 1 Yes → Msg A (top) -->
+                    <line class="fc-line" x1="358" y1="100" x2="473" y2="100" marker-end="url(#fc-arrow-bp)"/>
+                    <text class="fc-edge-label" x="404" y="93">Yes</text>
+
+                    <!-- Diamond 1 No → Diamond 2 (stepped path) -->
+                    <line class="fc-line" x1="285" y1="173" x2="285" y2="220"/>
+                    <line class="fc-line" x1="285" y1="220" x2="195" y2="220"/>
+                    <line class="fc-line" x1="195" y1="220" x2="195" y2="263" marker-end="url(#fc-arrow-bp)"/>
+                    <text class="fc-edge-label" x="293" y="202">No</text>
+
+                    <!-- Diamond 2 Yes → Diamond 3 -->
+                    <line class="fc-line" x1="265" y1="335" x2="358" y2="335" marker-end="url(#fc-arrow-bp)"/>
+                    <text class="fc-edge-label" x="291" y="328">Yes</text>
+
+                    <!-- Diamond 3 Yes → Msg A (mid) -->
+                    <line class="fc-line" x1="490" y1="335" x2="583" y2="335" marker-end="url(#fc-arrow-bp)"/>
+                    <text class="fc-edge-label" x="516" y="328">Yes</text>
+
+                    <!-- Diamond 3 No → Msg B (stepped path) -->
+                    <line class="fc-line" x1="425" y1="400" x2="425" y2="415"/>
+                    <line class="fc-line" x1="425" y1="415" x2="583" y2="415" marker-end="url(#fc-arrow-bp)"/>
+                    <text class="fc-edge-label" x="433" y="411">No</text>
+
+                    <!-- Diamond 2 No → Msg C (long stepped path) -->
+                    <line class="fc-line" x1="195" y1="405" x2="195" y2="499"/>
+                    <line class="fc-line" x1="195" y1="499" x2="583" y2="499" marker-end="url(#fc-arrow-bp)"/>
+                    <text class="fc-edge-label" x="203" y="460">No</text>
+
+                    <!-- ── NODES ── -->
+
+                    <!-- Start box -->
+                    <rect class="fc-box" x="8" y="55" width="130" height="90" rx="8"/>
+                    <text class="fc-box-text" x="73" y="76">
+                      <tspan x="73" dy="0">After making a</tspan>
+                      <tspan x="73" dy="13">purchase (internet</tspan>
+                      <tspan x="73" dy="13">package or mobile</tspan>
+                      <tspan x="73" dy="13">top-up) for</tspan>
+                      <tspan x="73" dy="13">another user</tspan>
+                    </text>
+
+                    <!-- Diamond 1 -->
+                    <polygon class="fc-diamond" points="285,27 358,100 285,173 212,100"/>
+                    <text class="fc-diamond-text" x="285" y="72">
+                      <tspan x="285" dy="0">Has this user, for</tspan>
+                      <tspan x="285" dy="11">whom the internet</tspan>
+                      <tspan x="285" dy="11">or top-up has been</tspan>
+                      <tspan x="285" dy="11">purchased, recently</tspan>
+                      <tspan x="285" dy="11">been invited to</tspan>
+                      <tspan x="285" dy="11">the app?</tspan>
+                    </text>
+
+                    <!-- Msg A (top) -->
+                    <rect class="fc-box" x="473" y="72" width="167" height="56" rx="8"/>
+                    <text class="fc-box-text" x="556" y="94">
+                      <tspan x="556" dy="0">Send him</tspan>
+                      <tspan x="556" dy="14">message A</tspan>
+                    </text>
+
+                    <!-- Diamond 2 -->
+                    <polygon class="fc-diamond" points="195,265 265,335 195,405 125,335"/>
+                    <text class="fc-diamond-text" x="195" y="323">
+                      <tspan x="195" dy="0">Is the user a</tspan>
+                      <tspan x="195" dy="11">member of</tspan>
+                      <tspan x="195" dy="11">Setare Aval?</tspan>
+                    </text>
+
+                    <!-- Diamond 3 -->
+                    <polygon class="fc-diamond" points="425,270 490,335 425,400 360,335"/>
+                    <text class="fc-diamond-text" x="425" y="329">
+                      <tspan x="425" dy="0">Is he an</tspan>
+                      <tspan x="425" dy="11">active user?</tspan>
+                    </text>
+
+                    <!-- Msg A (mid) -->
+                    <rect class="fc-box" x="583" y="307" width="167" height="56" rx="8"/>
+                    <text class="fc-box-text" x="666" y="329">
+                      <tspan x="666" dy="0">Send him</tspan>
+                      <tspan x="666" dy="14">message A</tspan>
+                    </text>
+
+                    <!-- Msg B -->
+                    <rect class="fc-box" x="583" y="382" width="167" height="66" rx="8"/>
+                    <text class="fc-box-text" x="666" y="403">
+                      <tspan x="666" dy="0">Send him message B</tspan>
+                      <tspan x="666" dy="13">(We will invite him</tspan>
+                      <tspan x="666" dy="13">to be more active)</tspan>
+                    </text>
+
+                    <!-- Msg C -->
+                    <rect class="fc-box" x="583" y="466" width="167" height="66" rx="8"/>
+                    <text class="fc-box-text" x="666" y="481">
+                      <tspan x="666" dy="0">Send him message C</tspan>
+                      <tspan x="666" dy="13">(We will send him</tspan>
+                      <tspan x="666" dy="13">referral code &amp; intro)</tspan>
+                    </text>
+                  </svg>
+                </div>
                 <figcaption style="font-size:0.8rem;color:var(--color-text-secondary);text-align:center;margin-top:8px;font-style:italic">Iteration 3 — full bill inventory flow with history, receipt sharing, and time-ordered list</figcaption>
               </figure>
 
@@ -736,7 +845,7 @@
             <!-- IMPACT -->
             <div id="impact" class="cs-section fade-up">
               <div class="cs-section-title">The Impact</div>
-              <p class="cs-section-summary">Bill payment went from being IR-MCI's smallest payment line to being the largest in volume.</p>
+              <p class="cs-section-summary">Bill payment went from being SetareYek's smallest payment line to being the largest in volume.</p>
               <div class="impact-cards-row">
                 <div class="impact-big-card">
                   <div class="impact-big-num">6%→47%</div>
@@ -753,7 +862,7 @@
 
               <p class="cs-sub-title">Quantitative results</p>
               <ul class="cs-bullets">
-                <li class="cs-bullet">Bill payment market share grew from 6% to 47% of IR-MCI internal payment volume across 3 iterations</li>
+                <li class="cs-bullet">Bill payment market share grew from 6% to 47% of in-app payment share (vs. other SetareYek payment categories) across 3 iterations</li>
                 <li class="cs-bullet">~20,000 new active users acquired in first 2 months of the auto-referral feature</li>
                 <li class="cs-bullet">~1 in 3 referrals converted from gift payment invitations (~60,000 invitations sent in that window)</li>
                 <li class="cs-bullet">Total time to peak: ~4.5 months (2.5 months design + development, 2 months adoption ramp)</li>
@@ -838,7 +947,7 @@
 
               <p class="cs-sub-title" style="margin-top:28px">A note on PM</p>
               <div class="cs-body">
-                <p>Special thanks to Ali YaseriPour, who kept the project grounded and gave me the space to push beyond the original scope.</p>
+                <p>Special thanks to Ali YaseriPour, who gave me space to push beyond the original scope. Family Package Visibility and Auto-Referral were not in his original brief, and he backed both proposals against business risk. The 20K acquisitions wouldn't exist without that trust.</p>
               </div>
               <a href="https://www.linkedin.com/in/mohammad-ali-yaseri-231a97b6/" target="_blank" rel="noopener noreferrer" class="linkedin-card">
                 <div class="linkedin-card-avatar">AY</div>
@@ -849,7 +958,7 @@
                 <i class="bi bi-linkedin linkedin-card-icon"></i>
               </a>
 
-              <p class="cs-note" style="margin-top:24px">Confidentiality: Market share figures (6%→47%) measured internally against other IR-MCI payment categories — not against external competitors. Adoption timeframe of 4.5 months represents design close to peak adoption. Company named with permission.</p>
+              <p class="cs-note" style="margin-top:24px">Confidentiality: Market share figures (6%→47%) measured internally against other SetareYek payment categories — not against external competitors. Adoption timeframe of 4.5 months represents design close to peak adoption. Company named with permission. SQL queries and database access were performed with explicit PM approval.</p>
             </div>
 
           </div>
