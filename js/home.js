@@ -33,6 +33,14 @@ document.addEventListener('DOMContentLoaded', () => {
         "The 6% retention improvement meant lower acquisition costs, changing our strategy to encourage physical receipts.",
       ],
     },
+    morph: {
+      headline: "How I co-led Morph, the most-adopted RTL design system on Figma Community",
+      bullets: [
+        "Co-led with the UX manager and managed 3 new hires personally, interviewing 40+ candidates.",
+        "Built HSL-based theming before Figma had variables; the system mapped onto Figma's later abstractions cleanly.",
+        "8,700+ designers globally have copied Morph; still growing four years after launch under CC BY 4.0.",
+      ],
+    },
   };
 
   const modal = document.getElementById('recap-modal');

@@ -14,7 +14,7 @@
         '</button>' +
         '<div class="cm-icon"><i class="bi bi-telegram"></i></div>' +
         '<h2 class="cm-title" id="cm-title">Let\'s connect</h2>' +
-        '<p class="cm-desc">I respond fastest on Telegram — tap below and you\'ll land directly in our chat.</p>' +
+        '<p class="cm-desc">I respond fastest on Telegram. Tap below and you\'ll land directly in our chat.</p>' +
         '<a href="https://t.me/masihsadri" target="_blank" rel="noopener noreferrer" class="cm-cta" id="cm-cta">' +
           '<i class="bi bi-telegram"></i> Message on Telegram' +
         '</a>' +

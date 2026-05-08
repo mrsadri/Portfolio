@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Morph Design System | Masih Sadri</title>
+  <meta name="description" content="Co-led Morph, the most-adopted RTL design system on Figma Community. 8.7K+ designers globally, still growing four years after launch under CC BY 4.0." />
+  <meta name="keywords" content="Morph Design System, RTL Design System, Figma Community, Setare Aval, Masih Sadri, Design System Lead, HSL Theming, Accessibility, Open Source" />
+  <meta property="og:title" content="Morph Design System | Masih Sadri" />
+  <meta property="og:description" content="Co-led Morph, the most-adopted RTL design system on Figma Community. 8.7K+ designers globally, still growing four years after launch under CC BY 4.0." />
+  <meta property="og:image" content="../images/masih-sadri-profile.jpeg" />
+  <meta property="og:image:alt" content="Masih Sadri hero portrait from the portfolio homepage" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Masih Sadri Portfolio" />
+  <meta property="og:url" content="morph-design-system.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Morph Design System | Masih Sadri" />
+  <meta name="twitter:description" content="Co-led Morph, the most-adopted RTL design system on Figma Community. 8.7K+ designers globally, still growing four years after launch under CC BY 4.0." />
+  <meta name="twitter:image" content="../images/masih-sadri-profile.jpeg" />
+  <meta name="twitter:image:alt" content="Masih Sadri hero portrait from the portfolio homepage" />
+  <link rel="icon" type="image/svg+xml" href="../images/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <link rel="stylesheet" href="../css/variables.css" />
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/layout.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+  <link rel="stylesheet" href="../css/animations.css" />
+  <link rel="stylesheet" href="../css/case-study.css" />
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "umgef0oawe");
+  </script>
+  <script src="../js/theme.js"></script>
+  <style>
+    .morph-stat-pills { display: flex; flex-wrap: wrap; gap: 12px; margin: 16px 0 8px; }
+    .morph-stat-pill {
+      display: inline-flex; align-items: baseline; gap: 8px;
+      background: var(--color-subtle);
+      border: 1px solid var(--color-border);
+      border-radius: 999px;
+      padding: 8px 14px;
+      font-size: 0.875rem;
+    }
+    .morph-stat-pill strong { color: var(--color-primary); font-weight: 700; }
+    .morph-stat-pill span { color: var(--color-text-secondary); }
+
+    .decision-card {
+      background: var(--color-subtle);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 20px 22px;
+      margin-bottom: 18px;
+    }
+    .decision-card h4 { font-size: 1rem; font-weight: 600; color: var(--color-text-primary); margin: 0 0 6px; }
+    .decision-card .decision-tag {
+      display: inline-block;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-primary);
+      margin-bottom: 8px;
+    }
+    .decision-card p { font-size: 0.9rem; color: var(--color-text-secondary); margin: 0 0 8px; line-height: 1.65; }
+    .decision-card p:last-child { margin-bottom: 0; }
+    .decision-card .decision-label { font-weight: 600; color: var(--color-text-primary); }
+
+    .morph-link-row {
+      display: flex; flex-wrap: wrap; gap: 10px;
+      margin-top: 20px;
+    }
+    .morph-link-row a {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 14px;
+      border: 1px solid var(--color-border);
+      border-radius: 999px;
+      font-size: 0.8125rem;
+      color: var(--color-text-primary);
+      text-decoration: none;
+      transition: all .15s ease;
+    }
+    .morph-link-row a:hover {
+      border-color: var(--color-primary);
+      color: var(--color-primary);
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container">
+      <nav class="nav-inner" aria-label="Main navigation">
+        <a href="../index.html" class="nav-logo">Masih Sadri</a>
+        <div class="nav-links">
+          <a href="../index.html" class="nav-link">Home</a>
+          <a href="../my-story.html" class="nav-link">My Story</a>
+          <a href="../index.html#section-case-studies" class="nav-link">Case Studies</a>
+          <a href="../contact.html" class="nav-link">Contact</a>
+          <a href="../resume.html" class="nav-link">Resume</a>
+        </div>
+        <div class="nav-actions">
+          <a href="https://www.linkedin.com/in/msadri/" target="_blank" rel="noopener noreferrer" class="nav-icon-btn" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+          <a href="https://t.me/masihsadri" target="_blank" rel="noopener noreferrer" class="nav-icon-btn" aria-label="Telegram"><i class="bi bi-telegram"></i></a>
+          <label class="theme-toggle" data-theme-toggle aria-label="Toggle dark mode">
+            <i class="bi bi-sun icon-sun"></i>
+            <span class="theme-switch"><input type="checkbox" class="theme-checkbox" /><span class="theme-switch-track"></span><span class="theme-switch-thumb"></span></span>
+            <i class="bi bi-moon icon-moon"></i>
+          </label>
+        </div>
+        <button class="nav-mobile-toggle" id="nav-mobile-open" aria-label="Open navigation menu"><i class="bi bi-list"></i></button>
+      </nav>
+    </div>
+  </header>
+  <div id="mobile-drawer-overlay" class="mobile-drawer-overlay"></div>
+  <div id="mobile-drawer" class="mobile-drawer" role="dialog" aria-label="Navigation menu" aria-modal="true">
+    <div class="mobile-drawer-header">
+      <h3>Navigate</h3>
+      <button class="mobile-drawer-close" id="nav-mobile-close" aria-label="Close"><i class="bi bi-x-lg"></i></button>
+    </div>
+    <ul class="mobile-nav-list">
+      <li><a href="../index.html" class="mobile-nav-link">Home</a></li>
+      <li><a href="../my-story.html" class="mobile-nav-link">My Story</a></li>
+      <li><a href="../index.html#section-case-studies" class="mobile-nav-link">Case Studies</a></li>
+      <li><a href="../contact.html" class="mobile-nav-link">Contact</a></li>
+      <li><a href="../resume.html" class="mobile-nav-link">Resume</a></li>
+    </ul>
+    <div class="mobile-drawer-divider"></div>
+    <div class="mobile-drawer-socials">
+      <a href="https://www.linkedin.com/in/msadri/" target="_blank" rel="noopener noreferrer" class="mobile-social-btn" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+      <a href="https://t.me/masihsadri" target="_blank" rel="noopener noreferrer" class="mobile-social-btn" aria-label="Telegram"><i class="bi bi-telegram"></i></a>
+    </div>
+    <div class="mobile-theme-row">
+      <label class="theme-toggle" data-theme-toggle aria-label="Toggle dark mode">
+        <i class="bi bi-sun icon-sun"></i>
+        <span class="theme-switch"><input type="checkbox" class="theme-checkbox" /><span class="theme-switch-track"></span><span class="theme-switch-thumb"></span></span>
+        <i class="bi bi-moon icon-moon"></i>
+      </label>
+    </div>
+  </div>
+
+  <main id="main-content">
+
+    <!-- OVERVIEW -->
+    <section class="cs-overview">
+      <div class="container">
+        <p class="eyebrow fade-up" style="margin-bottom:8px">Case Study 04 · Design Systems Leadership</p>
+        <h1 class="cs-overview-title fade-up delay-1">Morph: Building the Most-Adopted RTL Design System on Figma Community</h1>
+        <p class="cs-overview-subtitle fade-up delay-2">How I co-led an open-source design system that 8,700+ designers globally have copied, still growing four years after launch.</p>
+
+        <div class="cs-meta-grid fade-up delay-3">
+          <div class="cs-meta-item"><div class="cs-meta-label">Role</div><div class="cs-meta-value">Design System Lead (co-led with Hossein Mahmoodvand)</div></div>
+          <div class="cs-meta-item"><div class="cs-meta-label">Company</div><div class="cs-meta-value">Setare Aval, payment subsidiary of IR-MCI</div></div>
+          <div class="cs-meta-item"><div class="cs-meta-label">Timeline</div><div class="cs-meta-value">v1 internal Jan 2020 · public release ~1 year later · still maintained</div></div>
+          <div class="cs-meta-item"><div class="cs-meta-label">License</div><div class="cs-meta-value">CC BY 4.0, open-source, free for commercial use</div></div>
+        </div>
+
+        <div class="cs-stats-row fade-up delay-4">
+          <div class="cs-stat-pill">
+            <div class="cs-stat-pill-value">8.7K+</div>
+            <div class="cs-stat-pill-label">Designers using Morph</div>
+            <div class="cs-stat-pill-desc">Verified copies on Figma Community, still growing</div>
+          </div>
+          <div class="cs-stat-pill">
+            <div class="cs-stat-pill-value">677</div>
+            <div class="cs-stat-pill-label">Hearts on the public file</div>
+            <div class="cs-stat-pill-desc">22 published comments, indexed by third-party design resources</div>
+          </div>
+          <div class="cs-stat-pill">
+            <div class="cs-stat-pill-value">4,000+</div>
+            <div class="cs-stat-pill-label">Icons shipped</div>
+            <div class="cs-stat-pill-desc">Plus 864 buttons, 1,488 text fields, 240 modals</div>
+          </div>
+        </div>
+
+        <div class="morph-link-row fade-up delay-5">
+          <a href="https://www.figma.com/community/file/1069259333467083182/morph-design-system" target="_blank" rel="noopener noreferrer">
+            <i class="bi bi-figma"></i> View on Figma Community
+          </a>
+          <a href="https://setare-yek-website.vercel.app/" target="_blank" rel="noopener noreferrer">
+            <i class="bi bi-globe"></i> Setare Yek website built on Morph
+          </a>
+          <a href="https://setareaval.ir" target="_blank" rel="noopener noreferrer">
+            <i class="bi bi-globe"></i> Setare Aval main site
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- BODY -->
+    <section style="background:var(--color-bg-paper);border-top:1px solid var(--color-divider)">
+      <div class="container">
+        <div class="cs-layout">
+
+          <nav class="cs-outline" aria-label="Section outline">
+            <div class="cs-outline-title">Contents</div>
+            <ul class="cs-outline-list">
+              <li><a href="#origin" class="cs-outline-link">Origin</a></li>
+              <li><a href="#different" class="cs-outline-link">What Made Morph Different</a></li>
+              <li><a href="#team" class="cs-outline-link">My Role &amp; the Team</a></li>
+              <li><a href="#decisions" class="cs-outline-link">Architectural Decisions</a></li>
+              <li><a href="#results" class="cs-outline-link">Results</a></li>
+              <li><a href="#reflection" class="cs-outline-link">What I'd Do Differently</a></li>
+            </ul>
+          </nav>
+
+          <div class="cs-content">
+
+            <div id="origin" class="cs-section fade-up">
+              <div class="cs-section-title">Origin</div>
+              <p class="cs-section-summary">Morph was not commissioned. It started as a practical need: in 2019, our team was on Adobe XD with painful handoff and no shared design language. Migrating to Figma surfaced that every product had drifted into its own visual conventions.</p>
+              <p class="cs-section-summary">The core idea: as we move to Figma, build a design system that does both jobs at once. Standardise the design language <em>and</em> establish a reusable component library. SetareYek (the consumer fintech app) would be the primary consumer.</p>
+              <ul class="cs-bullets">
+                <li class="cs-bullet"><strong>v1 (Jan 2020):</strong> internal release. Used to redesign the SetareYek mobile app, corporate dashboards, and marketing sites.</li>
+                <li class="cs-bullet"><strong>Public release (~1 year later):</strong> the company saw what we'd built and gave us permission to open-source it as a gift to the broader Persian-speaking design community, with workshop budget to promote it.</li>
+              </ul>
+              <blockquote class="cs-quote">
+                <p class="cs-quote-text">Adaptable, swift, integrated. Morph emphasises design principles such as accessibility, with adaptability across mobile applications, admin panels, and websites in RTL and LTR, and across light and dark palettes.</p>
+                <div class="cs-quote-author">From the Morph public file</div>
+                <div class="cs-quote-role">Setare Aval design team</div>
+              </blockquote>
+            </div>
+
+            <div id="different" class="cs-section fade-up">
+              <div class="cs-section-title">What Made Morph Different</div>
+              <p class="cs-section-summary">By 2020, there were dozens of public Figma design systems. Most were Material ports or English-first kits. Morph filled a real gap.</p>
+
+              <div class="cs-key-findings">
+                <div class="cs-key-findings-header"><i class="bi bi-stars"></i> Four Differentiators</div>
+                <ul class="cs-key-findings-list">
+                  <li class="cs-key-findings-item"><strong>RTL-first, not RTL-as-afterthought.</strong> Persian as the primary language, with LTR built as a parallel mode rather than a transformation. Bilingual designers (Persian + English, Persian + Arabic) got a system that worked in both directions without breaking.</li>
+                  <li class="cs-key-findings-item"><strong>HSL-based theming, before Figma had variables.</strong> We defined colours by role (primary, surface, accent) and shifted the whole palette by parameter. Dark mode wasn't a manual repaint; it was a parameter change. When Figma later introduced variables, our system mapped onto them cleanly.</li>
+                  <li class="cs-key-findings-item"><strong>Accessibility tested on every component.</strong> I personally ran a11y plugins (contrast checking) and blind-testing tools (screen reader compatibility, tab order). Accessibility was a guardrail, not a feature.</li>
+                  <li class="cs-key-findings-item"><strong>The largest Persian/RTL design system available.</strong> 4,000+ icons, 864 button variants, 1,488 text field variants, 240 modal variants, plus tags, snack bars, tables, navigation bars, tab bars, search boxes. Community feedback consistently called out <em>consistency</em> as Morph's defining quality.</li>
+                </ul>
+              </div>
+
+              <div class="morph-stat-pills">
+                <div class="morph-stat-pill"><strong>4,000+</strong><span>icons</span></div>
+                <div class="morph-stat-pill"><strong>864</strong><span>buttons</span></div>
+                <div class="morph-stat-pill"><strong>1,488</strong><span>text fields</span></div>
+                <div class="morph-stat-pill"><strong>240</strong><span>modals</span></div>
+                <div class="morph-stat-pill"><span>+ tags, snack bars, tables, progress bars, navigation bars, tab bars, search boxes</span></div>
+              </div>
+            </div>
+
+            <div id="team" class="cs-section fade-up">
+              <div class="cs-section-title">My Role &amp; the Team</div>
+              <p class="cs-section-summary">I was the most experienced Figma practitioner on the team and managed the project's architecture. Hossein Mahmoodvand (UX team manager) co-led with me. Mohammad Hossein Ahmadi was our existing visual designer.</p>
+              <p class="cs-section-summary">The expansion required hiring. Hossein and I interviewed <strong>40+ candidates</strong> through a structured process: CV review (both of us) → take-home assignment (I designed and judged the task) → final interview (I led; Hossein joined for some) → joint offer decision.</p>
+              <p class="cs-section-summary">We hired 3 new junior designers. Two became core to Morph's expansion: <strong>Mohammad Mahdi Mohebbi</strong> (intern, his first job in design) and <strong>Amirhossein Nazari</strong>.</p>
+
+              <div class="cs-section-title" style="font-size:1.0625rem;margin-top:24px">Delegation philosophy</div>
+              <ul class="cs-bullets">
+                <li class="cs-bullet">For the first few weeks I taught Figma fundamentals, design system architecture, and review workflows, using Morph components as the curriculum.</li>
+                <li class="cs-bullet">They also learned usability testing methods I was running in parallel product projects, so they wouldn't graduate as "design system specialists" with no product experience.</li>
+                <li class="cs-bullet">After onboarding, I delegated whole components to them: they owned design decisions; I reviewed. The goal wasn't to ship faster (I could have built it alone faster). The goal was to develop them.</li>
+                <li class="cs-bullet"><strong>Both interns are still working in design today.</strong> That's the credit I'm most proud of from this project.</li>
+              </ul>
+            </div>
+
+            <div id="decisions" class="cs-section fade-up">
+              <div class="cs-section-title">Architectural Decisions That Mattered</div>
+
+              <div class="decision-card">
+                <span class="decision-tag">Decision 01</span>
+                <h4>HSL over RGB</h4>
+                <p><span class="decision-label">The problem:</span> Multi-theme support (dark mode, brand variations) without manual repainting and without Figma variables (which didn't exist yet).</p>
+                <p><span class="decision-label">Why HSL won:</span> A colour like <code>hsl(220, 60%, 50%)</code> is composable: change the lightness and you have the same colour darker; change the hue and you have a sister colour at the same saturation/lightness. RGB has none of this. Dark mode became "shift lightness across the palette" instead of "manually repaint 200 components."</p>
+                <p><span class="decision-label">What I had to defend:</span> Other team members initially preferred RGB because it's what they were used to. I demonstrated the maintenance cost difference on a small sample before the team agreed.</p>
+              </div>
+
+              <div class="decision-card">
+                <span class="decision-tag">Decision 02</span>
+                <h4>Cut calendar and clock from v1</h4>
+                <p><span class="decision-label">The pressure:</span> Persian (Jalali) calendar is a hard problem, with different month structure, week start, and cultural conventions. A proper calendar would have been a project of its own.</p>
+                <p><span class="decision-label">The trade-off:</span> Shipping with 95% coverage on schedule beat 100% coverage six months late. I documented these as "known gaps for future versions."</p>
+                <p><span class="decision-label">What I learned:</span> The right call. Public reception focused on the components we did ship; nobody complained about missing calendar. Scope discipline mattered more than feature completeness.</p>
+              </div>
+
+              <div class="decision-card">
+                <span class="decision-tag">Decision 03</span>
+                <h4>CC BY 4.0 open license</h4>
+                <p><span class="decision-label">The defence:</span> The company gave us permission to open-source, though they could have asked for a more restrictive license. I argued for CC BY 4.0 because (a) it would maximise adoption (and therefore community goodwill), (b) attribution requirement still gave Setare Aval visibility, and (c) restrictive licenses create hesitation in adoption because designers wouldn't trust they could use it on commercial client work.</p>
+                <p><span class="decision-label">Why it mattered:</span> This decision is the reason 8.7K designers have adopted Morph and a bank like Blu Bank could quietly use it. A more restrictive license would have suppressed adoption.</p>
+              </div>
+            </div>
+
+            <div id="results" class="cs-section fade-up">
+              <div class="cs-section-title">Results</div>
+              <div class="cs-metrics-row">
+                <div class="cs-metric-card">
+                  <div class="cs-metric-value">8.7K+</div>
+                  <div class="cs-metric-label">Designers using Morph</div>
+                  <div class="cs-metric-desc">Verified on Figma Community, still growing four years on</div>
+                </div>
+                <div class="cs-metric-card">
+                  <div class="cs-metric-value">677</div>
+                  <div class="cs-metric-label">Hearts · 22 comments</div>
+                  <div class="cs-metric-desc">Indexed by third-party design resources (UI4Free, others)</div>
+                </div>
+                <div class="cs-metric-card">
+                  <div class="cs-metric-value">2/3</div>
+                  <div class="cs-metric-label">Interns still in design</div>
+                  <div class="cs-metric-desc">Both onboarded into Morph remain working designers today</div>
+                </div>
+              </div>
+
+              <div class="cs-section-title" style="font-size:1.0625rem;margin-top:28px">Unofficial commercial adoption</div>
+              <ul class="cs-bullets">
+                <li class="cs-bullet"><strong>Blu Bank</strong> (regional neobank) used Morph as the foundation for their product UI; they let us know through an informal call.</li>
+                <li class="cs-bullet">Multiple other regional companies have used Morph unofficially, within license terms but without explicit notification.</li>
+                <li class="cs-bullet">A volunteer developer built a documentation website for Morph (later shut down).</li>
+              </ul>
+
+              <div class="cs-section-title" style="font-size:1.0625rem;margin-top:28px">Internal impact at Setare Aval</div>
+              <ul class="cs-bullets">
+                <li class="cs-bullet">Adobe XD → Figma migration completed across all design teams.</li>
+                <li class="cs-bullet">SetareYek mobile app, Setare Aval marketing sites, and internal dashboards rebuilt on Morph.</li>
+                <li class="cs-bullet">Engineering handoff time reduced (qualitative; no metric captured at the time).</li>
+              </ul>
+            </div>
+
+            <div id="reflection" class="cs-section fade-up">
+              <div class="cs-section-title">What I'd Do Differently</div>
+              <ul class="cs-bullets">
+                <li class="cs-bullet"><strong>Capture the engineering handoff metric.</strong> I have qualitative evidence Morph improved handoff speed and reduced UI bugs at Setare Aval; the team said so, repeatedly. I never captured the metric. A senior design system lead establishes a baseline and measures it.</li>
+                <li class="cs-bullet"><strong>Build governance, not just components.</strong> Morph shipped as a component library, not with a contribution model, versioning protocol, or deprecation policy. By the time the volunteer documentation site launched, we needed those, and we didn't have them. A design system isn't a one-time artefact; it's an ongoing relationship.</li>
+                <li class="cs-bullet"><strong>Document the HSL decision publicly.</strong> The HSL theming approach was Morph's most distinctive technical choice. We never wrote about it. If we had, Morph would have been part of the conversation when Figma rolled out variables.</li>
+              </ul>
+
+              <blockquote class="cs-quote">
+                <p class="cs-quote-text">"When it comes to consistent, top-quality design, it is enough to handover confusions and raw data to Masih. While working together in the product team at Setare Aval, Masih's specialties were instrumental in problem definition, finding proper solutions, and designing flows."</p>
+                <div class="cs-quote-author">Hossein Mahmoodvand</div>
+                <div class="cs-quote-role">Co-lead on Morph · Product Design Lead, SnappPay</div>
+              </blockquote>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RELATED -->
+    <section class="cs-related">
+      <div class="container">
+        <p class="cs-related-tag">Keep Exploring</p>
+        <h2>More ways I design for impact</h2>
+        <p class="cs-related-sub">Pick another case study, peek inside my story, or reach out directly.</p>
+        <div class="cs-related-grid">
+          <a href="divar-secure-call.html" class="cs-related-card">
+            <div class="cs-related-card-tag">Trust &amp; Safety</div>
+            <h4>The Story of Reducing Harassment by 60% on Divar</h4>
+            <p>We reduced harassment reports by 60% by building a proxy number system that still protects 1.2M weekly users in Iran's largest marketplace.</p>
+            <span class="cs-related-card-link">Read the case study →</span>
+          </a>
+          <a href="setare-yek-bill-payment.html" class="cs-related-card">
+            <div class="cs-related-card-tag">Product Design &amp; Growth</div>
+            <h4>From 6% to 47%: Turning a Failing Feature Into Core Value</h4>
+            <p>Grew bill payment market share from 6% to 47% in 4.5 months by solving trust, transparency, and recurring workflow challenges.</p>
+            <span class="cs-related-card-link">Read the case study →</span>
+          </a>
+        </div>
+        <div class="cs-related-cta">
+          <a href="../my-story.html" class="btn-dark-primary">Visit My Story</a>
+          <a href="../contact.html" class="btn-dark-ghost">Start a conversation</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="lets-talk">
+      <div class="container">
+        <div class="lets-talk-inner fade-up">
+          <p class="eyebrow" style="text-align:center;margin-bottom:12px">Let's Connect</p>
+          <h2>Liked What You Saw?</h2>
+          <p>I'm open to discussing new projects, design challenges, or potential collaborations.</p>
+          <div class="lets-talk-actions">
+            <a href="../contact.html" class="btn btn-primary" data-contact-modal data-contact-page="../contact.html">Get in Touch</a>
+            <a href="../index.html#section-case-studies" class="btn btn-outlined">All Case Studies</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2026 Masih Sadri. Crafted with empathy and care.</p>
+      <p>Built from scratch by Masih ❤️</p>
+    </div>
+  </footer>
+
+  <script src="../js/navigation.js"></script>
+  <script src="../js/animations.js"></script>
+  <script src="../js/case-study.js"></script>
+  <script src="../js/contact-modal.js"></script>
+</body>
+</html>
